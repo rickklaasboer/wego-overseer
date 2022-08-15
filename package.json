@@ -1,26 +1,38 @@
 {
-  "name": "wego-overseer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "@semantic-release/changelog": "6.0.1",
-    "@semantic-release/commit-analyzer": "9.0.2",
-    "@semantic-release/exec": "6.0.3",
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/github ": "8.0.5",
-    "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/node": "18.6.3",
-    "eslint": "8.21.0",
-    "prettier": "2.7.1",
-    "semantic-release": "19.0.3",
-    "ts-node": "10.9.1",
-    "typescript": "4.7.4"
-  }
+    "name": "wego-overseer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npx nodemon --watch src -e ts --exec \"node -r ts-node/register ./src/index.ts\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@semantic-release/changelog": "6.0.1",
+        "@semantic-release/commit-analyzer": "9.0.2",
+        "@semantic-release/exec": "6.0.3",
+        "@semantic-release/git": "10.0.1",
+        "@semantic-release/github ": "8.0.5",
+        "@semantic-release/release-notes-generator": "10.0.3",
+        "@types/jsdom": "20.0.0",
+        "@types/node": "18.6.3",
+        "@types/node-fetch": "2",
+        "eslint": "8.21.0",
+        "prettier": "2.7.1",
+        "semantic-release": "19.0.3",
+        "ts-node": "10.9.1",
+        "typescript": "4.7.4"
+    },
+    "dependencies": {
+        "@discordjs/rest": "1.0.1",
+        "dayjs": "1.11.5",
+        "discord-api-types": "0.37.2",
+        "discord.js": "14.2.0",
+        "dotenv": "16.0.1",
+        "jsdom": "20.0.0",
+        "node-fetch": "2"
+    }
 }
