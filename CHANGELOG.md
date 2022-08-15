@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.0.0...v1.1.0) (2022-08-15)
+
+
+### Bug Fixes
+
+* use default npm registry ([8927b04](https://github.com/rickklaasboer/wego-overseer/commit/8927b048aa6cb224ef4734bc7b3d1260b91320c6))
+
+
+### Features
+
+* basic setup ([92a593f](https://github.com/rickklaasboer/wego-overseer/commit/92a593f7c03ee6dc48cf18cf6f1f6050329bad38))
+* **command:** create kortebroek command ([c3f278b](https://github.com/rickklaasboer/wego-overseer/commit/c3f278b17a3b51ff379100e26754db930d2b837f))
+* **command:** create stufi command ([d8c65c7](https://github.com/rickklaasboer/wego-overseer/commit/d8c65c7a477dc349acca4cd633c3337d20a38bf3))
+
 # 1.0.0 (2022-08-01)
 
 
