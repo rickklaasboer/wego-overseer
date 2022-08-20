@@ -1,5 +1,5 @@
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
-import Command from './Command';
+import Command from '@/commands/Command';
 import fetch from 'node-fetch';
 import dayjs from 'dayjs';
 import {JSDOM} from 'jsdom';
