@@ -39,7 +39,7 @@
         "dotenv": "16.0.1",
         "jsdom": "20.0.0",
         "knex": "2.2.0",
-        "mysql2": "^2.3.3",
+        "mysql2": "2.3.3",
         "node-fetch": "2",
         "objection": "3.0.1"
     }
