@@ -11,11 +11,15 @@ import {MessageCreateEvent} from './events/MessageCreateEvent';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import {Maybe} from './types/util';
+import {HelpCommand} from './commands/HelpCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
 
 const logger = new Logger('wego-overseer:index');
+
+export let bot: Maybe<Bot> = null;
 
 // Setup knex connection for objection
 Model.knex(knex(knexfile));
@@ -24,10 +28,10 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 (async () => {
-    const bot = new Bot({
+    bot = new Bot({
         applicationId: DISCORD_APPLICATION_ID,
         token: DISCORD_TOKEN,
-        commands: [PingCommand, KortebroekCommand, StufiCommand],
+        commands: [PingCommand, KortebroekCommand, StufiCommand, HelpCommand],
         events: [MessageCreateEvent],
     });
 

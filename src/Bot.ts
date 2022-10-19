@@ -97,4 +97,14 @@ export default class Bot {
             this.client.on(event.name, event.run);
         }
     }
+
+    /**
+     * Get registered commands
+     */
+    public getCommands(): Collection<
+        string,
+        Command<ChatInputCommandInteraction<CacheType>>
+    > {
+        return this.commands;
+    }
 }
