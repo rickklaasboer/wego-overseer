@@ -1,6 +1,6 @@
-import BaseModel from '@/entities/BaseModel';
+import Model from '@/entities/Model';
 
-export default class User extends BaseModel {
+export default class User extends Model {
     id!: string;
     xp!: number;
     xpAwardedAt!: string;

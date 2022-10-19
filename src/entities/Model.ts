@@ -1,7 +1,7 @@
 import {toMysqlDateTime} from '@/util/mysql';
-import {Model} from 'objection';
+import {Model as ObjectionModel} from 'objection';
 
-export default class BaseModel extends Model {
+export default class Model extends ObjectionModel {
     createdAt!: string;
     updatedAt!: string;
 

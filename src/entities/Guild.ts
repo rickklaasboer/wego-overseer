@@ -1,6 +1,6 @@
-import BaseModel from '@/entities/BaseModel';
+import Model from '@/entities/Model';
 
-export default class Guild extends BaseModel {
+export default class Guild extends Model {
     id!: number;
 
     static get tableName() {
