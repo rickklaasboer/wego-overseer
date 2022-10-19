@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    image: mariadb
+    restart: always
+    ports:
+      - '3306:3306'
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    stop_signal: SIGKILL
+    environment:
+      MYSQL_ROOT_PASSWORD: testing
+      MYSQL_DATABASE: local
+      TZ: UTC

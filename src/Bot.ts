@@ -7,13 +7,15 @@ import {
     ChatInputCommandInteraction,
     CacheType,
 } from 'discord.js';
-import Command from './commands/Command';
-import {tap} from './util/tap';
+import Command from '@/commands/Command';
+import Event from '@/events/Event';
+import {tap} from '@/util/tap';
 
 type Props = {
     token: string;
     applicationId: string;
     commands: Array<Command<ChatInputCommandInteraction<CacheType>>>;
+    events: Array<Event<any>>;
 };
 
 export default class Bot {
@@ -25,8 +27,9 @@ export default class Bot {
         string,
         Command<ChatInputCommandInteraction<CacheType>>
     >();
+    private events = new Collection<string, Event<any>>();
 
-    constructor({token, applicationId, commands}: Props) {
+    constructor({token, applicationId, commands, events}: Props) {
         this.token = token;
         this.applicationId = applicationId;
         this.client = new Client({
@@ -41,6 +44,10 @@ export default class Bot {
 
         for (const cmd of commands) {
             this.commands.set(cmd.name, cmd);
+        }
+
+        for (const evt of events) {
+            this.events.set(evt.name, evt);
         }
     }
 
@@ -60,9 +67,12 @@ export default class Bot {
     /**
      * Main entry function for bot
      */
-    public async boot(): Promise<void> {
+    public async boot(): Promise<Client> {
         await this.register();
         this.registerCommandHandlers();
+        this.registerEventHandlers();
+
+        return this.client;
     }
 
     /**
@@ -77,5 +87,24 @@ export default class Bot {
                 cmd!.run(interaction as ChatInputCommandInteraction<CacheType>);
             }
         });
+    }
+
+    /**
+     * Register event handlers
+     */
+    private registerEventHandlers(): void {
+        for (const [_, event] of this.events) {
+            this.client.on(event.name, event.run);
+        }
+    }
+
+    /**
+     * Get registered commands
+     */
+    public getCommands(): Collection<
+        string,
+        Command<ChatInputCommandInteraction<CacheType>>
+    > {
+        return this.commands;
     }
 }
