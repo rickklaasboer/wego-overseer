@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.1.0...v1.2.0) (2022-10-19)
+
+
+### Features
+
+* add basic support for events and init knex/objection ([c4d4bec](https://github.com/rickklaasboer/wego-overseer/commit/c4d4bec551870eb39017546d8e48fd9c4cb08c86))
+* add help command ([7fab75b](https://github.com/rickklaasboer/wego-overseer/commit/7fab75befeab2b33ae12d7cabb238a568ef61369))
+
 # [1.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.0.0...v1.1.0) (2022-08-15)
 
 
