@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "npx nodemon --watch src -e ts --exec \"node -r tsconfig-paths/register -r ts-node/register ./src/index.ts\"",
+        "dev:no-watch": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
         "knex": "knex --knexfile ./knexfile.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
