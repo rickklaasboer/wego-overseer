@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.4.0...v1.5.0) (2022-10-23)
+
+
+### Features
+
+* **command:** add spooktober command ([25a187b](https://github.com/rickklaasboer/wego-overseer/commit/25a187b270f38d1e662f60ecbe39f3340d6306ea))
+
 # [1.4.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.3.0...v1.4.0) (2022-10-23)
 
 
