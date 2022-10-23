@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.3.0...v1.4.0) (2022-10-23)
+
+
+### Features
+
+* **event:** i am dad event ([5646ffc](https://github.com/rickklaasboer/wego-overseer/commit/5646ffc41b356a3f087a90f58a07de8033e61bb0))
+
 # [1.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.2.1...v1.3.0) (2022-10-23)
 
 
