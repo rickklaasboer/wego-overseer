@@ -13,6 +13,7 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import {Maybe} from './types/util';
 import {HelpCommand} from './commands/HelpCommand';
+import {WhereMemeCommand} from './commands/WhereMemeCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -31,7 +32,13 @@ dayjs.extend(timezone);
     bot = new Bot({
         applicationId: DISCORD_APPLICATION_ID,
         token: DISCORD_TOKEN,
-        commands: [PingCommand, KortebroekCommand, StufiCommand, HelpCommand],
+        commands: [
+            PingCommand,
+            KortebroekCommand,
+            StufiCommand,
+            HelpCommand,
+            WhereMemeCommand,
+        ],
         events: [MessageCreateEvent],
     });
 
