@@ -54,7 +54,7 @@ yarn knex migrate:up
 
 ## Development
 
-For development purposes, you can simply run the bos using one of the following commands
+For development purposes, you can simply run the bot using one of the following commands
 
 ```sh
 yarn dev
@@ -65,4 +65,8 @@ yarn dev:no-watch
 
 You can optionally pipe output to bunyan for fancy log formatting.
 
-Now go and create something beautiful!
+```sh
+yarn dev:no-watch | yarn bunyan
+```
+
+That's it! Now go and create something beautiful.
