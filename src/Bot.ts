@@ -36,6 +36,7 @@ export default class Bot {
             intents: [
                 IntentsBitField.Flags.Guilds,
                 IntentsBitField.Flags.GuildMessages,
+                IntentsBitField.Flags.MessageContent,
             ],
         });
         this.rest = tap(new REST({version: '9'}), (rest) => {
