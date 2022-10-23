@@ -32,7 +32,7 @@ type SlashCommandOption = {
     min_length?: number;
     max_length?: number;
     autocomplete?: boolean;
-}[];
+};
 
 type Props<T> = {
     name: string;
