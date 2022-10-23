@@ -1,0 +1,16 @@
+name: ESLint
+on: [pull_request]
+jobs:
+    eslint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+            - name: Run eslint
+              run: npx eslint -f compact ./ --quiet
+              env:
+                  CI: true
