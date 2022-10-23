@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.2.1...v1.3.0) (2022-10-23)
+
+
+### Features
+
+* add where meme generator command ([df9d843](https://github.com/rickklaasboer/wego-overseer/commit/df9d8437d561f0ff4172b9c42b553f9139add6ae))
+* extend base command to support options ([9e780a5](https://github.com/rickklaasboer/wego-overseer/commit/9e780a5c746befb0de9252745a20598bd8bfca2d))
+
 ## [1.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.2.0...v1.2.1) (2022-10-23)
 
 
