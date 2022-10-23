@@ -19,13 +19,13 @@ type ApplicationCommandOption = {
     value: string | number;
 };
 
-type SlashCommandOptions = {
+type SlashCommandOption = {
     type: APPLICATION_COMMAND_OPTIONS;
     name: string;
     description: string;
     required?: boolean;
     choices?: ApplicationCommandOption[];
-    options?: SlashCommandOptions[];
+    options?: SlashCommandOption[];
     channel_types?: [];
     min_value?: number;
     max_value?: number;
@@ -37,14 +37,14 @@ type SlashCommandOptions = {
 type Props<T> = {
     name: string;
     description: string;
-    options?: SlashCommandOptions;
+    options?: SlashCommandOption[];
     run(interaction: T): void | Promise<void>;
 };
 
 export default class Command<T> {
     public name: string;
     public description: string;
-    public options: Maybe<SlashCommandOptions>;
+    public options: Maybe<SlashCommandOption[]>;
     public run: (interaction: T) => void | Promise<void>;
 
     constructor({name, description, options, run}: Props<T>) {
