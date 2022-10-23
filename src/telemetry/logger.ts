@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Bunyan, {LoggerOptions} from 'bunyan';
 
 export default class Logger {
