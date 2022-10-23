@@ -56,9 +56,10 @@ export default class Bot {
      */
     private async register(): Promise<void> {
         await this.rest.put(Routes.applicationCommands(this.applicationId), {
-            body: this.commands.map(({name, description}) => ({
+            body: this.commands.map(({name, description, options}) => ({
                 name,
                 description,
+                options,
             })),
         });
         await this.client.login(this.token);
