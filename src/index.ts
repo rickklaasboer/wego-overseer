@@ -14,6 +14,7 @@ import {PingCommand} from '@/commands/PingCommand';
 import {StufiCommand} from '@/commands/StufiCommand';
 import {HelpCommand} from '@/commands/HelpCommand';
 import {WhereMemeCommand} from '@/commands/WhereMemeCommand';
+import {IAmDadEvent} from './events/IAmDadEvent';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -39,7 +40,7 @@ dayjs.extend(timezone);
             WhereMemeCommand,
             HelpCommand,
         ],
-        events: [MessageCreateEvent],
+        events: [MessageCreateEvent, IAmDadEvent],
     });
 
     try {
