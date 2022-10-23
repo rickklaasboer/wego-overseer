@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.2.0...v1.2.1) (2022-10-23)
+
+
+### Bug Fixes
+
+* **#7:** stufi command invalid date when payment day is tomorrow ([23f29fc](https://github.com/rickklaasboer/wego-overseer/commit/23f29fc9271c6c9a99d039771d8d48854f14bb12)), closes [#7](https://github.com/rickklaasboer/wego-overseer/issues/7)
+
 # [1.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.1.0...v1.2.0) (2022-10-19)
 
 
