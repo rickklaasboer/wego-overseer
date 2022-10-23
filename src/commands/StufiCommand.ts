@@ -25,13 +25,15 @@ export const StufiCommand = new Command<ChatInputCommandInteraction<CacheType>>(
 
             // Remove unwanted HTML tags (as JSDOM doesn't support innerText)
             const parsed = text.replace(/(<([^>]+)>)/gi, '');
+            const days = parseInt(parsed.replace(/\D/g, ''));
 
             // Get future date (from x amount of days)
-            const now = dayjs();
-            const future = now.add(parseInt(parsed.replace(/\D/g, '')), 'days');
+            const future = dayjs().add(days, 'days');
 
             await interaction.reply(
-                `${parsed}. Dat is op ${future.format('D-M-YYYY')}.`,
+                isNaN(days)
+                    ? parsed
+                    : `${parsed}. Dat is op ${future.format('D-M-YYYY')}.`,
             );
         },
     },
