@@ -1,4 +1,4 @@
-<p align="center"><img src="https://www.rickklaasboer.nl/img/logo-black.svg" height="100px"/></p>
+<p align="center"><img src="https://wego.gg/img/logo.png" height="100px"/></p>
 
 # wego-overseer
 
