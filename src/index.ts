@@ -1,8 +1,5 @@
 import 'dotenv/config';
 import Bot from '@/Bot';
-import {KortebroekCommand} from '@/commands/KortebroekCommand';
-import {PingCommand} from '@/commands/PingCommand';
-import {StufiCommand} from '@/commands/StufiCommand';
 import Logger from '@/telemetry/logger';
 import knex from 'knex';
 import knexfile from '../knexfile';
@@ -11,9 +8,12 @@ import {MessageCreateEvent} from './events/MessageCreateEvent';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import {Maybe} from './types/util';
-import {HelpCommand} from './commands/HelpCommand';
-import {WhereMemeCommand} from './commands/WhereMemeCommand';
+import {Maybe} from '@/types/util';
+import {KortebroekCommand} from '@/commands/KortebroekCommand';
+import {PingCommand} from '@/commands/PingCommand';
+import {StufiCommand} from '@/commands/StufiCommand';
+import {HelpCommand} from '@/commands/HelpCommand';
+import {WhereMemeCommand} from '@/commands/WhereMemeCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -36,8 +36,8 @@ dayjs.extend(timezone);
             PingCommand,
             KortebroekCommand,
             StufiCommand,
-            HelpCommand,
             WhereMemeCommand,
+            HelpCommand,
         ],
         events: [MessageCreateEvent],
     });

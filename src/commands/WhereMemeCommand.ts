@@ -1,7 +1,6 @@
 import {
     ChatInputCommandInteraction,
     CacheType,
-    EmbedBuilder,
     AttachmentBuilder,
 } from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
