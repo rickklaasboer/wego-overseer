@@ -8,18 +8,19 @@ export const BangerEvent = new Event<'messageCreate'>({
 
         const {content} = message;
 
-        //split string into words
-        const text = content.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())
-        const words = text.split(" ");
-        const word = words.find((word) => word.endsWith("er"));
+        // Split string into words
+        const text = content
+            .toLowerCase()
+            .replace(/\b(\w)/g, (s) => s.toUpperCase());
+        const words = text.split(' ');
+        const word = words.find((word) => word.endsWith('er'));
 
         // Check if there is an actual word
         if (word != null) {
-            if (word.length >= 5){
-            const msg = `${word}? I hardly know her!`;
-
-            message.reply(msg);
+            if (word.length >= 5) {
+                const msg = `${word}? I hardly know her!`;
+                message.reply(msg);
             }
-        } 
+        }
     },
 });
