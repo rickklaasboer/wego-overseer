@@ -27,7 +27,7 @@ export default class Bot {
         string,
         Command<ChatInputCommandInteraction<CacheType>>
     >();
-    private events = new Collection<string, Event<any>>();
+    private events: Array<Event<any>>;
 
     constructor({token, applicationId, commands, events}: Props) {
         this.token = token;
@@ -47,9 +47,7 @@ export default class Bot {
             this.commands.set(cmd.name, cmd);
         }
 
-        for (const evt of events) {
-            this.events.set(evt.name, evt);
-        }
+        this.events = events;
     }
 
     /**
@@ -64,6 +62,9 @@ export default class Bot {
             })),
         });
         await this.client.login(this.token);
+        await new Promise<void>((resolve) => {
+            this.client.on('ready', () => resolve());
+        });
     }
 
     /**
@@ -86,7 +87,7 @@ export default class Bot {
 
             if (this.commands.has(interaction.commandName)) {
                 const cmd = this.commands.get(interaction.commandName);
-                cmd!.run(interaction as ChatInputCommandInteraction<CacheType>);
+                cmd?.run(interaction as ChatInputCommandInteraction<CacheType>);
             }
         });
     }
@@ -95,9 +96,7 @@ export default class Bot {
      * Register event handlers
      */
     private registerEventHandlers(): void {
-        for (const [_, event] of this.events) {
-            this.client.on(event.name, event.run);
-        }
+        this.events.forEach(({name, run}) => this.client.on(name, run));
     }
 
     /**
