@@ -13,8 +13,6 @@ export const BangerEvent = new Event<'messageCreate'>({
         const words = text.split(" ");
         const word = words.find((word) => word.endsWith("er"));
 
-
-
         // Check if there is an actual word
         if (word != null) {
             if (word.length >= 5){
@@ -23,6 +21,5 @@ export const BangerEvent = new Event<'messageCreate'>({
             message.reply(msg);
             }
         } 
-        
     },
 });
