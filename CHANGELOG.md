@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.0...v1.5.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* allow registering multiple events with the same name ([7515fa3](https://github.com/rickklaasboer/wego-overseer/commit/7515fa3837d9c2e33fe8fc33b744d420fa515305))
+* giphy attribution ([4a50a10](https://github.com/rickklaasboer/wego-overseer/commit/4a50a100af66d5ad98adfae4656255976935283a))
+
 # [1.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.4.0...v1.5.0) (2022-10-23)
 
 
