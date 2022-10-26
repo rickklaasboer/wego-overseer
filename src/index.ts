@@ -43,7 +43,7 @@ dayjs.extend(timezone);
             SpooktoberCommand,
             HelpCommand,
         ],
-        events: [MessageCreateEvent, IAmDadEvent, BangerEvent],
+        events: [IAmDadEvent, BangerEvent],
     });
 
     try {
