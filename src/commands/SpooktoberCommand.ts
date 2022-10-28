@@ -8,7 +8,7 @@ export const SpooktoberCommand = new Command<
     ChatInputCommandInteraction<CacheType>
 >({
     name: 'spooktober',
-    description: 'Displays a random halloween-themed GIF (powered by GIPHY)',
+    description: 'Displays a random halloween-themed GIF',
     run: async (interaction) => {
         // 9 is October because starts at 0
         if (new Date().getMonth() !== 9) {
@@ -23,7 +23,8 @@ export const SpooktoberCommand = new Command<
 
         const imageEmbed = new EmbedBuilder()
             .setTitle(response.data.title)
-            .setImage(response.data.images.original.url);
+            .setImage(response.data.images.original.url)
+            .setFooter({text: 'Powered by GIPHY'});
 
         interaction.reply({
             embeds: [imageEmbed],

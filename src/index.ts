@@ -15,6 +15,7 @@ import {StufiCommand} from '@/commands/StufiCommand';
 import {HelpCommand} from '@/commands/HelpCommand';
 import {WhereMemeCommand} from '@/commands/WhereMemeCommand';
 import {IAmDadEvent} from './events/IAmDadEvent';
+import {BangerEvent} from './events/BangerEvent';
 import {SpooktoberCommand} from './commands/SpooktoberCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
@@ -42,7 +43,7 @@ dayjs.extend(timezone);
             SpooktoberCommand,
             HelpCommand,
         ],
-        events: [MessageCreateEvent, IAmDadEvent],
+        events: [IAmDadEvent, BangerEvent],
     });
 
     try {

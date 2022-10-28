@@ -1,12 +1,13 @@
 {
     "name": "wego-overseer",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "description": "",
     "main": "index.js",
     "scripts": {
         "dev": "tsx watch ./src/index.ts",
         "dev:no-watch": "tsx ./src/index.ts",
-        "knex": "knex --knexfile ./knexfile.ts"
+        "knex": "knex --knexfile ./knexfile.ts",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -25,7 +26,11 @@
         "@typescript-eslint/eslint-plugin": "5.40.1",
         "@typescript-eslint/parser": "5.33.1",
         "bunyan": "1.8.15",
+        "commitizen": "4.2.5",
+        "cz-conventional-changelog": "3.3.0",
         "eslint": "8.21.0",
+        "husky": "8.0.0",
+        "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "semantic-release": "19.0.3",
         "ts-node": "10.9.1",
@@ -34,10 +39,10 @@
         "typescript": "4.7.4"
     },
     "dependencies": {
-        "@discordjs/rest": "1.0.1",
+        "@discordjs/rest": "1.3.0",
         "dayjs": "1.11.5",
-        "discord-api-types": "0.37.2",
-        "discord.js": "14.2.0",
+        "discord-api-types": "0.37.14",
+        "discord.js": "14.6.0",
         "dotenv": "16.0.1",
         "jimp": "0.16.2",
         "jsdom": "20.0.0",
@@ -45,5 +50,16 @@
         "mysql2": "2.3.3",
         "node-fetch": "2",
         "objection": "3.0.1"
+    },
+    "lint-staged": {
+        "*.{ts,js}": [
+            "eslint --cache --quiet --fix",
+            "prettier --write"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
