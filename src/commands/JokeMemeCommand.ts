@@ -8,7 +8,9 @@ import Jimp from 'jimp';
 
 // Magic constant
 const IMAGE_OFFSET = {
-    y: 120,
+    x: 5,
+    y: 40,
+    y_height: 190,
 };
 
 export const JokeMemeCommand = new Command<
@@ -23,7 +25,7 @@ export const JokeMemeCommand = new Command<
             description: 'text that will appear in meme',
             required: true,
             min_length: 1,
-            max_length: 26,
+            max_length: 115,
         },
     ],
     run: async (interaction) => {
@@ -35,15 +37,15 @@ export const JokeMemeCommand = new Command<
 
             img.print(
                 font,
-                img.getWidth() / 2 - text.length * 7, // Calculate text position. Width / 2 to get the center. Then subtract the length of the text * 7 to center the text.
+                IMAGE_OFFSET.x,
                 IMAGE_OFFSET.y,
                 {
                     text,
-                    alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
-                    alignmentY: Jimp.VERTICAL_ALIGN_TOP,
+                    alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                    alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
                 },
                 img.getWidth(),
-                img.getHeight(),
+                IMAGE_OFFSET.y_height,
             );
 
             const base64 = await new Promise<string>((resolve, reject) => {
