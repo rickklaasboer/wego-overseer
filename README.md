@@ -2,6 +2,8 @@
 
 # wego-overseer
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 A Discord bot specially built for Wego. It uses Discord.js for interacting with the Discord API.
 
 ## Getting started
