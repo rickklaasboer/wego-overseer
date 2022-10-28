@@ -31,12 +31,11 @@ export const JokeMemeCommand = new Command<
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
             const img = await Jimp.read('./src/img/joke.png');
 
-            const text =
-                interaction.options.getString('text') ?? 'this bot is a joke';
+            const text = interaction.options.getString('text')!;
 
             img.print(
                 font,
-                img.getWidth() / 2 - text.length * 7, // Calculate text position
+                img.getWidth() / 2 - text.length * 7, // Calculate text position. Width / 2 to get the center. Then subtract the length of the text * 7 to center the text.
                 IMAGE_OFFSET.y,
                 {
                     text,
