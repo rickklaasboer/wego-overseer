@@ -4,10 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "npx nodemon --watch src -e ts --exec \"node -r tsconfig-paths/register -r ts-node/register ./src/index.ts\"",
-        "dev:no-watch": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
-        "knex": "knex --knexfile ./knexfile.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "tsx watch ./src/index.ts",
+        "dev:no-watch": "tsx ./src/index.ts",
+        "knex": "knex --knexfile ./knexfile.ts"
     },
     "keywords": [],
     "author": "",
@@ -31,6 +30,7 @@
         "semantic-release": "19.0.3",
         "ts-node": "10.9.1",
         "tsconfig-paths": "4.1.0",
+        "tsx": "^3.11.0",
         "typescript": "4.7.4"
     },
     "dependencies": {
