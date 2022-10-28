@@ -1,4 +1,4 @@
-name: ESLint
+name: Typescript
 on: [pull_request]
 jobs:
     typescript:

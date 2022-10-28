@@ -12,12 +12,12 @@ Below is a getting started guide for using the Wego Overseer.
 
 Prerequisites:
 
--   Node 14.x
+-   Node 16.x
 -   Yarn (v1.x).
 -   Git
 -   Docker (optional)
 
-## Ok, and now?
+## Ok, now what?
 
 First, clone the repository
 
@@ -28,7 +28,7 @@ git clone git@github.com:rickklaasboer/wego-overseer.git
 Once this is done, cd into the newly created folder, install dependencies and add environment variables.
 
 ```sh
-yarn # or npm install, if you prefer
+yarn
 
 cp .env.example .env
 ```
@@ -37,15 +37,21 @@ Fill in the required environment variables
 
 ```conf
 # These can be found at the discord developer portal
-DISCORD_APPLICATION_ID=""
-DISCORD_TOKEN=""
+DISCORD_APPLICATION_ID=
+DISCORD_TOKEN=
 
-# These can be found in docker.compose.yml
-DB_CLIENT=
-DB_HOST=
-DB_USER=
-DB_PASSWORD=
-DB_DATABASE=
+# should always be mysql2, since that's the only
+# installed driver
+DB_CLIENT=mysql2
+# These can be found in docker-compose.yml
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=testing
+DB_DATABASE=local
+
+# Only needed if you'd like to test the spooktober command
+# can be left blank if not needed
+GIPHY_API_KEY=
 ```
 
 Now, run your database migrations
