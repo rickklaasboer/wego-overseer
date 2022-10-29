@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.1...v1.6.0) (2022-10-29)
+
+
+### Features
+
+* /joke command ([e69d673](https://github.com/rickklaasboer/wego-overseer/commit/e69d6739441b1b485d76987cd0609c99f3d74611))
+
 ## [1.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.0...v1.5.1) (2022-10-26)
 
 
