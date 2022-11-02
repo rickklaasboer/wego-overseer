@@ -2,6 +2,7 @@ import Event from './Event';
 
 export const BangerEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
+    enabled: false,
     run: async (message) => {
         // Terminate if user is a bot
         if (message.author.bot) return;

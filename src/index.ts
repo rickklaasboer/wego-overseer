@@ -4,7 +4,6 @@ import Logger from '@/telemetry/logger';
 import knex from 'knex';
 import knexfile from '../knexfile';
 import {Model} from 'objection';
-import {MessageCreateEvent} from './events/MessageCreateEvent';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
