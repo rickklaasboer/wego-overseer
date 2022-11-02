@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.6.0...v1.7.0) (2022-11-02)
+
+
+### Bug Fixes
+
+* add option to enable/disable commands and events ([1c342fd](https://github.com/rickklaasboer/wego-overseer/commit/1c342fd856fb612b419777991f9ca28c55c83991))
+
+
+### Features
+
+* add tsx for faster development ([b1aac38](https://github.com/rickklaasboer/wego-overseer/commit/b1aac3891216242203940b477521b5e2d9dd96fc))
+* create spongebob mockify command ([ccd15d4](https://github.com/rickklaasboer/wego-overseer/commit/ccd15d4d0fc4640047e5bf53cdbba3d56ef91816))
+
 # [1.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.1...v1.6.0) (2022-10-29)
 
 
