@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.7.0...v1.8.0) (2022-11-16)
+
+
+### Features
+
+* **added drake meme command:** added drake meme command ([cf6a7d9](https://github.com/rickklaasboer/wego-overseer/commit/cf6a7d92499fb1124f15c89a90b9ee1df9fdecc0))
+
 # [1.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.6.0...v1.7.0) (2022-11-02)
 
 
