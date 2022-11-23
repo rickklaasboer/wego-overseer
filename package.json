@@ -49,7 +49,8 @@
         "knex": "2.2.0",
         "mysql2": "2.3.3",
         "node-fetch": "2",
-        "objection": "3.0.1"
+        "objection": "3.0.1",
+        "uwuifier": "4.0.5"
     },
     "lint-staged": {
         "*.{ts,js}": [
