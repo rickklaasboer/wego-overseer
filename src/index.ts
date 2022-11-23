@@ -19,6 +19,7 @@ import {SpooktoberCommand} from './commands/SpooktoberCommand';
 import {JokeMemeCommand} from './commands/JokeMemeCommand';
 import {MockifyCommand} from './commands/MockifyCommand';
 import {DrakeMemeCommand} from './commands/DrakeMemeCommand';
+import {UwuCommand} from './commands/UwuCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -47,6 +48,7 @@ dayjs.extend(timezone);
             JokeMemeCommand,
             MockifyCommand,
             DrakeMemeCommand,
+            UwuCommand,
         ],
         events: [IAmDadEvent, BangerEvent],
     });
