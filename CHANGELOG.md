@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.8.0...v1.9.0) (2022-11-23)
+
+
+### Features
+
+* **uwucommand:** added uwu command ([e8cdc69](https://github.com/rickklaasboer/wego-overseer/commit/e8cdc6916616e6960483e87437ff239fdbe6515f))
+
 # [1.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.7.0...v1.8.0) (2022-11-16)
 
 
