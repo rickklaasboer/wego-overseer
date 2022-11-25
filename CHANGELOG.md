@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.2...v1.9.3) (2022-11-25)
+
+
+### Bug Fixes
+
+* await promises where necessary ([ae9b572](https://github.com/rickklaasboer/wego-overseer/commit/ae9b5725df29061b19d3d46f66ef92bdbc418c2b))
+
 ## [1.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.1...v1.9.2) (2022-11-25)
 
 
