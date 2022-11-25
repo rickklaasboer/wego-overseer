@@ -1,7 +1,7 @@
 import {
     ChatInputCommandInteraction,
     CacheType,
-    AttachmentBuilder
+    AttachmentBuilder,
 } from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
@@ -22,11 +22,11 @@ export const DeepFryCommand = new Command<
             options: [
                 {
                     type: APPLICATION_COMMAND_OPTIONS.ATTACHMENT,
-                    name: "image",
-                    description: "image to deepfry",
-                    required: true
-                }
-            ]
+                    name: 'image',
+                    description: 'image to deepfry',
+                    required: true,
+                },
+            ],
         },
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
@@ -35,26 +35,32 @@ export const DeepFryCommand = new Command<
             options: [
                 {
                     type: APPLICATION_COMMAND_OPTIONS.USER,
-                    name: "user",
-                    description: "user to deepfry profile picture from",
-                    required: true
-                }
-            ]
+                    name: 'user',
+                    description: 'user to deepfry profile picture from',
+                    required: true,
+                },
+            ],
         },
     ],
     run: async (interaction) => {
         try {
             await interaction.deferReply();
             let imgURL;
-            if(interaction.options.getSubcommand() == "image"){
-                const attachment = interaction.options.getAttachment("image");
-                if(attachment != null){
-                    if(attachment.size >= 8_000_000) throw new Error("File size too big (>=8mb)");
+            if (interaction.options.getSubcommand() == 'image') {
+                const attachment = interaction.options.getAttachment('image');
+                if (attachment != null) {
+                    if (attachment.size >= 8_000_000)
+                        throw new Error('File size too big (>=8mb)');
                     imgURL = attachment.attachment;
                 }
-            } else imgURL = interaction.options.getUser("user")?.avatarURL()?.replace('.webp','.jpeg').concat('?size=4096');
+            } else
+                imgURL = interaction.options
+                    .getUser('user')
+                    ?.avatarURL()
+                    ?.replace('.webp', '.jpeg')
+                    .concat('?size=4096');
 
-            if(imgURL == null) throw new Error("No image found");
+            if (imgURL == null) throw new Error('No image found');
 
             const img = await Jimp.read(imgURL as string);
             img.pixelate(1);
@@ -62,7 +68,7 @@ export const DeepFryCommand = new Command<
             img.brightness(0.2);
 
             const base64 = await new Promise<string>((resolve, reject) => {
-                img.getBase64('image/jpeg',(err, data) => {
+                img.getBase64('image/jpeg', (err, data) => {
                     err ? reject(err) : resolve(data);
                 });
             });
@@ -81,12 +87,12 @@ export const DeepFryCommand = new Command<
                         color: Math.floor(Math.random() * 16777214) + 1,
                         footer: {
                             text: `Requested by ${interaction.user.tag}`,
-                            icon_url: interaction.user.displayAvatarURL()
+                            icon_url: interaction.user.displayAvatarURL(),
                         },
-                        timestamp: new Date().toISOString()
-                    }
+                        timestamp: new Date().toISOString(),
+                    },
                 ],
-                files: [attachment]
+                files: [attachment],
             });
         } catch (err) {
             logger.fatal(err);
