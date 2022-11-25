@@ -16,6 +16,7 @@ import {WhereMemeCommand} from '@/commands/WhereMemeCommand';
 import {IAmDadEvent} from './events/IAmDadEvent';
 import {BangerEvent} from './events/BangerEvent';
 import {SpooktoberCommand} from './commands/SpooktoberCommand';
+import {DeepFryCommand} from './commands/DeepFryCommand';
 import {JokeMemeCommand} from './commands/JokeMemeCommand';
 import {MockifyCommand} from './commands/MockifyCommand';
 import {DrakeMemeCommand} from './commands/DrakeMemeCommand';
@@ -45,6 +46,7 @@ dayjs.extend(timezone);
             WhereMemeCommand,
             SpooktoberCommand,
             HelpCommand,
+            DeepFryCommand,
             JokeMemeCommand,
             MockifyCommand,
             DrakeMemeCommand,
