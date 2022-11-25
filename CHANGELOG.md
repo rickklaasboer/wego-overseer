@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.0...v1.9.1) (2022-11-25)
+
+
+### Bug Fixes
+
+* trigger release ([b30fb8d](https://github.com/rickklaasboer/wego-overseer/commit/b30fb8dae03a88afad000d09caa59b334c3030a0))
+
 # [1.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.8.0...v1.9.0) (2022-11-23)
 
 
