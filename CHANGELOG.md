@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.1...v1.9.2) (2022-11-25)
+
+
+### Bug Fixes
+
+* wrap events in try..catch blocks to prevent hard bot crash ([5e8041c](https://github.com/rickklaasboer/wego-overseer/commit/5e8041ce57459b226bb02645543cc3c102b208a3))
+
 ## [1.9.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.0...v1.9.1) (2022-11-25)
 
 
