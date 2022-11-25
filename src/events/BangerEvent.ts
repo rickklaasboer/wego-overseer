@@ -24,7 +24,7 @@ export const BangerEvent = new Event<'messageCreate'>({
             if (word != null) {
                 if (word.length >= 5) {
                     const msg = `${word}? I hardly know her!`;
-                    message.reply(msg);
+                    await message.reply(msg);
                 }
             }
         } catch (err) {

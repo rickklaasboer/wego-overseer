@@ -47,10 +47,10 @@ export const JokeMemeCommand = new Command<
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            interaction.reply({files: [wrappedImage.toAttachment()]});
+            await interaction.reply({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             console.error(err);
-            interaction.reply({
+            await interaction.reply({
                 content: 'Failed creating joke meme :(',
                 ephemeral: true,
             });

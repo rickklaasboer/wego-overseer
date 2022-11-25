@@ -6,7 +6,7 @@ export const HelpCommand = new Command<ChatInputCommandInteraction<CacheType>>({
     name: 'help',
     description: 'pls help!',
     run: async (interaction) => {
-        interaction.reply(
+        await interaction.reply(
             bot
                 ?.getCommands()
                 .filter(({name}) => name !== 'help')

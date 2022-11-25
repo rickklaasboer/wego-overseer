@@ -49,10 +49,10 @@ export const WhereMemeCommand = new Command<
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            interaction.reply({files: [wrappedImage.getBase64String()]});
+            await interaction.reply({files: [wrappedImage.getBase64String()]});
         } catch (err) {
             console.error(err);
-            interaction.reply({
+            await interaction.reply({
                 content: 'Failed creating where meme :(',
                 ephemeral: true,
             });

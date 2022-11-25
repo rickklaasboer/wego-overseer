@@ -17,12 +17,12 @@ export const IAmDadEvent = new Event<'messageCreate'>({
                 const part = content.toLowerCase().split('ik ben')[1].trim();
                 const msg = `Hoi ${part}, ik ben Wego Overseer!`;
 
-                message.reply(msg);
+                await message.reply(msg);
             } else if (content.toLowerCase().includes('i am')) {
                 const part = content.toLowerCase().split('i am')[1].trim();
                 const msg = `Hi ${part}, I am Wego Overseer!`;
 
-                message.reply(msg);
+                await message.reply(msg);
             }
         } catch (err) {
             logger.fatal('Unable to handle IAmDadEvent', err);
