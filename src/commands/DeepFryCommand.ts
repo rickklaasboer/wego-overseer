@@ -1,13 +1,79 @@
 import {
     ChatInputCommandInteraction,
     CacheType,
-    AttachmentBuilder,
+    MessagePayload,
+    InteractionReplyOptions,
 } from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import Logger from '@/telemetry/logger';
+import {Base64JimpImage} from '@/util/Base64JimpImage';
+import {Maybe} from '@/types/util';
 
 const logger = new Logger('wego-overseer:DeepFryCommand');
+
+/**
+ * Create follow up reply from interaction and image
+ */
+function createFollowUp(
+    interaction: ChatInputCommandInteraction<CacheType>,
+    image: Base64JimpImage,
+): string | MessagePayload | InteractionReplyOptions {
+    return {
+        embeds: [
+            {
+                title: 'Deepfry',
+                image: {
+                    url: 'attachment://unknown.jpg',
+                },
+                color: Math.floor(Math.random() * 16777214) + 1,
+                footer: {
+                    text: `Requested by ${interaction.user.tag}`,
+                    icon_url: interaction.user.displayAvatarURL(),
+                },
+                timestamp: new Date().toISOString(),
+            },
+        ],
+        files: [image.toAttachment()],
+    };
+}
+
+/**
+ * Get initiatior avatar url from interaction
+ */
+function getUserAvatarUrl(
+    interaction: ChatInputCommandInteraction<CacheType>,
+): Maybe<string> {
+    return interaction.options
+        .getUser('user')
+        ?.avatarURL()
+        ?.replace('.webp', '.jpeg')
+        .concat('?size=4096');
+}
+
+/**
+ * Get image url from interaction
+ */
+function getImageUrl(
+    interaction: ChatInputCommandInteraction<CacheType>,
+): Maybe<string> {
+    let imgUrl;
+
+    if (interaction.options.getSubcommand() == 'image') {
+        const attachment = interaction.options.getAttachment('image');
+        if (attachment != null) {
+            if (attachment.size >= 8_000_000) {
+                throw new Error('File size too big (>=8mb)');
+            }
+
+            imgUrl = attachment.attachment as string;
+        }
+    } else {
+        imgUrl = getUserAvatarUrl(interaction);
+    }
+
+    return imgUrl;
+}
 
 export const DeepFryCommand = new Command<
     ChatInputCommandInteraction<CacheType>
@@ -45,55 +111,17 @@ export const DeepFryCommand = new Command<
     run: async (interaction) => {
         try {
             await interaction.deferReply();
-            let imgURL;
-            if (interaction.options.getSubcommand() == 'image') {
-                const attachment = interaction.options.getAttachment('image');
-                if (attachment != null) {
-                    if (attachment.size >= 8_000_000)
-                        throw new Error('File size too big (>=8mb)');
-                    imgURL = attachment.attachment;
-                }
-            } else
-                imgURL = interaction.options
-                    .getUser('user')
-                    ?.avatarURL()
-                    ?.replace('.webp', '.jpeg')
-                    .concat('?size=4096');
 
-            if (imgURL == null) throw new Error('No image found');
+            const imgUrl = getImageUrl(interaction);
+            if (!imgUrl) throw new Error('No image found');
 
-            const img = await Jimp.read(imgURL as string);
+            const img = await Jimp.read(imgUrl as string);
             img.pixelate(1);
             img.contrast(1);
             img.brightness(0.2);
 
-            const base64 = await new Promise<string>((resolve, reject) => {
-                img.getBase64('image/jpeg', (err, data) => {
-                    err ? reject(err) : resolve(data);
-                });
-            });
-
-            const stream = Buffer.from(base64.split(',')[1], 'base64');
-            const attachment = new AttachmentBuilder(stream, {
-                name: 'unknown.jpg',
-            });
-            interaction.followUp({
-                embeds: [
-                    {
-                        title: 'Deepfry',
-                        image: {
-                            url: 'attachment://unknown.jpg',
-                        },
-                        color: Math.floor(Math.random() * 16777214) + 1,
-                        footer: {
-                            text: `Requested by ${interaction.user.tag}`,
-                            icon_url: interaction.user.displayAvatarURL(),
-                        },
-                        timestamp: new Date().toISOString(),
-                    },
-                ],
-                files: [attachment],
-            });
+            const wrappedImage = new Base64JimpImage(img);
+            interaction.followUp(createFollowUp(interaction, wrappedImage));
         } catch (err) {
             logger.fatal(err);
             interaction.followUp({

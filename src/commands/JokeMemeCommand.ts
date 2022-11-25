@@ -1,10 +1,8 @@
-import {
-    ChatInputCommandInteraction,
-    CacheType,
-    AttachmentBuilder,
-} from 'discord.js';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
+import {Base64JimpImage} from '@/util/Base64JimpImage';
 
 // Magic constant
 const IMAGE_OFFSET = {
@@ -48,18 +46,8 @@ export const JokeMemeCommand = new Command<
                 IMAGE_OFFSET.y_height,
             );
 
-            const base64 = await new Promise<string>((resolve, reject) => {
-                img.getBase64('image/png', (err, data) => {
-                    err ? reject(err) : resolve(data);
-                });
-            });
-
-            const stream = Buffer.from(base64.split(',')[1], 'base64');
-            const attachment = new AttachmentBuilder(stream, {
-                name: 'unknown.png',
-            });
-
-            interaction.reply({files: [attachment]});
+            const wrappedImage = new Base64JimpImage(img);
+            interaction.reply({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             console.error(err);
             interaction.reply({
