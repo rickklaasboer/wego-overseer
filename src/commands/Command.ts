@@ -38,6 +38,7 @@ type Props<T> = {
     name: string;
     description: string;
     options?: SlashCommandOption[];
+    enabled?: boolean;
     run(interaction: T): void | Promise<void>;
 };
 
@@ -45,12 +46,14 @@ export default class Command<T> {
     public name: string;
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
+    public enabled: boolean;
     public run: (interaction: T) => void | Promise<void>;
 
-    constructor({name, description, options, run}: Props<T>) {
+    constructor({name, description, options, enabled = true, run}: Props<T>) {
         this.name = name;
         this.description = description;
         this.options = options;
+        this.enabled = enabled;
         this.run = run;
     }
 }

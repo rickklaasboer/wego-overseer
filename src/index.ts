@@ -4,7 +4,6 @@ import Logger from '@/telemetry/logger';
 import knex from 'knex';
 import knexfile from '../knexfile';
 import {Model} from 'objection';
-import {MessageCreateEvent} from './events/MessageCreateEvent';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -18,6 +17,10 @@ import {IAmDadEvent} from './events/IAmDadEvent';
 import {BangerEvent} from './events/BangerEvent';
 import {SpooktoberCommand} from './commands/SpooktoberCommand';
 import {DeepFryCommand} from './commands/DeepFryCommand';
+import {JokeMemeCommand} from './commands/JokeMemeCommand';
+import {MockifyCommand} from './commands/MockifyCommand';
+import {DrakeMemeCommand} from './commands/DrakeMemeCommand';
+import {UwuCommand} from './commands/UwuCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -44,6 +47,10 @@ dayjs.extend(timezone);
             SpooktoberCommand,
             HelpCommand,
             DeepFryCommand,
+            JokeMemeCommand,
+            MockifyCommand,
+            DrakeMemeCommand,
+            UwuCommand,
         ],
         events: [IAmDadEvent, BangerEvent],
     });

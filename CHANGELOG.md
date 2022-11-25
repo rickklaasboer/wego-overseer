@@ -1,3 +1,45 @@
+# [1.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.8.0...v1.9.0) (2022-11-23)
+
+
+### Features
+
+* **uwucommand:** added uwu command ([e8cdc69](https://github.com/rickklaasboer/wego-overseer/commit/e8cdc6916616e6960483e87437ff239fdbe6515f))
+
+# [1.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.7.0...v1.8.0) (2022-11-16)
+
+
+### Features
+
+* **added drake meme command:** added drake meme command ([cf6a7d9](https://github.com/rickklaasboer/wego-overseer/commit/cf6a7d92499fb1124f15c89a90b9ee1df9fdecc0))
+
+# [1.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.6.0...v1.7.0) (2022-11-02)
+
+
+### Bug Fixes
+
+* add option to enable/disable commands and events ([1c342fd](https://github.com/rickklaasboer/wego-overseer/commit/1c342fd856fb612b419777991f9ca28c55c83991))
+
+
+### Features
+
+* add tsx for faster development ([b1aac38](https://github.com/rickklaasboer/wego-overseer/commit/b1aac3891216242203940b477521b5e2d9dd96fc))
+* create spongebob mockify command ([ccd15d4](https://github.com/rickklaasboer/wego-overseer/commit/ccd15d4d0fc4640047e5bf53cdbba3d56ef91816))
+
+# [1.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.1...v1.6.0) (2022-10-29)
+
+
+### Features
+
+* /joke command ([e69d673](https://github.com/rickklaasboer/wego-overseer/commit/e69d6739441b1b485d76987cd0609c99f3d74611))
+
+## [1.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.5.0...v1.5.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* allow registering multiple events with the same name ([7515fa3](https://github.com/rickklaasboer/wego-overseer/commit/7515fa3837d9c2e33fe8fc33b744d420fa515305))
+* giphy attribution ([4a50a10](https://github.com/rickklaasboer/wego-overseer/commit/4a50a100af66d5ad98adfae4656255976935283a))
+
 # [1.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.4.0...v1.5.0) (2022-10-23)
 
 

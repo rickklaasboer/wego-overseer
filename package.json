@@ -1,13 +1,13 @@
 {
     "name": "wego-overseer",
-    "version": "1.5.0",
+    "version": "1.9.0",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "npx nodemon --watch src -e ts --exec \"node -r tsconfig-paths/register -r ts-node/register ./src/index.ts\"",
-        "dev:no-watch": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
+        "dev": "tsx watch ./src/index.ts",
+        "dev:no-watch": "tsx ./src/index.ts",
         "knex": "knex --knexfile ./knexfile.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -26,11 +26,16 @@
         "@typescript-eslint/eslint-plugin": "5.40.1",
         "@typescript-eslint/parser": "5.33.1",
         "bunyan": "1.8.15",
+        "commitizen": "4.2.5",
+        "cz-conventional-changelog": "3.3.0",
         "eslint": "8.21.0",
+        "husky": "8.0.0",
+        "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "semantic-release": "19.0.3",
         "ts-node": "10.9.1",
         "tsconfig-paths": "4.1.0",
+        "tsx": "3.11.0",
         "typescript": "4.7.4"
     },
     "dependencies": {
@@ -44,6 +49,18 @@
         "knex": "2.2.0",
         "mysql2": "2.3.3",
         "node-fetch": "2",
-        "objection": "3.0.1"
+        "objection": "3.0.1",
+        "uwuifier": "4.0.5"
+    },
+    "lint-staged": {
+        "*.{ts,js}": [
+            "eslint --cache --quiet --fix",
+            "prettier --write"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
