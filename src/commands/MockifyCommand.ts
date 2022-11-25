@@ -27,7 +27,9 @@ export const MockifyCommand = new Command<
         },
     ],
     run: async (interaction) => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        interaction.reply(mockify(interaction.options.getString('text')!));
+        await interaction.reply(
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            mockify(interaction.options.getString('text')!),
+        );
     },
 });

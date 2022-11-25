@@ -96,8 +96,8 @@ export default class Bot {
      * Register event handlers
      */
     private registerEventHandlers(): void {
-        this.events.forEach((cmd) =>
-            cmd.enabled ? this.client.on(cmd.name, cmd.run) : null,
+        this.events.forEach((evt) =>
+            evt.enabled ? this.client.on(evt.name, evt.run) : null,
         );
     }
 

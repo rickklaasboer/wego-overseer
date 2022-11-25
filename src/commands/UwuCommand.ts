@@ -19,12 +19,12 @@ export const UwuCommand = new Command<ChatInputCommandInteraction<CacheType>>({
     ],
     run: async (interaction) => {
         try {
-            interaction.reply(
+            await interaction.reply(
                 uwu.uwuifySentence(interaction.options.getString('sentence')!),
             );
         } catch (err) {
             console.error(err);
-            interaction.reply({
+            await interaction.reply({
                 content: 'Failed UwUifying your text OwO',
                 ephemeral: true,
             });

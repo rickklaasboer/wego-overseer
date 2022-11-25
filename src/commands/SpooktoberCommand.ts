@@ -26,7 +26,7 @@ export const SpooktoberCommand = new Command<
             .setImage(response.data.images.original.url)
             .setFooter({text: 'Powered by GIPHY'});
 
-        interaction.reply({
+        await interaction.reply({
             embeds: [imageEmbed],
         });
     },

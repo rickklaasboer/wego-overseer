@@ -121,10 +121,12 @@ export const DeepFryCommand = new Command<
             img.brightness(0.2);
 
             const wrappedImage = new Base64JimpImage(img);
-            interaction.followUp(createFollowUp(interaction, wrappedImage));
+            await interaction.followUp(
+                createFollowUp(interaction, wrappedImage),
+            );
         } catch (err) {
             logger.fatal(err);
-            interaction.followUp({
+            await interaction.followUp({
                 content: 'Failed creating deepfry image :(',
             });
         }
