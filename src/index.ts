@@ -21,6 +21,8 @@ import {JokeMemeCommand} from './commands/JokeMemeCommand';
 import {MockifyCommand} from './commands/MockifyCommand';
 import {DrakeMemeCommand} from './commands/DrakeMemeCommand';
 import {UwuCommand} from './commands/UwuCommand';
+import {MarieKondoCommand} from './commands/MarieKondoCommand';
+import {I18n} from 'i18n';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -28,6 +30,10 @@ const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
 const logger = new Logger('wego-overseer:index');
 
 export let bot: Maybe<Bot> = null;
+
+export const i18n = new I18n({
+    directory: __dirname + '/lang',
+});
 
 // Setup knex connection for objection
 Model.knex(knex(knexfile));
@@ -51,6 +57,7 @@ dayjs.extend(timezone);
             MockifyCommand,
             DrakeMemeCommand,
             UwuCommand,
+            MarieKondoCommand,
         ],
         events: [IAmDadEvent, BangerEvent],
     });

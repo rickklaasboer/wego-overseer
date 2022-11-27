@@ -9,6 +9,7 @@ import Jimp from 'jimp';
 import Logger from '@/telemetry/logger';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {Maybe} from '@/types/util';
+import {i18n} from '@/index';
 
 const logger = new Logger('wego-overseer:DeepFryCommand');
 
@@ -127,7 +128,8 @@ export const DeepFryCommand = new Command<
         } catch (err) {
             logger.fatal(err);
             await interaction.followUp({
-                content: 'Failed creating deepfry image :(',
+                content: i18n.__('errors.common.failed', 'deep fried image'),
+                ephemeral: true,
             });
         }
     },

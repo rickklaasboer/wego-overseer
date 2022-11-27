@@ -3,6 +3,7 @@ import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
+import {i18n} from '@/index';
 
 // Magic constant
 const IMAGE_OFFSET = {
@@ -51,7 +52,7 @@ export const JokeMemeCommand = new Command<
         } catch (err) {
             console.error(err);
             await interaction.reply({
-                content: 'Failed creating joke meme :(',
+                content: i18n.__('errors.common.failed', 'joke meme'),
                 ephemeral: true,
             });
         }
