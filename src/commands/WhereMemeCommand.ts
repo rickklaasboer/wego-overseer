@@ -49,7 +49,7 @@ export const WhereMemeCommand = new Command<
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            await interaction.reply({files: [wrappedImage.getBase64String()]});
+            await interaction.reply({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             console.error(err);
             await interaction.reply({
