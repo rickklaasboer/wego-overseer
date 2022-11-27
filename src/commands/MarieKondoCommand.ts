@@ -42,7 +42,7 @@ export const MarieKondoCommand = new Command<
                 Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_BOTTOM,
             );
 
-            // Change background color to white (as our will be text black)
+            // Change background color to white (as our text will be black)
             // 4294967295 equals #FFFFFF as described by https://ffffffff.net/
             img.background(4294967295);
 
