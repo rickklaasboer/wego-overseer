@@ -1,3 +1,16 @@
+# [1.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.3...v1.10.0) (2022-11-27)
+
+
+### Bug Fixes
+
+* make where meme command use toAttachment() ([3b1076a](https://github.com/rickklaasboer/wego-overseer/commit/3b1076a1de8ff123ce9eee97003b5db98bd99fba))
+
+
+### Features
+
+* implement i18n for translations ([a16fdea](https://github.com/rickklaasboer/wego-overseer/commit/a16fdea4b3ba89b4f9213fabd5b0ebec7a7e06a3))
+* marie kondo command ([7742bae](https://github.com/rickklaasboer/wego-overseer/commit/7742baedd499528e6c77898a2041e99fc266a4bd))
+
 ## [1.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.2...v1.9.3) (2022-11-25)
 
 
