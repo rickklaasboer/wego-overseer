@@ -5,8 +5,7 @@ const logger = new Logger('wego-overseer:BangerEvent');
 
 export const BangerEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
-    // TODO: set to false
-    enabled: true,
+    enabled: false,
     run: async (message) => {
         try {
             // Terminate if user is a bot

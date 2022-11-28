@@ -24,6 +24,7 @@ import {UwuCommand} from './commands/text/UwuCommand';
 import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
 import {I18n} from 'i18n';
 import {UpvoteEvent} from './events/UpvoteEvent';
+import {Client} from 'discord.js';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -35,6 +36,8 @@ export let bot: Maybe<Bot> = null;
 export const i18n = new I18n({
     directory: __dirname + '/lang',
 });
+
+export let client: Client<boolean>;
 
 // Setup knex connection for objection
 Model.knex(knex(knexfile));
@@ -64,19 +67,8 @@ dayjs.extend(timezone);
     });
 
     try {
-        const client = await bot.boot();
+        client = await bot.boot();
         logger.info(`Bot now ready and listening as '${client.user?.tag}'`);
-
-        // TODO: remove
-        client.on('messageReactionAdd', (reaction, user) => {
-            console.log('messageReactionAdd', reaction, user);
-        });
-        client.on('messageReactionRemove', (reaction, user) => {
-            console.log('messageReactionRemove', reaction, user);
-        });
-        client.on('messageCreate', (message) => {
-            console.log('messageCreate', message);
-        });
     } catch (err) {
         logger.fatal(err);
     }
