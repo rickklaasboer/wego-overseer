@@ -23,6 +23,7 @@ import {DrakeMemeCommand} from './commands/meme/DrakeMemeCommand';
 import {UwuCommand} from './commands/text/UwuCommand';
 import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
 import {I18n} from 'i18n';
+import {UpvoteEvent} from './events/UpvoteEvent';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -59,12 +60,23 @@ dayjs.extend(timezone);
             UwuCommand,
             MarieKondoCommand,
         ],
-        events: [IAmDadEvent, BangerEvent],
+        events: [IAmDadEvent, BangerEvent, UpvoteEvent],
     });
 
     try {
         const client = await bot.boot();
         logger.info(`Bot now ready and listening as '${client.user?.tag}'`);
+
+        // TODO: remove
+        client.on('messageReactionAdd', (reaction, user) => {
+            console.log('messageReactionAdd', reaction, user);
+        });
+        client.on('messageReactionRemove', (reaction, user) => {
+            console.log('messageReactionRemove', reaction, user);
+        });
+        client.on('messageCreate', (message) => {
+            console.log('messageCreate', message);
+        });
     } catch (err) {
         logger.fatal(err);
     }
