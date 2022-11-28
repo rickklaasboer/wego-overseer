@@ -30,7 +30,7 @@ export const JokeMemeCommand = new Command<
     run: async (interaction) => {
         try {
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/joke.png');
+            const img = await Jimp.read('./src/img/meme/joke.png');
 
             const text = interaction.options.getString('text')!;
 

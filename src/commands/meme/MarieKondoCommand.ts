@@ -33,7 +33,7 @@ export const MarieKondoCommand = new Command<
     run: async (interaction) => {
         try {
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/marie.png');
+            const img = await Jimp.read('./src/img/meme/marie.png');
 
             // Create room for text on top of image
             img.contain(

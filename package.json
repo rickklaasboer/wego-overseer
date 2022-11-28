@@ -6,8 +6,7 @@
     "scripts": {
         "dev": "tsx watch ./src/index.ts",
         "dev:no-watch": "tsx ./src/index.ts",
-        "knex": "knex --knexfile ./knexfile.ts",
-        "prepare": "husky install"
+        "knex": "knex --knexfile ./knexfile.ts"
     },
     "keywords": [],
     "author": "",
@@ -30,7 +29,6 @@
         "commitizen": "4.2.5",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.21.0",
-        "husky": "8.0.0",
         "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "semantic-release": "19.0.3",
