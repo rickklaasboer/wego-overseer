@@ -29,7 +29,7 @@ export const WhereMemeCommand = new Command<
     run: async (interaction) => {
         try {
             const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
-            const img = await Jimp.read('./src/img/monke.png');
+            const img = await Jimp.read('./src/img/meme/monke.png');
 
             let text = interaction.options.getString('text')!;
             if (!text.toLowerCase().startsWith('where')) {

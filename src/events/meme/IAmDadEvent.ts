@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import Event from './Event';
+import Event from '../Event';
 
 const logger = new Logger('wego-overseer:BangerEvent');
 

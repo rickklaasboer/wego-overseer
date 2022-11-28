@@ -31,7 +31,7 @@ export const DrakeMemeCommand = new Command<
     run: async (interaction) => {
         try {
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/drake.png');
+            const img = await Jimp.read('./src/img/meme/drake.png');
 
             const topText = interaction.options.getString('top-text')!;
             const bottomText = interaction.options.getString('bottom-text')!;
