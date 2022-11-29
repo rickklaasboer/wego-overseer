@@ -1,7 +1,7 @@
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:BangerEvent');
+const logger = new Logger('wego-overseer:KabelBaanNoobEvent');
 
 export const KabelbaanNoobEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
