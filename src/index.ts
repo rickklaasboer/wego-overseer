@@ -23,6 +23,7 @@ import {DrakeMemeCommand} from './commands/meme/DrakeMemeCommand';
 import {UwuCommand} from './commands/text/UwuCommand';
 import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
 import {I18n} from 'i18n';
+import {KabelbaanNoobEvent} from "@/events/meme/KabelbaanNoobEvent";
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -59,7 +60,7 @@ dayjs.extend(timezone);
             UwuCommand,
             MarieKondoCommand,
         ],
-        events: [IAmDadEvent, BangerEvent],
+        events: [IAmDadEvent, BangerEvent, KabelbaanNoobEvent],
     });
 
     try {
