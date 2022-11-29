@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import {APIEmbed} from 'discord.js';
+import {APIEmbed, EmbedBuilder} from 'discord.js';
 import {client} from '..';
 import Event from './Event';
 
@@ -24,7 +24,7 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
             );
             // Make sure an emoji was found
             if (!emoji) {
-                logger.fatal("Couldn't find emoji with name", QCC_EMOJI_NAME);
+                logger.error("Couldn't find emoji with name", QCC_EMOJI_NAME);
                 return;
             }
 
@@ -38,13 +38,13 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
 
             // Check if channel has been found
             if (!channel) {
-                logger.fatal('Could not find channel to send message in');
+                logger.error('Could not find channel to send message in');
                 return;
             }
 
             // Check if channel is a text channel
             if (!channel.isTextBased()) {
-                logger.fatal('Channel is not a text channel');
+                logger.error('Channel is not a text channel');
                 return;
             }
 
@@ -67,27 +67,22 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
                 });
             } else {
                 // Create embed
-                const embed: APIEmbed = {
-                    color: 0x202225,
-                    author: {
+                const embed = new EmbedBuilder()
+                    .setColor(0x202225)
+                    .setAuthor({
                         name: reaction.message.author!.username,
-                        icon_url: reaction.message.author!.avatarURL()!,
-                    },
-                    description: reaction.message.content ?? undefined,
-                    fields: [
+                        iconURL: reaction.message.author!.avatarURL()!,
+                    })
+                    .setDescription(reaction.message.content ?? '')
+                    .setFields([
                         {
                             name: 'Source',
                             value: `[Jump to message](${reaction.message.url})`,
                         },
-                    ],
-                    image: {
-                        url: reaction.message.attachments.first()?.url ?? '',
-                    },
-                    timestamp: reaction.message.createdAt.toISOString(),
-                    footer: {
-                        text: `Message ID: ${reaction.message.id}`,
-                    },
-                };
+                    ])
+                    .setImage(reaction.message.attachments.first()?.url ?? '')
+                    .setTimestamp(reaction.message.createdAt)
+                    .setFooter({text: `Message ID: ${reaction.message.id}`});
 
                 // Send a message in the specified channel
                 await channel.send({
