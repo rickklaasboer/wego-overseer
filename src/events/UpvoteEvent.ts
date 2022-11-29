@@ -1,9 +1,7 @@
 import Logger from '@/telemetry/logger';
-import {APIEmbed, Client} from 'discord.js';
-import {env} from 'process';
+import {APIEmbed} from 'discord.js';
 import {client} from '..';
 import Event from './Event';
-import User from '@/entities/User';
 
 const logger = new Logger('wego-overseer:UpvoteEvent');
 
@@ -17,17 +15,21 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
     enabled: true,
     run: async (reaction) => {
         try {
+            // Check if reaction count is above or equal to the minimal emoji count threshold
+            if ((reaction.count ?? 0) < QCC_MIN_EMOJI_COUNT) return;
+
             // Get the emoji
             const emoji = reaction.client.emojis.cache.find((emoji) =>
                 emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
             );
-            if (!emoji) return;
+            // Make sure an emoji was found
+            if (!emoji) {
+                logger.fatal("Couldn't find emoji with name", QCC_EMOJI_NAME);
+                return;
+            }
 
-            // Check if reaction is an upvote
+            // Check if reaction is an upvote (or the .env specified emoji)
             if (reaction.emoji !== emoji) return;
-
-            // Check if reaction count is above or equal to the minimal emoji count threshold
-            if ((reaction.count ?? 0) < QCC_MIN_EMOJI_COUNT) return;
 
             // Get the channel
             const channel = await reaction.message.client.channels.fetch(
@@ -49,6 +51,7 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
             // Check if message is already in the channel
             const messages = await channel.messages.fetch({limit: 100}); // Fetch last 100 messages (should be enough) to check if message is already in the channel
             const message = [...messages.values()].find(
+                // Search by bot id and reaction message id
                 (message) =>
                     message.author.id === client.user?.id &&
                     message.embeds[0].footer?.text.includes(
@@ -56,9 +59,9 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
                     ),
             );
 
-            // A message already exists
+            // Check if a message already exists
             if (message) {
-                // Edit the message
+                // Edit the existing message
                 await message.edit({
                     content: `${reaction.count} <:upvote:${emoji?.id}> in <#${reaction.message.channelId}>`,
                 });
