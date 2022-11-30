@@ -73,14 +73,18 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
                         name: reaction.message.author!.username,
                         iconURL: reaction.message.author!.avatarURL()!,
                     })
-                    .setDescription(reaction.message.content ?? '')
+                    .setDescription(
+                        reaction.message.content!.length > 0
+                            ? reaction.message.content
+                            : null,
+                    )
                     .setFields([
                         {
                             name: 'Source',
                             value: `[Jump to message](${reaction.message.url})`,
                         },
                     ])
-                    .setImage(reaction.message.attachments.first()?.url ?? '')
+                    .setImage(reaction.message.attachments.first()?.url ?? null)
                     .setTimestamp(reaction.message.createdAt)
                     .setFooter({text: `Message ID: ${reaction.message.id}`});
 
