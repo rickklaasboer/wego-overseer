@@ -23,7 +23,7 @@ import {DrakeMemeCommand} from './commands/meme/DrakeMemeCommand';
 import {UwuCommand} from './commands/text/UwuCommand';
 import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
 import {I18n} from 'i18n';
-import {KabelbaanNoobEvent} from "@/events/meme/KabelbaanNoobEvent
+import {KabelbaanNoobEvent} from '@/events/meme/KabelbaanNoobEvent';
 import {UpvoteEvent} from './events/UpvoteEvent';
 import {Client} from 'discord.js';
 
