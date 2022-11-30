@@ -133,6 +133,12 @@ You probably don't need knex documentation as much, since objection handles most
 -   [DiscordJS docs](https://discord.js.org/#/docs/discord.js/main/general/welcome)
 -   [DiscordJS guide](https://discordjs.guide/#before-you-begin)
 
+**Discord:**
+
+-   [Discord Developer Portal (docs)](https://discord.com/developers/docs/intro)
+-   [Discord Applications](https://discord.com/developers/applications)
+-   [Discord Permissions Calculator](https://discordapi.com/permissions.html)
+
 **Image manipulation (Jimp):**
 
 -   [Jimp](https://github.com/oliver-moran/jimp)
