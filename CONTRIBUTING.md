@@ -16,7 +16,7 @@ When you commit changes please add the correct prefix in your commit title. Exam
 
 ## Coding Conventions
 
-Coding conventions should be covered by eslint/prettier. Make sure to install these. If you're not if these are running correctly, you can also run
+Coding conventions should be covered by eslint/prettier. Make sure to install these. If you're not sure if these are running correctly, you can also run
 
 ```sh
 yarn lint-staged
