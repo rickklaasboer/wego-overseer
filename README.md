@@ -184,7 +184,7 @@ bot = new Bot({
 
 ### Creating an event
 
-First, create a new event in `src/events`. Please refer to the [DiscordJS docs](https://discord.js.org/#/docs/discord.js/main/general/welcome) for available events. For this example, we'll use the `ready` event. This event is called when our bot reaches the ready state.
+First, create a new event in `src/events`. Please refer to the [DiscordJS docs](https://discord.js.org/#/docs/discord.js/main/general/welcome) for available events. For this example, we'll use the `ready` event. This event is called when our bot reaches the ready state. Events should also be in PascalCase.
 
 Now, this should look something like this
 
@@ -207,6 +207,22 @@ export const BotReadyEvent = new Event<'ready'>({
 ```
 
 This event simply outputs `'Client is now ready!'` to the console when our bot is ready, but this should be a sufficient example for creating events. Please note that this event has it's own logger, this is useful for outputting (scoped) debug messages to the console.
+
+Please don't forget to register your event in `src/index.ts`.
+
+```ts
+bot = new Bot({
+    applicationId: DISCORD_APPLICATION_ID,
+    token: DISCORD_TOKEN,
+    commands: [
+        // ...
+    ],
+    events: [
+        // ...,
+        BotReadyEvent,
+    ],
+});
+```
 
 ## Contributing
 
