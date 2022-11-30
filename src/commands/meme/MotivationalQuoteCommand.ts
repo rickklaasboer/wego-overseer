@@ -21,7 +21,7 @@ export const MotivationalQuoteCommand = new Command
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',
-            description: 'text that will appear in meme',
+            description: 'text that will appear in image',
             required: true,
             min_length: 1,
             max_length: 32,
