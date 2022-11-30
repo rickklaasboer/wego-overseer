@@ -5,14 +5,12 @@ import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
 import {i18n} from '@/index';
 import fetch from "node-fetch";
-import { buffer } from 'stream/consumers';
 
 const logger = new Logger('wego-overseer:MotivationalQuoteCommand');
 
-const IMAGE_OFFSETS = {
-    x: 0,
-    y: 0,
-};
+//https://picsum.photos/width/height
+//https://picsum.photos/
+const imageUrl = "https://picsum.photos/300/400?grayscale&blur=5";
 
 export const MotivationalQuoteCommand = new Command
 <ChatInputCommandInteraction<CacheType>
@@ -31,31 +29,28 @@ export const MotivationalQuoteCommand = new Command
     ],
     run: async (interaction) => {
         try{
-            const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
+            const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
 
             const text = interaction.options.getString('text')!;
 
-            const imageUrl = "https://picsum.photos/300/400?blur=2";
-
+            //feeding the link directly to Jimp doesn't work.
             const response = await fetch(imageUrl);
-
             const buffer = Buffer.from(await response.arrayBuffer());
-            
             const img = await Jimp.read(buffer);
 
             img.print(
                 font,
-                IMAGE_OFFSETS.x,
-                IMAGE_OFFSETS.y,
+                0,
+                0,
                 {
-                    text: `${text}`,
+                    text: text,
                     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
                     alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
                 },
                 img.getWidth(),
                 img.getHeight(),
             );
-
+            
             const wrappedImage = new Base64JimpImage(img);
             await interaction.reply({files: [wrappedImage.toAttachment()]});
         }
