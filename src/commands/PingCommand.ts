@@ -5,6 +5,8 @@ export const PingCommand = new Command<ChatInputCommandInteraction<CacheType>>({
     name: 'ping',
     description: 'Ping!',
     run: async (interaction) => {
-        await interaction.reply(`Pong! (${Math.abs((Date.now() - interaction.createdTimestamp))} ms)`);
+        await interaction.reply(
+            `Pong! (${Math.abs(Date.now() - interaction.createdTimestamp)} ms)`,
+        );
     },
 });
