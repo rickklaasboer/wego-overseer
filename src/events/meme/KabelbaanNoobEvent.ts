@@ -2,25 +2,27 @@ import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
 const logger = new Logger('wego-overseer:KabelBaanNoobEvent');
-const kabelbaanDiscordId = "162624307745390592";
-const noobEmojiId = "375338339248898048"
+const kabelbaanDiscordId = '162624307745390592';
+const noobEmojiId = '375338339248898048';
 
 export const KabelbaanNoobEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
     run: async (message) => {
         try {
             // Terminate if user is not kabelbaan
-            if(message.author.id != kabelbaanDiscordId) return;
+            if (message.author.id != kabelbaanDiscordId) return;
 
             //<:noob:375338339248898048> | <:name:id>
-            const noobEmoji = message.client.emojis.cache.find(emoji => emoji.id == noobEmojiId);
+            const noobEmoji = message.client.emojis.cache.find(
+                (emoji) => emoji.id == noobEmojiId,
+            );
 
-            if(!noobEmoji){
-                logger.error("Noob emoji not found")
+            if (!noobEmoji) {
+                logger.error('Noob emoji not found');
                 return;
             }
 
-            if(message.content.includes(noobEmoji.toString())){
+            if (message.content.includes(noobEmoji.toString())) {
                 await message.react(noobEmoji.toString());
             }
         } catch (err) {

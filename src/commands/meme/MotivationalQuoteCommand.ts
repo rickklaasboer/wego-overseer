@@ -4,16 +4,16 @@ import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
 import {i18n} from '@/index';
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const logger = new Logger('wego-overseer:MotivationalQuoteCommand');
 
 //https://picsum.photos/width/height
 //https://picsum.photos/
-const imageUrl = "https://picsum.photos/300/400?grayscale&blur=5";
+const imageUrl = 'https://picsum.photos/300/400?grayscale&blur=5';
 
-export const MotivationalQuoteCommand = new Command
-<ChatInputCommandInteraction<CacheType>
+export const MotivationalQuoteCommand = new Command<
+    ChatInputCommandInteraction<CacheType>
 >({
     name: 'motivational',
     description: 'Generate a motivational picture',
@@ -25,10 +25,10 @@ export const MotivationalQuoteCommand = new Command
             required: true,
             min_length: 1,
             max_length: 32,
-        }
+        },
     ],
     run: async (interaction) => {
-        try{
+        try {
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
 
             const text = interaction.options.getString('text')!;
@@ -50,16 +50,18 @@ export const MotivationalQuoteCommand = new Command
                 img.getWidth(),
                 img.getHeight(),
             );
-            
+
             const wrappedImage = new Base64JimpImage(img);
             await interaction.reply({files: [wrappedImage.toAttachment()]});
-        }
-        catch (err) {
+        } catch (err) {
             logger.fatal('Failed creating motivational quote meme', err);
             await interaction.reply({
-                content: i18n.__('errors.common.failed', 'Motivational Quote Command'),
+                content: i18n.__(
+                    'errors.common.failed',
+                    'Motivational Quote Command',
+                ),
                 ephemeral: true,
             });
         }
-    }
+    },
 });
