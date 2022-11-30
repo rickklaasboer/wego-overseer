@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.10.1...v1.11.0) (2022-11-30)
+
+
+### Features
+
+* Motivational quote command ([eeb1d73](https://github.com/rickklaasboer/wego-overseer/commit/eeb1d734bbf8536c07f19d55ca18bf556aefc45e))
+
 ## [1.10.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.10.0...v1.10.1) (2022-11-30)
 
 
