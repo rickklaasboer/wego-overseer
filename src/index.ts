@@ -23,7 +23,9 @@ import {DrakeMemeCommand} from './commands/meme/DrakeMemeCommand';
 import {UwuCommand} from './commands/text/UwuCommand';
 import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
 import {I18n} from 'i18n';
-import {KabelbaanNoobEvent} from "@/events/meme/KabelbaanNoobEvent";
+import {KabelbaanNoobEvent} from "@/events/meme/KabelbaanNoobEvent
+import {UpvoteEvent} from './events/UpvoteEvent';
+import {Client} from 'discord.js';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -35,6 +37,8 @@ export let bot: Maybe<Bot> = null;
 export const i18n = new I18n({
     directory: __dirname + '/lang',
 });
+
+export let client: Client<boolean>;
 
 // Setup knex connection for objection
 Model.knex(knex(knexfile));
@@ -60,11 +64,11 @@ dayjs.extend(timezone);
             UwuCommand,
             MarieKondoCommand,
         ],
-        events: [IAmDadEvent, BangerEvent, KabelbaanNoobEvent],
+        events: [IAmDadEvent, BangerEvent, UpvoteEvent, KabelbaanNoobEvent],
     });
 
     try {
-        const client = await bot.boot();
+        client = await bot.boot();
         logger.info(`Bot now ready and listening as '${client.user?.tag}'`);
     } catch (err) {
         logger.fatal(err);
