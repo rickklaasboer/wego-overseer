@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.10.0...v1.10.1) (2022-11-30)
+
+
+### Bug Fixes
+
+* fixed the upvote event throwing an error ([aff928f](https://github.com/rickklaasboer/wego-overseer/commit/aff928f824a0bc56b91bba7d04389daab481191b))
+
 # [1.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.9.3...v1.10.0) (2022-11-27)
 
 
