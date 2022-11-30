@@ -43,7 +43,7 @@ export const MotivationalQuoteCommand = new Command
                 0,
                 0,
                 {
-                    text: text,
+                    text,
                     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
                     alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
                 },
