@@ -104,7 +104,7 @@ yarn dev:no-watch | yarn bunyan
 
 ## Useful information
 
-This project uses Objection and Knes for its database management. Please refer to the proper documentation for usage guides.
+This project uses Objection and Knex for its database management. Please refer to the proper documentation for usage guides.
 
 -   [Objection docs](https://vincit.github.io/objection.js/guide/)
 -   [Knex docs](https://knexjs.org/guide/)
@@ -115,14 +115,14 @@ or more specific
 
 -   [Creating a model](https://vincit.github.io/objection.js/guide/models.html#examples)
 -   [Querying a model](https://vincit.github.io/objection.js/guide/query-examples.html#basic-queries)
--   [Defininf relationships](https://vincit.github.io/objection.js/guide/relations.html#examples)
+-   [Defining relationships](https://vincit.github.io/objection.js/guide/relations.html#examples)
 -   [Querying relationships](https://vincit.github.io/objection.js/guide/query-examples.html#relation-queries)
 -   [Query hooks](https://vincit.github.io/objection.js/guide/hooks.html)
 
 **Knex:**
 
 -   [Migrations](https://knexjs.org/guide/migrations.html)
--   [Migration CLI](https://knexjs.org/guide/migrations.html#migration-cli)
+-   [Migrations CLI](https://knexjs.org/guide/migrations.html#migration-cli)
 -   [Knex query builder](https://knexjs.org/guide/query-builder.html)
     -   Works wonders if objection is unable to create a complex query without a lot of overhead
 
