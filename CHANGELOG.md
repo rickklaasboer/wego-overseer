@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.11.0...v1.11.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* increate motivation quote command character limit to 128 ([99222ba](https://github.com/rickklaasboer/wego-overseer/commit/99222ba07d005b87daf459bfe5d920ba33cb7919))
+
 # [1.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.10.1...v1.11.0) (2022-11-30)
 
 
