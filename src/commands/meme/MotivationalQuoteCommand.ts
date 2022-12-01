@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
@@ -24,7 +25,7 @@ export const MotivationalQuoteCommand = new Command<
             description: 'text that will appear in image',
             required: true,
             min_length: 1,
-            max_length: 32,
+            max_length: 128,
         },
     ],
     run: async (interaction) => {
