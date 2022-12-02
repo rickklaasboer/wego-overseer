@@ -60,6 +60,11 @@ QCC_EMOJI_NAME=
 QCC_MIN_EMOJI_COUNT=
 # Required, use a channel that the bot can access
 QCC_CHANNEL_ID=
+
+# Copy cookie from browser console
+AOC_SESSION_COOKIE=
+# The fully qualified (private) leaderboard url
+AOC_LEADERBOARD_URL=
 ```
 
 Now, run your database migrations (please refer to **'Setting up the development environment'** first for setting up the database)
