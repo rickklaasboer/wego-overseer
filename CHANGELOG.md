@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.11.1...v1.12.0) (2022-12-02)
+
+
+### Features
+
+* aoc leaderboard command ([a65d638](https://github.com/rickklaasboer/wego-overseer/commit/a65d6386bb73b175e89755721b799bfbcf5efcf0))
+
 ## [1.11.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.11.0...v1.11.1) (2022-12-01)
 
 
