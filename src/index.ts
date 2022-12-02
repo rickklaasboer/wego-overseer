@@ -27,6 +27,7 @@ import {I18n} from 'i18n';
 import {KabelbaanNoobEvent} from '@/events/meme/KabelbaanNoobEvent';
 import {UpvoteEvent} from './events/UpvoteEvent';
 import {Client} from 'discord.js';
+import {AdventOfCodeCommand} from './commands/misc/AdventOfCodeCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -65,6 +66,7 @@ dayjs.extend(timezone);
             UwuCommand,
             MarieKondoCommand,
             MotivationalQuoteCommand,
+            AdventOfCodeCommand,
         ],
         events: [IAmDadEvent, BangerEvent, UpvoteEvent, KabelbaanNoobEvent],
     });
