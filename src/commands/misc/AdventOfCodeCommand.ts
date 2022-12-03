@@ -2,7 +2,6 @@ import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command from '@/commands/Command';
 import fetch from 'node-fetch';
 import table from 'text-table';
-import {Maybe} from '@/types/util';
 import {tap} from '@/util/tap';
 import Logger from '@/telemetry/logger';
 import {i18n} from '@/index';
@@ -26,11 +25,6 @@ type AOCLeaderboardResponse = {
     };
 };
 
-const cache: {content: Maybe<string>; createdAt: number} = {
-    content: null,
-    createdAt: Date.now(),
-};
-
 export const AdventOfCodeCommand = new Command<
     ChatInputCommandInteraction<CacheType>
 >({
@@ -38,16 +32,6 @@ export const AdventOfCodeCommand = new Command<
     description: 'Get the advent of code leaderboard for wego',
     run: async (interaction) => {
         try {
-            // Return result from cache if < 1 hour old
-            if (
-                cache.content &&
-                cache.createdAt - Date.now() < 60 * 60 * 1000
-            ) {
-                logger.debug('Returning result from cache');
-                await interaction.reply(cache.content);
-                return;
-            }
-
             const request = await fetch(AOC_LEADERBOARD_URL, {
                 headers: {
                     accept: 'application/json',
@@ -59,19 +43,17 @@ export const AdventOfCodeCommand = new Command<
 
             const rows = [
                 ['#', 'Name', 'Stars', 'Local score'],
-                ...Object.entries(response.members).map(([key, member]) => [
-                    key,
-                    member.name,
-                    String(member.stars),
-                    String(member.local_score),
-                ]),
+                ...Object.entries(response.members)
+                    .map(([key, member]) => [
+                        key,
+                        member.name,
+                        String(member.stars),
+                        String(member.local_score),
+                    ])
+                    .sort((a, b) => parseInt(b[3]) - parseInt(a[3])),
             ];
 
-            const content = tap('```' + table(rows) + '```', (x) => {
-                cache.content = x;
-            });
-
-            await interaction.reply(content);
+            await interaction.reply('```' + table(rows) + '```');
         } catch (err) {
             logger.fatal('Could not handle AdventOfCodeCommand', err);
             await interaction.followUp({
