@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.12.0...v1.12.1) (2022-12-03)
+
+
+### Bug Fixes
+
+* aoc leaderboard sorting and removed cache ([7579809](https://github.com/rickklaasboer/wego-overseer/commit/75798090067c4eccf6b0b69cf1dc252dad7cdefc))
+
 # [1.12.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.11.1...v1.12.0) (2022-12-02)
 
 
