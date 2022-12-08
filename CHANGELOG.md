@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.12.1...v1.13.0) (2022-12-08)
+
+
+### Features
+
+* poll command: ([3241480](https://github.com/rickklaasboer/wego-overseer/commit/3241480865853c863c97ed3767b6eb6a039077c7))
+
 ## [1.12.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.12.0...v1.12.1) (2022-12-03)
 
 
