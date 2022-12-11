@@ -1,18 +1,45 @@
-import {ensureChannelIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
-import Logger from '@/telemetry/logger';
+import {
+    ensureChannelIsAvailable,
+    ensureGuildIsAvailable,
+    ensureUserIsAvailable,
+} from '@/commands/karma/KarmaCommand/predicates';
+import Karma from '@/entities/Karma';
 import Event from '../Event';
-
-const logger = new Logger('wego-overseer:KarmaRemoveUpvoteEvent');
 
 export const KarmaRemoveUpvoteEvent = new Event<'messageReactionRemove'>({
     name: 'messageReactionRemove',
-    run: async (reaction) => {
+    run: async (reaction, user) => {
+        if (user.bot) return;
+
+        if (reaction.emoji.name !== 'upvote') {
+            return;
+        }
+
+        const message = reaction.message;
+
+        // Discord provides incomplete message on messageReactionRemove
+        await message.fetch();
+
+        await ensureGuildIsAvailable(message.guild?.id);
+        await ensureUserIsAvailable(user.id);
+        await ensureUserIsAvailable(message.author?.id);
         const channel = await ensureChannelIsAvailable(
-            reaction.message.channel.id,
-            reaction.message.guild?.id,
+            message.channel.id,
+            message.guild?.id,
         );
 
         if (!channel.isKarmaChannel) return;
-        logger.debug('KarmaRemoveUpvoteEvent received');
+
+        const keys = {
+            messageId: message.id,
+            channelId: message.channel.id,
+            guildId: message.guild?.id,
+            receivedFromUserId: user.id,
+            userId: message.author?.id,
+        };
+
+        await Karma.query()
+            .where({...keys})
+            .delete();
     },
 });
