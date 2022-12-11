@@ -8,6 +8,8 @@ const logger = new Logger('wego-overseer:KarmaMessageCreateEvent');
 export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
     run: async (message) => {
+        if (message.author.bot) return;
+
         const channel = await ensureChannelIsAvailable(
             message.channel.id,
             message.guild?.id,
