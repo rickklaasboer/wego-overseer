@@ -16,7 +16,7 @@ export const KarmaUserGetCommand = new Command({
             .first()) as Karma & {totalKarma: number};
 
         await interaction.reply(
-            `${user.username} has a total of ${sum.totalKarma} karma`,
+            `${user.username} has a total of ${sum.totalKarma ?? 0} karma`,
         );
     },
 });
