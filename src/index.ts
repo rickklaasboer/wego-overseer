@@ -38,6 +38,7 @@ import {KarmaDownvoteEvent} from '@/events/karma/KarmaDownvoteEvent';
 import {KarmaRemoveDownvoteEvent} from '@/events/karma/KarmaRemoveDownvoteEvent';
 import {KarmaRemoveUpvoteEvent} from '@/events/karma/KarmaRemoveUpvoteEvent';
 import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
+import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
 import {UpvoteEvent} from '@/events/UpvoteEvent';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
@@ -50,6 +51,10 @@ export let bot: Maybe<Bot> = null;
 export const i18n = new I18n({
     directory: __dirname + '/lang',
 });
+
+export const t = i18n.__;
+export const trans = t;
+export const translate = trans;
 
 export let client: Client<boolean>;
 
@@ -92,6 +97,7 @@ dayjs.extend(timezone);
             KarmaRemoveDownvoteEvent,
             KarmaRemoveUpvoteEvent,
             KarmaUpvoteEvent,
+            KarmaMessageCreateEvent,
             UpvoteEvent,
         ],
     });

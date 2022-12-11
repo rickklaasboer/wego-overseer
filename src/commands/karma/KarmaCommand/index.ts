@@ -39,6 +39,7 @@ export const KarmaCommand = new Command({
         const forwardable = FORWARDABLE_COMMANDS[group][cmd];
         await self.forwardTo(forwardable, interaction);
 
-        await interaction.reply('Ok!');
+        // TODO: make sure interaction always gets a reply
+        interaction.replied ? null : await interaction.reply('blablabla');
     },
 });

@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import {APIEmbed, EmbedBuilder} from 'discord.js';
+import {EmbedBuilder} from 'discord.js';
 import {client} from '..';
 import Event from './Event';
 
