@@ -88,7 +88,10 @@ export default class Bot {
 
             if (this.commands.has(interaction.commandName)) {
                 const cmd = this.commands.get(interaction.commandName);
-                cmd?.run(interaction as ChatInputCommandInteraction<CacheType>);
+                cmd?.run(
+                    interaction as ChatInputCommandInteraction<CacheType>,
+                    cmd,
+                );
             }
         });
     }

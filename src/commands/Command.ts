@@ -20,7 +20,7 @@ type ApplicationCommandOption = {
     value: string | number;
 };
 
-type SlashCommandOption = {
+export type SlashCommandOption = {
     type: APPLICATION_COMMAND_OPTIONS;
     name: string;
     description: string;
@@ -40,7 +40,7 @@ type Props<T> = {
     description: string;
     options?: SlashCommandOption[];
     enabled?: boolean;
-    run(interaction: T): void | Promise<void>;
+    run(interaction: T, self: Command<T>): Promise<void>;
 };
 
 export default class Command<T = ChatInputCommandInteraction<CacheType>> {
@@ -48,7 +48,7 @@ export default class Command<T = ChatInputCommandInteraction<CacheType>> {
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
     public enabled: boolean;
-    public run: (interaction: T) => void | Promise<void>;
+    public run: (interaction: T, self: Command<T>) => Promise<void>;
 
     constructor({name, description, options, enabled = true, run}: Props<T>) {
         this.name = name;
@@ -56,5 +56,9 @@ export default class Command<T = ChatInputCommandInteraction<CacheType>> {
         this.options = options;
         this.enabled = enabled;
         this.run = run;
+    }
+
+    public async forwardTo(to: Command<T>, interaction: T): Promise<void> {
+        await to.run(interaction, this);
     }
 }
