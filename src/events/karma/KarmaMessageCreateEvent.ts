@@ -1,4 +1,7 @@
-import {ensureChannelIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
+import {
+    ensureChannelIsAvailable,
+    ensureGuildIsAvailable,
+} from '@/commands/karma/KarmaCommand/predicates';
 import Logger from '@/telemetry/logger';
 import {Collection} from 'discord.js';
 import Event from '../Event';
@@ -10,6 +13,7 @@ export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
     run: async (message) => {
         if (message.author.bot) return;
 
+        await ensureGuildIsAvailable(message.guild?.id);
         const channel = await ensureChannelIsAvailable(
             message.channel.id,
             message.guild?.id,
