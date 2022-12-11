@@ -5,6 +5,7 @@ export default class Karma extends Model {
     amount!: number;
     guildId!: string;
     userId!: string;
+    receivedFromUserId!: string;
     channelId!: string;
     messageId!: string;
 

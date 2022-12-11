@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('messageId');
         table.string('guildId').references('id').inTable('guilds');
         table.string('userId').references('id').inTable('users');
+        table.string('receivedFromUserId').references('id').inTable('users');
         table.string('channelId').references('id').inTable('channels');
         table.timestamps({useCamelCase: true});
     });
