@@ -1,13 +1,17 @@
 import Command from '@/commands/Command';
 import Channel from '@/entities/Channel';
+import {translate} from '@/index';
 import {ensureChannelIsAvailable} from './KarmaCommand/predicates';
 
 export const KarmaChannelEnableCommand = new Command({
     name: 'internal',
     description: 'internal',
     run: async (interaction) => {
-        const channel = await ensureChannelIsAvailable(interaction.channel?.id);
-        const channelName = interaction.options.getChannel('channel')?.name;
+        const {id, name = ''} = interaction.options.getChannel('channel') ?? {};
+        const channel = await ensureChannelIsAvailable(
+            id,
+            interaction.guild?.id,
+        );
 
         if (!channel.isKarmaChannel) {
             await Channel.query()
@@ -16,7 +20,7 @@ export const KarmaChannelEnableCommand = new Command({
         }
 
         await interaction.reply(
-            i18n.__('karma.channel.enable.success', channelName ?? ''),
+            translate('karma.channel.enable.success', name),
         );
     },
 });

@@ -35,15 +35,16 @@ export async function ensureGuildIsAvailable(
 
 export async function ensureChannelIsAvailable(
     channelId: Maybe<string>,
+    guildId: Maybe<string>,
 ): Promise<Channel> {
-    if (!channelId) {
-        throw new Error('Channel id not specified');
+    if (!channelId || !guildId) {
+        throw new Error('Channel or guild id not specified');
     }
 
     const channel = await Channel.query().findById(channelId);
     if (channel instanceof Channel) {
         return channel;
     } else {
-        return await Channel.query().insert({id: channelId});
+        return await Channel.query().insert({id: channelId, guildId});
     }
 }
