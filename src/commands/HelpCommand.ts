@@ -1,8 +1,7 @@
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command from '@/commands/Command';
 import {bot} from '@/index';
 
-export const HelpCommand = new Command<ChatInputCommandInteraction<CacheType>>({
+export const HelpCommand = new Command({
     name: 'help',
     description: 'pls help!',
     run: async (interaction) => {

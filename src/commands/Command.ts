@@ -1,4 +1,5 @@
 import {Maybe} from '@/types/util';
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 
 export enum APPLICATION_COMMAND_OPTIONS {
     SUB_COMMAND = 1,
@@ -42,7 +43,7 @@ type Props<T> = {
     run(interaction: T): void | Promise<void>;
 };
 
-export default class Command<T> {
+export default class Command<T = ChatInputCommandInteraction<CacheType>> {
     public name: string;
     public description: string;
     public options: Maybe<SlashCommandOption[]>;

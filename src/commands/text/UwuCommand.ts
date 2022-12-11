@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Uwuifier from 'uwuifier';
 
 const uwu = new Uwuifier();
 
-export const UwuCommand = new Command<ChatInputCommandInteraction<CacheType>>({
+export const UwuCommand = new Command({
     name: 'uwu',
     description: 'UwUify a sentence',
     options: [

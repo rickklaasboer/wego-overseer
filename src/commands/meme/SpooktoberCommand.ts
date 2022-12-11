@@ -1,12 +1,10 @@
-import {ChatInputCommandInteraction, CacheType, EmbedBuilder} from 'discord.js';
+import {EmbedBuilder} from 'discord.js';
 import Command from '@/commands/Command';
 import {getRandomGiphyGif} from '@/lib/giphy';
 
 const {GIPHY_API_KEY} = process.env;
 
-export const SpooktoberCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const SpooktoberCommand = new Command({
     name: 'spooktober',
     description: 'Displays a random halloween-themed GIF',
     run: async (interaction) => {

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
@@ -12,9 +11,7 @@ const IMAGE_OFFSET = {
     y_height: 190,
 };
 
-export const JokeMemeCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const JokeMemeCommand = new Command({
     name: 'joke',
     description: 'x and other hilarious jokes you can tell yourself',
     options: [

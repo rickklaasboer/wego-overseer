@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
@@ -13,9 +12,7 @@ const logger = new Logger('wego-overseer:MotivationalQuoteCommand');
 //https://picsum.photos/
 const imageUrl = 'https://picsum.photos/300/400?grayscale&blur=5';
 
-export const MotivationalQuoteCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const MotivationalQuoteCommand = new Command({
     name: 'motivational',
     description: 'Generate a motivational picture',
     options: [

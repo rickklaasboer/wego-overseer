@@ -2,7 +2,6 @@ import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command from '@/commands/Command';
 import fetch from 'node-fetch';
 import table from 'text-table';
-import {tap} from '@/util/tap';
 import Logger from '@/telemetry/logger';
 import {i18n} from '@/index';
 
@@ -25,9 +24,7 @@ type AOCLeaderboardResponse = {
     };
 };
 
-export const AdventOfCodeCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const AdventOfCodeCommand = new Command({
     name: 'aoc',
     description: 'Get the advent of code leaderboard for wego',
     run: async (interaction) => {

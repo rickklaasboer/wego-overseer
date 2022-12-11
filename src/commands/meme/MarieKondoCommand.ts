@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
@@ -15,9 +14,7 @@ const IMAGE_OFFSETS = {
     y: 12,
 };
 
-export const MarieKondoCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const MarieKondoCommand = new Command({
     name: 'mariekondo',
     description: 'x does not spark joy',
     options: [
