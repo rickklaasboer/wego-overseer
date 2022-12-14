@@ -58,11 +58,12 @@ export const translate = trans;
 
 export let client: Client<boolean>;
 
-// Setup knex connection for objection
-// prettier-ignore
-Model.knex(tap(knex(knexfile), (k) => {
+export const db = tap(knex(knexfile), (k) => {
     k.on('query', logger.debug);
-}));
+});
+
+// Setup knex connection for objection
+Model.knex(db);
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
