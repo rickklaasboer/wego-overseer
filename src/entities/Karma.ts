@@ -1,4 +1,5 @@
 import Model from '@/entities/Model';
+import {randomUUID} from 'crypto';
 import {RelationMappings} from 'objection';
 import Channel from './Channel';
 import Guild from './Guild';
@@ -52,5 +53,11 @@ export default class Karma extends Model {
 
     static get tableName() {
         return 'karma';
+    }
+
+    $beforeInsert(): void {
+        super.$beforeInsert();
+
+        this.id = randomUUID();
     }
 }
