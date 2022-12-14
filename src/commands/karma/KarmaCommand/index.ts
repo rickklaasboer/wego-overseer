@@ -2,7 +2,6 @@
 import Command from '@/commands/Command';
 import {KarmaChannelDisableCommand} from '../KarmaChannelDisableCommand';
 import {KarmaChannelEnableCommand} from '../KarmaChannelEnableCommand';
-import {KarmaChannelResetCommand} from '../KarmaChannelResetCommand';
 import {KarmaLeaderboardGetCommand} from '../KarmaLeaderboardGetCommand';
 import {KarmaUserGetCommand} from '../KarmaUserGetCommand';
 import {KARMA_COMMAND_OPTIONS} from './options';
@@ -12,7 +11,6 @@ const FORWARDABLE_COMMANDS = {
     channel: {
         enable: KarmaChannelEnableCommand,
         disable: KarmaChannelDisableCommand,
-        reset: KarmaChannelResetCommand,
     },
     user: {
         get: KarmaUserGetCommand,
@@ -38,8 +36,5 @@ export const KarmaCommand = new Command({
         // @ts-ignore
         const forwardable = FORWARDABLE_COMMANDS[group][cmd];
         await self.forwardTo(forwardable, interaction);
-
-        // TODO: make sure interaction always gets a reply
-        interaction.replied ? null : await interaction.reply('blablabla');
     },
 });
