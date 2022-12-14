@@ -35,19 +35,6 @@ const KARMA_COMMAND_OPTIONS: SlashCommandOption[] = [
                     },
                 ],
             },
-            {
-                type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
-                name: 'reset',
-                description: 'Reset karma',
-                options: [
-                    {
-                        type: APPLICATION_COMMAND_OPTIONS.CHANNEL,
-                        name: 'channel',
-                        description: 'Channel to reset karma for',
-                        required: true,
-                    },
-                ],
-            },
         ],
     },
     {
@@ -64,6 +51,18 @@ const KARMA_COMMAND_OPTIONS: SlashCommandOption[] = [
                         type: APPLICATION_COMMAND_OPTIONS.USER,
                         name: 'user',
                         description: 'User to get karma for',
+                    },
+                ],
+            },
+            {
+                type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+                name: 'reset',
+                description: 'Reset karma',
+                options: [
+                    {
+                        type: APPLICATION_COMMAND_OPTIONS.USER,
+                        name: 'user',
+                        description: 'User to reset karma for',
                     },
                 ],
             },

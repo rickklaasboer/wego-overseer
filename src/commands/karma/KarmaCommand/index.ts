@@ -4,6 +4,7 @@ import {KarmaChannelDisableCommand} from '../KarmaChannelDisableCommand';
 import {KarmaChannelEnableCommand} from '../KarmaChannelEnableCommand';
 import {KarmaLeaderboardGetCommand} from '../KarmaLeaderboardGetCommand';
 import {KarmaUserGetCommand} from '../KarmaUserGetCommand';
+import {KarmaUserResetCommand} from '../KarmaUserResetCommand';
 import {KARMA_COMMAND_OPTIONS} from './options';
 import {ensureGuildIsAvailable, ensureUserIsAvailable} from './predicates';
 
@@ -14,6 +15,7 @@ const FORWARDABLE_COMMANDS = {
     },
     user: {
         get: KarmaUserGetCommand,
+        reset: KarmaUserResetCommand,
     },
     leaderboard: {
         get: KarmaLeaderboardGetCommand,
