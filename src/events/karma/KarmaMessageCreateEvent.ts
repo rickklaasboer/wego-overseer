@@ -11,23 +11,26 @@ const logger = new Logger('wego-overseer:KarmaMessageCreateEvent');
 export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
     run: async (message) => {
-        if (message.author.bot) return;
+        try {
+            if (message.author.bot) return;
 
-        await ensureGuildIsAvailable(message.guild?.id);
-        const channel = await ensureChannelIsAvailable(
-            message.channel.id,
-            message.guild?.id,
-        );
-        if (!channel.isKarmaChannel) return;
+            await ensureGuildIsAvailable(message.guild?.id);
+            const channel = await ensureChannelIsAvailable(
+                message.channel.id,
+                message.guild?.id,
+            );
 
-        const emojis = message.guild?.emojis.cache.filter((e) => {
-            return e.name === 'upvote' || e.name === 'downvote';
-        });
+            if (!channel.isKarmaChannel) return;
 
-        for (const [key] of emojis ?? new Collection()) {
-            await message.react(key);
+            const emojis = message.guild?.emojis.cache.filter((e) => {
+                return e.name === 'upvote' || e.name === 'downvote';
+            });
+
+            for (const [key] of emojis ?? new Collection()) {
+                await message.react(key);
+            }
+        } catch (err) {
+            logger.error('Unable to handle KarmaMessageCreateEvent', err);
         }
-
-        logger.debug('KarmaMessageCreateEvent received');
     },
 });
