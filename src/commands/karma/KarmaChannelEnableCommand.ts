@@ -1,6 +1,7 @@
 import Command from '@/commands/Command';
 import Channel from '@/entities/Channel';
-import {translate} from '@/index';
+import {t, translate} from '@/index';
+import {isAdmin} from '@/util/discord';
 import {ensureChannelIsAvailable} from './KarmaCommand/predicates';
 
 export const KarmaChannelEnableCommand = new Command({
@@ -8,6 +9,14 @@ export const KarmaChannelEnableCommand = new Command({
     description: 'internal',
     run: async (interaction) => {
         const {id, name = ''} = interaction.options.getChannel('channel') ?? {};
+
+        if (!isAdmin(interaction)) {
+            await interaction.reply(
+                t('errors.common.command.no_permission', interaction.user.id),
+            );
+            return;
+        }
+
         const channel = await ensureChannelIsAvailable(
             id,
             interaction.guild?.id,
