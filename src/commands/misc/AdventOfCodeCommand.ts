@@ -1,9 +1,9 @@
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command from '@/commands/Command';
 import fetch from 'node-fetch';
-import table from 'text-table';
 import Logger from '@/telemetry/logger';
 import {i18n} from '@/index';
+import {wrapInCodeblock} from '@/util/discord';
+import {tableWithHead} from '@/util/table';
 
 const logger = new Logger('wego-overseer:AdventOfCodeCommand');
 
@@ -38,22 +38,23 @@ export const AdventOfCodeCommand = new Command({
 
             const response = (await request.json()) as AOCLeaderboardResponse;
 
-            const rows = [
-                ['#', 'Name', 'Stars', 'Local score'],
-                ...Object.entries(response.members)
-                    .map(([key, member]) => [
-                        key,
-                        member.name,
-                        String(member.stars),
-                        String(member.local_score),
-                    ])
-                    .sort((a, b) => parseInt(b[3]) - parseInt(a[3])),
-            ];
+            const rows = Object.entries(response.members)
+                .map(([key, member]) => [
+                    key,
+                    member.name,
+                    String(member.stars),
+                    String(member.local_score),
+                ])
+                .sort((a, b) => parseInt(b[3]) - parseInt(a[3]));
 
-            await interaction.reply('```' + table(rows) + '```');
+            await interaction.reply(
+                wrapInCodeblock(
+                    tableWithHead(['#', 'Name', 'Stars', 'Local score'], rows),
+                ),
+            );
         } catch (err) {
             logger.fatal('Could not handle AdventOfCodeCommand', err);
-            await interaction.followUp({
+            await interaction.reply({
                 content: i18n.__(
                     'errors.common.failed',
                     'advent of code leaderboard',
