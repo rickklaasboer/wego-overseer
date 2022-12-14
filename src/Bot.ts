@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Client,
     Collection,
@@ -45,6 +46,7 @@ export default class Bot {
                 Partials.Message,
                 Partials.Reaction,
                 Partials.User,
+                Partials.GuildMember,
             ],
         });
         this.rest = tap(new REST({version: '9'}), (rest) => {
