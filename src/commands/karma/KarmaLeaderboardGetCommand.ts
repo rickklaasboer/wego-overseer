@@ -20,7 +20,7 @@ export const KarmaLeaderboardGetCommand = new Command({
     name: 'internal',
     description: 'internal',
     run: async (interaction) => {
-        // Raw query using knex because generated quering via objection
+        // Raw query using knex because generated query by objection
         // would result in a very inefficient query
         const results = (await db
             .table('karma')
