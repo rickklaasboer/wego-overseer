@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import {APIEmbed, EmbedBuilder} from 'discord.js';
+import {EmbedBuilder} from 'discord.js';
 import {client} from '..';
 import Event from './Event';
 
@@ -15,6 +15,9 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
     enabled: true,
     run: async (reaction) => {
         try {
+            // Ignore messages in the quality content corner channel
+            if (reaction.message.channelId === QCC_CHANNEL_ID) return;
+
             // Check if reaction count is above or equal to the minimal emoji count threshold
             if ((reaction.count ?? 0) < QCC_MIN_EMOJI_COUNT) return;
 
