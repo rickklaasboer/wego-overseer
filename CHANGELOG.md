@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.13.0...v1.13.1) (2022-12-15)
+
+
+### Bug Fixes
+
+* fixed [#66](https://github.com/rickklaasboer/wego-overseer/issues/66) ([482ed31](https://github.com/rickklaasboer/wego-overseer/commit/482ed31decf7678e245d49835e6d8c9ae1ba2e15))
+
 # [1.13.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.12.1...v1.13.0) (2022-12-08)
 
 
