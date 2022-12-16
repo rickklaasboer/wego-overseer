@@ -8,27 +8,38 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import {Maybe} from '@/types/util';
-import {KortebroekCommand} from '@/commands/fun/KortebroekCommand';
-import {PingCommand} from '@/commands/PingCommand';
-import {StufiCommand} from '@/commands/fun/StufiCommand';
-import {HelpCommand} from '@/commands/HelpCommand';
-import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
-import {IAmDadEvent} from './events/meme/IAmDadEvent';
-import {BangerEvent} from './events/meme/BangerEvent';
-import {SpooktoberCommand} from './commands/meme/SpooktoberCommand';
-import {DeepFryCommand} from './commands/meme/DeepFryCommand';
-import {JokeMemeCommand} from './commands/meme/JokeMemeCommand';
-import {MockifyCommand} from './commands/text/MockifyCommand';
-import {DrakeMemeCommand} from './commands/meme/DrakeMemeCommand';
-import {UwuCommand} from './commands/text/UwuCommand';
-import {MarieKondoCommand} from './commands/meme/MarieKondoCommand';
-import {MotivationalQuoteCommand} from './commands/meme/MotivationalQuoteCommand';
-import {I18n} from 'i18n';
-import {KabelbaanNoobEvent} from '@/events/meme/KabelbaanNoobEvent';
-import {UpvoteEvent} from './events/UpvoteEvent';
 import {Client} from 'discord.js';
-import {AdventOfCodeCommand} from './commands/misc/AdventOfCodeCommand';
-import { PollCommand } from './commands/PollCommand';
+import {I18n} from 'i18n';
+import {tap} from './util/tap';
+
+// Commands
+import {AdventOfCodeCommand} from '@/commands/misc/AdventOfCodeCommand';
+import {DeepFryCommand} from '@/commands/meme/DeepFryCommand';
+import {DrakeMemeCommand} from '@/commands/meme/DrakeMemeCommand';
+import {HelpCommand} from '@/commands/HelpCommand';
+import {JokeMemeCommand} from '@/commands/meme/JokeMemeCommand';
+import {KarmaCommand} from '@/commands/karma/KarmaCommand';
+import {KortebroekCommand} from '@/commands/fun/KortebroekCommand';
+import {MarieKondoCommand} from '@/commands/meme/MarieKondoCommand';
+import {MockifyCommand} from '@/commands/text/MockifyCommand';
+import {MotivationalQuoteCommand} from '@/commands/meme/MotivationalQuoteCommand';
+import {PingCommand} from '@/commands/PingCommand';
+import {PollCommand} from '@/commands/PollCommand';
+import {SpooktoberCommand} from '@/commands/meme/SpooktoberCommand';
+import {StufiCommand} from '@/commands/fun/StufiCommand';
+import {UwuCommand} from '@/commands/text/UwuCommand';
+import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
+
+// Events
+import {BangerEvent} from '@/events/meme/BangerEvent';
+import {IAmDadEvent} from '@/events/meme/IAmDadEvent';
+import {KabelbaanNoobEvent} from '@/events/meme/KabelbaanNoobEvent';
+import {KarmaDownvoteEvent} from '@/events/karma/KarmaDownvoteEvent';
+import {KarmaRemoveDownvoteEvent} from '@/events/karma/KarmaRemoveDownvoteEvent';
+import {KarmaRemoveUpvoteEvent} from '@/events/karma/KarmaRemoveUpvoteEvent';
+import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
+import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
+import {UpvoteEvent} from '@/events/UpvoteEvent';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -41,10 +52,18 @@ export const i18n = new I18n({
     directory: __dirname + '/lang',
 });
 
+export const t = i18n.__;
+export const trans = t;
+export const translate = trans;
+
 export let client: Client<boolean>;
 
+export const db = tap(knex(knexfile), (k) => {
+    k.on('query', logger.debug);
+});
+
 // Setup knex connection for objection
-Model.knex(knex(knexfile));
+Model.knex(db);
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -54,23 +73,34 @@ dayjs.extend(timezone);
         applicationId: DISCORD_APPLICATION_ID,
         token: DISCORD_TOKEN,
         commands: [
-            PingCommand,
-            KortebroekCommand,
-            StufiCommand,
-            WhereMemeCommand,
-            SpooktoberCommand,
-            HelpCommand,
-            DeepFryCommand,
-            JokeMemeCommand,
-            MockifyCommand,
-            DrakeMemeCommand,
-            UwuCommand,
-            MarieKondoCommand,
-            MotivationalQuoteCommand,
             AdventOfCodeCommand,
-            PollCommand
+            DeepFryCommand,
+            DrakeMemeCommand,
+            HelpCommand,
+            JokeMemeCommand,
+            KarmaCommand,
+            KortebroekCommand,
+            MarieKondoCommand,
+            MockifyCommand,
+            MotivationalQuoteCommand,
+            PingCommand,
+            PollCommand,
+            SpooktoberCommand,
+            StufiCommand,
+            UwuCommand,
+            WhereMemeCommand,
         ],
-        events: [IAmDadEvent, BangerEvent, UpvoteEvent, KabelbaanNoobEvent],
+        events: [
+            BangerEvent,
+            IAmDadEvent,
+            KabelbaanNoobEvent,
+            KarmaDownvoteEvent,
+            KarmaRemoveDownvoteEvent,
+            KarmaRemoveUpvoteEvent,
+            KarmaUpvoteEvent,
+            KarmaMessageCreateEvent,
+            UpvoteEvent,
+        ],
     });
 
     try {

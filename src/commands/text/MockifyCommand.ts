@@ -1,4 +1,3 @@
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 
 /**
@@ -12,9 +11,7 @@ function mockify(input: string): string {
         .join('');
 }
 
-export const MockifyCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const MockifyCommand = new Command({
     name: 'mockify',
     description: 'transform text to spongebob mocking',
     options: [

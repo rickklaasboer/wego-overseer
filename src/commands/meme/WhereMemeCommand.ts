@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
@@ -11,9 +10,7 @@ const IMAGE_OFFSETS = {
     y: 24,
 };
 
-export const WhereMemeCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const WhereMemeCommand = new Command({
     name: 'where',
     description: 'where x meme generator',
     options: [

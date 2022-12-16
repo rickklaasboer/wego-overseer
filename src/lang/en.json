@@ -1,3 +1,6 @@
 {
-    "errors.common.failed": "An unexpected error occurred while trying to generate your %s, please try again later!"
+    "errors.common.failed": "An unexpected error occurred while trying to generate your %s, please try again later!",
+    "errors.common.command.no_permission": "I'm sorry <@%s>, you don't have permission to execute this command.",
+    "karma.channel.disable.success": "Done! Channel `#%s` is no longer a karma channel.",
+    "karma.channel.enable.success": "Done! Channel `#%s` is now a karma channel.",
 }

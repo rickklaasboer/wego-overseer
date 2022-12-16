@@ -76,9 +76,7 @@ function getImageUrl(
     return imgUrl;
 }
 
-export const DeepFryCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const DeepFryCommand = new Command({
     name: 'deepfry',
     description: 'deepfry image',
     options: [

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Client,
     Collection,
@@ -6,6 +7,7 @@ import {
     IntentsBitField,
     ChatInputCommandInteraction,
     CacheType,
+    Partials,
 } from 'discord.js';
 import Command from '@/commands/Command';
 import Event from '@/events/Event';
@@ -36,8 +38,15 @@ export default class Bot {
             intents: [
                 IntentsBitField.Flags.Guilds,
                 IntentsBitField.Flags.GuildMessages,
-                IntentsBitField.Flags.MessageContent,
                 IntentsBitField.Flags.GuildMessageReactions,
+                IntentsBitField.Flags.MessageContent,
+            ],
+            partials: [
+                Partials.Channel,
+                Partials.Message,
+                Partials.Reaction,
+                Partials.User,
+                Partials.GuildMember,
             ],
         });
         this.rest = tap(new REST({version: '9'}), (rest) => {
@@ -88,7 +97,10 @@ export default class Bot {
 
             if (this.commands.has(interaction.commandName)) {
                 const cmd = this.commands.get(interaction.commandName);
-                cmd?.run(interaction as ChatInputCommandInteraction<CacheType>);
+                cmd?.run(
+                    interaction as ChatInputCommandInteraction<CacheType>,
+                    cmd,
+                );
             }
         });
     }
@@ -97,9 +109,9 @@ export default class Bot {
      * Register event handlers
      */
     private registerEventHandlers(): void {
-        this.events.forEach((evt) =>
-            evt.enabled ? this.client.on(evt.name, evt.run) : null,
-        );
+        for (const event of this.events) {
+            event.enabled ? this.client.on(event.name, event.run) : null;
+        }
     }
 
     /**

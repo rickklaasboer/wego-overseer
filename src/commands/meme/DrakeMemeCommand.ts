@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {i18n} from '@/index';
 
-export const DrakeMemeCommand = new Command<
-    ChatInputCommandInteraction<CacheType>
->({
+export const DrakeMemeCommand = new Command({
     name: 'drake',
     description: 'drake meme generator',
     options: [

@@ -1,7 +1,6 @@
-import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command from '@/commands/Command';
 
-export const PingCommand = new Command<ChatInputCommandInteraction<CacheType>>({
+export const PingCommand = new Command({
     name: 'ping',
     description: 'Ping!',
     run: async (interaction) => {
