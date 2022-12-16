@@ -40,9 +40,13 @@ export const KarmaUserResetCommand = new Command({
         const user = interaction.options.getUser('user') ?? interaction.user;
 
         if (!isAdmin(interaction)) {
-            await interaction.reply(
-                t('errors.common.command.no_permission', interaction.user.id),
-            );
+            await interaction.reply({
+                content: t(
+                    'errors.common.command.no_permission',
+                    interaction.user.id,
+                ),
+                ephemeral: true,
+            });
             return;
         }
 
@@ -59,7 +63,10 @@ export const KarmaUserResetCommand = new Command({
         const username = submitted.fields.getTextInputValue('USERNAME_INPUT');
 
         if (username !== user.username) {
-            await submitted.reply('Usernames did not match, please try again.');
+            await submitted.reply({
+                content: 'Usernames did not match, please try again.',
+                ephemeral: true,
+            });
             return;
         }
 
@@ -68,10 +75,11 @@ export const KarmaUserResetCommand = new Command({
             .andWhere('userId', '=', user.id)
             .delete();
 
-        await submitted.reply(
-            `Done! Removed ${rowsAffected.toFixed()} karma entries of ${
+        await submitted.reply({
+            content: `Done! Removed ${rowsAffected.toFixed()} karma entries of ${
                 user.username
             }. They now have 0 karma.`,
-        );
+            ephemeral: true,
+        });
     },
 });

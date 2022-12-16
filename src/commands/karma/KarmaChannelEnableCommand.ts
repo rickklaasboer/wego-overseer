@@ -11,9 +11,13 @@ export const KarmaChannelEnableCommand = new Command({
         const {id, name = ''} = interaction.options.getChannel('channel') ?? {};
 
         if (!isAdmin(interaction)) {
-            await interaction.reply(
-                t('errors.common.command.no_permission', interaction.user.id),
-            );
+            await interaction.reply({
+                content: t(
+                    'errors.common.command.no_permission',
+                    interaction.user.id,
+                ),
+                ephemeral: true,
+            });
             return;
         }
 
