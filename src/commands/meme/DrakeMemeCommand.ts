@@ -2,7 +2,7 @@
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
-import {i18n} from '@/index';
+import {trans} from '@/util/localization';
 
 export const DrakeMemeCommand = new Command({
     name: 'drake',
@@ -66,7 +66,7 @@ export const DrakeMemeCommand = new Command({
         } catch (err) {
             console.error(err);
             await interaction.reply({
-                content: i18n.__('errors.common.failed', 'drake meme'),
+                content: trans('errors.common.failed', 'drake meme'),
                 ephemeral: true,
             });
         }

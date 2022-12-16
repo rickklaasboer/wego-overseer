@@ -1,7 +1,7 @@
 import Command from '@/commands/Command';
 import Channel from '@/entities/Channel';
-import {t, translate} from '@/index';
 import {isAdmin} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {ensureChannelIsAvailable} from './KarmaCommand/predicates';
 
 export const KarmaChannelEnableCommand = new Command({
@@ -12,7 +12,7 @@ export const KarmaChannelEnableCommand = new Command({
 
         if (!isAdmin(interaction)) {
             await interaction.reply({
-                content: t(
+                content: trans(
                     'errors.common.command.no_permission',
                     interaction.user.id,
                 ),
@@ -32,8 +32,6 @@ export const KarmaChannelEnableCommand = new Command({
                 .patch({isKarmaChannel: true});
         }
 
-        await interaction.reply(
-            translate('karma.channel.enable.success', name),
-        );
+        await interaction.reply(trans('karma.channel.enable.success', name));
     },
 });

@@ -40,6 +40,7 @@ import {KarmaRemoveUpvoteEvent} from '@/events/karma/KarmaRemoveUpvoteEvent';
 import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
 import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
 import {UpvoteEvent} from '@/events/UpvoteEvent';
+import {setLocalizationInstance} from './util/localization';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -48,13 +49,11 @@ const logger = new Logger('wego-overseer:index');
 
 export let bot: Maybe<Bot> = null;
 
-export const i18n = new I18n({
+const i18n = new I18n({
     directory: __dirname + '/lang',
 });
 
-export const t = i18n.__;
-export const trans = t;
-export const translate = trans;
+setLocalizationInstance(i18n);
 
 export let client: Client<boolean>;
 

@@ -3,7 +3,7 @@ import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
-import {i18n} from '@/index';
+import {trans} from '@/util/localization';
 
 const logger = new Logger('wego-overseer:MarieKondoCommand');
 
@@ -64,7 +64,7 @@ export const MarieKondoCommand = new Command({
         } catch (err) {
             logger.fatal('Failed creating marie kondo meme', err);
             await interaction.reply({
-                content: i18n.__('errors.common.failed', 'marie kondo meme'),
+                content: trans('errors.common.failed', 'marie kondo meme'),
                 ephemeral: true,
             });
         }

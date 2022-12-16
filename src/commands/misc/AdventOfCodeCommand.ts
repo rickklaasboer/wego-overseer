@@ -1,9 +1,9 @@
 import Command from '@/commands/Command';
 import fetch from 'node-fetch';
 import Logger from '@/telemetry/logger';
-import {i18n} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';
+import {trans} from '@/util/localization';
 
 const logger = new Logger('wego-overseer:AdventOfCodeCommand');
 
@@ -55,7 +55,7 @@ export const AdventOfCodeCommand = new Command({
         } catch (err) {
             logger.fatal('Could not handle AdventOfCodeCommand', err);
             await interaction.reply({
-                content: i18n.__(
+                content: trans(
                     'errors.common.failed',
                     'advent of code leaderboard',
                 ),

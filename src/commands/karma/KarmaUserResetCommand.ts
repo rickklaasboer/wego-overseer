@@ -1,7 +1,7 @@
 import Command from '@/commands/Command';
 import Karma from '@/entities/Karma';
-import {t} from '@/index';
 import {isAdmin} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {
     ActionRowBuilder,
     ModalBuilder,
@@ -41,7 +41,7 @@ export const KarmaUserResetCommand = new Command({
 
         if (!isAdmin(interaction)) {
             await interaction.reply({
-                content: t(
+                content: trans(
                     'errors.common.command.no_permission',
                     interaction.user.id,
                 ),
