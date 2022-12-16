@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.0...v1.14.1) (2022-12-16)
+
+
+### Bug Fixes
+
+* localization returning key instead of translation ([af16083](https://github.com/rickklaasboer/wego-overseer/commit/af16083e78e6ac8b8c0be2aca02b739a7a59aaaa))
+
 # [1.14.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.13.1...v1.14.0) (2022-12-16)
 
 
