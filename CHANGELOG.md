@@ -1,3 +1,37 @@
+# [1.14.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.13.1...v1.14.0) (2022-12-16)
+
+
+### Bug Fixes
+
+* add guild member partial to bot ([aceec09](https://github.com/rickklaasboer/wego-overseer/commit/aceec093fc0e3c9ef87a78284e7879ebfdb11874))
+* add relationship mappings to entities ([c31ddd7](https://github.com/rickklaasboer/wego-overseer/commit/c31ddd7f0f57f58b4fea2bd0cd808117979a54a1))
+* add required partials to bot ([c5f289a](https://github.com/rickklaasboer/wego-overseer/commit/c5f289a71b1ca8df45ac49a7a56a85db28e63584))
+* check if user is admin before disabling/enabling karma channels ([22e48da](https://github.com/rickklaasboer/wego-overseer/commit/22e48da30a4163fb82491272e18f6ae646e4c086))
+* create unique uuid for every karma entity ([3eeb67b](https://github.com/rickklaasboer/wego-overseer/commit/3eeb67bb7e98127f11a6e0ae1f2629d05b68c45b))
+* fallback to 0 karma if user has none ([a0db915](https://github.com/rickklaasboer/wego-overseer/commit/a0db915168d28f0d3f23007ad9cafd0af900d8eb))
+* guild entity id type to string ([b6b355c](https://github.com/rickklaasboer/wego-overseer/commit/b6b355c10e068df2baa6bb4a11f30dec75e1c086))
+* make channel availability predicate use channel id from interaction ([a76dd74](https://github.com/rickklaasboer/wego-overseer/commit/a76dd743c8beb11dbb9977bc7ab875ea41df84ec))
+* make non-globally important replies ephemeral ([6a9abd8](https://github.com/rickklaasboer/wego-overseer/commit/6a9abd88f19dc078a6425c70c9bb4ce085168a70))
+* remove karma channel reset command ([e5c3440](https://github.com/rickklaasboer/wego-overseer/commit/e5c3440e5b94a552d12f20f914bf3866791bfb7d))
+* remove unused xp columns from user migration/entity ([ab25675](https://github.com/rickklaasboer/wego-overseer/commit/ab256759bfa42145e2b4bc64dd13dfaf34857079))
+* terminate karma create event when author is bot ([45f2d58](https://github.com/rickklaasboer/wego-overseer/commit/45f2d58e836c8879c44db8d5b60978e846482f04))
+
+
+### Features
+
+* add command to get karma of self or user ([28cfd19](https://github.com/rickklaasboer/wego-overseer/commit/28cfd194f243e602ecae100dc107b73fcdfa3535))
+* add functionality for receiving karma from upvote/downvote ([94a796c](https://github.com/rickklaasboer/wego-overseer/commit/94a796c472af7762ed35fd0ebbcb66e0dfd22506))
+* add functionality to detect removing upvote/downvotes ([b896693](https://github.com/rickklaasboer/wego-overseer/commit/b8966933f395f16b6e0750ea07c60e0ec5846fb8))
+* add karma leaderboard command ([1cc1a7a](https://github.com/rickklaasboer/wego-overseer/commit/1cc1a7aa2cd8fd8a0d276d14e23be6a15e667317))
+* add received from to karma entity ([1c674d0](https://github.com/rickklaasboer/wego-overseer/commit/1c674d0e1cd5d0f6dfd892ffa1baa8d84c56c8b1))
+* add upvote/downvote to message when message is created in karma channel ([907fba9](https://github.com/rickklaasboer/wego-overseer/commit/907fba91678be0bf9f3c35f7a9ad4748a429cb52))
+* allow forwarding from command to other command ([5525725](https://github.com/rickklaasboer/wego-overseer/commit/552572559260d8f7197976a25764de4582901ce1))
+* handle karma events with basic predicates and functionality ([79f4365](https://github.com/rickklaasboer/wego-overseer/commit/79f4365aadff36c88850a62d96635d6fa8bbe92f))
+* init channel entity/migration ([85c7955](https://github.com/rickklaasboer/wego-overseer/commit/85c79556a5c4952764b34053f88e92c0a94f078a))
+* init karma entity/migration ([ca12e27](https://github.com/rickklaasboer/wego-overseer/commit/ca12e27c4c4d99b2d27e31af06cca4e163740a65))
+* reset user karma command ([05af062](https://github.com/rickklaasboer/wego-overseer/commit/05af062af19ce8ad9e8cf1f0eafca4e0a72b1ec5))
+* **wip:** add basic functionality for enabling/disabling karma channels ([1338168](https://github.com/rickklaasboer/wego-overseer/commit/13381681de82ffdf095913e503b0c412b446c71b))
+
 ## [1.13.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.13.0...v1.13.1) (2022-12-15)
 
 
