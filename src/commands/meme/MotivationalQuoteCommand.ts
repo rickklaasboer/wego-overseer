@@ -3,8 +3,8 @@ import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
-import {i18n} from '@/index';
 import fetch from 'node-fetch';
+import {trans} from '@/util/localization';
 
 const logger = new Logger('wego-overseer:MotivationalQuoteCommand');
 
@@ -54,7 +54,7 @@ export const MotivationalQuoteCommand = new Command({
         } catch (err) {
             logger.fatal('Failed creating motivational quote meme', err);
             await interaction.reply({
-                content: i18n.__(
+                content: trans(
                     'errors.common.failed',
                     'Motivational Quote Command',
                 ),

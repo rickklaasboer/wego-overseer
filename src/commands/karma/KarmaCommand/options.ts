@@ -80,7 +80,7 @@ const KARMA_COMMAND_OPTIONS: SlashCommandOption[] = [
                 options: [
                     {
                         type: APPLICATION_COMMAND_OPTIONS.CHANNEL,
-                        name: 'user',
+                        name: 'channel',
                         description: 'Channel to get leaderboard for',
                     },
                 ],

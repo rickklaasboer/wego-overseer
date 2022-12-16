@@ -2,7 +2,7 @@
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
-import {i18n} from '@/index';
+import {trans} from '@/util/localization';
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -51,7 +51,7 @@ export const WhereMemeCommand = new Command({
         } catch (err) {
             console.error(err);
             await interaction.reply({
-                content: i18n.__('errors.common.failed', 'where meme'),
+                content: trans('errors.common.failed', 'where meme'),
                 ephemeral: true,
             });
         }
