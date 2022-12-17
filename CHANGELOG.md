@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.4...v1.14.5) (2022-12-17)
+
+
+### Bug Fixes
+
+* only fire karma event when message includes embed ([cf5a714](https://github.com/rickklaasboer/wego-overseer/commit/cf5a7147467f24e58f003b933bd91008fea27601))
+
 ## [1.14.4](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.3...v1.14.4) (2022-12-17)
 
 
