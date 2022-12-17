@@ -1,3 +1,10 @@
+## [1.14.6](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.5...v1.14.6) (2022-12-17)
+
+
+### Bug Fixes
+
+* use localization for i am dad event ([946ae98](https://github.com/rickklaasboer/wego-overseer/commit/946ae98d2dff11e96a48880ce16fdd1df108a002))
+
 ## [1.14.5](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.4...v1.14.5) (2022-12-17)
 
 
