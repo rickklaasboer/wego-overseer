@@ -1,3 +1,10 @@
+## [1.14.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.2...v1.14.3) (2022-12-17)
+
+
+### Bug Fixes
+
+* **noop:** trigger release ([789f5f1](https://github.com/rickklaasboer/wego-overseer/commit/789f5f1c05224c45fa9a98d498107f43da1c3c2b))
+
 ## [1.14.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.1...v1.14.2) (2022-12-17)
 
 
