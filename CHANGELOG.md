@@ -1,3 +1,10 @@
+## [1.14.10](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.9...v1.14.10) (2022-12-18)
+
+
+### Bug Fixes
+
+* always put upvote before downvote in karma reacction order ([a80ba66](https://github.com/rickklaasboer/wego-overseer/commit/a80ba66d81b19077a469c5476b57f200a0b9034f))
+
 ## [1.14.9](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.8...v1.14.9) (2022-12-18)
 
 
