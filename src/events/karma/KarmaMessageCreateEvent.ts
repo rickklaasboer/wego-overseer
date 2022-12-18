@@ -22,9 +22,9 @@ export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
 
             if (!channel.isKarmaChannel) return;
 
-            // Cancel when message does not have any embeds
+            // Cancel when message does not have any embeds or attachments
             // @see https://github.com/rickklaasboer/wego-overseer/issues/70
-            if (!message.embeds.length) return;
+            if (!message.embeds.length && !message.attachments.hasAny()) return;
 
             const emojis = message.guild?.emojis.cache.filter((e) => {
                 return e.name === 'upvote' || e.name === 'downvote';
