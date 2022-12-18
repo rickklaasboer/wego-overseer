@@ -1,3 +1,10 @@
+## [1.14.8](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.7...v1.14.8) (2022-12-18)
+
+
+### Bug Fixes
+
+* **karma:** also check for attachements before cancelling reactions ([ebf39a4](https://github.com/rickklaasboer/wego-overseer/commit/ebf39a48fff248990d5b75a80f75487fb837c1d5))
+
 ## [1.14.7](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.6...v1.14.7) (2022-12-17)
 
 
