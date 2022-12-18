@@ -3,6 +3,7 @@ import {
     ensureGuildIsAvailable,
 } from '@/commands/karma/KarmaCommand/predicates';
 import Logger from '@/telemetry/logger';
+import {isEmpty} from '@/util/misc';
 import {Collection} from 'discord.js';
 import Event from '../Event';
 
@@ -24,7 +25,7 @@ export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
 
             // Cancel when message does not have any embeds or attachments
             // @see https://github.com/rickklaasboer/wego-overseer/issues/70
-            if (!message.embeds.length && !message.attachments.hasAny()) return;
+            if (isEmpty(message.embeds) && isEmpty(message.attachments)) return;
 
             const emojis = message.guild?.emojis.cache.filter((e) => {
                 return e.name === 'upvote' || e.name === 'downvote';
