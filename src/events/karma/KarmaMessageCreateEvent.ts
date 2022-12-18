@@ -27,9 +27,9 @@ export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
             // @see https://github.com/rickklaasboer/wego-overseer/issues/70
             if (isEmpty(message.embeds) && isEmpty(message.attachments)) return;
 
-            const emojis = message.guild?.emojis.cache.filter((e) => {
-                return e.name === 'upvote' || e.name === 'downvote';
-            });
+            const emojis = message.guild?.emojis.cache
+                .filter((e) => e.name === 'upvote' || e.name === 'downvote')
+                .sort((a, b) => b.name?.localeCompare(a.name ?? '') ?? 0);
 
             for (const [key] of emojis ?? new Collection()) {
                 await message.react(key);
