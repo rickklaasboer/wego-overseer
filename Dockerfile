@@ -7,7 +7,4 @@ COPY . .
 # install dependencies
 RUN yarn install --frozen-lockfile
 
-# run migrations
-RUN yarn knex migrate:latest
-
-CMD ["node", "-r", "tsconfig-paths/register", "-r", "ts-node/register", "./src/index.ts"]
+CMD ["./wait-for-it.sh" , "172.21.0.2:3306" , "--strict" , "--timeout=300" , "--" , "./entrypoint.sh"]
