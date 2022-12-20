@@ -1,5 +1,27 @@
 version: '3'
 services:
+    wego_overseer:
+        depends_on:
+            - mysql
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        environment:
+            # Defined in .env
+            DISCORD_APPLICATION_ID: ${DISCORD_APPLICATION_ID}
+            DISCORD_TOKEN: ${DISCORD_TOKEN}
+            DB_CLIENT: ${DB_CLIENT}
+            DB_HOST: mysql #${DB_HOST}
+            DB_USER: ${DB_USER}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_DATABASE: ${DB_DATABASE}
+            GIPHY_API_KEY: ${GIPHY_API_KEY}
+            QCC_EMOJI_NAME: ${QCC_EMOJI_NAME}
+            QCC_MIN_EMOJI_COUNT: ${QCC_MIN_EMOJI_COUNT}
+            QCC_CHANNEL_ID: ${QCC_CHANNEL_ID}
+            AOC_SESSION_COOKIE: ${AOC_SESSION_COOKIE}
+            AOC_LEADERBOARD_URL: ${AOC_LEADERBOARD_URL}
+        restart: 'unless-stopped'
     mysql:
         image: mariadb
         restart: always
