@@ -1,3 +1,10 @@
+## [1.14.12](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.11...v1.14.12) (2022-12-20)
+
+
+### Bug Fixes
+
+* try fixing the dockerfile again ([d13ae9a](https://github.com/rickklaasboer/wego-overseer/commit/d13ae9a05accc739e40ef38bdfceb18fc27788fe))
+
 ## [1.14.11](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.10...v1.14.11) (2022-12-20)
 
 
