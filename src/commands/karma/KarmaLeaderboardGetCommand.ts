@@ -9,11 +9,22 @@ type Row = {
 };
 
 /**
+ * Fetch user safely from discord
+ */
+async function safeFetchUser(userId: string): Promise<{username: string}> {
+    try {
+        return await client.users.fetch(userId);
+    } catch (err) {
+        return {username: userId};
+    }
+}
+
+/**
  * Transform db row to table-formatted row
  */
-async function dbRowToTableRow(row: Row, i: number) {
-    const user = await client.users.fetch(row.userId);
-    return [i + 1, user.username, row.totalReceivedKarma].map(String);
+async function dbRowToTableRow(row: Row, i: number): Promise<string[]> {
+    const {username} = await safeFetchUser(row.userId);
+    return [i + 1, username, row.totalReceivedKarma].map(String);
 }
 
 export const KarmaLeaderboardGetCommand = new Command({
