@@ -1,3 +1,10 @@
+## [1.14.14](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.13...v1.14.14) (2022-12-24)
+
+
+### Bug Fixes
+
+* karma leaderboard command throws error on invalid user id ([fe211e4](https://github.com/rickklaasboer/wego-overseer/commit/fe211e4e43a6e14dff756bd37e43ad510456818a))
+
 ## [1.14.13](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.12...v1.14.13) (2022-12-20)
 
 
