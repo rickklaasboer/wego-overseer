@@ -24,7 +24,7 @@ import {MarieKondoCommand} from '@/commands/meme/MarieKondoCommand';
 import {MockifyCommand} from '@/commands/text/MockifyCommand';
 import {MotivationalQuoteCommand} from '@/commands/meme/MotivationalQuoteCommand';
 import {PingCommand} from '@/commands/PingCommand';
-import {PollCommand} from '@/commands/PollCommand';
+import {PollCommand} from '@/commands/poll';
 import {SpooktoberCommand} from '@/commands/meme/SpooktoberCommand';
 import {StufiCommand} from '@/commands/fun/StufiCommand';
 import {UwuCommand} from '@/commands/text/UwuCommand';
@@ -41,6 +41,7 @@ import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
 import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
 import {UpvoteEvent} from '@/events/UpvoteEvent';
 import {setLocalizationInstance} from './util/localization';
+import {ReceiveVoteEvent} from './events/poll/ReceiveVoteEvent';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -99,6 +100,7 @@ dayjs.extend(timezone);
             KarmaUpvoteEvent,
             KarmaMessageCreateEvent,
             UpvoteEvent,
+            ReceiveVoteEvent,
         ],
     });
 
