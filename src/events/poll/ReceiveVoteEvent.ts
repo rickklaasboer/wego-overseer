@@ -1,8 +1,9 @@
+import {ensureUserIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
 import Poll from '@/entities/Poll';
 import PollOption from '@/entities/PollOption';
 import PollVote from '@/entities/PollVote';
 import Logger from '@/telemetry/logger';
-import PollBuilder from '@/util/PollBuilder';
+import PollBuilder, {VoteActionButtonPayload} from '@/util/PollBuilder';
 import Event from '../Event';
 
 const logger = new Logger('wego-overseer:ReceiveVoteEvent');
@@ -14,61 +15,59 @@ export const ReceiveVoteEvent = new Event({
             // Terminate if not a button
             if (!interaction.isButton()) return;
 
+            const [eventType, pollId, pollOptionId] =
+                interaction.customId.split('|') as VoteActionButtonPayload;
+
             // Terminate if not a vote button
-            if (!interaction.customId.startsWith('VOTE_')) return;
+            if (!eventType.startsWith('VOTE')) return;
+
+            await ensureUserIsAvailable(interaction.user.id);
 
             await interaction.deferUpdate();
 
-            const [, id] = interaction.customId.split('_');
-
-            // Fetch poll option with poll and vote
-            const option = await PollOption.query()
-                .findById(id)
+            const poll = await Poll.query()
                 .withGraphFetched({
-                    poll: {
-                        options: true,
-                    },
-                    votes: true,
-                });
+                    options: {votes: true},
+                })
+                .findById(pollId);
 
+            const option = await PollOption.query().findById(pollOptionId);
+
+            if (!(poll instanceof Poll)) return;
             if (!(option instanceof PollOption)) return;
 
-            // Remove exisiting vote when multiple votes
-            // are not allowed
-            if (!option.poll?.allowMultipleVotes) {
-                await PollVote.query()
-                    .whereIn(
-                        'pollOptionId',
-                        option.poll!.options.map(({id}) => id),
-                    )
-                    .andWhere('userId', interaction.user.id)
-                    .delete();
-            } else {
-                const exists = await PollVote.query()
-                    .where({
-                        userId: interaction.user.id,
-                        pollOptionId: option.id,
-                    })
-                    .first();
+            const pollOptionIds = poll.options.map(({id}) => id);
+            const prevVotes = await PollVote.query()
+                .whereIn('pollOptionId', pollOptionIds)
+                .andWhere('userId', interaction.user.id);
 
-                // Vote already exists, skip
-                if (exists instanceof PollVote) return;
+            if (!poll.allowMultipleVotes && prevVotes.length > 0) {
+                for (const vote of prevVotes) {
+                    await PollVote.query().deleteById(vote.id);
+                }
             }
 
-            // Insert new vote
+            if (poll.allowMultipleVotes && prevVotes.length > 0) {
+                const prevVotesIds = prevVotes.map(({id}) => id);
+                const sameVote = poll.options
+                    .find(({id}) => pollOptionId === id)
+                    ?.votes?.find(({id}) => prevVotesIds.includes(id));
+
+                if (sameVote instanceof PollVote) {
+                    await PollVote.query().deleteById(sameVote.id);
+                }
+            }
+
             await PollOption.relatedQuery('votes')
                 .for(option.id)
                 .insert({userId: interaction.user.id});
 
-            // Refetch poll with options and their votes
-            const poll = await Poll.query()
-                .findById(option.pollId)
-                .withGraphFetched('options.[votes]');
+            // Refetch
+            const refetched = await poll
+                .$query()
+                .withGraphFetched({options: {votes: true}});
 
-            if (!(poll instanceof Poll)) return;
-
-            // Update poll message with new counts
-            const pollBuilder = new PollBuilder(poll, interaction);
+            const pollBuilder = new PollBuilder(refetched, interaction);
             await interaction.message.edit(await pollBuilder.toReply());
         } catch (err) {
             logger.error('Unable to handle ReceiveVoteEvent', err);
