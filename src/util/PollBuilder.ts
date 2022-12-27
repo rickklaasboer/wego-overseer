@@ -17,6 +17,8 @@ type Interaction =
     | ChatInputCommandInteraction<CacheType>
     | ButtonInteraction<CacheType>;
 
+export type VoteActionButtonPayload = [string, string, string];
+
 export default class PollBuilder {
     private poll: Poll;
     private interaction: Interaction;
@@ -73,7 +75,7 @@ export default class PollBuilder {
 
         return this.poll.options.map(({id, name}) => {
             return new ButtonBuilder()
-                .setCustomId(`VOTE_${id}`)
+                .setCustomId(['VOTE', this.poll.id, id].join('|'))
                 .setLabel(name)
                 .setStyle(ButtonStyle.Primary);
         });
