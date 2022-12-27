@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.0...v1.15.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* votes not actually counting ([3dd09e7](https://github.com/rickklaasboer/wego-overseer/commit/3dd09e741b68ed1dc2b65c6d89450d7c7d9264a7))
+
 # [1.15.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.14.14...v1.15.0) (2022-12-25)
 
 
