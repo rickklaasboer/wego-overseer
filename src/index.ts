@@ -11,6 +11,7 @@ import {Maybe} from '@/types/util';
 import {Client} from 'discord.js';
 import {I18n} from 'i18n';
 import {tap} from './util/tap';
+import {Player} from 'discord-player';
 
 // Commands
 import {AdventOfCodeCommand} from '@/commands/misc/AdventOfCodeCommand';
@@ -42,6 +43,7 @@ import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
 import {UpvoteEvent} from '@/events/UpvoteEvent';
 import {setLocalizationInstance} from './util/localization';
 import {ReceiveVoteEvent} from './events/poll/ReceiveVoteEvent';
+import {MusicCommand} from './commands/music/MusicCommand';
 
 const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
@@ -49,6 +51,7 @@ const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
 const logger = new Logger('wego-overseer:index');
 
 export let bot: Maybe<Bot> = null;
+export let player: Maybe<Player> = null;
 
 const i18n = new I18n({
     directory: __dirname + '/lang',
@@ -89,6 +92,7 @@ dayjs.extend(timezone);
             StufiCommand,
             UwuCommand,
             WhereMemeCommand,
+            MusicCommand,
         ],
         events: [
             BangerEvent,
@@ -106,6 +110,7 @@ dayjs.extend(timezone);
 
     try {
         client = await bot.boot();
+        player = new Player(client);
         logger.info(`Bot now ready and listening as '${client.user?.tag}'`);
     } catch (err) {
         logger.fatal(err);
