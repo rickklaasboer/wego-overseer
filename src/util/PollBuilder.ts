@@ -1,5 +1,5 @@
 import Poll from '@/entities/Poll';
-import {EmbedBuilder} from '@discordjs/builders';
+import {EmbedBuilder, EmbedFooterOptions} from '@discordjs/builders';
 import {
     ChatInputCommandInteraction,
     CacheType,
@@ -10,6 +10,7 @@ import {
     BaseMessageOptions,
 } from 'discord.js';
 import {wrapInCodeblock} from './discord';
+import {trans} from './localization';
 import StringBuilder from './StringBuilder';
 import {tableWithHead} from './table';
 
@@ -52,10 +53,7 @@ export default class PollBuilder {
         return new EmbedBuilder()
             .setTitle(this.poll.title)
             .setDescription(this.createEmbedDescription())
-            .setFooter({
-                text: `Created by ${this.interaction.user.tag}`,
-                iconURL: this.interaction.user.displayAvatarURL(),
-            });
+            .setFooter(await this.createEmbedFooter());
     }
 
     /**
@@ -101,5 +99,30 @@ export default class PollBuilder {
             .append('\n\n')
             .append(table)
             .toString();
+    }
+
+    /**
+     * Create embed footer
+     */
+    private async createEmbedFooter(): Promise<EmbedFooterOptions> {
+        // If it's a button interaction we should get the user from
+        // the message intstead of the interaction.
+        if (this.interaction instanceof ButtonInteraction) {
+            // Fetch message because it's undefined by default on ButtonInteraction
+            await this.interaction.message.fetch();
+
+            return {
+                text: trans(
+                    'poll.footer.text',
+                    this.interaction.message.author.username,
+                ),
+                iconURL: this.interaction.message.author.displayAvatarURL(),
+            };
+        }
+
+        return {
+            text: trans('poll.footer.text', this.interaction.user.tag),
+            iconURL: this.interaction.user.displayAvatarURL(),
+        };
     }
 }
