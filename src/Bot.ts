@@ -40,6 +40,7 @@ export default class Bot {
                 IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.GuildMessageReactions,
                 IntentsBitField.Flags.MessageContent,
+                IntentsBitField.Flags.GuildVoiceStates,
             ],
             partials: [
                 Partials.Channel,
