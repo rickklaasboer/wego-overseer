@@ -10,10 +10,12 @@ export const MusicPrevCommand = new Command({
         const queue = player.getQueue(interaction.guild);
 
         if (!queue || !queue.playing) {
+            await interaction.editReply('There is currently nothing playing.');
             return;
         }
 
         if (!queue.previousTracks.length) {
+            await interaction.editReply('There is no previous entry in queue');
             return;
         }
 

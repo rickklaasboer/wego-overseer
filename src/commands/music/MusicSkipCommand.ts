@@ -10,6 +10,7 @@ export const MusicSkipCommand = new Command({
         const queue = player.getQueue(interaction.guild);
 
         if (!queue || !queue.playing) {
+            await interaction.editReply('There is currently nothing playing.');
             return;
         }
 

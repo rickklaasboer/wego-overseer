@@ -28,7 +28,6 @@ export const MusicPlayCommand = new Command({
             spotifyBridge: true,
             ytdlOptions: {
                 filter: 'audioonly',
-                opusEncoded: true,
                 quality: 'highestaudio',
                 highWaterMark: 1 << 30,
             },
@@ -47,6 +46,9 @@ export const MusicPlayCommand = new Command({
 
         if (!requested) {
             queue.destroy();
+            await interaction.editReply(
+                'The requested song could not be found.',
+            );
             return;
         }
 

@@ -8,6 +8,8 @@ import {MusicNextCommand} from '../MusicNextCommand';
 import {MusicQueueCommand} from '../MusicQueueCommand';
 import {MusicStopCommand} from '../MusicStopCommand';
 import {MusicNowCommand} from '../MusicNowCommand';
+import {MusicClearCommand} from '../MusicClearCommand';
+import {MusicSeekCommand} from '../MusicSeekCommand';
 
 const FORWARDABLE_COMMANDS: Record<string, Command> = {
     play: MusicPlayCommand,
@@ -19,6 +21,8 @@ const FORWARDABLE_COMMANDS: Record<string, Command> = {
     stop: MusicStopCommand,
     queue: MusicQueueCommand,
     now: MusicNowCommand,
+    clear: MusicClearCommand,
+    seek: MusicSeekCommand,
 };
 
 export const MusicCommand = new Command({
@@ -85,6 +89,24 @@ export const MusicCommand = new Command({
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'now',
             description: 'Display the currently playing song',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'clear',
+            description: 'Clear the queue',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'seek',
+            description: 'Seek to position in currently playing song',
+            options: [
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.NUMBER,
+                    name: 'seconds',
+                    description: 'Position to seek to in seconds',
+                    min_value: 1,
+                },
+            ],
         },
     ],
     run: async (interaction, self) => {

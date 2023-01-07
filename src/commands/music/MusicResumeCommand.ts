@@ -10,6 +10,9 @@ export const MusicResumeCommand = new Command({
         const queue = player.getQueue(interaction.guild);
 
         if (!queue || !queue.connection.paused) {
+            await interaction.editReply(
+                "There is currently no queue of it's not paused.",
+            );
             return;
         }
 

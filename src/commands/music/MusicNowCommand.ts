@@ -10,7 +10,10 @@ export const MusicNowCommand = new Command({
         if (!player || !interaction.guild) return;
 
         const queue = player.getQueue(interaction.guild);
-        if (!queue || !queue.current) return;
+        if (!queue || !queue.current) {
+            await interaction.editReply('There is currently nothing playing.');
+            return;
+        }
 
         const embed = new EmbedBuilder()
             .setTitle('Currently playing')
