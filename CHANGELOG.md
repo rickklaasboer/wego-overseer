@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.1...v1.15.2) (2023-01-07)
+
+
+### Bug Fixes
+
+* poll created by updating on vote ([d847c3d](https://github.com/rickklaasboer/wego-overseer/commit/d847c3daddfe39c92a9c7c7d52195144d01165c0))
+
 ## [1.15.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.0...v1.15.1) (2022-12-27)
 
 
