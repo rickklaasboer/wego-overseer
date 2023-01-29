@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.3...v2.0.0) (2023-01-29)
+
+
+### Bug Fixes
+
+* upgrade to nodejs 18 ([7be3154](https://github.com/rickklaasboer/wego-overseer/commit/7be3154d2d7c39481628c016c1fe0e2970525487))
+
+
+### BREAKING CHANGES
+
+* now requires nodejs 18
+
 ## [1.15.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.2...v1.15.3) (2023-01-29)
 
 
