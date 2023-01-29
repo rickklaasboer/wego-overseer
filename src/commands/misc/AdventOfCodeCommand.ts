@@ -49,7 +49,15 @@ export const AdventOfCodeCommand = new Command({
 
             await interaction.reply(
                 wrapInCodeblock(
-                    tableWithHead(['#', 'Name', 'Stars', 'Local score'], rows),
+                    tableWithHead(
+                        [
+                            trans('commands.aoc.table.index'),
+                            trans('commands.aoc.table.name'),
+                            trans('commands.aoc.table.stars'),
+                            trans('commands.aoc.table.local_score'),
+                        ],
+                        rows,
+                    ),
                 ),
             );
         } catch (err) {

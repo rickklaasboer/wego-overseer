@@ -52,6 +52,8 @@ export let bot: Maybe<Bot> = null;
 
 const i18n = new I18n({
     directory: __dirname + '/lang',
+    objectNotation: true,
+    defaultLocale: 'en',
 });
 
 setLocalizationInstance(i18n);

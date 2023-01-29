@@ -1,6 +1,7 @@
 import Command from '@/commands/Command';
 import {client, db} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 
 type Row = {
@@ -44,7 +45,16 @@ export const KarmaLeaderboardGetCommand = new Command({
         const rows = await Promise.all(results.map(dbRowToTableRow));
 
         await interaction.reply(
-            wrapInCodeblock(tableWithHead(['#', 'User', 'Karma'], rows)),
+            wrapInCodeblock(
+                tableWithHead(
+                    [
+                        trans('commands.karma.leaderboard.table.index'),
+                        trans('commands.karma.leaderboard.table.user'),
+                        trans('commands.karma.leaderboard.table.karma'),
+                    ],
+                    rows,
+                ),
+            ),
         );
     },
 });
