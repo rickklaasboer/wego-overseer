@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.2...v1.15.3) (2023-01-29)
+
+
+### Bug Fixes
+
+* add url check to karma detection event ([018453e](https://github.com/rickklaasboer/wego-overseer/commit/018453ea958011d284046b0b75f91e5bba6915ce))
+
 ## [1.15.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.1...v1.15.2) (2023-01-07)
 
 
