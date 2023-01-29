@@ -33,7 +33,7 @@ export const KarmaChannelEnableCommand = new Command({
         }
 
         await interaction.reply(
-            trans('commands.karma.channel.enable.success', name),
+            trans('commands.karma.channel.enable.success', name ?? ''),
         );
     },
 });

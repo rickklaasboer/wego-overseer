@@ -3,7 +3,6 @@ import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
-import fetch from 'node-fetch';
 import {trans} from '@/util/localization';
 
 const logger = new Logger('wego-overseer:MotivationalQuoteCommand');

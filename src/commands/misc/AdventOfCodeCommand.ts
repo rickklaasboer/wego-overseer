@@ -1,5 +1,4 @@
 import Command from '@/commands/Command';
-import fetch from 'node-fetch';
 import Logger from '@/telemetry/logger';
 import {wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';

@@ -12,7 +12,7 @@ Below is a getting started guide for using the Wego Overseer.
 
 Prerequisites:
 
--   Node 16.x
+-   Node 18.x
 -   Yarn (v1.x).
 -   Git
 -   Docker (and docker-compose)
