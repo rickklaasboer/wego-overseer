@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 type FixedWidthStill = {
     height: string;
     size: string;
