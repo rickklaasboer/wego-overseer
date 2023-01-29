@@ -1,3 +1,76 @@
 {
-    "events.iamdadevent.msg": "Hoi %s, ik ben Wego Overseer!"
+    "commands": {
+        "help": {
+            "table": {
+                "name": "Naam",
+                "description": "Beschrijving",
+                "arguments": "Argumenten"
+            }
+        },
+        "poll": {
+            "footer": {
+                "text": "Gemaakt door %s"
+            },
+            "table": {
+                "name": "Optie naam",
+                "number_of_votes": "Aantal stemmen"
+            }
+        },
+        "aoc": {
+            "table": {
+                "index": "#",
+                "name": "Naam",
+                "stars": "Sterren",
+                "local_score": "Lokale score"
+            }
+        },
+        "mariekondo": {
+            "text": "%s wekt geen vreugde"
+        },
+        "spooktober": {
+            "time_of_year_incorrect": "Alleen beschikbaar in oktober!!!"
+        },
+        "where": {
+            "text": "waar %s"
+        },
+        "karma": {
+            "channel": {
+                "disable": {
+                    "success": "Klaar! Kanaal `#%s` is niet langer een karmakanaal."
+                },
+                "enable": {
+                    "success": "Klaar! Kanaal `#%s` is nu een karmakanaal."
+                }
+            },
+            "leaderboard": {
+                "table": {
+                    "index": "#",
+                    "user": "Gebruiker",
+                    "karma": "Karma"
+                }
+            },
+            "user": {
+                "get": {
+                    "result": "%s heeft een totaal van %s karma"
+                },
+                "reset": {
+                    "no_match": "Gebruikersnamen komen niet overeen, probeer het opnieuw.",
+                    "success": "Klaar! %s karma-items van %s verwijderd. Hij/zij heeft nu 0 karma."
+                }
+            }
+        }
+    },
+    "events": {
+        "iamdadevent": {
+            "msg": "Hoi %s, ik ben Wego Overseer!"
+        }
+    },
+    "errors": {
+        "common": {
+            "failed": "Er is een onverwachte fout opgetreden tijdens het genereren van uw %s, probeer het later opnieuw!",
+            "command": {
+                "no_permission": "Het spijt me <@%s>, je hebt geen toestemming om deze opdracht uit te voeren."
+            }
+        }
+    }
 }

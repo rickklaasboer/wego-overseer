@@ -87,7 +87,10 @@ export default class PollBuilder {
 
         const table = wrapInCodeblock(
             tableWithHead(
-                ['Option name', '# Votes'],
+                [
+                    trans('commands.poll.table.name'),
+                    trans('commands.poll.table.number_of_votes'),
+                ],
                 options.map((option) => [
                     option.name,
                     String(option.votes?.length ?? 0),
@@ -113,7 +116,7 @@ export default class PollBuilder {
 
             return {
                 text: trans(
-                    'poll.footer.text',
+                    'commands.poll.footer.text',
                     this.interaction.message.author.username,
                 ),
                 iconURL: this.interaction.message.author.displayAvatarURL(),

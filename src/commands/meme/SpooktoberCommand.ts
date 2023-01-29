@@ -1,6 +1,7 @@
 import {EmbedBuilder} from 'discord.js';
 import Command from '@/commands/Command';
 import {getRandomGiphyGif} from '@/lib/giphy';
+import {trans} from '@/util/localization';
 
 const {GIPHY_API_KEY} = process.env;
 
@@ -10,7 +11,9 @@ export const SpooktoberCommand = new Command({
     run: async (interaction) => {
         // 9 is October because starts at 0
         if (new Date().getMonth() !== 9) {
-            interaction.reply('Only available in October!!!');
+            interaction.reply(
+                trans('commands.spooktober.time_of_year_incorrect'),
+            );
             return;
         }
 

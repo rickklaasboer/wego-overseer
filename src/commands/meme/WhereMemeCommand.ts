@@ -30,7 +30,7 @@ export const WhereMemeCommand = new Command({
 
             let text = interaction.options.getString('text')!;
             if (!text.toLowerCase().startsWith('where')) {
-                text = `where ${text}`;
+                text = trans('commands.where.text', text);
             }
 
             img.print(

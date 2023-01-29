@@ -1,5 +1,6 @@
 import Command from '@/commands/Command';
 import Karma from '@/entities/Karma';
+import {trans} from '@/util/localization';
 
 export const KarmaUserGetCommand = new Command({
     name: 'internal',
@@ -16,7 +17,11 @@ export const KarmaUserGetCommand = new Command({
             .first()) as Karma & {totalKarma: number};
 
         await interaction.reply(
-            `${user.username} has a total of ${sum.totalKarma ?? 0} karma`,
+            trans(
+                'commands.karma.user.get.result',
+                user.username,
+                String(sum.totalKarma ?? 0),
+            ),
         );
     },
 });

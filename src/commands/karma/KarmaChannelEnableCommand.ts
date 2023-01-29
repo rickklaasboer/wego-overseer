@@ -32,6 +32,8 @@ export const KarmaChannelEnableCommand = new Command({
                 .patch({isKarmaChannel: true});
         }
 
-        await interaction.reply(trans('karma.channel.enable.success', name));
+        await interaction.reply(
+            trans('commands.karma.channel.enable.success', name),
+        );
     },
 });
