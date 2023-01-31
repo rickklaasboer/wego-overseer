@@ -31,7 +31,7 @@ function getLocale(isDutch: boolean, isEnglish: boolean): string {
 
 export const IAmDadEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
-    run: async (message) => {
+    run: async (_, message) => {
         try {
             // Terminate if user is a bot
             if (message.author.bot) return;

@@ -1,5 +1,4 @@
 import Command, {SlashCommandOption} from '@/commands/Command';
-import {bot} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
@@ -20,7 +19,7 @@ export const HelpCommand = new Command({
     name: 'help',
     description:
         "Shows all of Wego Overseer's commands and describes basic usage",
-    run: async (interaction) => {
+    run: async (interaction, _, {bot}) => {
         if (!bot) return;
 
         const head = [
@@ -30,7 +29,7 @@ export const HelpCommand = new Command({
         ];
 
         const content = wrapInCodeblock(
-            tableWithHead(head, bot.getCommands().map(commandToTableRow)),
+            tableWithHead(head, bot.commands.map(commandToTableRow)),
         );
 
         await interaction.reply(content);

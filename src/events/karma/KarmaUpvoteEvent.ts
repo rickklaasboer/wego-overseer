@@ -12,7 +12,7 @@ const logger = new Logger('wego-overseer:KarmaUpvoteEvent');
 
 export const KarmaUpvoteEvent = new Event<'messageReactionAdd'>({
     name: 'messageReactionAdd',
-    run: async (reaction, user) => {
+    run: async (_, reaction, user) => {
         try {
             if (user.bot) return;
 

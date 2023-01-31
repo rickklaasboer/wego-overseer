@@ -1,6 +1,5 @@
 import Logger from '@/telemetry/logger';
 import {EmbedBuilder} from 'discord.js';
-import {client} from '..';
 import Event from './Event';
 
 const logger = new Logger('wego-overseer:UpvoteEvent');
@@ -13,7 +12,7 @@ const QCC_CHANNEL_ID = process.env.QCC_CHANNEL_ID ?? '';
 export const UpvoteEvent = new Event<'messageReactionAdd'>({
     name: 'messageReactionAdd',
     enabled: true,
-    run: async (reaction) => {
+    run: async ({client}, reaction) => {
         try {
             // Ignore messages in the quality content corner channel
             if (reaction.message.channelId === QCC_CHANNEL_ID) return;
