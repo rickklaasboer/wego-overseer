@@ -1,8 +1,8 @@
 import Command from '@/commands/Command';
-import {client, db} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
+import {Client} from 'discord.js';
 
 type Row = {
     userId: string;
@@ -12,7 +12,10 @@ type Row = {
 /**
  * Fetch user safely from discord
  */
-async function safeFetchUser(userId: string): Promise<{username: string}> {
+async function safeFetchUser(
+    client: Client,
+    userId: string,
+): Promise<{username: string}> {
     try {
         return await client.users.fetch(userId);
     } catch (err) {
@@ -23,15 +26,19 @@ async function safeFetchUser(userId: string): Promise<{username: string}> {
 /**
  * Transform db row to table-formatted row
  */
-async function dbRowToTableRow(row: Row, i: number): Promise<string[]> {
-    const {username} = await safeFetchUser(row.userId);
+async function dbRowToTableRow(
+    row: Row,
+    i: number,
+    client: Client,
+): Promise<string[]> {
+    const {username} = await safeFetchUser(client, row.userId);
     return [i + 1, username, row.totalReceivedKarma].map(String);
 }
 
 export const KarmaLeaderboardGetCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
+    run: async (interaction, _, {db, client}) => {
         // Raw query using knex because generated query by objection
         // would result in a very inefficient query
         const results = (await db
@@ -42,7 +49,9 @@ export const KarmaLeaderboardGetCommand = new Command({
             .orderBy('totalReceivedKarma', 'desc')
             .groupBy('userId')) as Row[];
 
-        const rows = await Promise.all(results.map(dbRowToTableRow));
+        const rows = await Promise.all(
+            results.map((row, i) => dbRowToTableRow(row, i, client)),
+        );
 
         await interaction.reply(
             wrapInCodeblock(

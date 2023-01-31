@@ -7,108 +7,47 @@ import {Model} from 'objection';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import {Maybe} from '@/types/util';
-import {Client} from 'discord.js';
 import {I18n} from 'i18n';
 import {tap} from './util/tap';
+import {setLocalizationInstance} from '@/util/localization';
+import APPLICATION_COMMANDS from '@/commands';
+import APPLICATION_EVENTS from '@/events';
+import {getEnvString} from './util/environment';
 
-// Commands
-import {AdventOfCodeCommand} from '@/commands/misc/AdventOfCodeCommand';
-import {DeepFryCommand} from '@/commands/meme/DeepFryCommand';
-import {DrakeMemeCommand} from '@/commands/meme/DrakeMemeCommand';
-import {HelpCommand} from '@/commands/HelpCommand';
-import {JokeMemeCommand} from '@/commands/meme/JokeMemeCommand';
-import {KarmaCommand} from '@/commands/karma/KarmaCommand';
-import {KortebroekCommand} from '@/commands/fun/KortebroekCommand';
-import {MarieKondoCommand} from '@/commands/meme/MarieKondoCommand';
-import {MockifyCommand} from '@/commands/text/MockifyCommand';
-import {MotivationalQuoteCommand} from '@/commands/meme/MotivationalQuoteCommand';
-import {PingCommand} from '@/commands/PingCommand';
-import {PollCommand} from '@/commands/poll';
-import {SpooktoberCommand} from '@/commands/meme/SpooktoberCommand';
-import {StufiCommand} from '@/commands/fun/StufiCommand';
-import {UwuCommand} from '@/commands/text/UwuCommand';
-import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
-
-// Events
-import {BangerEvent} from '@/events/meme/BangerEvent';
-import {IAmDadEvent} from '@/events/meme/IAmDadEvent';
-import {KabelbaanNoobEvent} from '@/events/meme/KabelbaanNoobEvent';
-import {KarmaDownvoteEvent} from '@/events/karma/KarmaDownvoteEvent';
-import {KarmaRemoveDownvoteEvent} from '@/events/karma/KarmaRemoveDownvoteEvent';
-import {KarmaRemoveUpvoteEvent} from '@/events/karma/KarmaRemoveUpvoteEvent';
-import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
-import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
-import {UpvoteEvent} from '@/events/UpvoteEvent';
-import {setLocalizationInstance} from './util/localization';
-import {ReceiveVoteEvent} from './events/poll/ReceiveVoteEvent';
-
-const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
+const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
+const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
 
 const logger = new Logger('wego-overseer:index');
 
-export let bot: Maybe<Bot> = null;
-
-const i18n = new I18n({
+// prettier-ignore
+setLocalizationInstance(new I18n({
     directory: __dirname + '/lang',
     objectNotation: true,
     defaultLocale: 'en',
-});
-
-setLocalizationInstance(i18n);
-
-export let client: Client<boolean>;
-
-export const db = tap(knex(knexfile), (k) => {
-    k.on('query', logger.debug);
-});
-
-// Setup knex connection for objection
-Model.knex(db);
+}));
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 (async () => {
-    bot = new Bot({
+    const bot = new Bot({
         applicationId: DISCORD_APPLICATION_ID,
         token: DISCORD_TOKEN,
-        commands: [
-            AdventOfCodeCommand,
-            DeepFryCommand,
-            DrakeMemeCommand,
-            HelpCommand,
-            JokeMemeCommand,
-            KarmaCommand,
-            KortebroekCommand,
-            MarieKondoCommand,
-            MockifyCommand,
-            MotivationalQuoteCommand,
-            PingCommand,
-            PollCommand,
-            SpooktoberCommand,
-            StufiCommand,
-            UwuCommand,
-            WhereMemeCommand,
-        ],
-        events: [
-            BangerEvent,
-            IAmDadEvent,
-            KabelbaanNoobEvent,
-            KarmaDownvoteEvent,
-            KarmaRemoveDownvoteEvent,
-            KarmaRemoveUpvoteEvent,
-            KarmaUpvoteEvent,
-            KarmaMessageCreateEvent,
-            UpvoteEvent,
-            ReceiveVoteEvent,
-        ],
+        ctx: {
+            db: tap(knex(knexfile), (db) => {
+                db.on('query', logger.debug);
+                Model.knex(db);
+            }),
+        },
+        commands: APPLICATION_COMMANDS,
+        events: APPLICATION_EVENTS,
     });
 
     try {
-        client = await bot.boot();
-        logger.info(`Bot now ready and listening as '${client.user?.tag}'`);
+        await bot.boot();
+        logger.info(
+            `Bot now ready and listening as '${bot.ctx.client.user?.tag}'`,
+        );
     } catch (err) {
         logger.fatal(err);
     }

@@ -12,12 +12,20 @@ import {
 import Command from '@/commands/Command';
 import Event from '@/events/Event';
 import {tap} from '@/util/tap';
+import {Knex} from 'knex';
 
 type Props = {
     token: string;
     applicationId: string;
     commands: Array<Command<ChatInputCommandInteraction<CacheType>>>;
     events: Array<Event<any>>;
+    ctx: Omit<BotContext, 'client' | 'bot'>;
+};
+
+export type BotContext = {
+    client: Client;
+    db: Knex;
+    bot: Bot;
 };
 
 export default class Bot {
@@ -25,13 +33,14 @@ export default class Bot {
     private applicationId: string;
     private rest: REST;
     private client: Client;
-    private commands = new Collection<
+    private _commands = new Collection<
         string,
         Command<ChatInputCommandInteraction<CacheType>>
     >();
     private events: Array<Event<any>>;
+    private _ctx: BotContext;
 
-    constructor({token, applicationId, commands, events}: Props) {
+    constructor({token, applicationId, commands, events, ctx}: Props) {
         this.token = token;
         this.applicationId = applicationId;
         this.client = new Client({
@@ -54,10 +63,27 @@ export default class Bot {
         });
 
         for (const cmd of commands) {
-            this.commands.set(cmd.name, cmd);
+            this._commands.set(cmd.name, cmd);
         }
 
         this.events = events;
+
+        this._ctx = {
+            ...ctx,
+            client: this.client,
+            bot: this,
+        };
+    }
+
+    public get ctx(): BotContext {
+        return this._ctx;
+    }
+
+    public get commands(): Collection<
+        string,
+        Command<ChatInputCommandInteraction<CacheType>>
+    > {
+        return this._commands;
     }
 
     /**
@@ -65,7 +91,7 @@ export default class Bot {
      */
     private async register(): Promise<void> {
         await this.rest.put(Routes.applicationCommands(this.applicationId), {
-            body: this.commands.map(({name, description, options}) => ({
+            body: this._commands.map(({name, description, options}) => ({
                 name,
                 description,
                 options,
@@ -95,11 +121,12 @@ export default class Bot {
         this.client.on('interactionCreate', (interaction) => {
             if (!interaction.isCommand()) return;
 
-            if (this.commands.has(interaction.commandName)) {
-                const cmd = this.commands.get(interaction.commandName);
+            if (this._commands.has(interaction.commandName)) {
+                const cmd = this._commands.get(interaction.commandName);
                 cmd?.run(
                     interaction as ChatInputCommandInteraction<CacheType>,
                     cmd,
+                    this._ctx,
                 );
             }
         });
@@ -110,17 +137,11 @@ export default class Bot {
      */
     private registerEventHandlers(): void {
         for (const event of this.events) {
-            event.enabled ? this.client.on(event.name, event.run) : null;
+            if (event.enabled) {
+                this.client.on(event.name, (...args) => {
+                    event.run(this._ctx, ...args);
+                });
+            }
         }
-    }
-
-    /**
-     * Get registered commands
-     */
-    public getCommands(): Collection<
-        string,
-        Command<ChatInputCommandInteraction<CacheType>>
-    > {
-        return this.commands;
     }
 }

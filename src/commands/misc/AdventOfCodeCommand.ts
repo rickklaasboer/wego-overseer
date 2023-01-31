@@ -3,11 +3,12 @@ import Logger from '@/telemetry/logger';
 import {wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';
 import {trans} from '@/util/localization';
+import {getEnvString} from '@/util/environment';
 
 const logger = new Logger('wego-overseer:AdventOfCodeCommand');
 
-const AOC_SESSION_COOKIE = process.env.AOC_SESSION_COOKIE ?? '';
-const AOC_LEADERBOARD_URL = process.env.AOC_LEADERBOARD_URL ?? '';
+const AOC_SESSION_COOKIE = getEnvString('AOC_SESSION_COOKIE', '');
+const AOC_LEADERBOARD_URL = getEnvString('AOC_LEADERBOARD_URL', '');
 
 type AOCLeaderboardResponse = {
     owner_id: string;

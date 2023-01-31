@@ -11,7 +11,7 @@ const logger = new Logger('wego-overseer:KarmaMessageCreateEvent');
 
 export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
-    run: async (message) => {
+    run: async (_, message) => {
         try {
             if (message.author.bot) return;
 
