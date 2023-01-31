@@ -12,9 +12,10 @@ import {tap} from './util/tap';
 import {setLocalizationInstance} from '@/util/localization';
 import APPLICATION_COMMANDS from '@/commands';
 import APPLICATION_EVENTS from '@/events';
+import {getEnvString} from './util/environment';
 
-const DISCORD_APPLICATION_ID = process.env.DISCORD_APPLICATION_ID ?? '';
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN ?? '';
+const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
+const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
 
 const logger = new Logger('wego-overseer:index');
 

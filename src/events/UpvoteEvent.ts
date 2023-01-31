@@ -1,13 +1,14 @@
 import Logger from '@/telemetry/logger';
+import {getEnvInt, getEnvString} from '@/util/environment';
 import {EmbedBuilder} from 'discord.js';
 import Event from './Event';
 
 const logger = new Logger('wego-overseer:UpvoteEvent');
 
 // Get .env variables or fall back to defaults
-const QCC_EMOJI_NAME = process.env.QCC_EMOJI_NAME?.toLowerCase() ?? 'upvote';
-const QCC_MIN_EMOJI_COUNT = process.env.QCC_MIN_EMOJI_COUNT ?? 5;
-const QCC_CHANNEL_ID = process.env.QCC_CHANNEL_ID ?? '';
+const QCC_EMOJI_NAME = getEnvString('QCC_EMOJI_NAME', 'upvote').toLowerCase();
+const QCC_MIN_EMOJI_COUNT = getEnvInt('QCC_MIN_EMOJI_COUNT', 5);
+const QCC_CHANNEL_ID = getEnvString('QCC_CHANNEL_ID', '');
 
 export const UpvoteEvent = new Event<'messageReactionAdd'>({
     name: 'messageReactionAdd',
