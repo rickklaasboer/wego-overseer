@@ -1,14 +1,13 @@
-import {player} from '@/index';
 import {secondsToTime} from '@/util/misc';
 import Command from '../Command';
 
 export const MusicSeekCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
+    run: async (interaction, _, {player}) => {
         const guild = interaction.guild;
 
-        if (!player || !guild) return;
+        if (!guild) return;
 
         const queue = player.getQueue(guild);
 

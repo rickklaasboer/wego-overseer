@@ -1,11 +1,10 @@
-import {player} from '@/index';
 import Command from '../Command';
 
 export const MusicPrevCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
-        if (!player || !interaction.guild) return;
+    run: async (interaction, _, {player}) => {
+        if (!interaction.guild) return;
 
         const queue = player.getQueue(interaction.guild);
 

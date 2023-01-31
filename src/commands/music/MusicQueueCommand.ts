@@ -1,4 +1,3 @@
-import {player} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';
 import {tap} from '@/util/tap';
@@ -13,10 +12,10 @@ import Command from '../Command';
 export const MusicQueueCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
+    run: async (interaction, _, {player}) => {
         const guild = interaction.guild;
 
-        if (!player || !guild) return;
+        if (!guild) return;
 
         const embed = new EmbedBuilder();
 

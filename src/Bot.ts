@@ -9,6 +9,7 @@ import {
     CacheType,
     Partials,
 } from 'discord.js';
+import {Player} from 'discord-player';
 import Command from '@/commands/Command';
 import Event from '@/events/Event';
 import {tap} from '@/util/tap';
@@ -19,13 +20,14 @@ type Props = {
     applicationId: string;
     commands: Array<Command<ChatInputCommandInteraction<CacheType>>>;
     events: Array<Event<any>>;
-    ctx: Omit<BotContext, 'client' | 'bot'>;
+    ctx: Omit<BotContext, 'client' | 'bot' | 'player'>;
 };
 
 export type BotContext = {
     client: Client;
     db: Knex;
     bot: Bot;
+    player: Player;
 };
 
 export default class Bot {
@@ -49,6 +51,7 @@ export default class Bot {
                 IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.GuildMessageReactions,
                 IntentsBitField.Flags.MessageContent,
+                IntentsBitField.Flags.GuildVoiceStates,
             ],
             partials: [
                 Partials.Channel,
@@ -70,6 +73,7 @@ export default class Bot {
 
         this._ctx = {
             ...ctx,
+            player: new Player(this.client),
             client: this.client,
             bot: this,
         };

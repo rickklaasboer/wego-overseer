@@ -1,4 +1,3 @@
-import {player} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
 import {EmbedBuilder} from 'discord.js';
 import Command from '../Command';
@@ -6,8 +5,8 @@ import Command from '../Command';
 export const MusicNowCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
-        if (!player || !interaction.guild) return;
+    run: async (interaction, _, {player}) => {
+        if (!interaction.guild) return;
 
         const queue = player.getQueue(interaction.guild);
         if (!queue || !queue.current) {

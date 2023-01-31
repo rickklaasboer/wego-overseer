@@ -1,14 +1,11 @@
-import {player} from '@/index';
 import {GuildMember} from 'discord.js';
 import Command from '../Command';
 
 export const MusicPlayCommand = new Command({
     name: 'internal',
     description: 'internal',
-    run: async (interaction) => {
+    run: async (interaction, _, {player}) => {
         const member = interaction.member as GuildMember;
-
-        if (!player) return;
 
         if (!member.voice.channel) {
             await interaction.editReply('You are not in a voice channel!');
