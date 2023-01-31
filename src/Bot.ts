@@ -123,8 +123,6 @@ export default class Bot {
 
             if (this._commands.has(interaction.commandName)) {
                 const cmd = this._commands.get(interaction.commandName);
-                console.log(this._ctx);
-
                 cmd?.run(
                     interaction as ChatInputCommandInteraction<CacheType>,
                     cmd,
