@@ -1,4 +1,5 @@
 import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 import {tap} from '@/util/tap';
 import {
@@ -22,13 +23,18 @@ export const MusicQueueCommand = new Command({
         const queue = player.getQueue(guild);
 
         if (!queue) {
-            await interaction.editReply(`${guild.id} has no song(s) queue`);
+            await interaction.editReply(
+                trans('commands.music.queue.queue_empty', guild.id),
+            );
             return;
         }
 
         const contents = wrapInCodeblock(
             tableWithHead(
-                ['#', 'Title'],
+                [
+                    trans('commands.music.queue.table.head.position'),
+                    trans('commands.music.queue.table.head.title'),
+                ],
                 queue.tracks.map(({title}, i) => [String(i + 1), title]),
             ),
         );

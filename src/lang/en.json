@@ -58,6 +58,69 @@
                     "success": "Done! Removed %s karma entries of %s. They now have 0 karma."
                 }
             }
+        },
+        "music": {
+            "clear": {
+                "no_music": "There is no music playing.",
+                "queue_empty": "There are no other tracks in the queue, use `/music stop` instead.",
+                "success": "The queue has been cleared."
+            },
+            "next": {
+                "queue_empty": "There's currently no queue, use `/music play` instead.",
+                "playlist_not_allowed": "Cannot add playlist to next position in queue, use `/music play` instead.",
+                "success": "Loaded %s into the next position in the server queue."
+            },
+            "now": {
+                "nothing_playing": "There is currently nothing playing.",
+                "embed": {
+                    "title": "Currently playing",
+                    "footer": {
+                        "text": "Requested by %s"
+                    }
+                }
+            },
+            "pause": {
+                "nothing_playing": "There is currently nothing playing.",
+                "success": "The queue was paused."
+            },
+            "play": {
+                "not_in_voice": "You are not in a voice channel!",
+                "song_not_found": "The requested song could not be found.",
+                "success": {
+                    "playlist": "Added %s songs to queue.",
+                    "single_track": "Now playing %s."
+                }
+            },
+            "prev": {
+                "nothing_playing": "There is currently nothing playing.",
+                "no_previous_entry": "There is no previous entry in queue.",
+                "success": "Replaying previous track."
+            },
+            "queue": {
+                "queue_empty": "%s has no song(s) queue.",
+                "table": {
+                    "head": {
+                        "position": "#",
+                        "title": "Title"
+                    }
+                }
+            },
+            "resume": {
+                "invalid_queue": "There is currently no queue or it's not paused.",
+                "success": "The queue has been resumed."
+            },
+            "seek": {
+                "nothing_playing": "There is currently nothing playing.",
+                "success": "The currently playing song has been seeked to %s minute(s) and %s second(s)"
+            },
+            "skip": {
+                "nothing_playing": "There is currently nothing playing.",
+                "success": "Track %s was skipped."
+            },
+            "stop": {
+                "nothing_playing": "There is currently nothing playing.",
+                "success": "The music has been stopped and queue has been cleared."
+            }
         }
     },
     "events": {

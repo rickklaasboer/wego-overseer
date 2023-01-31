@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import Command from '../Command';
 
 export const MusicSkipCommand = new Command({
@@ -9,7 +10,9 @@ export const MusicSkipCommand = new Command({
         const queue = player.getQueue(interaction.guild);
 
         if (!queue || !queue.playing) {
-            await interaction.editReply('There is currently nothing playing.');
+            await interaction.editReply(
+                trans('commands.music.skip.nothing_playing'),
+            );
             return;
         }
 
@@ -17,6 +20,6 @@ export const MusicSkipCommand = new Command({
 
         queue.skip();
 
-        await interaction.editReply(`Track ${prev} was skipped.`);
+        await interaction.editReply(trans('commands.music.skip.success', prev));
     },
 });

@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import Command from '../Command';
 
 export const MusicPrevCommand = new Command({
@@ -9,17 +10,21 @@ export const MusicPrevCommand = new Command({
         const queue = player.getQueue(interaction.guild);
 
         if (!queue || !queue.playing) {
-            await interaction.editReply('There is currently nothing playing.');
+            await interaction.editReply(
+                trans('commands.music.prev.nothing_playing'),
+            );
             return;
         }
 
         if (!queue.previousTracks.length) {
-            await interaction.editReply('There is no previous entry in queue');
+            await interaction.editReply(
+                trans('commands.music.prev.no_previous_entry'),
+            );
             return;
         }
 
         await queue.back();
 
-        await interaction.editReply(`Replaying previous track`);
+        await interaction.editReply(trans('commands.music.prev.success'));
     },
 });

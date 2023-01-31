@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import {GuildMember} from 'discord.js';
 import Command from '../Command';
 
@@ -8,7 +9,9 @@ export const MusicPlayCommand = new Command({
         const member = interaction.member as GuildMember;
 
         if (!member.voice.channel) {
-            await interaction.editReply('You are not in a voice channel!');
+            await interaction.editReply(
+                trans('commands.music.play.not_in_voice'),
+            );
             return;
         }
 
@@ -44,7 +47,7 @@ export const MusicPlayCommand = new Command({
         if (!requested) {
             queue.destroy();
             await interaction.editReply(
-                'The requested song could not be found.',
+                trans('commands.music.play.song_not_found'),
             );
             return;
         }
@@ -61,8 +64,14 @@ export const MusicPlayCommand = new Command({
 
         await interaction.editReply(
             requested.playlist
-                ? `Added ${requested.tracks.length} songs to queue`
-                : `Now playing ${requested.tracks[0].title}`,
+                ? trans(
+                      'commands.music.play.success.playlist',
+                      String(requested.tracks.length),
+                  )
+                : trans(
+                      'commands.music.play.success.single_track',
+                      requested.tracks[0].title,
+                  ),
         );
     },
 });

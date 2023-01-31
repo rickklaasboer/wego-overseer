@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import {secondsToTime} from '@/util/misc';
 import Command from '../Command';
 
@@ -12,7 +13,9 @@ export const MusicSeekCommand = new Command({
         const queue = player.getQueue(guild);
 
         if (!queue || !queue.playing) {
-            await interaction.editReply('There is no music playing.');
+            await interaction.editReply(
+                trans('commands.music.seek.nothing_playing'),
+            );
             return;
         }
 
@@ -20,10 +23,10 @@ export const MusicSeekCommand = new Command({
         const position = interaction.options.getInteger('seconds')!;
         await queue.seek(position);
 
-        const [min, sec] = secondsToTime(position);
+        const [min, sec] = secondsToTime(position).map(String);
 
         await interaction.editReply(
-            `The currently playing song had been seeked to ${min} minutes and ${sec} seconds`,
+            trans('commands.music.seek.success', min, sec),
         );
     },
 });

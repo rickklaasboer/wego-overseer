@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import Command from '../Command';
 
 export const MusicClearCommand = new Command({
@@ -11,19 +12,19 @@ export const MusicClearCommand = new Command({
         const queue = player.getQueue(guild);
 
         if (!queue || !queue.playing) {
-            await interaction.editReply('There is no music playing.');
+            await interaction.editReply(trans('commands.music.clear.no_music'));
             return;
         }
 
         if (!queue.tracks[0]) {
             await interaction.editReply(
-                'There are no other tracks in the queue, use `/music stop` instead.',
+                trans('commands.music.clear.queue_empty'),
             );
             return;
         }
 
         queue.clear();
-        await interaction.editReply('The queue has been cleared.');
+        await interaction.editReply(trans('commands.music.clear.success'));
         return;
     },
 });

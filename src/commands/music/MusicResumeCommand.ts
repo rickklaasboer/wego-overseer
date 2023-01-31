@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import Command from '../Command';
 
 export const MusicResumeCommand = new Command({
@@ -10,13 +11,13 @@ export const MusicResumeCommand = new Command({
 
         if (!queue || !queue.connection.paused) {
             await interaction.editReply(
-                "There is currently no queue of it's not paused.",
+                trans('commands.music.resume.invalid_queue'),
             );
             return;
         }
 
         queue.setPaused(false);
 
-        await interaction.editReply(`The queue has been resumed`);
+        await interaction.editReply(trans('commands.music.resume.success'));
     },
 });

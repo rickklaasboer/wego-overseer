@@ -1,4 +1,5 @@
 import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {EmbedBuilder} from 'discord.js';
 import Command from '../Command';
 
@@ -10,20 +11,26 @@ export const MusicNowCommand = new Command({
 
         const queue = player.getQueue(interaction.guild);
         if (!queue || !queue.current) {
-            await interaction.editReply('There is currently nothing playing.');
+            await interaction.editReply(
+                trans('commands.music.now.nothing_playing'),
+            );
             return;
         }
 
+        const requestedBy = queue.current.requestedBy;
         const embed = new EmbedBuilder()
-            .setTitle('Currently playing')
+            .setTitle(trans('commands.music.now.embed.title'))
             .setDescription(
                 wrapInCodeblock(
                     queue.current.title + '\n\n' + queue.createProgressBar(),
                 ),
             )
             .setFooter({
-                text: `Requested by ${queue.current.requestedBy.username}`,
-                iconURL: queue.current.requestedBy.displayAvatarURL(),
+                text: trans(
+                    'commands.music.now.embed.footer.text',
+                    requestedBy.username,
+                ),
+                iconURL: requestedBy.displayAvatarURL(),
             });
 
         await interaction.editReply({embeds: [embed]});

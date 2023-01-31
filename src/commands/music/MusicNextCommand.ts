@@ -1,3 +1,4 @@
+import {trans} from '@/util/localization';
 import Command from '../Command';
 
 export const MusicNextCommand = new Command({
@@ -10,7 +11,7 @@ export const MusicNextCommand = new Command({
 
         if (!queue) {
             await interaction.editReply(
-                "There's currently no queue, use `/music play` instead.",
+                trans('commands.music.next.queue_empty'),
             );
             return;
         }
@@ -23,7 +24,7 @@ export const MusicNextCommand = new Command({
 
         if (!requested || requested.playlist) {
             await interaction.editReply(
-                'Cannot add playlist to next position in queue, use `/music play` instead.',
+                trans('commands.music.next.playlist_not_allowed'),
             );
             return;
         }
@@ -31,7 +32,7 @@ export const MusicNextCommand = new Command({
         queue.insert(requested.tracks[0]);
 
         await interaction.editReply(
-            `Loaded ${requested.tracks[0].title} into the next position in the server queue.`,
+            trans('commands.music.next.success', requested.tracks[0].title),
         );
     },
 });
