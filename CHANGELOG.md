@@ -1,3 +1,29 @@
+# [2.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.3...v2.0.0) (2023-01-29)
+
+
+### Bug Fixes
+
+* upgrade to nodejs 18 ([7be3154](https://github.com/rickklaasboer/wego-overseer/commit/7be3154d2d7c39481628c016c1fe0e2970525487))
+
+
+### BREAKING CHANGES
+
+* now requires nodejs 18
+
+## [1.15.3](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.2...v1.15.3) (2023-01-29)
+
+
+### Bug Fixes
+
+* add url check to karma detection event ([018453e](https://github.com/rickklaasboer/wego-overseer/commit/018453ea958011d284046b0b75f91e5bba6915ce))
+
+## [1.15.2](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.1...v1.15.2) (2023-01-07)
+
+
+### Bug Fixes
+
+* poll created by updating on vote ([d847c3d](https://github.com/rickklaasboer/wego-overseer/commit/d847c3daddfe39c92a9c7c7d52195144d01165c0))
+
 ## [1.15.1](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.0...v1.15.1) (2022-12-27)
 
 

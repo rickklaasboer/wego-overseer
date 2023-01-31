@@ -1,6 +1,5 @@
 import {EmbedBuilder} from 'discord.js';
 import Command from '@/commands/Command';
-import fetch from 'node-fetch';
 import {JSDOM} from 'jsdom';
 
 export const KortebroekCommand = new Command({

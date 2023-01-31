@@ -11,7 +11,7 @@ const logger = new Logger('wego-overseer:KarmaRemoveDownvoteEvent');
 
 export const KarmaRemoveUpvoteEvent = new Event<'messageReactionRemove'>({
     name: 'messageReactionRemove',
-    run: async (reaction, user) => {
+    run: async (_, reaction, user) => {
         try {
             if (user.bot) return;
 

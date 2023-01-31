@@ -12,7 +12,7 @@ Below is a getting started guide for using the Wego Overseer.
 
 Prerequisites:
 
--   Node 16.x
+-   Node 18.x
 -   Yarn (v1.x).
 -   Git
 -   Docker (and docker-compose)
@@ -164,27 +164,20 @@ export const GreetCommand = new Command<ChatInputCommandInteraction<CacheType>>(
     {
         name: 'greet',
         description: 'says hello to user',
-        run: async (interaction) => {
+        run: async (interaction, self, ctx) => {
             await interaction.reply(`Hello ${interaction.user.username}!`);
         },
     },
 );
 ```
 
-As you can see, this simply exports a new instance of `Command()`, which automagically handles the run function when it's called. Make sure you register your command in `src/index.ts`.
+As you can see, this simply exports a new instance of `Command()`, which automagically handles the run function when it's called. Make sure you register your command in `src/commands/index.ts`.
 
 ```ts
-bot = new Bot({
-    applicationId: DISCORD_APPLICATION_ID,
-    token: DISCORD_TOKEN,
-    commands: [
-        // ...
-        GreetCommand,
-    ],
-    events: [
-        // ...
-    ],
-});
+export default [
+    // ...
+    GreetCommand,
+];
 ```
 
 ### Creating an event
@@ -201,7 +194,7 @@ const logger = new Logger('wego-overseer:BotReadyEvent');
 
 export const BotReadyEvent = new Event<'ready'>({
     name: 'ready',
-    run: async (client) => {
+    run: async (ctx, client) => {
         try {
             logger.info('Client is now ready!');
         } catch (err) {
@@ -213,20 +206,13 @@ export const BotReadyEvent = new Event<'ready'>({
 
 This event simply outputs `'Client is now ready!'` to the console when our bot is ready, but this should be a sufficient example for creating events. Please note that this event has it's own logger, this is useful for outputting (scoped) debug messages to the console.
 
-Please don't forget to register your event in `src/index.ts`.
+Please don't forget to register your event in `src/events/index.ts`.
 
 ```ts
-bot = new Bot({
-    applicationId: DISCORD_APPLICATION_ID,
-    token: DISCORD_TOKEN,
-    commands: [
-        // ...
-    ],
-    events: [
-        // ...,
-        BotReadyEvent,
-    ],
-});
+export default [
+    // ...,
+    BotReadyEvent,
+];
 ```
 
 ## Contributing

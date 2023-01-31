@@ -1,3 +1,4 @@
+import {BotContext} from '@/Bot';
 import {Maybe} from '@/types/util';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 
@@ -40,7 +41,7 @@ type Props<T> = {
     description: string;
     options?: SlashCommandOption[];
     enabled?: boolean;
-    run(interaction: T, self: Command<T>): Promise<void>;
+    run(interaction: T, self: Command<T>, ctx: BotContext): Promise<void>;
 };
 
 export default class Command<T = ChatInputCommandInteraction<CacheType>> {
@@ -48,7 +49,11 @@ export default class Command<T = ChatInputCommandInteraction<CacheType>> {
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
     public enabled: boolean;
-    public run: (interaction: T, self: Command<T>) => Promise<void>;
+    public run: (
+        interaction: T,
+        self: Command<T>,
+        ctx: BotContext,
+    ) => Promise<void>;
 
     constructor({name, description, options, enabled = true, run}: Props<T>) {
         this.name = name;
@@ -58,7 +63,11 @@ export default class Command<T = ChatInputCommandInteraction<CacheType>> {
         this.run = run;
     }
 
-    public async forwardTo(to: Command<T>, interaction: T): Promise<void> {
-        await to.run(interaction, this);
+    public async forwardTo(
+        to: Command<T>,
+        interaction: T,
+        ctx: BotContext,
+    ): Promise<void> {
+        await to.run(interaction, this, ctx);
     }
 }

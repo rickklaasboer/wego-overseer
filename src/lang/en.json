@@ -1,7 +1,76 @@
 {
-    "errors.common.failed": "An unexpected error occurred while trying to generate your %s, please try again later!",
-    "errors.common.command.no_permission": "I'm sorry <@%s>, you don't have permission to execute this command.",
-    "karma.channel.disable.success": "Done! Channel `#%s` is no longer a karma channel.",
-    "karma.channel.enable.success": "Done! Channel `#%s` is now a karma channel.",
-    "events.iamdadevent.msg": "Hi %s, I am Wego Overseer!"
+    "commands": {
+        "help": {
+            "table": {
+                "name": "Name",
+                "description": "Description",
+                "arguments": "Arguments"
+            }
+        },
+        "poll": {
+            "footer": {
+                "text": "Created by %s"
+            },
+            "table": {
+                "name": "Option name",
+                "number_of_votes": "# Votes"
+            }
+        },
+        "aoc": {
+            "table": {
+                "index": "#",
+                "name": "Name",
+                "stars": "Stars",
+                "local_score": "Local score"
+            }
+        },
+        "mariekondo": {
+            "text": "%s does not spark joy"
+        },
+        "spooktober": {
+            "time_of_year_incorrect": "Only available in October!!!"
+        },
+        "where": {
+            "text": "where %s"
+        },
+        "karma": {
+            "channel": {
+                "disable": {
+                    "success": "Done! Channel `#%s` is no longer a karma channel."
+                },
+                "enable": {
+                    "success": "Done! Channel `#%s` is now a karma channel."
+                }
+            },
+            "leaderboard": {
+                "table": {
+                    "index": "#",
+                    "user": "User",
+                    "karma": "Karma"
+                }
+            },
+            "user": {
+                "get": {
+                    "result": "%s has a total of %s karma"
+                },
+                "reset": {
+                    "no_match": "Usernames did not match, please try again.",
+                    "success": "Done! Removed %s karma entries of %s. They now have 0 karma."
+                }
+            }
+        }
+    },
+    "events": {
+        "iamdadevent": {
+            "msg": "Hi %s, I am Wego Overseer!"
+        }
+    },
+    "errors": {
+        "common": {
+            "failed": "An unexpected error occurred while trying to generate your %s, please try again later!",
+            "command": {
+                "no_permission": "I'm sorry <@%s>, you don't have permission to execute this command."
+            }
+        }
+    }
 }

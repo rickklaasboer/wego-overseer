@@ -50,7 +50,7 @@ export const MarieKondoCommand = new Command({
                 IMAGE_OFFSETS.x,
                 IMAGE_OFFSETS.y,
                 {
-                    text: `${text} does not spark joy`,
+                    text: trans('commands.mariekondo.text', text),
                     alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
                     alignmentY: Jimp.VERTICAL_ALIGN_TOP,
                 },

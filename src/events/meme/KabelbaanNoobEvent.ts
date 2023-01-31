@@ -7,7 +7,7 @@ const noobEmojiId = '375338339248898048';
 
 export const KabelbaanNoobEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
-    run: async (message) => {
+    run: async (_, message) => {
         try {
             // Terminate if user is not kabelbaan
             if (message.author.id != kabelbaanDiscordId) return;

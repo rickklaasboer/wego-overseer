@@ -64,7 +64,7 @@ export const KarmaUserResetCommand = new Command({
 
         if (username !== user.username) {
             await submitted.reply({
-                content: 'Usernames did not match, please try again.',
+                content: trans('commands.karma.user.reset.no_match'),
                 ephemeral: true,
             });
             return;
@@ -76,9 +76,11 @@ export const KarmaUserResetCommand = new Command({
             .delete();
 
         await submitted.reply({
-            content: `Done! Removed ${rowsAffected.toFixed()} karma entries of ${
-                user.username
-            }. They now have 0 karma.`,
+            content: trans(
+                'commands.karma.user.reset.success',
+                rowsAffected.toFixed(),
+                user.username,
+            ),
             ephemeral: true,
         });
     },

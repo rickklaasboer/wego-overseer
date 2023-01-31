@@ -10,7 +10,7 @@ const logger = new Logger('wego-overseer:ReceiveVoteEvent');
 
 export const ReceiveVoteEvent = new Event({
     name: 'interactionCreate',
-    run: async (interaction) => {
+    run: async (_, interaction) => {
         try {
             // Terminate if not a button
             if (!interaction.isButton()) return;

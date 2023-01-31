@@ -32,6 +32,8 @@ export const KarmaChannelDisableCommand = new Command({
                 .patch({isKarmaChannel: false});
         }
 
-        await interaction.reply(trans('karma.channel.disable.success', name));
+        await interaction.reply(
+            trans('commands.karma.channel.disable.success', name ?? ''),
+        );
     },
 });

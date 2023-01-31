@@ -1,14 +1,14 @@
 import Command from '@/commands/Command';
-import fetch from 'node-fetch';
 import Logger from '@/telemetry/logger';
 import {wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';
 import {trans} from '@/util/localization';
+import {getEnvString} from '@/util/environment';
 
 const logger = new Logger('wego-overseer:AdventOfCodeCommand');
 
-const AOC_SESSION_COOKIE = process.env.AOC_SESSION_COOKIE ?? '';
-const AOC_LEADERBOARD_URL = process.env.AOC_LEADERBOARD_URL ?? '';
+const AOC_SESSION_COOKIE = getEnvString('AOC_SESSION_COOKIE', '');
+const AOC_LEADERBOARD_URL = getEnvString('AOC_LEADERBOARD_URL', '');
 
 type AOCLeaderboardResponse = {
     owner_id: string;
@@ -49,7 +49,15 @@ export const AdventOfCodeCommand = new Command({
 
             await interaction.reply(
                 wrapInCodeblock(
-                    tableWithHead(['#', 'Name', 'Stars', 'Local score'], rows),
+                    tableWithHead(
+                        [
+                            trans('commands.aoc.table.index'),
+                            trans('commands.aoc.table.name'),
+                            trans('commands.aoc.table.stars'),
+                            trans('commands.aoc.table.local_score'),
+                        ],
+                        rows,
+                    ),
                 ),
             );
         } catch (err) {

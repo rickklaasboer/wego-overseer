@@ -1,6 +1,11 @@
+import {getEnvString} from '@/util/environment';
 import 'dotenv/config';
 
-const {DB_CLIENT, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE} = process.env;
+const DB_CLIENT = getEnvString('DB_CLIENT', '');
+const DB_HOST = getEnvString('DB_HOST', '');
+const DB_USER = getEnvString('DB_USER', '');
+const DB_PASSWORD = getEnvString('DB_PASSWORD', '');
+const DB_DATABASE = getEnvString('DB_DATABASE', '');
 
 export default {
     client: DB_CLIENT,

@@ -1,6 +1,6 @@
 import Command, {SlashCommandOption} from '@/commands/Command';
-import {bot} from '@/index';
 import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 
 function commandToTableRow({name, description, options}: Command) {
@@ -19,12 +19,17 @@ export const HelpCommand = new Command({
     name: 'help',
     description:
         "Shows all of Wego Overseer's commands and describes basic usage",
-    run: async (interaction) => {
+    run: async (interaction, _, {bot}) => {
         if (!bot) return;
 
-        const head = ['Name', 'Description', 'Arguments'];
+        const head = [
+            trans('commands.help.table.name'),
+            trans('commands.help.table.description'),
+            trans('commands.help.table.arguments'),
+        ];
+
         const content = wrapInCodeblock(
-            tableWithHead(head, bot.getCommands().map(commandToTableRow)),
+            tableWithHead(head, bot.commands.map(commandToTableRow)),
         );
 
         await interaction.reply(content);

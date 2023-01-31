@@ -30,7 +30,7 @@ export const KarmaCommand = new Command({
     name: 'karma',
     description: "Wego Overseer's karma system",
     options: KARMA_COMMAND_OPTIONS,
-    run: async (interaction, self) => {
+    run: async (interaction, self, ctx) => {
         try {
             await ensureUserIsAvailable(interaction.user.id);
             await ensureGuildIsAvailable(interaction.guild?.id);
@@ -46,7 +46,7 @@ export const KarmaCommand = new Command({
             // We don't have to surround all "subcommands" in their own try..catch
             // since this "host" command will already handle these for us.
             // How great!
-            await self.forwardTo(forwardable, interaction);
+            await self.forwardTo(forwardable, interaction, ctx);
         } catch (err) {
             logger.fatal('Unable to handle KarmaCommand', err);
             await interaction.reply({
