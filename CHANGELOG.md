@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.0.0...v2.1.0) (2023-01-31)
+
+
+### Bug Fixes
+
+* add back music command to registered commands ([bcdd24f](https://github.com/rickklaasboer/wego-overseer/commit/bcdd24f032cab313fb953412c9ac32ab1a3e379a))
+* add music player to bot context ([907e979](https://github.com/rickklaasboer/wego-overseer/commit/907e979a353fab4d3bdf3e0f4d277a9444185648))
+* **deps:** update deps ([fdb3043](https://github.com/rickklaasboer/wego-overseer/commit/fdb3043640feb4148ab84fdc9c30cf35ef548928))
+
+
+### Features
+
+* add event handler for queue buttons ([f235702](https://github.com/rickklaasboer/wego-overseer/commit/f235702dd68cf525051d065e95cbb4eb230158e0))
+* localize all music messages ([e91eda0](https://github.com/rickklaasboer/wego-overseer/commit/e91eda079e44bf96f11774cbfb1088f9bf7c35a9))
+* **music:** added clear and seek command ([a0d385d](https://github.com/rickklaasboer/wego-overseer/commit/a0d385db5553b487c301781d542397146e281378))
+* **wip:** basic setup for music functionality ([74eb244](https://github.com/rickklaasboer/wego-overseer/commit/74eb244d27566a13d7c93d95045f375206cefa32))
+
 # [2.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v1.15.3...v2.0.0) (2023-01-29)
 
 
