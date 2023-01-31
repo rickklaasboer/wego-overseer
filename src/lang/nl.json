@@ -58,6 +58,69 @@
                     "success": "Klaar! %s karma-items van %s verwijderd. Hij/zij heeft nu 0 karma."
                 }
             }
+        },
+        "music": {
+            "clear": {
+                "no_music": "Er speelt op moment geen muziek.",
+                "queue_empty": "Er staan momenteel geen andere nummers in de wachtrij, gebruik in plaats daarvan `/music stop`.",
+                "success": "De wachtrij is gewist."
+            },
+            "next": {
+                "queue_empty": "Er is momenteel geen wachtrij, gebruik in plaats daarvan `/music play`.",
+                "playlist_not_allowed": "Kan afspeellijst niet toevoegen aan volgende positie in wachtrij, gebruik in plaats daarvan `/music play`.",
+                "success": "%s naar de volgende positie in de wachtrij geladen."
+            },
+            "now": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "embed": {
+                    "title": "Nu aan het spelen",
+                    "footer": {
+                        "text": "Aangevraagd door %s"
+                    }
+                }
+            },
+            "pause": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "success": "De wachtrij is gepauzeerd."
+            },
+            "play": {
+                "not_in_voice": "Je bevindt je niet in een spraakkanaal!",
+                "song_not_found": "Het gevraagde nummer kan niet worden gevonden.",
+                "success": {
+                    "playlist": "%s nummers toegevoegd aan wachtrij.",
+                    "single_track": "Speelt nu %s."
+                }
+            },
+            "prev": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "no_previous_entry": "Er is geen vorig nummer in de wachtrij.",
+                "success": "Vorig nummer opnieuw afspelen."
+            },
+            "queue": {
+                "queue_empty": "%s heeft geen nummer(s) wachtrij.",
+                "table": {
+                    "head": {
+                        "position": "#",
+                        "title": "Titel"
+                    }
+                }
+            },
+            "resume": {
+                "invalid_queue": "Er is momenteel geen wachtrij of deze is niet gepauzeerd.",
+                "success": "De wachtrij is hervat."
+            },
+            "seek": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "success": "Het momenteel afspelende nummer is gezocht tot %s minuut(en) en %s seconde(n)"
+            },
+            "skip": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "success": "Track %s is overgeslagen."
+            },
+            "stop": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "success": "De muziek is gestopt en de wachtrij is gewist."
+            }
         }
     },
     "events": {
@@ -69,7 +132,8 @@
         "common": {
             "failed": "Er is een onverwachte fout opgetreden tijdens het genereren van uw %s, probeer het later opnieuw!",
             "command": {
-                "no_permission": "Het spijt me <@%s>, je hebt geen toestemming om deze opdracht uit te voeren."
+                "no_permission": "Het spijt me <@%s>, je hebt geen toestemming om deze opdracht uit te voeren.",
+                "unknown_error": "Er is een onverwachte fout opgetreden tijdens het uitvoeren van dit commando."
             }
         }
     }

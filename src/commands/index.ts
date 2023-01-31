@@ -14,6 +14,7 @@ import {SpooktoberCommand} from '@/commands/meme/SpooktoberCommand';
 import {StufiCommand} from '@/commands/fun/StufiCommand';
 import {UwuCommand} from '@/commands/text/UwuCommand';
 import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
+import {MusicCommand} from '@/commands/music/MusicCommand';
 
 export default [
     AdventOfCodeCommand,
@@ -32,4 +33,5 @@ export default [
     StufiCommand,
     UwuCommand,
     WhereMemeCommand,
+    MusicCommand,
 ];
