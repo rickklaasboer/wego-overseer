@@ -109,7 +109,7 @@ export const MusicCommand = new Command({
             ],
         },
     ],
-    run: async (interaction, self) => {
+    run: async (interaction, self, ctx) => {
         try {
             await interaction.deferReply();
 
@@ -119,7 +119,7 @@ export const MusicCommand = new Command({
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const forwardable = FORWARDABLE_COMMANDS[cmd];
-            await self.forwardTo(forwardable, interaction);
+            await self.forwardTo(forwardable, interaction, ctx);
         } catch (err) {
             console.error(err);
         }
