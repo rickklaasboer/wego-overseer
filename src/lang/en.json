@@ -132,7 +132,8 @@
         "common": {
             "failed": "An unexpected error occurred while trying to generate your %s, please try again later!",
             "command": {
-                "no_permission": "I'm sorry <@%s>, you don't have permission to execute this command."
+                "no_permission": "I'm sorry <@%s>, you don't have permission to execute this command.",
+                "unknown_error": "An unexpected error occurred while trying to execute your command."
             }
         }
     }

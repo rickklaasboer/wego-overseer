@@ -10,6 +10,7 @@ import {MusicStopCommand} from '../MusicStopCommand';
 import {MusicNowCommand} from '../MusicNowCommand';
 import {MusicClearCommand} from '../MusicClearCommand';
 import {MusicSeekCommand} from '../MusicSeekCommand';
+import {trans} from '@/util/localization';
 
 const FORWARDABLE_COMMANDS: Record<string, Command> = {
     play: MusicPlayCommand,
@@ -121,6 +122,14 @@ export const MusicCommand = new Command({
             const forwardable = FORWARDABLE_COMMANDS[cmd];
             await self.forwardTo(forwardable, interaction, ctx);
         } catch (err) {
+            if (!interaction.replied) {
+                const queue = ctx.player.getQueue(interaction.guildId ?? '');
+                if (queue) queue.destroy(true);
+
+                await interaction.editReply(
+                    trans('errors.common.command.unknown_error'),
+                );
+            }
             console.error(err);
         }
     },

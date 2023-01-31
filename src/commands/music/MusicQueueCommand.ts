@@ -42,19 +42,19 @@ export const MusicQueueCommand = new Command({
         const row = tap(new ActionRowBuilder<ButtonBuilder>(), (r) => {
             r.addComponents([
                 new ButtonBuilder()
-                    .setCustomId('music_prev')
+                    .setCustomId('MUSIC_PREV')
                     .setEmoji('⏮️')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
-                    .setCustomId('music_play_pause')
+                    .setCustomId('MUSIC_PLAYPAUSE')
                     .setEmoji('⏯️')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
-                    .setCustomId('music_stop')
+                    .setCustomId('MUSIC_STOP')
                     .setEmoji('⏹️')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
-                    .setCustomId('music_next')
+                    .setCustomId('MUSIC_NEXT')
                     .setEmoji('⏭️')
                     .setStyle(ButtonStyle.Secondary),
             ]);

@@ -102,6 +102,11 @@
     http-response-object "^3.0.1"
     parse-cache-control "^1.0.1"
 
+"@discord-player/equalizer@^0.1.2":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.1.4.tgz#4b9c3e8a3c1e169eef48e7899b6a252cd4eb426a"
+  integrity sha512-y87Mwj+38v8sRGfC/jSRykiQhpMV7yUI8Rq+xvczG6u/wBX1bkY53H5RjUZx4of2MLMNnMd9CF+z65E56Ps8DA==
+
 "@discordjs/builders@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@discordjs/builders/-/builders-1.4.0.tgz#b951b5e6ce4e459cd06174ce50dbd51c254c1d47"
@@ -2280,11 +2285,12 @@ discord-api-types@^0.37.20, discord-api-types@^0.37.23:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.30.tgz#04b43ec92b48f20a1bd055681c126f5d5b0840b2"
   integrity sha512-TzNF28zWV63clYW1+rbKT2+2qSI+lw/aNG3lyP2fIj5NioGPz4C+bCSvwhP3Ly3uLwL7v8FxIiu8XKGDsvuwWA==
 
-discord-player@5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-5.3.2.tgz#66c1c07f97de5def70263c7f89a4810638522456"
-  integrity sha512-MVIL6VNBD9JWA0QIaqx6y7/e9a5uDjStp9zOaXvDgY291J+z7k14NU886+fYbczMPaIJYjHkVvy4TtbNdOxWFQ==
+discord-player@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-5.4.0.tgz#9aeb664e827615061b1489db338bf51ab0064178"
+  integrity sha512-Hrab+4aNCZCGJwsGkiQx+nfvJNqMEr9T+vEAzTOybWJ83InJOxUK7t6muVqHlkonmXBM/nVOczWs2qacDlRH6g==
   dependencies:
+    "@discord-player/equalizer" "^0.1.2"
     "@discordjs/voice" "^0.11.0"
     libsodium-wrappers "^0.7.10"
     tiny-typed-emitter "^2.1.0"

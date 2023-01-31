@@ -44,7 +44,7 @@
         "@discordjs/voice": "0.14.0",
         "dayjs": "1.11.7",
         "discord-api-types": "0.37.14",
-        "discord-player": "5.3.2",
+        "discord-player": "5.4.0",
         "discord.js": "14.7.1",
         "dotenv": "16.0.3",
         "ffmpeg-static": "5.1.0",
