@@ -4,6 +4,7 @@ import Karma from './Karma';
 
 export default class User extends Model {
     id!: string;
+    dateOfBirth!: string;
 
     static get relationMappings(): RelationMappings {
         return {

@@ -121,6 +121,22 @@
                 "nothing_playing": "There is currently nothing playing.",
                 "success": "The music has been stopped and queue has been cleared."
             }
+        },
+        "birthday": {
+            "get": {
+                "embed": {
+                    "title": "%s's birthday",
+                    "description": {
+                        "birthday_known": "%s's birthday is on %s. That is in %s days!",
+                        "birthday_unknown": "We don't know %s's birthday yet, try and ask them!"
+                    },
+                    "footer": "Requested by %s"
+                }
+            },
+            "set": {
+                "success": "Done! Your date of birth was set to %s!",
+                "failure": "Whoops, could not set your date of birth. (Try checking the date format!)"
+            }
         }
     },
     "events": {

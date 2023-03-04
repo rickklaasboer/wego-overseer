@@ -1,4 +1,4 @@
-import {getEnvString} from '@/util/environment';
+import {getEnvString} from './src/util/environment';
 import 'dotenv/config';
 
 const DB_CLIENT = getEnvString('DB_CLIENT', '');
