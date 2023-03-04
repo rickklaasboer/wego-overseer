@@ -30,14 +30,33 @@ export const BirthdayCommand = new EntryPointCommand({
             description: "Set a user's birthday",
             options: [
                 {
+                    type: APPLICATION_COMMAND_OPTIONS.NUMBER,
+                    name: 'date_year',
+                    description: 'Date of birth (yyyy)',
+                    min_value: 1900,
+                    max_value: new Date().getFullYear(),
+                    required: true,
+                },
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.NUMBER,
+                    name: 'date_month',
+                    description: 'Date of birth (mm)',
+                    min_value: 1,
+                    max_value: 12,
+                    required: true,
+                },
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.NUMBER,
+                    name: 'date_day',
+                    description: 'Date of birth (dd)',
+                    min_value: 1,
+                    max_value: 31,
+                    required: true,
+                },
+                {
                     type: APPLICATION_COMMAND_OPTIONS.USER,
                     name: 'user',
                     description: 'User to set birthday for (defaults to self)',
-                },
-                {
-                    type: APPLICATION_COMMAND_OPTIONS.STRING,
-                    name: 'date',
-                    description: 'Date of birth (yyyy/mm/dd)',
                 },
             ],
         },

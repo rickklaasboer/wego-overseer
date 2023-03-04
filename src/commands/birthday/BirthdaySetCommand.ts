@@ -1,6 +1,7 @@
 import Logger from '@/telemetry/logger';
 import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
+import {pad} from '@/util/misc';
 import dayjs from 'dayjs';
 import InternalCommand from '../InternalCommand';
 import {ensureUserIsAvailable} from '../karma/KarmaCommand/predicates';
@@ -11,7 +12,7 @@ export const BirthdaySetCommand = new InternalCommand({
     run: async (interaction) => {
         try {
             const requester = interaction.user;
-            const target = interaction.options.getUser('user');
+            const target = interaction.options.getUser('user') ?? requester;
 
             const user = await ensureUserIsAvailable(target?.id);
 
@@ -22,7 +23,13 @@ export const BirthdaySetCommand = new InternalCommand({
                 );
             }
 
-            const date = dayjs(interaction.options.getString('date'));
+            const [year, month, day] = [
+                interaction.options.getNumber('date_year'),
+                pad(interaction.options.getNumber('date_month')),
+                pad(interaction.options.getNumber('date_day')),
+            ];
+
+            const date = dayjs(`${year}/${month}/${day}`);
 
             // Always allowed
             if (isAdmin(interaction) || requester.id === target?.id) {

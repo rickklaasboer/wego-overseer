@@ -1,3 +1,5 @@
+import {Maybe} from '@/types/util';
+
 /**
  * Transform seconds to minutes and seconds
  */
@@ -24,4 +26,16 @@ export function containsUrl(text: string): boolean {
     return new RegExp(
         '([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?',
     ).test(text);
+}
+
+export function pad(n: Maybe<number>): string {
+    if (!n) return '01';
+
+    const subject = String(n);
+
+    if (subject.length === 1) {
+        return subject.padStart(2, '0');
+    }
+
+    return subject;
 }
