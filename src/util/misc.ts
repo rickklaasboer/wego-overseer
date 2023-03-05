@@ -28,13 +28,13 @@ export function containsUrl(text: string): boolean {
     ).test(text);
 }
 
-export function pad(n: Maybe<number>): string {
-    if (!n) return '01';
+export function pad(n: Maybe<number>, maxLength: number): string {
+    if (!n) return '1'.padStart(maxLength, '0');
 
     const subject = String(n);
 
-    if (subject.length === 1) {
-        return subject.padStart(2, '0');
+    if (subject.length < maxLength) {
+        return subject.padStart(maxLength, '0');
     }
 
     return subject;

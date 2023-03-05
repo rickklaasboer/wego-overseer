@@ -23,13 +23,13 @@ export const BirthdaySetCommand = new InternalCommand({
                 );
             }
 
-            const [year, month, day] = [
+            const birthDate = [
                 interaction.options.getNumber('date_year'),
-                pad(interaction.options.getNumber('date_month')),
-                pad(interaction.options.getNumber('date_day')),
+                pad(interaction.options.getNumber('date_month'), 2),
+                pad(interaction.options.getNumber('date_day'), 2),
             ];
 
-            const date = dayjs(`${year}/${month}/${day}`);
+            const date = dayjs(birthDate.join('/'));
 
             // Always allowed
             if (isAdmin(interaction) || requester.id === target?.id) {
