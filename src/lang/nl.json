@@ -121,11 +121,38 @@
                 "nothing_playing": "Er speelt momenteel niets.",
                 "success": "De muziek is gestopt en de wachtrij is gewist."
             }
+        },
+        "birthday": {
+            "get": {
+                "embed": {
+                    "title": "%s's verjaardag",
+                    "description": {
+                        "birthday_known": "%s's verjaardag is op %s. Dat is in %s dagen!",
+                        "birthday_unknown": "We weten %s's verjaardag nog niet, je zou het hem/haar kunnen vragen!"
+                    },
+                    "footer": "Aangevraagd door %s"
+                }
+            },
+            "set": {
+                "success": "Klaar! Je geboortedatum is nu %s!",
+                "failure": "Oeps, kon je geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
+            },
+            "setchannel": {
+                "success": "Klaar! <#%s> is nu het verjaardagskanaal."
+            }
         }
     },
     "events": {
         "iamdadevent": {
             "msg": "Hoi %s, ik ben Wego Overseer!"
+        }
+    },
+    "jobs": {
+        "birthday": {
+            "embed": {
+                "title": "Het is vandaag %s's verjaardag!",
+                "description": "Hoera! Het is <@%s>'s verjaardag vandaag! Wens hen een fijne verjaardag."
+            }
         }
     },
     "errors": {

@@ -12,6 +12,7 @@ import {tap} from './util/tap';
 import {setLocalizationInstance} from '@/util/localization';
 import APPLICATION_COMMANDS from '@/commands';
 import APPLICATION_EVENTS from '@/events';
+import APPLICATION_JOBS from '@/jobs';
 import {getEnvString} from './util/environment';
 
 const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
@@ -41,6 +42,7 @@ dayjs.extend(timezone);
         },
         commands: APPLICATION_COMMANDS,
         events: APPLICATION_EVENTS,
+        jobs: APPLICATION_JOBS,
     });
 
     try {

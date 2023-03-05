@@ -1,3 +1,5 @@
+import {Maybe} from '@/types/util';
+
 /**
  * Transform seconds to minutes and seconds
  */
@@ -24,4 +26,26 @@ export function containsUrl(text: string): boolean {
     return new RegExp(
         '([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?',
     ).test(text);
+}
+
+/**
+ * Wrapper around pad start
+ */
+export function pad(n: Maybe<number>, maxLength: number): string {
+    if (!n) return '1'.padStart(maxLength, '0');
+
+    const subject = String(n);
+
+    if (subject.length < maxLength) {
+        return subject.padStart(maxLength, '0');
+    }
+
+    return subject;
+}
+
+/**
+ * Noop
+ */
+export function noop() {
+    return null;
 }

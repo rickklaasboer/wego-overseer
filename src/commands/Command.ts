@@ -36,7 +36,7 @@ export type SlashCommandOption = {
     autocomplete?: boolean;
 };
 
-type Props<T> = {
+export type Props<T> = {
     name: string;
     description: string;
     options?: SlashCommandOption[];
