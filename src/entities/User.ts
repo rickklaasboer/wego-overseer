@@ -1,10 +1,13 @@
 import Model from '@/entities/Model';
 import {RelationMappings} from 'objection';
-import Karma from './Karma';
+import Guild from '@/entities/Guild';
+import Karma from '@/entities/Karma';
 
 export default class User extends Model {
     id!: string;
     dateOfBirth!: string;
+
+    guilds!: Guild[];
 
     static get relationMappings(): RelationMappings {
         return {
@@ -22,6 +25,18 @@ export default class User extends Model {
                 join: {
                     from: 'karma.receivedFromUserId',
                     to: 'users.id',
+                },
+            },
+            guilds: {
+                relation: Model.ManyToManyRelation,
+                modelClass: Guild,
+                join: {
+                    from: 'users.id',
+                    through: {
+                        from: 'guilds_users.userId',
+                        to: 'guilds_users.guildId',
+                    },
+                    to: 'guilds.id',
                 },
             },
         };

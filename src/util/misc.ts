@@ -28,6 +28,9 @@ export function containsUrl(text: string): boolean {
     ).test(text);
 }
 
+/**
+ * Wrapper around pad start
+ */
 export function pad(n: Maybe<number>, maxLength: number): string {
     if (!n) return '1'.padStart(maxLength, '0');
 
@@ -38,4 +41,11 @@ export function pad(n: Maybe<number>, maxLength: number): string {
     }
 
     return subject;
+}
+
+/**
+ * Noop
+ */
+export function noop() {
+    return null;
 }

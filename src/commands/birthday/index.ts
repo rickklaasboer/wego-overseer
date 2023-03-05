@@ -2,6 +2,7 @@ import EntryPointCommand from '@/commands/EntryPointCommand';
 import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import {BirthdayGetCommand} from '@/commands/birthday/BirthdayGetCommand';
 import {BirthdaySetCommand} from '@/commands/birthday/BirthdaySetCommand';
+import {BirthdaySetChannelCommand} from '@/commands/birthday/BirthdaySetChannelCommand';
 
 export const BirthdayCommand = new EntryPointCommand({
     name: 'birthday',
@@ -10,6 +11,7 @@ export const BirthdayCommand = new EntryPointCommand({
     forwardables: new Map([
         ['get', BirthdayGetCommand],
         ['set', BirthdaySetCommand],
+        ['setchannel', BirthdaySetChannelCommand],
     ]),
     options: [
         {
@@ -57,6 +59,19 @@ export const BirthdayCommand = new EntryPointCommand({
                     type: APPLICATION_COMMAND_OPTIONS.USER,
                     name: 'user',
                     description: 'User to set birthday for (defaults to self)',
+                },
+            ],
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'setchannel',
+            description: "Set's channel to send birthday messages in",
+            options: [
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.CHANNEL,
+                    name: 'channel',
+                    description: 'channel to send birthday messages in',
+                    required: true,
                 },
             ],
         },

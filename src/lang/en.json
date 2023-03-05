@@ -136,12 +136,23 @@
             "set": {
                 "success": "Done! Your date of birth was set to %s!",
                 "failure": "Whoops, could not set your date of birth. (Try checking the date format!)"
+            },
+            "setchannel": {
+                "success": "Done! Set <#%s> as the birthday channel."
             }
         }
     },
     "events": {
         "iamdadevent": {
             "msg": "Hi %s, I am Wego Overseer!"
+        }
+    },
+    "jobs": {
+        "birthday": {
+            "embed": {
+                "title": "It's %s's birthday today!",
+                "description": "Hooray! It's <@%s>'s birthday today! Wish them a happy birthday."
+            }
         }
     },
     "errors": {

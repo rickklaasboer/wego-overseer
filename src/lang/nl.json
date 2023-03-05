@@ -136,12 +136,23 @@
             "set": {
                 "success": "Klaar! Je geboortedatum is nu %s!",
                 "failure": "Oeps, kon je geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
+            },
+            "setchannel": {
+                "success": "Klaar! <#%s> is nu het verjaardagskanaal."
             }
         }
     },
     "events": {
         "iamdadevent": {
             "msg": "Hoi %s, ik ben Wego Overseer!"
+        }
+    },
+    "jobs": {
+        "birthday": {
+            "embed": {
+                "title": "Het is vandaag %s's verjaardag!",
+                "description": "Hoera! Het is <@%s>'s verjaardag vandaag! Wens hen een fijne verjaardag."
+            }
         }
     },
     "errors": {
