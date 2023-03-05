@@ -1,3 +1,16 @@
+# [2.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.1.0...v2.2.0) (2023-03-05)
+
+
+### Bug Fixes
+
+* seperate date fields into parts (year/month/day) ([b103cc7](https://github.com/rickklaasboer/wego-overseer/commit/b103cc786497939197d511d071c646e8ad6c066a))
+
+
+### Features
+
+* add commands for getting/setting birthday ([9fdf692](https://github.com/rickklaasboer/wego-overseer/commit/9fdf6924c65b40b39c02f31706b2e3d71b903b60))
+* create birthday job ([dfbcde4](https://github.com/rickklaasboer/wego-overseer/commit/dfbcde489b25659db08f843221ef0d803be588af))
+
 # [2.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.0.0...v2.1.0) (2023-01-31)
 
 
