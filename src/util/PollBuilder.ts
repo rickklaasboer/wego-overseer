@@ -124,7 +124,7 @@ export default class PollBuilder {
         }
 
         return {
-            text: trans('poll.footer.text', this.interaction.user.tag),
+            text: trans('commands.poll.footer.text', this.interaction.user.tag),
             iconURL: this.interaction.user.displayAvatarURL(),
         };
     }
