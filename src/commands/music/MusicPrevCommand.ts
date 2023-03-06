@@ -7,23 +7,23 @@ export const MusicPrevCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(
                 trans('commands.music.prev.nothing_playing'),
             );
             return;
         }
 
-        if (!queue.previousTracks.length) {
+        if (queue.history.isEmpty()) {
             await interaction.editReply(
                 trans('commands.music.prev.no_previous_entry'),
             );
             return;
         }
 
-        await queue.back();
+        await queue.history.back();
 
         await interaction.editReply(trans('commands.music.prev.success'));
     },

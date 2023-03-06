@@ -20,7 +20,7 @@ export const MusicQueueCommand = new Command({
 
         const embed = new EmbedBuilder();
 
-        const queue = player.getQueue(guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
         if (!queue) {
             await interaction.editReply(

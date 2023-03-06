@@ -9,22 +9,22 @@ export const MusicClearCommand = new Command({
 
         if (!guild) return;
 
-        const queue = player.getQueue(guild);
+        const queue = player.nodes.get(guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(trans('commands.music.clear.no_music'));
             return;
         }
 
-        if (!queue.tracks[0]) {
+        if (queue.tracks.size < 1) {
             await interaction.editReply(
                 trans('commands.music.clear.queue_empty'),
             );
             return;
         }
 
-        queue.clear();
+        queue.tracks.clear();
+
         await interaction.editReply(trans('commands.music.clear.success'));
-        return;
     },
 });

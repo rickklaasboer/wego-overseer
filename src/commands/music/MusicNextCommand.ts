@@ -7,7 +7,7 @@ export const MusicNextCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
         if (!queue) {
             await interaction.editReply(
@@ -29,7 +29,7 @@ export const MusicNextCommand = new Command({
             return;
         }
 
-        queue.insert(requested.tracks[0]);
+        queue.insertTrack(requested.tracks[0], 0);
 
         await interaction.editReply(
             trans('commands.music.next.success', requested.tracks[0].title),

@@ -9,16 +9,16 @@ export const MusicStopCommand = new Command({
 
         if (!guild) return;
 
-        const queue = player.getQueue(guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(
                 trans('commands.music.stop.nothing_playing'),
             );
             return;
         }
 
-        queue.destroy(true);
+        queue.delete();
         await interaction.editReply(trans('commands.music.stop.success'));
     },
 });

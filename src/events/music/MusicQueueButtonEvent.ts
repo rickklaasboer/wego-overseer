@@ -30,7 +30,7 @@ export const MusicQueueButtonEvent = new Event({
                 );
             }
 
-            const queue = player.getQueue(interaction.guild?.id);
+            const queue = player.nodes.get(interaction.guild?.id);
 
             if (!queue) {
                 throw new Error(
@@ -39,22 +39,22 @@ export const MusicQueueButtonEvent = new Event({
             }
 
             if (action === EVENT_TYPES.prev) {
-                await queue.back();
+                await queue.history.back();
                 return;
             }
 
             if (action === EVENT_TYPES.play_pause) {
-                queue.setPaused(!queue.connection.paused);
+                queue.node.pause();
                 return;
             }
 
             if (action === EVENT_TYPES.stop) {
-                queue.destroy(true);
+                queue.delete();
                 return;
             }
 
             if (action === EVENT_TYPES.next) {
-                queue.skip();
+                queue.node.skip();
                 return;
             }
         } catch (err) {

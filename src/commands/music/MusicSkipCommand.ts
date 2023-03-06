@@ -7,18 +7,20 @@ export const MusicSkipCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(
                 trans('commands.music.skip.nothing_playing'),
             );
             return;
         }
 
-        const prev = queue.current.title;
+        const prev = queue.currentTrack?.title;
 
-        queue.skip();
+        queue.node.skip();
+
+        if (!prev) return;
 
         await interaction.editReply(trans('commands.music.skip.success', prev));
     },

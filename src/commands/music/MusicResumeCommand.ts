@@ -7,16 +7,16 @@ export const MusicResumeCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.connection.paused) {
+        if (!queue || !queue.node.isPaused()) {
             await interaction.editReply(
                 trans('commands.music.resume.invalid_queue'),
             );
             return;
         }
 
-        queue.setPaused(false);
+        queue.node.resume();
 
         await interaction.editReply(trans('commands.music.resume.success'));
     },
