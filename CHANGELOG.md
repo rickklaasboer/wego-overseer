@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.2.0...v2.2.1) (2023-03-06)
+
+
+### Bug Fixes
+
+* make birthday days until counter timezone aware ([f841119](https://github.com/rickklaasboer/wego-overseer/commit/f84111937531f4e236e20c7020630cf78977f46f))
+* poll footer translation ([39007d7](https://github.com/rickklaasboer/wego-overseer/commit/39007d77522a5f171b2349dc16e466a720014bb7))
+* users not bound to guild on birthday set ([c71410d](https://github.com/rickklaasboer/wego-overseer/commit/c71410d3aa47822d41966bec254003199b4a261b))
+
 # [2.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.1.0...v2.2.0) (2023-03-05)
 
 
