@@ -17,11 +17,11 @@ async function guildUserExists(
     userId: string,
     guildId: string,
 ): Promise<boolean> {
-    return !!db
+    return !!(await db
         .table('guilds_users')
         .where('userId', '=', userId)
         .andWhere('guildId', '=', guildId)
-        .first();
+        .first());
 }
 
 export const BirthdaySetCommand = new InternalCommand({
