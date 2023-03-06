@@ -1,3 +1,16 @@
+# [2.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.2.1...v2.3.0) (2023-03-06)
+
+
+### Bug Fixes
+
+* binding issues ([701be97](https://github.com/rickklaasboer/wego-overseer/commit/701be9715a29496391f5964a1dd9cf42be97944d))
+
+
+### Features
+
+* birthday calendar command ([80ab0c7](https://github.com/rickklaasboer/wego-overseer/commit/80ab0c7c042b32f590e4541bf239ebab69882682))
+* upcoming birthday command ([4ef35f1](https://github.com/rickklaasboer/wego-overseer/commit/4ef35f1ed6da1e793756724f9088b374dd89592f))
+
 ## [2.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.2.0...v2.2.1) (2023-03-06)
 
 
