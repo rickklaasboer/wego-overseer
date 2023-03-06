@@ -52,7 +52,10 @@ export const BirthdayUpcomingCommand = new InternalCommand({
         } catch (err) {
             logger.fatal('Unable to handle BirthdayUpcomingCommand', err);
             await interaction.followUp({
-                content: trans('errors.common.failed', 'karma command'),
+                content: trans(
+                    'errors.common.failed',
+                    'birthday upcoming command',
+                ),
                 ephemeral: true,
             });
         }

@@ -44,7 +44,10 @@ export const BirthdayCalendarCommand = new InternalCommand({
         } catch (err) {
             logger.fatal('Unable to handle BirthdayCalendarCommand', err);
             await interaction.followUp({
-                content: trans('errors.common.failed', 'karma command'),
+                content: trans(
+                    'errors.common.failed',
+                    'birthday calendar command',
+                ),
                 ephemeral: true,
             });
         }
