@@ -127,7 +127,7 @@
                 "embed": {
                     "title": "%s's verjaardag",
                     "description": {
-                        "birthday_known": "%s's verjaardag is op %s. Dat is in %s dagen!",
+                        "birthday_known": "%s's verjaardag is op %s. Dat is in <t:%s:R>!",
                         "birthday_unknown": "We weten %s's verjaardag nog niet, je zou het hem/haar kunnen vragen!"
                     },
                     "footer": "Aangevraagd door %s"
