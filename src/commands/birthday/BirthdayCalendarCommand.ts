@@ -22,7 +22,10 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 });
 
             const embed = new EmbedBuilder().setTitle(
-                `${interaction.guild?.name}'s birthday calendar`,
+                trans(
+                    'commands.birthday.calendar.embed.title',
+                    interaction.guild?.name ?? '',
+                ),
             );
 
             const rows = await Promise.all(
@@ -33,7 +36,17 @@ export const BirthdayCalendarCommand = new InternalCommand({
             );
 
             const table = wrapInCodeblock(
-                tableWithHead(['User', 'Birthday'], rows),
+                tableWithHead(
+                    [
+                        trans(
+                            'commands.birthday.calendar.embed.table.head.user',
+                        ),
+                        trans(
+                            'commands.birthday.calendar.embed.table.head.birthday',
+                        ),
+                    ],
+                    rows,
+                ),
             );
 
             embed.setDescription(table);

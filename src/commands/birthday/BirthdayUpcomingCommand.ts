@@ -30,7 +30,11 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 });
 
             const embed = new EmbedBuilder().setTitle(
-                `${interaction.guild?.name}'s upcoming birthdays (3 months)`,
+                trans(
+                    'commands.birthday.upcoming.embed.title',
+                    interaction.guild?.name ?? '',
+                    '3 months',
+                ),
             );
 
             const rows = await Promise.all(
@@ -41,7 +45,17 @@ export const BirthdayUpcomingCommand = new InternalCommand({
             );
 
             const table = wrapInCodeblock(
-                tableWithHead(['User', 'Birthday'], rows),
+                tableWithHead(
+                    [
+                        trans(
+                            'commands.birthday.upcoming.embed.table.head.user',
+                        ),
+                        trans(
+                            'commands.birthday.upcoming.embed.table.head.birthday',
+                        ),
+                    ],
+                    rows,
+                ),
             );
 
             embed.setDescription(table);
