@@ -3,10 +3,10 @@ import {EmbedBuilder} from '@discordjs/builders';
 import {ensureUserIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
 import InternalCommand from '../InternalCommand';
 import dayjs from 'dayjs';
-import {daysUntilNextBirthday} from '@/util/birthday';
 import Logger from '@/telemetry/logger';
 import {default as LocalUser} from '@/entities/User';
 import {User as DiscordUser} from 'discord.js';
+import {tap} from '@/util/tap';
 
 const logger = new Logger('wego-overseer:BirthdayGetCommand');
 
@@ -23,7 +23,11 @@ function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
                 'commands.birthday.get.embed.description.birthday_known',
                 discordUser.username,
                 dayjs(user.dateOfBirth).format('MM/DD'),
-                String(daysUntilNextBirthday(new Date(user.dateOfBirth))),
+                String(
+                    tap(new Date(user.dateOfBirth), (d) => {
+                        d.setFullYear(new Date().getFullYear());
+                    }).getTime() / 1000,
+                ),
             ),
         );
     } else {
