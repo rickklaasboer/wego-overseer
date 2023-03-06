@@ -139,6 +139,28 @@
             },
             "setchannel": {
                 "success": "Done! Set <#%s> as the birthday channel."
+            },
+            "calendar": {
+                "embed": {
+                    "title": "%s's birthday calendar",
+                    "table": {
+                        "head": {
+                            "user": "User",
+                            "birthday": "Birthday"
+                        }
+                    }
+                }
+            },
+            "upcoming": {
+                "embed": {
+                    "title": "%s's upcoming birthday calendar (%s)",
+                    "table": {
+                        "head": {
+                            "user": "User",
+                            "birthday": "Birthday"
+                        }
+                    }
+                }
             }
         }
     },

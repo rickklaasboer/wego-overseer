@@ -23,12 +23,12 @@ export default class Guild extends Model {
                 relation: Model.ManyToManyRelation,
                 modelClass: User,
                 join: {
-                    from: 'users.id',
+                    from: 'guilds.id',
                     through: {
-                        from: 'guilds_users.userId',
-                        to: 'guilds_users.guildId',
+                        from: 'guilds_users.guildId',
+                        to: 'guilds_users.userId',
                     },
-                    to: 'guilds.id',
+                    to: 'users.id',
                 },
             },
         };

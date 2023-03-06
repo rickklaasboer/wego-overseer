@@ -3,6 +3,8 @@ import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import {BirthdayGetCommand} from '@/commands/birthday/BirthdayGetCommand';
 import {BirthdaySetCommand} from '@/commands/birthday/BirthdaySetCommand';
 import {BirthdaySetChannelCommand} from '@/commands/birthday/BirthdaySetChannelCommand';
+import {BirthdayUpcomingCommand} from './BirthdayUpcomingCommand';
+import {BirthdayCalendarCommand} from './BirthdayCalendarCommand';
 
 export const BirthdayCommand = new EntryPointCommand({
     name: 'birthday',
@@ -12,6 +14,8 @@ export const BirthdayCommand = new EntryPointCommand({
         ['get', BirthdayGetCommand],
         ['set', BirthdaySetCommand],
         ['setchannel', BirthdaySetChannelCommand],
+        ['upcoming', BirthdayUpcomingCommand],
+        ['calendar', BirthdayCalendarCommand],
     ]),
     options: [
         {
@@ -74,6 +78,16 @@ export const BirthdayCommand = new EntryPointCommand({
                     required: true,
                 },
             ],
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'upcoming',
+            description: 'Get upcoming birthdays',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'calendar',
+            description: "Get the server's birthday calendar",
         },
     ],
 });

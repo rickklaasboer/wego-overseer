@@ -3,26 +3,14 @@ import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {pad} from '@/util/misc';
 import dayjs from 'dayjs';
-import {Knex} from 'knex';
 import InternalCommand from '../InternalCommand';
 import {
     ensureGuildIsAvailable,
     ensureUserIsAvailable,
 } from '../karma/KarmaCommand/predicates';
+import {bindUserToGuild} from './predicates/bindUserToGuild';
 
 const logger = new Logger('wego-overseer:BirthdaySetCommand');
-
-async function guildUserExists(
-    db: Knex,
-    userId: string,
-    guildId: string,
-): Promise<boolean> {
-    return !!(await db
-        .table('guilds_users')
-        .where('userId', '=', userId)
-        .andWhere('guildId', '=', guildId)
-        .first());
-}
 
 export const BirthdaySetCommand = new InternalCommand({
     run: async (interaction, _, {db}) => {
@@ -33,13 +21,7 @@ export const BirthdaySetCommand = new InternalCommand({
             const user = await ensureUserIsAvailable(target?.id);
             const guild = await ensureGuildIsAvailable(interaction.guildId);
 
-            if (!(await guildUserExists(db, user.id, guild.id))) {
-                // Connect user to guild
-                await db.table('guilds_users').insert({
-                    userId: user.id,
-                    guildId: guild.id,
-                });
-            }
+            await bindUserToGuild(db, user, guild);
 
             // If requester is not an admin, but tries to change someone else's birthday
             if (requester.id !== target?.id && !isAdmin(interaction)) {

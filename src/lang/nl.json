@@ -139,6 +139,28 @@
             },
             "setchannel": {
                 "success": "Klaar! <#%s> is nu het verjaardagskanaal."
+            },
+            "calendar": {
+                "embed": {
+                    "title": "%s's verjaardagskalendar",
+                    "table": {
+                        "head": {
+                            "user": "Gebruiker",
+                            "birthday": "Verjaardag"
+                        }
+                    }
+                }
+            },
+            "upcoming": {
+                "embed": {
+                    "title": "%s's aankomende verjaardagen (%s)",
+                    "table": {
+                        "head": {
+                            "user": "Gebruiker",
+                            "birthday": "Verjaardag"
+                        }
+                    }
+                }
             }
         }
     },

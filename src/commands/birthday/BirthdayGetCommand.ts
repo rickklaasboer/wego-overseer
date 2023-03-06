@@ -1,11 +1,15 @@
 import {trans} from '@/util/localization';
 import {EmbedBuilder} from '@discordjs/builders';
-import {ensureUserIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
+import {
+    ensureGuildIsAvailable,
+    ensureUserIsAvailable,
+} from '@/commands/karma/KarmaCommand/predicates';
 import InternalCommand from '../InternalCommand';
 import dayjs from 'dayjs';
 import Logger from '@/telemetry/logger';
 import {default as LocalUser} from '@/entities/User';
 import {User as DiscordUser} from 'discord.js';
+import {bindUserToGuild} from './predicates/bindUserToGuild';
 import {tap} from '@/util/tap';
 
 const logger = new Logger('wego-overseer:BirthdayGetCommand');
@@ -49,11 +53,14 @@ function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
 }
 
 export const BirthdayGetCommand = new InternalCommand({
-    run: async (interaction) => {
+    run: async (interaction, _, {db}) => {
         try {
             const discordUser =
                 interaction.options.getUser('user') ?? interaction.user;
             const user = await ensureUserIsAvailable(discordUser.id);
+            const guild = await ensureGuildIsAvailable(interaction.guildId);
+
+            await bindUserToGuild(db, user, guild);
 
             await interaction.followUp({
                 embeds: [createEmbed(user, discordUser)],
@@ -61,7 +68,7 @@ export const BirthdayGetCommand = new InternalCommand({
         } catch (err) {
             logger.fatal('Unable to handle BirthdayGetCommand', err);
             await interaction.followUp({
-                content: trans('errors.common.failed', 'karma command'),
+                content: trans('errors.common.failed', 'birthday get command'),
                 ephemeral: true,
             });
         }
