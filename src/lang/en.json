@@ -5,6 +5,10 @@
                 "name": "Name",
                 "description": "Description",
                 "arguments": "Arguments"
+            },
+            "pagination": {
+                "meta": "Showing help page %s/%s",
+                "page_to_big": "%s is not a valid page!"
             }
         },
         "poll": {
