@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.0...v2.3.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* add pagination to help command ([323061f](https://github.com/rickklaasboer/wego-overseer/commit/323061f50b91cb4e90723817b345c1386ee37ecb))
+
 # [2.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.2.1...v2.3.0) (2023-03-06)
 
 
