@@ -5,6 +5,10 @@
                 "name": "Naam",
                 "description": "Beschrijving",
                 "arguments": "Argumenten"
+            },
+            "pagination": {
+                "meta": "Laat pagina %s/%s zien",
+                "page_to_big": "%s is geen geldige pagina!"
             }
         },
         "poll": {
