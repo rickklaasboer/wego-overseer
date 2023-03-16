@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.1...v2.3.2) (2023-03-16)
+
+
+### Bug Fixes
+
+* add probability to banger and dad event ([1e25a51](https://github.com/rickklaasboer/wego-overseer/commit/1e25a513ed8a953bec668cbe3fbd366a3978c919))
+
 ## [2.3.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.0...v2.3.1) (2023-03-07)
 
 
