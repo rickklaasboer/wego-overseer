@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.2...v2.3.3) (2023-03-16)
+
+
+### Bug Fixes
+
+* floor generated random number ([1888323](https://github.com/rickklaasboer/wego-overseer/commit/1888323612fe6f55541930397bfe19aafb4fb4cb))
+
 ## [2.3.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.1...v2.3.2) (2023-03-16)
 
 
