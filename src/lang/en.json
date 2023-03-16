@@ -171,6 +171,9 @@
     "events": {
         "iamdadevent": {
             "msg": "Hi %s, I am Wego Overseer!"
+        },
+        "banger": {
+            "msg": "%s? I hardly know her!"
         }
     },
     "jobs": {

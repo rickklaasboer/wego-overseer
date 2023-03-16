@@ -1,4 +1,5 @@
 import Logger from '@/telemetry/logger';
+import {randomNumber} from '@/util/karma';
 import {trans} from '@/util/localization';
 import Event from '../Event';
 
@@ -43,9 +44,16 @@ export const IAmDadEvent = new Event<'messageCreate'>({
 
             const part = getPart(lower, isDutch, isEnglish);
             const locale = getLocale(isDutch, isEnglish);
-            await message.reply(
-                trans({phrase: 'events.iamdadevent.msg', locale}, part),
-            );
+
+            // Super 100% random chance if the event should fire or not
+            // this is to prevent spam
+            const shouldFire = randomNumber(1, 10) === 7;
+
+            if (shouldFire) {
+                await message.reply(
+                    trans({phrase: 'events.iamdadevent.msg', locale}, part),
+                );
+            }
         } catch (err) {
             logger.fatal('Unable to handle IAmDadEvent', err);
         }
