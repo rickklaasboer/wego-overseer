@@ -14,16 +14,16 @@ import Command from '@/commands/Command';
 import Event from '@/events/Event';
 import {tap} from '@/util/tap';
 import {Knex} from 'knex';
-import {CronJob} from 'cron';
 import Logger from './telemetry/logger';
 import dayjs from 'dayjs';
+import Job from './jobs/Job';
 
 type Props = {
     token: string;
     applicationId: string;
     commands: Array<Command<ChatInputCommandInteraction<CacheType>>>;
     events: Array<Event<any>>;
-    jobs: Array<[CronJob, (ctx: BotContext) => Promise<void>]>;
+    jobs: Array<Job>;
     ctx: Omit<BotContext, 'client' | 'bot' | 'player'>;
 };
 
@@ -46,7 +46,7 @@ export default class Bot {
         Command<ChatInputCommandInteraction<CacheType>>
     >();
     private events: Array<Event<any>>;
-    private jobs: Array<[CronJob, (ctx: BotContext) => Promise<void>]>;
+    private jobs: Array<Job>;
     private _ctx: BotContext;
 
     constructor({
@@ -200,11 +200,15 @@ export default class Bot {
      * Register jobs
      */
     private registerJobs(): void {
-        for (const [job, onTick] of this.jobs) {
+        for (const {job, onTick} of this.jobs) {
             job.addCallback(async () => await onTick(this._ctx));
             job.start();
         }
 
-        logger.info(`Successfully registered ${this.jobs.length} job(s)`);
+        logger.info(
+            `Successfully registered ${this.jobs.length} job(s) ([${this.jobs
+                .map(({name}) => name)
+                .join(', ')}])`,
+        );
     }
 }
