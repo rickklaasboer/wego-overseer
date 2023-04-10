@@ -16,6 +16,7 @@ import {UwuCommand} from '@/commands/text/UwuCommand';
 import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
 import {MusicCommand} from '@/commands/music/MusicCommand';
 import {BirthdayCommand} from '@/commands/birthday';
+import {LightshotCommand} from './misc/LightshotCommand';
 
 export default [
     AdventOfCodeCommand,
@@ -36,4 +37,5 @@ export default [
     WhereMemeCommand,
     MusicCommand,
     BirthdayCommand,
+    LightshotCommand,
 ];
