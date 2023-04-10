@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.3...v2.4.0) (2023-04-10)
+
+
+### Features
+
+* add command to generate random lightshot urls ([0e69784](https://github.com/rickklaasboer/wego-overseer/commit/0e697841fd6a3d0b66ed494ba59c765432123b27))
+
 ## [2.3.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.2...v2.3.3) (2023-03-16)
 
 
