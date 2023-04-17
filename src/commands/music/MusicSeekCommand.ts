@@ -10,9 +10,9 @@ export const MusicSeekCommand = new Command({
 
         if (!guild) return;
 
-        const queue = player.getQueue(guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(
                 trans('commands.music.seek.nothing_playing'),
             );
@@ -20,8 +20,8 @@ export const MusicSeekCommand = new Command({
         }
 
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const position = interaction.options.getInteger('seconds')!;
-        await queue.seek(position);
+        const position = interaction.options.getNumber('seconds')!;
+        await queue.node.seek(position);
 
         const [min, sec] = secondsToTime(position).map(String);
 

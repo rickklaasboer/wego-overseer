@@ -7,16 +7,16 @@ export const MusicPauseCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
+        const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.playing) {
+        if (!queue || !queue.isPlaying()) {
             await interaction.editReply(
                 trans('commands.music.pause.nothing_playing'),
             );
             return;
         }
 
-        queue.setPaused(true);
+        queue.node.pause();
 
         await interaction.editReply(trans('commands.music.pause.success'));
     },

@@ -9,28 +9,31 @@ export const MusicNowCommand = new Command({
     run: async (interaction, _, {player}) => {
         if (!interaction.guild) return;
 
-        const queue = player.getQueue(interaction.guild);
-        if (!queue || !queue.current) {
+        const queue = player.nodes.get(interaction.guild.id);
+
+        if (!queue || !queue.currentTrack) {
             await interaction.editReply(
                 trans('commands.music.now.nothing_playing'),
             );
             return;
         }
 
-        const requestedBy = queue.current.requestedBy;
+        const requestedBy = queue.currentTrack.requestedBy;
         const embed = new EmbedBuilder()
             .setTitle(trans('commands.music.now.embed.title'))
             .setDescription(
                 wrapInCodeblock(
-                    queue.current.title + '\n\n' + queue.createProgressBar(),
+                    queue.currentTrack.title +
+                        '\n\n' +
+                        queue.node.createProgressBar(),
                 ),
             )
             .setFooter({
                 text: trans(
                     'commands.music.now.embed.footer.text',
-                    requestedBy.username,
+                    requestedBy?.username ?? '',
                 ),
-                iconURL: requestedBy.displayAvatarURL(),
+                iconURL: requestedBy?.displayAvatarURL(),
             });
 
         await interaction.editReply({embeds: [embed]});

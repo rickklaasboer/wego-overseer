@@ -1,34 +1,33 @@
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
-import {MusicPlayCommand} from '../MusicPlayCommand';
-import {MusicPauseCommand} from '../MusicPauseCommand';
-import {MusicResumeCommand} from '../MusicResumeCommand';
-import {MusicSkipCommand} from '../MusicSkipCommand';
-import {MusicPrevCommand} from '../MusicPrevCommand';
-import {MusicNextCommand} from '../MusicNextCommand';
-import {MusicQueueCommand} from '../MusicQueueCommand';
-import {MusicStopCommand} from '../MusicStopCommand';
-import {MusicNowCommand} from '../MusicNowCommand';
-import {MusicClearCommand} from '../MusicClearCommand';
-import {MusicSeekCommand} from '../MusicSeekCommand';
-import {trans} from '@/util/localization';
+import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
+import {MusicPlayCommand} from '@/commands/music/MusicPlayCommand';
+import {MusicPauseCommand} from '@/commands/music/MusicPauseCommand';
+import {MusicResumeCommand} from '@/commands/music/MusicResumeCommand';
+import {MusicSkipCommand} from '@/commands/music/MusicSkipCommand';
+import {MusicPrevCommand} from '@/commands/music/MusicPrevCommand';
+import {MusicNextCommand} from '@/commands/music/MusicNextCommand';
+import {MusicQueueCommand} from '@/commands/music/MusicQueueCommand';
+import {MusicStopCommand} from '@/commands/music/MusicStopCommand';
+import {MusicNowCommand} from '@/commands/music/MusicNowCommand';
+import {MusicClearCommand} from '@/commands/music/MusicClearCommand';
+import {MusicSeekCommand} from '@/commands/music/MusicSeekCommand';
+import EntryPointCommand from '@/commands/EntryPointCommand';
 
-const FORWARDABLE_COMMANDS: Record<string, Command> = {
-    play: MusicPlayCommand,
-    pause: MusicPauseCommand,
-    resume: MusicResumeCommand,
-    skip: MusicSkipCommand,
-    prev: MusicPrevCommand,
-    next: MusicNextCommand,
-    stop: MusicStopCommand,
-    queue: MusicQueueCommand,
-    now: MusicNowCommand,
-    clear: MusicClearCommand,
-    seek: MusicSeekCommand,
-};
-
-export const MusicCommand = new Command({
+export const MusicCommand = new EntryPointCommand({
     name: 'music',
     description: "Wego overseer's music player",
+    forwardables: new Map([
+        ['play', MusicPlayCommand],
+        ['pause', MusicPauseCommand],
+        ['resume', MusicResumeCommand],
+        ['skip', MusicSkipCommand],
+        ['prev', MusicPrevCommand],
+        ['next', MusicNextCommand],
+        ['stop', MusicStopCommand],
+        ['queue', MusicQueueCommand],
+        ['now', MusicNowCommand],
+        ['clear', MusicClearCommand],
+        ['seek', MusicSeekCommand],
+    ]),
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
@@ -110,27 +109,4 @@ export const MusicCommand = new Command({
             ],
         },
     ],
-    run: async (interaction, self, ctx) => {
-        try {
-            await interaction.deferReply();
-
-            const cmd = interaction.options.getSubcommand();
-
-            // Kinda ugly but it works, I guess.
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const forwardable = FORWARDABLE_COMMANDS[cmd];
-            await self.forwardTo(forwardable, interaction, ctx);
-        } catch (err) {
-            if (!interaction.replied) {
-                const queue = ctx.player.getQueue(interaction.guildId ?? '');
-                if (queue) queue.destroy(true);
-
-                await interaction.editReply(
-                    trans('errors.common.command.unknown_error'),
-                );
-            }
-            console.error(err);
-        }
-    },
 });
