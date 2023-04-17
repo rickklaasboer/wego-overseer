@@ -20,7 +20,7 @@ export const MusicSeekCommand = new Command({
         }
 
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const position = interaction.options.getInteger('seconds')!;
+        const position = interaction.options.getNumber('seconds')!;
         await queue.node.seek(position);
 
         const [min, sec] = secondsToTime(position).map(String);

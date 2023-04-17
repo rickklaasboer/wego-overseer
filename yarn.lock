@@ -107,10 +107,10 @@
   resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.0.tgz#dbeb86893dace3a7909e77b9bab997e0be5472cd"
   integrity sha512-4wJws2PhAaKGxLmFeBWUyxsOMVYLQUX6iwtilV0caXJAgV/lWTQHsdKCIdh7fv0ProFLumDkIS/v9Jwtq1BIJw==
 
-"@discord-player/extractor@4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.1.0.tgz#cb022f3d10fe994c113d4b09e350a4d4fec456dc"
-  integrity sha512-33Mt5K/lpniLA8sMdwk5F4LYC7XmvMWgfjsxl06Z/fTnQIY6014JBwMY1YlKiUceMQ18nxVXohY/QQALAKvATg==
+"@discord-player/extractor@4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.1.2.tgz#2e697434f02a374766861a040deebe146a7c96a7"
+  integrity sha512-sG0KG3tC9/t2hnzXP7amaURbZ+7KfIXma+sH2UyAJKqX3LgYnFvUxm1deL29lPrqf8wjR9XEEOt5TOxpsyP74Q==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.2"
@@ -2310,10 +2310,10 @@ discord-api-types@^0.37.20, discord-api-types@^0.37.23:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.30.tgz#04b43ec92b48f20a1bd055681c126f5d5b0840b2"
   integrity sha512-TzNF28zWV63clYW1+rbKT2+2qSI+lw/aNG3lyP2fIj5NioGPz4C+bCSvwhP3Ly3uLwL7v8FxIiu8XKGDsvuwWA==
 
-discord-player@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.0.0.tgz#deabea12ce147ef6cf29651a30f3897f85b63559"
-  integrity sha512-IN1BkILYFvyLkqEyaNAmLARy9aU74mdBrArjCdgHHYWGthMQfii/dRKrkdsNrpUYMcMJemQUdwjDSaaNHjqhMA==
+discord-player@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.1.1.tgz#04ba5a38d4eda744f32f61359642d3c86edaeee8"
+  integrity sha512-gIN0V+IBT1xcLmzFqfbq9pM8B7crZvbfTwdey1R99P3DdAfaRbg+F1hw9l5ftK2X492O3uAjev+ZBh1CcFU3pQ==
   dependencies:
     "@discord-player/equalizer" "*"
     "@discord-player/utils" "*"
@@ -6833,10 +6833,10 @@ youtube-sr@4.3.4, youtube-sr@^4.3.4:
   resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.4.tgz#cbd2d446de2b0c43f5dd3ea5333222a327eddaf0"
   integrity sha512-olSYcR80XigutCrePEXBX3/RJJrWfonJQj7+/ggBiWU0CzTDLE1q8+lpWTWCG0JpzhzILp/IB/Bq/glGqqr1TQ==
 
-ytdl-core@4.11.2:
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.11.2.tgz#c2341916b9757171741a2fa118b6ffbb4ffd92f7"
-  integrity sha512-D939t9b4ZzP3v0zDvehR2q+KgG97UTgrTKju3pOPGQcXtl4W6W5z0EpznzcJFu+OOpl7S7Ge8hv8zU65QnxYug==
+ytdl-core@4.11.4:
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.11.4.tgz#0ee2bd04d8effa7b8762a3ba0e3d038e37dc10f2"
+  integrity sha512-tsVvqt++B5LSTMnCKQb4H/PFBewKj7gGPJ6KIM5gOFGMKNZj4qglGAl4QGFG8cNPP6wY54P80FDID5eN2di0GQ==
   dependencies:
     m3u8stream "^0.8.6"
     miniget "^4.2.2"

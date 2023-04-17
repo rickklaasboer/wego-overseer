@@ -40,14 +40,14 @@
         "typescript": "4.9.5"
     },
     "dependencies": {
-        "@discord-player/extractor": "4.1.0",
+        "@discord-player/extractor": "4.1.2",
         "@discordjs/opus": "0.9.0",
         "@discordjs/rest": "1.5.0",
         "@discordjs/voice": "0.14.0",
         "cron": "2.2.0",
         "dayjs": "1.11.7",
         "discord-api-types": "0.37.31",
-        "discord-player": "6.0.0",
+        "discord-player": "6.1.1",
         "discord.js": "14.7.1",
         "dotenv": "16.0.3",
         "ffmpeg-static": "5.1.0",
@@ -62,7 +62,7 @@
         "text-table": "0.2.0",
         "uwuifier": "4.0.5",
         "youtube-sr": "4.3.4",
-        "ytdl-core": "4.11.2"
+        "ytdl-core": "4.11.4"
     },
     "lint-staged": {
         "*.{ts,js}": [
