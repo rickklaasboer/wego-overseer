@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.4.0...v2.5.0) (2023-04-17)
+
+
+### Features
+
+* bi ba bussin event ([b59a617](https://github.com/rickklaasboer/wego-overseer/commit/b59a6179837a2eeee57c8bba2bb7ede00d899292))
+
 # [2.4.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.3.3...v2.4.0) (2023-04-10)
 
 
