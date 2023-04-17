@@ -1,3 +1,11 @@
+## [2.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.0...v2.5.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* **deps:** upgrade discord player and dependencies ([e9c534d](https://github.com/rickklaasboer/wego-overseer/commit/e9c534d619cf34f3035b03b9c038c62775b7cc28))
+* **deps:** upgrade to discord-player v6 ([d00417c](https://github.com/rickklaasboer/wego-overseer/commit/d00417cdcb5bee09a8cbf6b23aa9180fccfa608f))
+
 # [2.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.4.0...v2.5.0) (2023-04-17)
 
 
