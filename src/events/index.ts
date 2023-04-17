@@ -8,7 +8,8 @@ import {KarmaUpvoteEvent} from '@/events/karma/KarmaUpvoteEvent';
 import {KarmaMessageCreateEvent} from '@/events/karma/KarmaMessageCreateEvent';
 import {UpvoteEvent} from '@/events/UpvoteEvent';
 import {ReceiveVoteEvent} from '@/events/poll/ReceiveVoteEvent';
-import {MusicQueueButtonEvent} from './music/MusicQueueButtonEvent';
+import {MusicQueueButtonEvent} from '@/events/music/MusicQueueButtonEvent';
+import {BiBaBussinEvent} from '@/events/meme/BiBaBussinEvent';
 
 export default [
     BangerEvent,
@@ -22,4 +23,5 @@ export default [
     UpvoteEvent,
     ReceiveVoteEvent,
     MusicQueueButtonEvent,
+    BiBaBussinEvent,
 ];
