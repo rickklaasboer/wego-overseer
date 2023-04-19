@@ -8,6 +8,7 @@ const vowels = ['a', 'e', 'i', 'o', 'u'];
 
 export const BiBaBussinEvent = new Event({
     name: 'messageCreate',
+    enabled: false,
     run: async (_, message) => {
         try {
             if (message.author.bot) return;
