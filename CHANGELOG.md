@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.1...v2.5.2) (2023-04-19)
+
+
+### Bug Fixes
+
+* disable bi ba bussin event ([b2e0211](https://github.com/rickklaasboer/wego-overseer/commit/b2e0211fa34c13d7be4ed4b3951a26fdb4159cd9))
+
 ## [2.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.0...v2.5.1) (2023-04-17)
 
 
