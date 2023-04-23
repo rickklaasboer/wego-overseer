@@ -3,6 +3,7 @@ import {
     CacheType,
     MessagePayload,
     InteractionReplyOptions,
+    EmbedBuilder,
 } from 'discord.js';
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
@@ -20,21 +21,18 @@ function createFollowUp(
     interaction: ChatInputCommandInteraction<CacheType>,
     image: Base64JimpImage,
 ): string | MessagePayload | InteractionReplyOptions {
+    const embed = new EmbedBuilder()
+        .setTitle('Deepfry')
+        .setImage('attachment://unknown.jpg')
+        .setColor(Math.floor(Math.random() * 16777214) + 1)
+        .setFooter({
+            text: `Requested by ${interaction.user.tag}`,
+            iconURL: interaction.user.displayAvatarURL(),
+        })
+        .setTimestamp(new Date());
+
     return {
-        embeds: [
-            {
-                title: 'Deepfry',
-                image: {
-                    url: 'attachment://unknown.jpg',
-                },
-                color: Math.floor(Math.random() * 16777214) + 1,
-                footer: {
-                    text: `Requested by ${interaction.user.tag}`,
-                    icon_url: interaction.user.displayAvatarURL(),
-                },
-                timestamp: new Date().toISOString(),
-            },
-        ],
+        embeds: [embed],
         files: [image.toAttachment()],
     };
 }
@@ -58,22 +56,14 @@ function getUserAvatarUrl(
 function getImageUrl(
     interaction: ChatInputCommandInteraction<CacheType>,
 ): Maybe<string> {
-    let imgUrl;
-
-    if (interaction.options.getSubcommand() == 'image') {
+    if (interaction.options.getSubcommand() === 'image') {
         const attachment = interaction.options.getAttachment('image');
-        if (attachment != null) {
-            if (attachment.size >= 8_000_000) {
-                throw new Error('File size too big (>=8mb)');
-            }
-
-            imgUrl = attachment.attachment as string;
+        if (attachment && !(attachment.size >= 8_000_000)) {
+            return attachment.url;
         }
-    } else {
-        imgUrl = getUserAvatarUrl(interaction);
     }
 
-    return imgUrl;
+    return getUserAvatarUrl(interaction);
 }
 
 export const DeepFryCommand = new Command({
