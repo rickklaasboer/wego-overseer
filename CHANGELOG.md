@@ -1,3 +1,12 @@
+## [2.5.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.3...v2.5.4) (2023-04-23)
+
+
+### Bug Fixes
+
+* **deps:** bump @semantic-release/changelog from 6.0.2 to 6.0.3 ([3d16c17](https://github.com/rickklaasboer/wego-overseer/commit/3d16c17fa094e7c51d70f84a8aeeb92fe9cf9ae6))
+* **deps:** bump jsdom and @types/jsdom ([db1be4a](https://github.com/rickklaasboer/wego-overseer/commit/db1be4acd5d95b118624bb02a6c73edc8deae865))
+* **deps:** bump prettier from 2.8.3 to 2.8.7 ([dc8e2e1](https://github.com/rickklaasboer/wego-overseer/commit/dc8e2e1d6bd493f3719822b3d0b284aad239643d))
+
 ## [2.5.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.2...v2.5.3) (2023-04-23)
 
 
