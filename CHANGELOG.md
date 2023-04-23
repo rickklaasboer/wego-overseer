@@ -1,3 +1,13 @@
+## [2.5.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.2...v2.5.3) (2023-04-23)
+
+
+### Bug Fixes
+
+* add youtube fallback to discord player ([0aca1bf](https://github.com/rickklaasboer/wego-overseer/commit/0aca1bfc38613be939044a574bafd52382d9a3ae))
+* **deps:** update discordjs ([7f84b95](https://github.com/rickklaasboer/wego-overseer/commit/7f84b953fe441b00b123f27ef4c6833c17bf1374))
+* do not use private attachment field on deepfry command ([eff931d](https://github.com/rickklaasboer/wego-overseer/commit/eff931da27abd518130cab4b2255f9b56f40e852))
+* wrap entrypoint command handler in try..catch ([f467eea](https://github.com/rickklaasboer/wego-overseer/commit/f467eea73bd41138e8e7c585a45b2643961c0c26))
+
 ## [2.5.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.1...v2.5.2) (2023-04-19)
 
 
