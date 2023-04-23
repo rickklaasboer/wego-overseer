@@ -1,6 +1,7 @@
 import {trans} from '@/util/localization';
 import {GuildMember} from 'discord.js';
 import Command from '../Command';
+import {QueryType} from 'discord-player';
 
 export const MusicPlayCommand = new Command({
     name: 'internal',
@@ -32,6 +33,7 @@ export const MusicPlayCommand = new Command({
                     channel: interaction.channel,
                 },
             },
+            fallbackSearchEngine: QueryType.YOUTUBE_SEARCH,
         });
 
         if (!queue.isPlaying()) {
