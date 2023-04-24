@@ -13,7 +13,7 @@ export const LightshotCommand = new Command({
             const random = crypto.randomBytes(20).toString('hex').slice(0, 6);
             await interaction.reply(`https://prnt.sc/${random}`);
         } catch (err) {
-            await interaction.followUp({
+            await interaction.reply({
                 content: trans('errors.common.failed', 'lightshot'),
                 ephemeral: true,
             });
