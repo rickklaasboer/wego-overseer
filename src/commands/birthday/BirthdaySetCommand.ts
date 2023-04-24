@@ -38,16 +38,16 @@ export const BirthdaySetCommand = new InternalCommand({
 
             const date = dayjs(birthDate.join('/'));
 
-            // Always allowed
-            if (isAdmin(interaction) || requester.id === target?.id) {
-                await user.$query().update({
-                    dateOfBirth: date.format('YYYY-MM-DD'),
-                });
-            }
+            await user.$query().update({
+                dateOfBirth: date.format('YYYY-MM-DD'),
+            });
 
-            await interaction.followUp(
-                trans('commands.birthday.set.success', date.format('MM/DD')),
-            );
+            const message = requester.id === target.id
+                ? trans('commands.birthday.set.self.success', date.format('MM/DD'))
+                : trans('commands.birthday.set.other_user.success', target.username, date.format('MM/DD'));
+
+            await interaction.followUp(message);
+
         } catch (err) {
             logger.fatal('Unable to handle BirthdaySetCommand', err);
             await interaction.followUp(trans('commands.birthday.set.failure'));
