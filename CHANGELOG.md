@@ -1,3 +1,12 @@
+## [2.5.5](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.4...v2.5.5) (2023-04-24)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/node-fetch from 2.6.2 to 2.6.3 ([ab020fb](https://github.com/rickklaasboer/wego-overseer/commit/ab020fb90cda0611af4675377d0ec674efa106bc))
+* **deps:** bump cron and @types/cron ([2e7f980](https://github.com/rickklaasboer/wego-overseer/commit/2e7f980b7c7cbdf98c2227e581d7abe428ccdb70))
+* **deps:** bump prettier from 2.8.7 to 2.8.8 ([cbfab28](https://github.com/rickklaasboer/wego-overseer/commit/cbfab28985ebf3dfa9e099ad42dafeda3b58075f))
+
 ## [2.5.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.3...v2.5.4) (2023-04-23)
 
 
