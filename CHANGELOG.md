@@ -1,3 +1,10 @@
+## [2.5.6](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.5...v2.5.6) (2023-04-24)
+
+
+### Bug Fixes
+
+* **deps:** bump jimp from 0.16.2 to 0.22.7 ([3464443](https://github.com/rickklaasboer/wego-overseer/commit/3464443c943fb23512cb73549cbbe8890c9d04f7))
+
 ## [2.5.5](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.4...v2.5.5) (2023-04-24)
 
 
