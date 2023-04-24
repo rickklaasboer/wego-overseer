@@ -138,8 +138,14 @@
                 }
             },
             "set": {
-                "success": "Done! Your date of birth was set to %s!",
-                "failure": "Whoops, could not set your date of birth. (Try checking the date format!)"
+                "self": {
+                    "success": "Done! Your date of birth was set to %s!"
+                },
+                "other_user": {
+                    "success": "Done! %s's date of birth was set to %s!"
+                },
+                "success": "Done! Date of birth was set to %s!",
+                "failure": "Whoops, could not set date of birth. (Try checking the date format!)"
             },
             "setchannel": {
                 "success": "Done! Set <#%s> as the birthday channel."
