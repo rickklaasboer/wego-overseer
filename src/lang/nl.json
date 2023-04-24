@@ -139,13 +139,13 @@
             },
             "set": {
                 "self": {
-                    "success": "Klaar! Je geboortedatum is nu %s!",
-                    "failure": "Oeps, kon je geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
+                    "success": "Klaar! Je geboortedatum is nu %s!"
                 },
                 "other_user": {
-                    "success": "Klaar! %s's geboortedatum is nu %s!",
-                    "failure": "Oeps, kon %s's geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
-                }
+                    "success": "Klaar! %s's geboortedatum is nu %s!"
+                },
+                "success": "Klaar! Geboortedatum is nu %s!",
+                "failure": "Oeps, kon geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
             },
             "setchannel": {
                 "success": "Klaar! <#%s> is nu het verjaardagskanaal."
