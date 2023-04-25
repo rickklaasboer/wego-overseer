@@ -36,7 +36,7 @@
         "semantic-release": "20.1.0",
         "ts-node": "10.9.1",
         "tsconfig-paths": "4.2.0",
-        "tsx": "3.12.2",
+        "tsx": "3.12.6",
         "typescript": "5.0.4"
     },
     "dependencies": {
