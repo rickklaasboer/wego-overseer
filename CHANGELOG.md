@@ -1,3 +1,11 @@
+## [2.5.9](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.8...v2.5.9) (2023-04-25)
+
+
+### Bug Fixes
+
+* **deps:** bump @typescript-eslint/eslint-plugin from 5.50.0 to 5.59.1 ([d7dd625](https://github.com/rickklaasboer/wego-overseer/commit/d7dd625462df6b51271fff1eb450d0876dd77d1e))
+* **deps:** bump tsx from 3.12.2 to 3.12.6 ([9d7e5e8](https://github.com/rickklaasboer/wego-overseer/commit/9d7e5e85373e62b4ea8b2d087f1edc250a9641ee))
+
 ## [2.5.8](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.7...v2.5.8) (2023-04-25)
 
 
