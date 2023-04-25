@@ -35,7 +35,7 @@
         "prettier": "2.8.8",
         "semantic-release": "20.1.0",
         "ts-node": "10.9.1",
-        "tsconfig-paths": "4.1.2",
+        "tsconfig-paths": "4.2.0",
         "tsx": "3.12.2",
         "typescript": "5.0.4"
     },
