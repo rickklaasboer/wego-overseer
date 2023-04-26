@@ -55,7 +55,7 @@
         "jimp": "0.22.7",
         "jsdom": "21.1.1",
         "knex": "2.4.2",
-        "mysql2": "3.1.0",
+        "mysql2": "3.2.4",
         "objection": "3.0.1",
         "soundcloud-scraper": "5.0.3",
         "spotify-url-info": "3.2.3",
