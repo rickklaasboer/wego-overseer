@@ -1,3 +1,13 @@
+## [2.5.10](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.9...v2.5.10) (2023-05-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @discord-player/extractor from 4.1.2 to 4.2.1 ([2f53cb2](https://github.com/rickklaasboer/wego-overseer/commit/2f53cb22ad757509c6d64a3d45d9b51a0cea86ec))
+* **deps:** bump discord-api-types from 0.37.31 to 0.37.42 ([c0a2167](https://github.com/rickklaasboer/wego-overseer/commit/c0a21677e96a86791c04014915fbc9d0c8cc3e4a))
+* **deps:** bump lint-staged from 13.1.0 to 13.2.2 ([b13372d](https://github.com/rickklaasboer/wego-overseer/commit/b13372d496b63985c0af386fe6fd21d22e60b64f))
+* **deps:** bump mysql2 from 3.1.0 to 3.3.0 ([e437fc7](https://github.com/rickklaasboer/wego-overseer/commit/e437fc782dcd007875c955325d372496bca45a01))
+
 ## [2.5.9](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.8...v2.5.9) (2023-04-25)
 
 
