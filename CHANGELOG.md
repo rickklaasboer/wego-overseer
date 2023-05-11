@@ -1,3 +1,13 @@
+## [2.5.11](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.10...v2.5.11) (2023-05-11)
+
+
+### Bug Fixes
+
+* **deps:** bump @typescript-eslint/parser from 5.59.1 to 5.59.5 ([720e346](https://github.com/rickklaasboer/wego-overseer/commit/720e3467bd3dd88f42075f022bc09e5dd71f88fd))
+* **deps:** bump discord-player from 6.2.1 to 6.3.0 ([c18aa8f](https://github.com/rickklaasboer/wego-overseer/commit/c18aa8f838bb921729158a12339e0762202585be))
+* **deps:** bump semantic-release from 20.1.0 to 21.0.2 ([0fea424](https://github.com/rickklaasboer/wego-overseer/commit/0fea42463fe21d8648572d814b26e1fb87f64f4f))
+* **deps:** bump tsx from 3.12.6 to 3.12.7 ([eb6f273](https://github.com/rickklaasboer/wego-overseer/commit/eb6f273d47d2c3d0c3ec0b32d855319dc5120493))
+
 ## [2.5.10](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.9...v2.5.10) (2023-05-10)
 
 
