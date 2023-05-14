@@ -1,3 +1,13 @@
+## [2.5.12](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.11...v2.5.12) (2023-05-14)
+
+
+### Bug Fixes
+
+* **deps:** bump @semantic-release/release-notes-generator ([d4c336f](https://github.com/rickklaasboer/wego-overseer/commit/d4c336f8cb31916b96e16e55a7ce4d0e9d8073f0))
+* **deps:** bump @typescript-eslint/eslint-plugin from 5.59.1 to 5.59.5 ([1ed073e](https://github.com/rickklaasboer/wego-overseer/commit/1ed073e419ac680313d2eb0ea0f1478ba1ae645e))
+* **deps:** bump eslint from 8.39.0 to 8.40.0 ([aae2f64](https://github.com/rickklaasboer/wego-overseer/commit/aae2f644292e693e04dd148378d4faf19d6fd9d1))
+* **deps:** bump mysql2 from 3.3.0 to 3.3.1 ([b58e34f](https://github.com/rickklaasboer/wego-overseer/commit/b58e34f1d65d190b32a8904f533c9f0fbb934e52))
+
 ## [2.5.11](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.10...v2.5.11) (2023-05-11)
 
 
