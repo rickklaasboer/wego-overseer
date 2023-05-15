@@ -1,3 +1,12 @@
+## [2.5.13](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.12...v2.5.13) (2023-05-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @discordjs/rest from 1.7.0 to 1.7.1 ([8954247](https://github.com/rickklaasboer/wego-overseer/commit/8954247c84bc15590b63161951045ff757d2690d))
+* **deps:** bump jsdom from 21.1.1 to 22.0.0 ([176f49c](https://github.com/rickklaasboer/wego-overseer/commit/176f49cba04aa4145ef31d3c867d9d0f1030fa72))
+* **deps:** bump spotify-url-info from 3.2.3 to 3.2.4 ([3dab3ec](https://github.com/rickklaasboer/wego-overseer/commit/3dab3ec76a6389d33ad2884855148b8c12f728e4))
+
 ## [2.5.12](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.11...v2.5.12) (2023-05-14)
 
 
