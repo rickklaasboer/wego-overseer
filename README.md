@@ -70,7 +70,7 @@ AOC_LEADERBOARD_URL=
 Now, run your database migrations (please refer to **'Setting up the development environment'** first for setting up the database)
 
 ```sh
-yarn knex migrate:up
+yarn knex migrate:latest
 ```
 
 ## Development
