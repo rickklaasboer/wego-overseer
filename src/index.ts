@@ -13,10 +13,11 @@ import {setLocalizationInstance} from '@/util/localization';
 import APPLICATION_COMMANDS from '@/commands';
 import APPLICATION_EVENTS from '@/events';
 import APPLICATION_JOBS from '@/jobs';
-import {getEnvString} from './util/environment';
+import {getEnvBool, getEnvString} from './util/environment';
 
 const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
 const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
+const ENABLE_KNEX_LOGGER = getEnvBool('ENABLE_KNEX_LOGGER', false);
 
 const logger = new Logger('wego-overseer:index');
 
@@ -36,7 +37,9 @@ dayjs.extend(timezone);
         token: DISCORD_TOKEN,
         ctx: {
             db: tap(knex(knexfile), (db) => {
-                db.on('query', logger.debug);
+                if (ENABLE_KNEX_LOGGER) {
+                    db.on('query', logger.debug);
+                }
                 Model.knex(db);
             }),
         },
