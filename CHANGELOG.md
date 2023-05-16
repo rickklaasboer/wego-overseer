@@ -1,3 +1,10 @@
+## [2.5.14](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.13...v2.5.14) (2023-05-16)
+
+
+### Bug Fixes
+
+* add env variable to enable/disable knex logging ([837ceff](https://github.com/rickklaasboer/wego-overseer/commit/837ceff4dbe5f6a43918cf0571bcbdb1e8482903))
+
 ## [2.5.13](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.12...v2.5.13) (2023-05-15)
 
 
