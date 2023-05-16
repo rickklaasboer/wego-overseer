@@ -40,6 +40,9 @@ Fill in the required environment variables
 DISCORD_APPLICATION_ID=
 DISCORD_TOKEN=
 
+# Whether or not to log knex queries
+ENABLE_KNEX_LOGGER=false
+
 # should always be mysql2, since that's the only
 # installed driver
 DB_CLIENT=mysql2
