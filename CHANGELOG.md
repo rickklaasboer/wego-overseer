@@ -1,3 +1,11 @@
+## [2.5.15](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.14...v2.5.15) (2023-05-17)
+
+
+### Bug Fixes
+
+* **deps:** bump discord.js from 14.9.0 to 14.11.0 ([e884ba0](https://github.com/rickklaasboer/wego-overseer/commit/e884ba08255b60dd10a48229b2f64f0ef6cb949a))
+* **deps:** bump jimp from 0.22.7 to 0.22.8 ([d100d52](https://github.com/rickklaasboer/wego-overseer/commit/d100d522c1569cdda9257020d8b5d23305ce13d0))
+
 ## [2.5.14](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.13...v2.5.14) (2023-05-16)
 
 
