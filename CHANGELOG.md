@@ -1,3 +1,15 @@
+# [2.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.17...v2.6.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* also archive thread on fix ([11a3532](https://github.com/rickklaasboer/wego-overseer/commit/11a35324db39443f3a94e5cc9f3d25ee6418e989))
+
+
+### Features
+
+* embed fixer for tiktok/instagram/twitter ([341549b](https://github.com/rickklaasboer/wego-overseer/commit/341549b74827485807f5e39ce825c794ccec8a40))
+
 ## [2.5.17](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.16...v2.5.17) (2023-05-22)
 
 
