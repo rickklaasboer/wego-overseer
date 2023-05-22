@@ -41,6 +41,7 @@ export const EmbedFixEvent = new Event({
 
             await thread.send(trans('events.fix_embed.msg', replaced));
             await thread.setLocked(true);
+            await thread.setArchived(true);
         } catch (err) {
             logger.fatal('Unable to handle EmbedFixEvent', err);
         }
