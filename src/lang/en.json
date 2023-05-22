@@ -180,6 +180,9 @@
         },
         "banger": {
             "msg": "%s? I hardly know her!"
+        },
+        "fix_embed": {
+            "msg": "Heya! I found an embed that might not work with Discord, so I fixed it for you! %s"
         }
     },
     "jobs": {
