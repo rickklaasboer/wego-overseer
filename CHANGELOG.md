@@ -1,3 +1,12 @@
+## [2.5.16](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.15...v2.5.16) (2023-05-22)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/node-fetch from 2.6.3 to 2.6.4 ([7aaaaee](https://github.com/rickklaasboer/wego-overseer/commit/7aaaaeefd0bdd48bccda5a59902fbc2bd2501873))
+* **deps:** bump @typescript-eslint/parser from 5.59.5 to 5.59.6 ([9a7420c](https://github.com/rickklaasboer/wego-overseer/commit/9a7420c0fd4c86361e935e2b198f27d8933d948f))
+* **deps:** bump spotify-url-info from 3.2.4 to 3.2.5 ([f49c8a0](https://github.com/rickklaasboer/wego-overseer/commit/f49c8a03b8c71bb3b7c921977f84259212ade61b))
+
 ## [2.5.15](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.14...v2.5.15) (2023-05-17)
 
 
