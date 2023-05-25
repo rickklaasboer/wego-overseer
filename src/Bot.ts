@@ -8,6 +8,7 @@ import {
     ChatInputCommandInteraction,
     CacheType,
     Partials,
+    ClientOptions,
 } from 'discord.js';
 import {Player} from 'discord-player';
 import Command from '@/commands/Command';
@@ -36,17 +37,34 @@ export type BotContext = {
 
 const logger = new Logger('wego-overseer:Bot');
 
+const CLIEN_OPTIONS: ClientOptions = {
+    intents: [
+        IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.GuildMessageReactions,
+        IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.GuildVoiceStates,
+    ],
+    partials: [
+        Partials.Channel,
+        Partials.Message,
+        Partials.Reaction,
+        Partials.User,
+        Partials.GuildMember,
+    ],
+};
+
 export default class Bot {
-    private token: string;
-    private applicationId: string;
-    private rest: REST;
-    private client: Client;
+    private _token: string;
+    private _applicationId: string;
+    private _rest: REST;
+    private _client: Client;
     private _commands = new Collection<
         string,
         Command<ChatInputCommandInteraction<CacheType>>
     >();
-    private events: Array<Event<any>>;
-    private jobs: Array<Job>;
+    private _events: Array<Event<any>>;
+    private _jobs: Array<Job>;
     private _ctx: BotContext;
 
     constructor({
@@ -57,39 +75,26 @@ export default class Bot {
         jobs = [],
         ctx,
     }: Props) {
-        this.token = token;
-        this.applicationId = applicationId;
-        this.client = new Client({
-            intents: [
-                IntentsBitField.Flags.Guilds,
-                IntentsBitField.Flags.GuildMessages,
-                IntentsBitField.Flags.GuildMessageReactions,
-                IntentsBitField.Flags.MessageContent,
-                IntentsBitField.Flags.GuildVoiceStates,
-            ],
-            partials: [
-                Partials.Channel,
-                Partials.Message,
-                Partials.Reaction,
-                Partials.User,
-                Partials.GuildMember,
-            ],
-        });
-        this.jobs = jobs;
-        this.rest = tap(new REST({version: '9'}), (rest) => {
-            rest.setToken(this.token);
+        this._token = token;
+        this._applicationId = applicationId;
+        this._client = new Client(CLIEN_OPTIONS);
+        this._jobs = jobs;
+        this._rest = tap(new REST({version: '9'}), (rest) => {
+            rest.setToken(this._token);
         });
 
         for (const cmd of commands) {
             this._commands.set(cmd.name, cmd);
         }
 
-        this.events = events;
+        this._events = events;
 
         this._ctx = {
             ...ctx,
-            player: new Player(this.client),
-            client: this.client,
+            player: tap(new Player(this._client), (p) => {
+                p.extractors.loadDefault();
+            }),
+            client: this._client,
             bot: this,
         };
     }
@@ -112,7 +117,7 @@ export default class Bot {
         const now = dayjs();
         logger.info(`Started registering`);
 
-        await this.rest.put(Routes.applicationCommands(this.applicationId), {
+        await this._rest.put(Routes.applicationCommands(this._applicationId), {
             body: this._commands.map(({name, description, options}) => ({
                 name,
                 description,
@@ -125,10 +130,10 @@ export default class Bot {
         );
 
         const isReady = new Promise<void>((resolve) => {
-            this.client.on('ready', () => resolve());
+            this._client.on('ready', () => resolve());
         });
 
-        await this.client.login(this.token);
+        await this._client.login(this._token);
         await isReady;
 
         logger.info(
@@ -150,14 +155,14 @@ export default class Bot {
 
         logger.info(`Successfully booted in ${dayjs().diff(now)}ms`);
 
-        return this.client;
+        return this._client;
     }
 
     /**
      * Register command handlers (for slash commands)
      */
     private registerCommandHandlers(): void {
-        this.client.on('interactionCreate', (interaction) => {
+        this._client.on('interactionCreate', (interaction) => {
             if (!interaction.isCommand()) return;
 
             if (this._commands.has(interaction.commandName)) {
@@ -181,9 +186,9 @@ export default class Bot {
      * Register event handlers
      */
     private registerEventHandlers(): void {
-        for (const event of this.events) {
+        for (const event of this._events) {
             if (event.enabled) {
-                this.client.on(event.name, (...args) => {
+                this._client.on(event.name, (...args) => {
                     event.run(this._ctx, ...args);
                 });
             }
@@ -191,8 +196,8 @@ export default class Bot {
 
         logger.info(
             `Successfully registered ${
-                this.events.length
-            } event(s) ([${this.events.map(({name}) => name).join(', ')}])`,
+                this._events.length
+            } event(s) ([${this._events.map(({name}) => name).join(', ')}])`,
         );
     }
 
@@ -200,13 +205,13 @@ export default class Bot {
      * Register jobs
      */
     private registerJobs(): void {
-        for (const {job, onTick} of this.jobs) {
+        for (const {job, onTick} of this._jobs) {
             job.addCallback(async () => await onTick(this._ctx));
             job.start();
         }
 
         logger.info(
-            `Successfully registered ${this.jobs.length} job(s) ([${this.jobs
+            `Successfully registered ${this._jobs.length} job(s) ([${this._jobs
                 .map(({name}) => name)
                 .join(', ')}])`,
         );
