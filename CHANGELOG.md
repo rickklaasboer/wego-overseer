@@ -1,3 +1,11 @@
+## [2.6.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.0...v2.6.1) (2023-05-25)
+
+
+### Bug Fixes
+
+* naming variables is hard ([c6f8853](https://github.com/rickklaasboer/wego-overseer/commit/c6f88533c11cf4a49be4fd8671568ee632b9db96))
+* no extractors for discord player ([396a416](https://github.com/rickklaasboer/wego-overseer/commit/396a416bfd35174b7bbfbd6a18596fb1748e93f3))
+
 # [2.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.5.17...v2.6.0) (2023-05-22)
 
 
