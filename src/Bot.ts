@@ -37,7 +37,7 @@ export type BotContext = {
 
 const logger = new Logger('wego-overseer:Bot');
 
-const CLIEN_OPTIONS: ClientOptions = {
+const CLIENT_OPTIONS: ClientOptions = {
     intents: [
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildMessages,
@@ -77,7 +77,7 @@ export default class Bot {
     }: Props) {
         this._token = token;
         this._applicationId = applicationId;
-        this._client = new Client(CLIEN_OPTIONS);
+        this._client = new Client(CLIENT_OPTIONS);
         this._jobs = jobs;
         this._rest = tap(new REST({version: '9'}), (rest) => {
             rest.setToken(this._token);
