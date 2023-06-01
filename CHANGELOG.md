@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.1...v2.6.2) (2023-06-01)
+
+
+### Bug Fixes
+
+* a lot of things ([4eae104](https://github.com/rickklaasboer/wego-overseer/commit/4eae1044c308a1108410b0f97734c25c2d5bb155))
+
 ## [2.6.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.0...v2.6.1) (2023-05-25)
 
 
