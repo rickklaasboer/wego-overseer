@@ -26,7 +26,7 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                             now.format('MM-DD'),
                             now.add(3, 'months').format('MM-DD'),
                         ],
-                    ).orderBy('dateOfBirth', 'desc');
+                    );
                 });
 
             const embed = new EmbedBuilder().setTitle(

@@ -10,6 +10,7 @@ import {
 } from '../karma/KarmaCommand/predicates';
 import {bindUserToGuild} from './predicates/bindUserToGuild';
 import {EmbedBuilder, User} from 'discord.js';
+import {createNextOccuranceTimestamp} from '@/util/timestamp';
 
 const logger = new Logger('wego-overseer:BirthdaySetCommand');
 
@@ -18,23 +19,18 @@ function createEmbed(target: User, requester: User, date: Dayjs) {
 
     embed.setTitle(trans('commands.birthday.set.embed.title', target.username));
 
-    const now = dayjs();
-    const birthday = dayjs(date).year(now.year());
-    const year = birthday.isBefore(now) ? now.year() + 1 : now.year();
-    const timestamp = String(birthday.year(year).unix());
-
     embed.setDescription(
         requester.id === target.id
             ? trans(
                   'commands.birthday.set.embed.description.success',
                   date.format('DD/MM/YYYY'),
-                  timestamp,
+                  createNextOccuranceTimestamp(date),
               )
             : trans(
                   'commands.birthday.set.embed.description.other_user',
                   target.username,
                   date.format('DD/MM/YYYY'),
-                  timestamp,
+                  createNextOccuranceTimestamp(date),
               ),
     );
 

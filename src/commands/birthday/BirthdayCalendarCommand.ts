@@ -20,7 +20,7 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 .$query()
                 .withGraphFetched({users: true})
                 .modifyGraph('users', (q) => {
-                    q.orderBy('dateOfBirth', 'asc');
+                    q.whereNotNull('dateOfBirth');
                 });
 
             const embed = new EmbedBuilder().setTitle(
