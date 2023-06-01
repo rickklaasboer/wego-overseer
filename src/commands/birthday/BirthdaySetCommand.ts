@@ -14,6 +14,16 @@ import {createNextOccuranceTimestamp} from '@/util/timestamp';
 
 const logger = new Logger('wego-overseer:BirthdaySetCommand');
 
+class NotAdminError extends Error {
+    constructor() {
+        super(
+            "Requester tried to change target's birthday, but is not an administrator.",
+        );
+
+        this.name = 'NotAdminError';
+    }
+}
+
 function createEmbed(target: User, requester: User, date: Dayjs) {
     const embed = new EmbedBuilder();
 
@@ -55,12 +65,7 @@ export const BirthdaySetCommand = new InternalCommand({
 
             // If requester is not an admin, but tries to change someone else's birthday
             if (requester.id !== target?.id && !isAdmin(interaction)) {
-                throw new Error(
-                    "Requester tried to change target's birthday, but is not an administrator.",
-                    {
-                        cause: 'NOT_ADMIN',
-                    },
-                );
+                throw new NotAdminError();
             }
 
             const birthDate = [
@@ -81,15 +86,14 @@ export const BirthdaySetCommand = new InternalCommand({
         } catch (error) {
             logger.fatal('Unable to handle BirthdaySetCommand', error);
 
-            if (!(error instanceof Error)) return;
+            if (error instanceof NotAdminError) {
+                await interaction.followUp(
+                    trans('commands.birthday.set.not_admin'),
+                );
+                return;
+            }
 
-            error.cause === 'NOT_ADMIN'
-                ? await interaction.followUp(
-                      trans('commands.birthday.set.not_admin'),
-                  )
-                : await interaction.followUp(
-                      trans('commands.birthday.set.failure'),
-                  );
+            await interaction.followUp(trans('commands.birthday.set.failure'));
         }
     },
 });
