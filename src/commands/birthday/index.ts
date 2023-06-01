@@ -37,7 +37,7 @@ export const BirthdayCommand = new EntryPointCommand({
             options: [
                 {
                     type: APPLICATION_COMMAND_OPTIONS.NUMBER,
-                    name: 'date_year',
+                    name: 'year',
                     description: 'Date of birth (yyyy)',
                     min_value: 1900,
                     max_value: new Date().getFullYear(),
@@ -45,7 +45,7 @@ export const BirthdayCommand = new EntryPointCommand({
                 },
                 {
                     type: APPLICATION_COMMAND_OPTIONS.NUMBER,
-                    name: 'date_month',
+                    name: 'month',
                     description: 'Date of birth (mm)',
                     min_value: 1,
                     max_value: 12,
@@ -53,7 +53,7 @@ export const BirthdayCommand = new EntryPointCommand({
                 },
                 {
                     type: APPLICATION_COMMAND_OPTIONS.NUMBER,
-                    name: 'date_day',
+                    name: 'day',
                     description: 'Date of birth (dd)',
                     min_value: 1,
                     max_value: 31,

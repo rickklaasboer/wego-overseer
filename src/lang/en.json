@@ -138,14 +138,16 @@
                 }
             },
             "set": {
-                "self": {
-                    "success": "Done! Your date of birth was set to %s!"
+                "embed": {
+                    "title": "Successfully set %s birthday!",
+                    "description": {
+                        "success": "Done! Your date of birth was set to %s. That is <t:%s:R>!",
+                        "other_user": "Done! %s's date of birth was set to %s. That is <t:%s:R>!"
+                    },
+                    "footer": "Set by %s"
                 },
-                "other_user": {
-                    "success": "Done! %s's date of birth was set to %s!"
-                },
-                "success": "Done! Date of birth was set to %s!",
-                "failure": "Whoops, could not set date of birth. (Try checking the date format!)"
+                "failure": "Whoops, could not set date of birth. (Try checking the date format!)",
+                "not_admin": "Woah there buckaroo, you're not allowed to set someone else's date of birth!"
             },
             "setchannel": {
                 "success": "Done! Set <#%s> as the birthday channel."
@@ -156,7 +158,8 @@
                     "table": {
                         "head": {
                             "user": "User",
-                            "birthday": "Birthday"
+                            "birthday": "Birthday",
+                            "in": "In"
                         }
                     }
                 }

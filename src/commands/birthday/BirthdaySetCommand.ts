@@ -2,15 +2,49 @@ import Logger from '@/telemetry/logger';
 import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {pad} from '@/util/misc';
-import dayjs from 'dayjs';
+import dayjs, {Dayjs} from 'dayjs';
 import InternalCommand from '../InternalCommand';
 import {
     ensureGuildIsAvailable,
     ensureUserIsAvailable,
 } from '../karma/KarmaCommand/predicates';
 import {bindUserToGuild} from './predicates/bindUserToGuild';
+import {EmbedBuilder, User} from 'discord.js';
 
 const logger = new Logger('wego-overseer:BirthdaySetCommand');
+
+function createEmbed(target: User, requester: User, date: Dayjs) {
+    const embed = new EmbedBuilder();
+
+    embed.setTitle(trans('commands.birthday.set.embed.title', target.username));
+
+    const now = dayjs();
+    const birthday = dayjs(date).year(now.year());
+    const year = birthday.isBefore(now) ? now.year() + 1 : now.year();
+    const timestamp = String(birthday.year(year).unix());
+
+    embed.setDescription(
+        requester.id === target.id
+            ? trans(
+                  'commands.birthday.set.embed.description.success',
+                  date.format('DD/MM/YYYY'),
+                  timestamp,
+              )
+            : trans(
+                  'commands.birthday.set.embed.description.other_user',
+                  target.username,
+                  date.format('DD/MM/YYYY'),
+                  timestamp,
+              ),
+    );
+
+    embed.setThumbnail(target.displayAvatarURL());
+    embed.setFooter({
+        text: trans('commands.birthday.set.embed.footer', requester.tag),
+        iconURL: requester.displayAvatarURL(),
+    });
+    return embed;
+}
 
 export const BirthdaySetCommand = new InternalCommand({
     run: async (interaction, _, {db}) => {
@@ -26,31 +60,40 @@ export const BirthdaySetCommand = new InternalCommand({
             // If requester is not an admin, but tries to change someone else's birthday
             if (requester.id !== target?.id && !isAdmin(interaction)) {
                 throw new Error(
-                    "Requester tried to change target's birtday, but is not an administrator.",
+                    "Requester tried to change target's birthday, but is not an administrator.",
+                    {
+                        cause: 'NOT_ADMIN',
+                    },
                 );
             }
 
             const birthDate = [
-                interaction.options.getNumber('date_year'),
-                pad(interaction.options.getNumber('date_month'), 2),
-                pad(interaction.options.getNumber('date_day'), 2),
+                interaction.options.getNumber('year'),
+                pad(interaction.options.getNumber('month'), 2),
+                pad(interaction.options.getNumber('day'), 2),
             ];
+
+            await user.$query().update({
+                dateOfBirth: dayjs(birthDate.join('/')).format('YYYY-MM-DD'),
+            });
 
             const date = dayjs(birthDate.join('/'));
 
-            await user.$query().update({
-                dateOfBirth: date.format('YYYY-MM-DD'),
+            await interaction.followUp({
+                embeds: [createEmbed(target, requester, date)],
             });
+        } catch (error) {
+            logger.fatal('Unable to handle BirthdaySetCommand', error);
 
-            const message = requester.id === target.id
-                ? trans('commands.birthday.set.self.success', date.format('MM/DD'))
-                : trans('commands.birthday.set.other_user.success', target.username, date.format('MM/DD'));
+            if (!(error instanceof Error)) return;
 
-            await interaction.followUp(message);
-
-        } catch (err) {
-            logger.fatal('Unable to handle BirthdaySetCommand', err);
-            await interaction.followUp(trans('commands.birthday.set.failure'));
+            error.cause === 'NOT_ADMIN'
+                ? await interaction.followUp(
+                      trans('commands.birthday.set.not_admin'),
+                  )
+                : await interaction.followUp(
+                      trans('commands.birthday.set.failure'),
+                  );
         }
     },
 });

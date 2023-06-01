@@ -26,7 +26,7 @@ function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
             trans(
                 'commands.birthday.get.embed.description.birthday_known',
                 discordUser.username,
-                dayjs(user.dateOfBirth).format('MM/DD'),
+                dayjs(user.dateOfBirth).format('DD/MM/YYYY'),
                 String(
                     tap(new Date(user.dateOfBirth), (d) => {
                         d.setFullYear(new Date().getFullYear());
