@@ -5,7 +5,7 @@ import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
 import {EmbedBuilder} from 'discord.js';
 import table from 'text-table';
-import {createBirthdayRows, filterBirthdays} from './BirthdayCalendarCommand';
+import {createBirthdayRows, sortBirthdays} from './BirthdayCalendarCommand';
 
 const logger = new Logger('wego-overseer:BirthdayUpcomingCommand');
 
@@ -37,8 +37,8 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 ),
             );
 
-            const birthdaysFiltered = filterBirthdays(birthdays);
-            const rows = await createBirthdayRows(birthdaysFiltered);
+            const birthdaysSorted = sortBirthdays(birthdays);
+            const rows = await createBirthdayRows(birthdaysSorted);
 
             embed.setDescription(table(rows));
 

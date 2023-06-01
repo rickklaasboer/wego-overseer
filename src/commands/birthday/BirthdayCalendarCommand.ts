@@ -30,8 +30,8 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 ),
             );
 
-            const birthdaysFiltered = filterBirthdays(birthdays);
-            const rows = await createBirthdayRows(birthdaysFiltered);
+            const birthdaysSorted = sortBirthdays(birthdays);
+            const rows = await createBirthdayRows(birthdaysSorted);
 
             embed.setDescription(table(rows));
 
@@ -51,7 +51,7 @@ export const BirthdayCalendarCommand = new InternalCommand({
     },
 });
 
-export function filterBirthdays(birthdays: Guild) {
+export function sortBirthdays(birthdays: Guild) {
     return birthdays.users.sort(({dateOfBirth: a}, {dateOfBirth: b}) => {
         const now = dayjs();
         const birthdayA = dayjs(a).year(now.year());
