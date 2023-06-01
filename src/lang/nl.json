@@ -131,34 +131,30 @@
                 "embed": {
                     "title": "%s's verjaardag",
                     "description": {
-                        "birthday_known": "%s's verjaardag is op %s. Dat is in <t:%s:R>!",
+                        "birthday_known": "%s's verjaardag is op %s. Dat is %s!",
                         "birthday_unknown": "We weten %s's verjaardag nog niet, je zou het hem/haar kunnen vragen!"
                     },
                     "footer": "Aangevraagd door %s"
                 }
             },
             "set": {
-                "self": {
-                    "success": "Klaar! Je geboortedatum is nu %s!"
+                "embed": {
+                    "title": "Succesvol %s's verjaardag ingesteld!",
+                    "description": {
+                        "success": "Klaar! Geboortedatum is nu %s. Dat is %s!",
+                        "other_user": "Klaar! %s's geboortedatum is nu %s. Dat is %s!"
+                    },
+                    "footer": "Ingesteld door %s"
                 },
-                "other_user": {
-                    "success": "Klaar! %s's geboortedatum is nu %s!"
-                },
-                "success": "Klaar! Geboortedatum is nu %s!",
-                "failure": "Oeps, kon geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)"
+                "failure": "Oeps, kon geboortedatum niet veranderen. (Probeer de datumnotatie te controleren!)",
+                "not_admin": "Ho eens kameraad, je hebt de permissies niet om iemand anders zijn geboortedatum in te stellen!"
             },
             "setchannel": {
                 "success": "Klaar! <#%s> is nu het verjaardagskanaal."
             },
             "calendar": {
                 "embed": {
-                    "title": "%s's verjaardagskalendar",
-                    "table": {
-                        "head": {
-                            "user": "Gebruiker",
-                            "birthday": "Verjaardag"
-                        }
-                    }
+                    "title": "%s's verjaardagskalendar"
                 }
             },
             "upcoming": {

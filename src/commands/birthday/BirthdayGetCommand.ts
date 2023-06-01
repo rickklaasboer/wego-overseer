@@ -10,7 +10,7 @@ import Logger from '@/telemetry/logger';
 import {default as LocalUser} from '@/entities/User';
 import {User as DiscordUser} from 'discord.js';
 import {bindUserToGuild} from './predicates/bindUserToGuild';
-import {tap} from '@/util/tap';
+import {createNextOccuranceTimestamp} from '@/util/timestamp';
 
 const logger = new Logger('wego-overseer:BirthdayGetCommand');
 
@@ -26,12 +26,8 @@ function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
             trans(
                 'commands.birthday.get.embed.description.birthday_known',
                 discordUser.username,
-                dayjs(user.dateOfBirth).format('MM/DD'),
-                String(
-                    tap(new Date(user.dateOfBirth), (d) => {
-                        d.setFullYear(new Date().getFullYear());
-                    }).getTime() / 1000,
-                ),
+                dayjs(user.dateOfBirth).format('DD/MM/YYYY'),
+                createNextOccuranceTimestamp(dayjs(user.dateOfBirth)),
             ),
         );
     } else {

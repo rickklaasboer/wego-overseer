@@ -3,14 +3,16 @@ import {ensureGuildIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
 import InternalCommand from '../InternalCommand';
 import Logger from '@/telemetry/logger';
 import {EmbedBuilder} from '@discordjs/builders';
-import {tableWithHead} from '@/util/table';
 import dayjs from 'dayjs';
-import {wrapInCodeblock} from '@/util/discord';
+import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import table from 'text-table';
+import Guild from '@/entities/Guild';
+import User from '@/entities/User';
 
 const logger = new Logger('wego-overseer:BirthdayCalendarCommand');
 
 export const BirthdayCalendarCommand = new InternalCommand({
-    run: async (interaction, _, {client}) => {
+    run: async (interaction) => {
         try {
             const guild = await ensureGuildIsAvailable(interaction.guildId);
 
@@ -18,7 +20,7 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 .$query()
                 .withGraphFetched({users: true})
                 .modifyGraph('users', (q) => {
-                    q.orderBy('dateOfBirth', 'asc');
+                    q.whereNotNull('dateOfBirth');
                 });
 
             const embed = new EmbedBuilder().setTitle(
@@ -28,28 +30,10 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 ),
             );
 
-            const rows = await Promise.all(
-                birthdays.users.map(async ({id, dateOfBirth}) => [
-                    (await client.users.fetch(id)).username,
-                    dayjs(dateOfBirth).format('MM/DD'),
-                ]),
-            );
+            const birthdaysSorted = sortBirthdays(birthdays);
+            const rows = await createBirthdayRows(birthdaysSorted);
 
-            const table = wrapInCodeblock(
-                tableWithHead(
-                    [
-                        trans(
-                            'commands.birthday.calendar.embed.table.head.user',
-                        ),
-                        trans(
-                            'commands.birthday.calendar.embed.table.head.birthday',
-                        ),
-                    ],
-                    rows,
-                ),
-            );
-
-            embed.setDescription(table);
+            embed.setDescription(table(rows));
 
             await interaction.followUp({
                 embeds: [embed],
@@ -66,3 +50,32 @@ export const BirthdayCalendarCommand = new InternalCommand({
         }
     },
 });
+
+export function sortBirthdays(birthdays: Guild) {
+    return birthdays.users.sort(({dateOfBirth: a}, {dateOfBirth: b}) => {
+        const now = dayjs();
+        const birthdayA = dayjs(a).year(now.year());
+        const birthdayB = dayjs(b).year(now.year());
+
+        if (birthdayA.isBefore(now) && birthdayB.isAfter(now)) return 1;
+        if (birthdayA.isAfter(now) && birthdayB.isBefore(now)) return -1;
+        if (birthdayA.isBefore(birthdayB)) return -1;
+        if (birthdayA.isAfter(birthdayB)) return 1;
+
+        return 0;
+    });
+}
+
+export async function createBirthdayRows(birthdays: User[]) {
+    return await Promise.all(
+        birthdays.map(async ({id, dateOfBirth}) => {
+            return [
+                `${dayjs(dateOfBirth).format(
+                    'DD/MM/YYYY',
+                )} - <@${id}> (${createNextOccuranceTimestamp(
+                    dayjs(dateOfBirth),
+                )})`,
+            ];
+        }),
+    );
+}

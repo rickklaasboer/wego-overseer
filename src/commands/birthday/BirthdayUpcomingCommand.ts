@@ -3,14 +3,14 @@ import {ensureGuildIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
 import InternalCommand from '../InternalCommand';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
-import {wrapInCodeblock} from '@/util/discord';
-import {tableWithHead} from '@/util/table';
 import {EmbedBuilder} from 'discord.js';
+import table from 'text-table';
+import {createBirthdayRows, sortBirthdays} from './BirthdayCalendarCommand';
 
 const logger = new Logger('wego-overseer:BirthdayUpcomingCommand');
 
 export const BirthdayUpcomingCommand = new InternalCommand({
-    run: async (interaction, _, {client}) => {
+    run: async (interaction) => {
         try {
             const guild = await ensureGuildIsAvailable(interaction.guildId);
 
@@ -26,7 +26,7 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                             now.format('MM-DD'),
                             now.add(3, 'months').format('MM-DD'),
                         ],
-                    ).orderBy('dateOfBirth', 'desc');
+                    );
                 });
 
             const embed = new EmbedBuilder().setTitle(
@@ -37,28 +37,10 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 ),
             );
 
-            const rows = await Promise.all(
-                birthdays.users.map(async ({id, dateOfBirth}) => [
-                    (await client.users.fetch(id)).username,
-                    dayjs(dateOfBirth).format('MM/DD'),
-                ]),
-            );
+            const birthdaysSorted = sortBirthdays(birthdays);
+            const rows = await createBirthdayRows(birthdaysSorted);
 
-            const table = wrapInCodeblock(
-                tableWithHead(
-                    [
-                        trans(
-                            'commands.birthday.upcoming.embed.table.head.user',
-                        ),
-                        trans(
-                            'commands.birthday.upcoming.embed.table.head.birthday',
-                        ),
-                    ],
-                    rows,
-                ),
-            );
-
-            embed.setDescription(table);
+            embed.setDescription(table(rows));
 
             await interaction.followUp({
                 embeds: [embed],
