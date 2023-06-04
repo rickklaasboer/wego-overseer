@@ -1,3 +1,10 @@
+## [2.6.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.2...v2.6.3) (2023-06-04)
+
+
+### Bug Fixes
+
+* **#194:** make music command parameters required ([40168a7](https://github.com/rickklaasboer/wego-overseer/commit/40168a71c3b953b286b2f80d7c61b55351f4e0ee)), closes [#194](https://github.com/rickklaasboer/wego-overseer/issues/194)
+
 ## [2.6.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.1...v2.6.2) (2023-06-01)
 
 
