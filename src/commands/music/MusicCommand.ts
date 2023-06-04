@@ -11,6 +11,9 @@ import {MusicNowCommand} from '@/commands/music/MusicNowCommand';
 import {MusicClearCommand} from '@/commands/music/MusicClearCommand';
 import {MusicSeekCommand} from '@/commands/music/MusicSeekCommand';
 import EntryPointCommand from '@/commands/EntryPointCommand';
+import Logger from '@/telemetry/logger';
+
+const logger = new Logger('wego-overseer:MusicCommand');
 
 export const MusicCommand = new EntryPointCommand({
     name: 'music',
@@ -28,6 +31,7 @@ export const MusicCommand = new EntryPointCommand({
         ['clear', MusicClearCommand],
         ['seek', MusicSeekCommand],
     ]),
+    logger,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
@@ -39,6 +43,7 @@ export const MusicCommand = new EntryPointCommand({
                     name: 'query',
                     description: 'Song name or URL',
                     min_length: 1,
+                    required: true,
                 },
             ],
         },
@@ -72,6 +77,7 @@ export const MusicCommand = new EntryPointCommand({
                     name: 'query',
                     description: 'Song name or URL',
                     min_length: 1,
+                    required: true,
                 },
             ],
         },
@@ -105,6 +111,7 @@ export const MusicCommand = new EntryPointCommand({
                     name: 'seconds',
                     description: 'Position to seek to in seconds',
                     min_value: 1,
+                    required: true,
                 },
             ],
         },
