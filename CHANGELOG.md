@@ -1,3 +1,12 @@
+## [2.6.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.3...v2.6.4) (2023-06-05)
+
+
+### Bug Fixes
+
+* **deps:** bump @typescript-eslint/eslint-plugin from 5.59.6 to 5.59.8 ([e5b96ed](https://github.com/rickklaasboer/wego-overseer/commit/e5b96ed6edf9072377748c3a4799c0d8e5db97c9))
+* **deps:** bump cron from 2.3.0 to 2.3.1 ([cdc9c17](https://github.com/rickklaasboer/wego-overseer/commit/cdc9c175023a1ce13d924e536e1eb3ddce82d962))
+* **deps:** bump mysql2 from 3.3.1 to 3.3.3 ([f2912bf](https://github.com/rickklaasboer/wego-overseer/commit/f2912bf37f12e4e219133171e8ea0bf5f3fc903f))
+
 ## [2.6.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.2...v2.6.3) (2023-06-04)
 
 
