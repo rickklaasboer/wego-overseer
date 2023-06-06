@@ -17,7 +17,7 @@
         "@semantic-release/exec": "6.0.3",
         "@semantic-release/git": "10.0.1",
         "@semantic-release/github": "8.0.7",
-        "@semantic-release/release-notes-generator": "11.0.1",
+        "@semantic-release/release-notes-generator": "11.0.2",
         "@types/bunyan": "1.8.8",
         "@types/cron": "2.0.1",
         "@types/i18n": "0.13.6",
