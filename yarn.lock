@@ -107,17 +107,17 @@
   resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.1.tgz#917934a47b09ef99893e967d6f3d69ee288e8547"
   integrity sha512-PPjX8TBwzM85YKEdpYYL8aGbdSLIk9RK1h/uU5jeyiF6Uu5CiLH/XctDfcGW8cSgoaU4J0R6a8svCs9yhzHXSw==
 
-"@discord-player/extractor@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.2.1.tgz#a25673b8ef594dbd78236d79889f62d884712c95"
-  integrity sha512-z1kqIyAteD5H22KE/VTuujdXq4D+lV9owv6SmpmoS1R/ss+skTCOe/jReHlQC2HBNo5flShgEzMDqtp/HxI7cA==
+"@discord-player/extractor@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.3.0.tgz#701193db596ea4b33643c962fe39760c8a6a7060"
+  integrity sha512-eKphDar1XMhuMFaTGuYAMOhQS7oSH4cL4slQd6P2cfuUXAIzrK7Z/XGTb0WzfG0OiqeUfa31oewN/yckie9fkA==
   dependencies:
     file-type "^16.5.4"
-    genius-lyrics "^4.4.2"
+    genius-lyrics "^4.4.3"
     node-html-parser "^6.1.4"
     reverbnation-scraper "^2.0.0"
-    soundcloud-scraper "^5.0.3"
-    spotify-url-info "^3.2.3"
+    soundcloud.ts "^0.5.0"
+    spotify-url-info "^3.2.5"
     youtube-sr "^4.3.4"
 
 "@discord-player/utils@^0.2.1":
@@ -3171,7 +3171,7 @@ generate-function@^2.3.1:
   dependencies:
     is-property "^1.0.2"
 
-genius-lyrics@^4.4.2:
+genius-lyrics@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.3.tgz#0b7e461d61a3bb058fdc238532d0875ab0d9c6f4"
   integrity sha512-06L8GUg49FrUYEmSQvrSH74RH5S+qyerHwBpvk8vZLwWgpEw4mIWZDob5IpXT1ryhqazM9K6CXGNucKYPO8kng==
@@ -6153,7 +6153,7 @@ socks@^2.6.2:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
 
-soundcloud-scraper@5.0.3, soundcloud-scraper@^5.0.3:
+soundcloud-scraper@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/soundcloud-scraper/-/soundcloud-scraper-5.0.3.tgz#90c45f13353a2c88749d3dcabef9100fda2f56ba"
   integrity sha512-AmS9KmK7mMaPVzHzBk40rANpAttZila3+iAet6EA47EeiTBUzVwjq4B+1LCOLtgPmzDSGk0qn+LZOEd5UhnZTQ==
@@ -6161,6 +6161,13 @@ soundcloud-scraper@5.0.3, soundcloud-scraper@^5.0.3:
     cheerio "^1.0.0-rc.10"
     m3u8stream "^0.8.4"
     node-fetch "^2.6.1"
+
+soundcloud.ts@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.0.tgz#8e835b72021e30ac6170a92e16c7542933557256"
+  integrity sha512-QZLJ0X+/hpj8/5rqTGnLl/U4d07qcobrfXrM3+VlCQcXG5v+7MZ6tVHDFPsDH0MWM8op541RwhvKc8JqWlyUHA==
+  dependencies:
+    undici "^5.21.2"
 
 source-map-support@^0.5.21:
   version "0.5.21"
@@ -6232,7 +6239,7 @@ spotify-uri@~3.0.3:
   resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-3.0.3.tgz#d09ae7e013f12fe2c22eed06cda2463be220597b"
   integrity sha512-mMstJ4dAMki6GbUjg94kp/h9ZH+7T7+ro/KUC00WVh+WKoLgMRrTKLkWMIwCZNO53Xa8DRHQw/6jwYtRZrVI3g==
 
-spotify-url-info@3.2.5, spotify-url-info@^3.2.3:
+spotify-url-info@3.2.5, spotify-url-info@^3.2.5:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.5.tgz#96396702aca6a937d614197fb2bc6f4e2a54821d"
   integrity sha512-5LpA8PznECfTPRVcgYSyYOn7dr3aq+sHgl3JrDDKT7NVJ8exEhFD1NsmR8/kObc6qlr0H6t+AZDVVfv3HiEKaQ==
@@ -6706,7 +6713,7 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.16.3.tgz#94c7a63337ee31227a18d03b8a3041c210fd1f1d"
   integrity sha512-uVbFqx9vvLhQg0iBaau9Z75AxWJ8tqM9AV890dIZCLApF4rTcyHwmAvLeEdYRs+BzYWu8Iw81F79ah0EfTXbaw==
 
-undici@^5.22.0, undici@^5.8.2:
+undici@^5.21.2, undici@^5.22.0, undici@^5.8.2:
   version "5.22.1"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.22.1.tgz#877d512effef2ac8be65e695f3586922e1a57d7b"
   integrity sha512-Ji2IJhFXZY0x/0tVBXeQwgPlLWw13GVzpsWPQ3rV50IFMMof2I55PZZxtm4P6iNq+L5znYN9nSTAq0ZyE6lSJw==
