@@ -25,7 +25,7 @@
         "@types/node": "18.11.18",
         "@types/node-fetch": "2.6.4",
         "@types/text-table": "0.2.2",
-        "@typescript-eslint/eslint-plugin": "5.59.8",
+        "@typescript-eslint/eslint-plugin": "5.59.11",
         "@typescript-eslint/parser": "5.59.8",
         "bunyan": "1.8.15",
         "commitizen": "4.3.0",
