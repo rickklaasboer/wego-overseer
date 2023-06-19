@@ -17,6 +17,7 @@ import {WhereMemeCommand} from '@/commands/meme/WhereMemeCommand';
 import {MusicCommand} from '@/commands/music/MusicCommand';
 import {BirthdayCommand} from '@/commands/birthday';
 import {LightshotCommand} from './misc/LightshotCommand';
+import {WinnovationMemeCommand} from './meme/WinnovationMemeCommand';
 
 export default [
     AdventOfCodeCommand,
@@ -38,4 +39,5 @@ export default [
     MusicCommand,
     BirthdayCommand,
     LightshotCommand,
+    WinnovationMemeCommand,
 ];
