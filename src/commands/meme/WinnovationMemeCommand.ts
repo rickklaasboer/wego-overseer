@@ -6,8 +6,8 @@ import {trans} from '@/util/localization';
 
 // Magic constants
 const IMAGE_OFFSETS = {
-    x: 515,
-    y: 370,
+    x: 330,
+    y: 360,
 };
 
 export const WinnovationMemeCommand = new Command({
@@ -25,15 +25,25 @@ export const WinnovationMemeCommand = new Command({
     ],
     run: async (interaction) => {
         try {
-            const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
+            const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
             const img = await Jimp.read('./src/img/meme/winnovation.png');
-
+            const fontCanvas = await Jimp.create(
+                img.getWidth(),
+                img.getHeight(),
+            );
             const signText = interaction.options.getString('sign-text')!;
 
             // Sign text
-            img.print(font, IMAGE_OFFSETS.x, IMAGE_OFFSETS.y, {
-                text: signText,
-            });
+            fontCanvas
+                .print(font, 0, 0, {
+                    text: signText,
+                })
+                .resize(
+                    fontCanvas.getWidth() * 1.4,
+                    fontCanvas.getHeight() * 1.4,
+                )
+                .rotate(-8);
+            img.blit(fontCanvas, IMAGE_OFFSETS.x, IMAGE_OFFSETS.y);
 
             const wrappedImage = new Base64JimpImage(img);
             await interaction.reply({files: [wrappedImage.toAttachment()]});
