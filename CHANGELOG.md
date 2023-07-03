@@ -1,3 +1,11 @@
+# [2.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.5...v2.7.0) (2023-07-03)
+
+
+### Features
+
+* add text rotation ([2ab1f54](https://github.com/rickklaasboer/wego-overseer/commit/2ab1f54969df9b12b071089bf884f87f4ad611cb))
+* add winnovation meme command ([d1effcf](https://github.com/rickklaasboer/wego-overseer/commit/d1effcf20398aebc66cba3873302361b1ee9748d))
+
 ## [2.6.5](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.4...v2.6.5) (2023-06-05)
 
 
