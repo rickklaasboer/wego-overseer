@@ -11,6 +11,7 @@ import {ReceiveVoteEvent} from '@/events/poll/ReceiveVoteEvent';
 import {MusicQueueButtonEvent} from '@/events/music/MusicQueueButtonEvent';
 import {BiBaBussinEvent} from '@/events/meme/BiBaBussinEvent';
 import {EmbedFixEvent} from './EmbedFixEvent';
+import {YoloSwag} from '@/events/meme/YoloSwag';
 
 export default [
     BangerEvent,
@@ -26,4 +27,5 @@ export default [
     MusicQueueButtonEvent,
     BiBaBussinEvent,
     EmbedFixEvent,
+    YoloSwag,
 ];
