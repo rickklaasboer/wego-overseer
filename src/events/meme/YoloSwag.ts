@@ -3,7 +3,7 @@ import {randomNumber} from '@/util/karma';
 import {trans} from '@/util/localization';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:BangerEvent');
+const logger = new Logger('wego-overseer:YoloSwag');
 
 export const YoloSwag = new Event<'messageCreate'>({
     name: 'messageCreate',
