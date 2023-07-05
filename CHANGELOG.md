@@ -1,3 +1,11 @@
+## [2.7.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.7.0...v2.7.1) (2023-07-05)
+
+
+### Bug Fixes
+
+* **deps:** bump @discord-player/extractor from 4.2.1 to 4.3.1 ([bdd143c](https://github.com/rickklaasboer/wego-overseer/commit/bdd143c87e03e47c08dc3916d3fa259f4cb07369))
+* **deps:** bump dayjs from 1.11.7 to 1.11.9 ([c37672b](https://github.com/rickklaasboer/wego-overseer/commit/c37672b3a7dabb22442715de162553df029b075b))
+
 # [2.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.6.5...v2.7.0) (2023-07-03)
 
 
