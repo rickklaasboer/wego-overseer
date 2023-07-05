@@ -12,7 +12,6 @@ export const YoloSwag = new Event<'messageCreate'>({
             // Terminate if user is a bot
             if (message.author.bot) return;
 
-            // Split string into words
             if (message.content.toLowerCase().includes('yolo')) {
                     await message.reply('swag')
                 }
