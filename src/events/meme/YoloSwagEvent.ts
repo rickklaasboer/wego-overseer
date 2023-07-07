@@ -1,11 +1,9 @@
 import Logger from '@/telemetry/logger';
-import {randomNumber} from '@/util/karma';
-import {trans} from '@/util/localization';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:YoloSwag');
+const logger = new Logger('wego-overseer:YoloSwagEvent');
 
-export const YoloSwag = new Event<'messageCreate'>({
+export const YoloSwagEvent = new Event<'messageCreate'>({
     name: 'messageCreate',
     run: async (_, message) => {
         try {
@@ -13,10 +11,10 @@ export const YoloSwag = new Event<'messageCreate'>({
             if (message.author.bot) return;
 
             if (message.content.toLowerCase().includes('yolo')) {
-                    await message.reply('swag')
-                }
+                await message.reply('swag');
+            }
         } catch (err) {
-            logger.fatal('Unable to handle YoloSwag', err);
+            logger.fatal('Unable to handle YoloSwagEvent', err);
         }
     },
 });
