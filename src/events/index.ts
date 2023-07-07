@@ -10,7 +10,7 @@ import {UpvoteEvent} from '@/events/UpvoteEvent';
 import {ReceiveVoteEvent} from '@/events/poll/ReceiveVoteEvent';
 import {MusicQueueButtonEvent} from '@/events/music/MusicQueueButtonEvent';
 import {BiBaBussinEvent} from '@/events/meme/BiBaBussinEvent';
-import {EmbedFixEvent} from './EmbedFixEvent';
+import {EmbedFixEvent} from '@/events/EmbedFixEvent';
 import {YoloSwagEvent} from '@/events/meme/YoloSwagEvent';
 
 export default [
