@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.8.0...v2.8.1) (2023-07-08)
+
+
+### Bug Fixes
+
+* activate crazy event ([b8596df](https://github.com/rickklaasboer/wego-overseer/commit/b8596dfef0a3e0fa7f454d775cda397e998e1539))
+
 # [2.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.7.1...v2.8.0) (2023-07-07)
 
 
