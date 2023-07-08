@@ -12,6 +12,7 @@ import {MusicQueueButtonEvent} from '@/events/music/MusicQueueButtonEvent';
 import {BiBaBussinEvent} from '@/events/meme/BiBaBussinEvent';
 import {EmbedFixEvent} from '@/events/EmbedFixEvent';
 import {YoloSwagEvent} from '@/events/meme/YoloSwagEvent';
+import {CrazyEvent} from '@/events/meme/CrazyEvent';
 
 export default [
     BangerEvent,
@@ -28,4 +29,5 @@ export default [
     BiBaBussinEvent,
     EmbedFixEvent,
     YoloSwagEvent,
+    CrazyEvent,
 ];
