@@ -30,6 +30,7 @@ export const MusicCommand = new EntryPointCommand({
         ['now', MusicNowCommand],
         ['clear', MusicClearCommand],
         ['seek', MusicSeekCommand],
+        ['shuffle', MusicSeekCommand],
     ]),
     logger,
     options: [
