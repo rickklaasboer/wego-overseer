@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.8.1...v2.9.0) (2023-07-09)
+
+
+### Features
+
+* music shuffle command ([36436db](https://github.com/rickklaasboer/wego-overseer/commit/36436db1163181d8932a9908ef0a264b1f4c6b3f))
+
 ## [2.8.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.8.0...v2.8.1) (2023-07-08)
 
 
