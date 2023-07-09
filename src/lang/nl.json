@@ -124,6 +124,10 @@
             "stop": {
                 "nothing_playing": "Er speelt momenteel niets.",
                 "success": "De muziek is gestopt en de wachtrij is gewist."
+            },
+            "shuffle": {
+                "nothing_playing": "Er speelt momenteel niets.",
+                "success": "De wachtrij is geschud."
             }
         },
         "birthday": {

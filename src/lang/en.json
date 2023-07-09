@@ -124,6 +124,10 @@
             "stop": {
                 "nothing_playing": "There is currently nothing playing.",
                 "success": "The music has been stopped and queue has been cleared."
+            },
+            "shuffle": {
+                "nothing_playing": "There is currently nothing playing.",
+                "success": "The queue has been shuffled."
             }
         },
         "birthday": {
