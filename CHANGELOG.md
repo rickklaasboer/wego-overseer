@@ -1,3 +1,11 @@
+## [2.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.2...v2.9.3) (2023-07-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @semantic-release/release-notes-generator ([cc4d1d2](https://github.com/rickklaasboer/wego-overseer/commit/cc4d1d2910ce8a43ec0a257abbca852d373d5b97))
+* **deps:** bump @typescript-eslint/eslint-plugin from 5.59.8 to 5.62.0 ([bedda25](https://github.com/rickklaasboer/wego-overseer/commit/bedda25c934388ee52460e1c123d6fc66948271c))
+
 ## [2.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.1...v2.9.2) (2023-07-10)
 
 
