@@ -1,3 +1,10 @@
+## [2.9.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.3...v2.9.4) (2023-07-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @semantic-release/github from 8.0.7 to 9.0.3 ([3ab224e](https://github.com/rickklaasboer/wego-overseer/commit/3ab224ebc83568c97dde0a365bd85e10e0d8b437))
+
 ## [2.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.2...v2.9.3) (2023-07-10)
 
 
