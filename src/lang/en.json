@@ -92,7 +92,10 @@
                 "song_not_found": "The requested song could not be found.",
                 "success": {
                     "playlist": "Added %s songs to queue.",
-                    "single_track": "Now playing %s."
+                    "track": {
+                        "queued": "Added %s to queue.",
+                        "playing": "Now playing %s."
+                    }
                 }
             },
             "prev": {

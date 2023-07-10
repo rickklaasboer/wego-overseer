@@ -91,8 +91,11 @@
                 "not_in_voice": "Je bevindt je niet in een spraakkanaal!",
                 "song_not_found": "Het gevraagde nummer kan niet worden gevonden.",
                 "success": {
-                    "playlist": "%s nummers toegevoegd aan wachtrij.",
-                    "single_track": "Speelt nu %s."
+                    "playlist": "Added %s songs to queue.",
+                    "track": {
+                        "queued": "%s toegevoegd aan de wachtrij.",
+                        "playing": "Speelt nu %s."
+                    }
                 }
             },
             "prev": {
