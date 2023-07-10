@@ -1,3 +1,11 @@
+## [2.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.1...v2.9.2) (2023-07-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @typescript-eslint/parser from 5.59.8 to 5.61.0 ([04be201](https://github.com/rickklaasboer/wego-overseer/commit/04be201fe8a476cc8cbbba304f649910dfab78da))
+* **deps:** bump objection from 3.0.1 to 3.0.4 ([7e066c5](https://github.com/rickklaasboer/wego-overseer/commit/7e066c5b8bc4337ffd3f9992672a65ee3f572a1d))
+
 ## [2.9.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.0...v2.9.1) (2023-07-10)
 
 
