@@ -40,16 +40,24 @@ export const MusicPlayCommand = new Command({
             await queue.node.play();
         }
 
+        if (searchResult.playlist) {
+            await interaction.editReply(
+                trans(
+                    'commands.music.play.success.playlist',
+                    searchResult.tracks.length.toString(),
+                ),
+            );
+
+            return;
+        }
+
         await interaction.editReply(
-            searchResult.playlist
-                ? trans(
-                      'commands.music.play.success.playlist',
-                      String(searchResult.tracks.length),
-                  )
-                : trans(
-                      'commands.music.play.success.single_track',
-                      searchResult.tracks[0].title,
-                  ),
+            trans(
+                queue.tracks.size > 0
+                    ? 'commands.music.play.success.track.queued'
+                    : 'commands.music.play.success.track.playing',
+                searchResult.tracks[0].title,
+            ),
         );
     },
 });
