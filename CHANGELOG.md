@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.0...v2.9.1) (2023-07-10)
+
+
+### Bug Fixes
+
+* **#143:** incorrect translation when queueing songs ([de982ee](https://github.com/rickklaasboer/wego-overseer/commit/de982ee1ab0a92b33e414a99e46294a4df896b6a)), closes [#143](https://github.com/rickklaasboer/wego-overseer/issues/143)
+
 # [2.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.8.1...v2.9.0) (2023-07-09)
 
 
