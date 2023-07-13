@@ -1,3 +1,10 @@
+## [2.9.5-preview.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.4...v2.9.5-preview.1) (2023-07-13)
+
+
+### Bug Fixes
+
+* trigger release ([86536b3](https://github.com/rickklaasboer/wego-overseer/commit/86536b371ddb2b598cbbe46ee443952e10a15003))
+
 ## [2.9.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.3...v2.9.4) (2023-07-10)
 
 
