@@ -1,3 +1,12 @@
+## [2.10.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.0...v2.10.1) (2023-07-23)
+
+
+### Bug Fixes
+
+* remove jsdom ([c737028](https://github.com/rickklaasboer/wego-overseer/commit/c737028ff486da30979078fe79b6492020c88810))
+* rework kortebroek command ([2c4f842](https://github.com/rickklaasboer/wego-overseer/commit/2c4f842b5982e4c7a7215951f00035091057bfa0))
+* rework stufi command ([e979aa5](https://github.com/rickklaasboer/wego-overseer/commit/e979aa59837ea022d4d52d1b1dad8311667a7318))
+
 # [2.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.4...v2.10.0) (2023-07-23)
 
 

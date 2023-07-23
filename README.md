@@ -81,6 +81,9 @@ AWS_SECRET_ACCESS_KEY=
 
 # AWS SQS queue url
 YOUTUBE_SQS_QUEUE_URL=
+
+# Discord channel id to announce new videos
+YOUTUBE_ANNOUNCE_CHANNEL_ID=
 ```
 
 Now, run your database migrations (please refer to **'Setting up the development environment'** first for setting up the database)
