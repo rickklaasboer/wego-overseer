@@ -1,3 +1,11 @@
+## [2.10.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.3...v2.10.4) (2023-07-23)
+
+
+### Bug Fixes
+
+* **deps:** bump @discord-player/extractor from 4.3.1 to 4.4.0 ([3cf9e1b](https://github.com/rickklaasboer/wego-overseer/commit/3cf9e1bf92f0d08103504b1617289d9f76428cd7))
+* **deps:** bump discord-player from 6.3.0 to 6.6.0 ([61497f8](https://github.com/rickklaasboer/wego-overseer/commit/61497f8f72bfd85e7130bbb45cc4b6c10a2b7af9))
+
 ## [2.10.3](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.2...v2.10.3) (2023-07-23)
 
 
