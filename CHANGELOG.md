@@ -1,3 +1,10 @@
+## [2.10.5](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.4...v2.10.5) (2023-07-23)
+
+
+### Bug Fixes
+
+* force release ([2dada50](https://github.com/rickklaasboer/wego-overseer/commit/2dada5088a8953499a29485fb77842a0e306ba61))
+
 ## [2.10.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.3...v2.10.4) (2023-07-23)
 
 
