@@ -3,6 +3,10 @@
 # wego-overseer
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![ESLint](https://github.com/rickklaasboer/wego-overseer/actions/workflows/eslint.yml/badge.svg)](https://github.com/rickklaasboer/wego-overseer)
+[![Typescript](https://github.com/rickklaasboer/wego-overseer/actions/workflows/typescript.yml/badge.svg)](https://github.com/rickklaasboer/wego-overseer)
+[![Semantic Release](https://github.com/rickklaasboer/wego-overseer/actions/workflows/semantic-release.yml/badge.svg)](https://github.com/rickklaasboer/wego-overseer)
+[![Semantic Release](https://github.com/rickklaasboer/wego-overseer/actions/workflows/docker-release.yml/badge.svg)](https://github.com/rickklaasboer/wego-overseer)
 
 A Discord bot specially built for Wego. It uses Discord.js for interacting with the Discord API.
 
