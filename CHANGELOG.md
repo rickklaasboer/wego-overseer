@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.1...v2.10.2) (2023-07-23)
+
+
+### Bug Fixes
+
+* use native youtube embeds instead of creating our own ([4bfe63c](https://github.com/rickklaasboer/wego-overseer/commit/4bfe63c60761d8a2c131348129a626e5aeb10ee7))
+
 ## [2.10.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.0...v2.10.1) (2023-07-23)
 
 
