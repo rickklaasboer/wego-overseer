@@ -197,7 +197,7 @@
         },
         "youtube": {
             "embed": {
-                "title": "Nieuwe video geüpload door Wego Klub!!!",
+                "title": "%s heeft '%s' geüpload!",
                 "description": "%s heeft zojuist een nieuwe video op YouTube geüpload! Bekijk het [hier](%s)."
             }
         }
