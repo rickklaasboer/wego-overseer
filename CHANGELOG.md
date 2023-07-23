@@ -1,3 +1,29 @@
+# [2.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.4...v2.10.0) (2023-07-23)
+
+
+### Bug Fixes
+
+* trigger release ([86536b3](https://github.com/rickklaasboer/wego-overseer/commit/86536b371ddb2b598cbbe46ee443952e10a15003))
+
+
+### Features
+
+* youtube pubsub implementation ([35fd5d6](https://github.com/rickklaasboer/wego-overseer/commit/35fd5d678c536a93140dc075ec93f5e45a4111c4))
+
+# [2.10.0-preview.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.5-preview.1...v2.10.0-preview.1) (2023-07-23)
+
+
+### Features
+
+* youtube pubsub implementation ([35fd5d6](https://github.com/rickklaasboer/wego-overseer/commit/35fd5d678c536a93140dc075ec93f5e45a4111c4))
+
+## [2.9.5-preview.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.4...v2.9.5-preview.1) (2023-07-13)
+
+
+### Bug Fixes
+
+* trigger release ([86536b3](https://github.com/rickklaasboer/wego-overseer/commit/86536b371ddb2b598cbbe46ee443952e10a15003))
+
 ## [2.9.4](https://github.com/rickklaasboer/wego-overseer/compare/v2.9.3...v2.9.4) (2023-07-10)
 
 
