@@ -194,6 +194,12 @@
                 "title": "Het is vandaag %s's verjaardag!",
                 "description": "Hoera! Het is <@%s>'s verjaardag vandaag! Wens hen een fijne verjaardag."
             }
+        },
+        "youtube": {
+            "embed": {
+                "title": "Nieuwe video geüpload door Wego Klub!!!",
+                "description": "%s heeft zojuist een nieuwe video op YouTube geüpload! Bekijk het [hier](%s)."
+            }
         }
     },
     "errors": {
