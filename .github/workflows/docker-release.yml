@@ -1,4 +1,4 @@
-name: Semantic release
+name: Docker release
 
 on:
     push:
