@@ -2,6 +2,9 @@ import {EmbedBuilder} from 'discord.js';
 import Command from '@/commands/Command';
 import {getEnvString} from '@/util/environment';
 import dayjs from 'dayjs';
+import Logger from '@/telemetry/logger';
+
+const logger = new Logger('wego-overseer:commands:KortebroekCommand');
 
 const KANIKEENKORTEBROEKAAN_API_URL = getEnvString(
     'KANIKEENKORTEBROEKAAN_API_URL',
@@ -50,7 +53,7 @@ export const KortebroekCommand = new Command({
                 ],
             });
         } catch (err) {
-            console.error(err);
+            logger.fatal(err);
         }
     },
 });

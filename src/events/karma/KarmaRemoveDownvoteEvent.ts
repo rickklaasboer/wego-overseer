@@ -7,7 +7,7 @@ import Karma from '@/entities/Karma';
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:KarmaRemoveDownvoteEvent');
+const logger = new Logger('wego-overseer:events:KarmaRemoveDownvoteEvent');
 
 export const KarmaRemoveDownvoteEvent = new Event<'messageReactionRemove'>({
     name: 'messageReactionRemove',

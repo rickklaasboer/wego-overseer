@@ -5,7 +5,7 @@ import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
 
-const logger = new Logger('wego-overseer:MotivationalQuoteCommand');
+const logger = new Logger('wego-overseer:commands:MotivationalQuoteCommand');
 
 //https://picsum.photos/width/height
 //https://picsum.photos/

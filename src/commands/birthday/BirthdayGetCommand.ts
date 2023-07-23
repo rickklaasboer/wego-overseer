@@ -12,7 +12,7 @@ import {User as DiscordUser} from 'discord.js';
 import {bindUserToGuild} from './predicates/bindUserToGuild';
 import {createNextOccuranceTimestamp} from '@/util/timestamp';
 
-const logger = new Logger('wego-overseer:BirthdayGetCommand');
+const logger = new Logger('wego-overseer:commands:BirthdayGetCommand');
 
 function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
     const embed = new EmbedBuilder();

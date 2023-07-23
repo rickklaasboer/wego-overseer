@@ -3,6 +3,9 @@ import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {trans} from '@/util/localization';
+import Logger from '@/telemetry/logger';
+
+const logger = new Logger('wego-overseer:commands:WhereMemeCommand');
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -49,7 +52,7 @@ export const WhereMemeCommand = new Command({
             const wrappedImage = new Base64JimpImage(img);
             await interaction.reply({files: [wrappedImage.toAttachment()]});
         } catch (err) {
-            console.error(err);
+            logger.fatal(err);
             await interaction.reply({
                 content: trans('errors.common.failed', 'where meme'),
                 ephemeral: true,

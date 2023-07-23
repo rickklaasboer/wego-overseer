@@ -35,7 +35,7 @@ export type BotContext = {
     player: Player;
 };
 
-const logger = new Logger('wego-overseer:Bot');
+const logger = new Logger('wego-overseer:root:Bot');
 
 const CLIENT_OPTIONS: ClientOptions = {
     intents: [

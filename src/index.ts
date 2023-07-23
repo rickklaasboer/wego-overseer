@@ -19,7 +19,7 @@ const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
 const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
 const ENABLE_KNEX_LOGGER = getEnvBool('ENABLE_KNEX_LOGGER', false);
 
-const logger = new Logger('wego-overseer:index');
+const logger = new Logger('wego-overseer:root:bootstrap');
 
 // prettier-ignore
 setLocalizationInstance(new I18n({

@@ -7,7 +7,7 @@ import {EmbedBuilder} from 'discord.js';
 import table from 'text-table';
 import {createBirthdayRows, sortBirthdays} from './BirthdayCalendarCommand';
 
-const logger = new Logger('wego-overseer:BirthdayUpcomingCommand');
+const logger = new Logger('wego-overseer:commands:BirthdayUpcomingCommand');
 
 export const BirthdayUpcomingCommand = new InternalCommand({
     run: async (interaction) => {

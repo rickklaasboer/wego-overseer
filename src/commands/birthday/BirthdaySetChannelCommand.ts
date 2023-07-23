@@ -4,7 +4,7 @@ import {trans} from '@/util/localization';
 import InternalCommand from '../InternalCommand';
 import {ensureGuildIsAvailable} from '../karma/KarmaCommand/predicates';
 
-const logger = new Logger('wego-overseer:BirthdaySetChannelCommand');
+const logger = new Logger('wego-overseer:commands:BirthdaySetChannelCommand');
 
 export const BirthdaySetChannelCommand = new InternalCommand({
     run: async (interaction) => {

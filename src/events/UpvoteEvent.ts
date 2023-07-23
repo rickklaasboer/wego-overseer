@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Logger from '@/telemetry/logger';
 import {getEnvInt, getEnvString} from '@/util/environment';
 import {EmbedBuilder} from 'discord.js';
 import Event from './Event';
 
-const logger = new Logger('wego-overseer:UpvoteEvent');
+const logger = new Logger('wego-overseer:events:UpvoteEvent');
 
 // Get .env variables or fall back to defaults
 const QCC_EMOJI_NAME = getEnvString('QCC_EMOJI_NAME', 'upvote').toLowerCase();
 const QCC_MIN_EMOJI_COUNT = getEnvInt('QCC_MIN_EMOJI_COUNT', 5);
 const QCC_CHANNEL_ID = getEnvString('QCC_CHANNEL_ID', '');
 
-export const UpvoteEvent = new Event<'messageReactionAdd'>({
+export const UpvoteEvent = new Event({
     name: 'messageReactionAdd',
     enabled: true,
     run: async ({client}, reaction) => {
@@ -25,6 +26,7 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
             const emoji = reaction.client.emojis.cache.find((emoji) =>
                 emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
             );
+
             // Make sure an emoji was found
             if (!emoji) {
                 logger.error("Couldn't find emoji with name", QCC_EMOJI_NAME);
@@ -40,19 +42,14 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
             );
 
             // Check if channel has been found
-            if (!channel) {
+            if (!channel || !channel.isTextBased()) {
                 logger.error('Could not find channel to send message in');
                 return;
             }
 
-            // Check if channel is a text channel
-            if (!channel.isTextBased()) {
-                logger.error('Channel is not a text channel');
-                return;
-            }
-
             // Check if message is already in the channel
-            const messages = await channel.messages.fetch({limit: 100}); // Fetch last 100 messages (should be enough) to check if message is already in the channel
+            // Fetch last 100 messages (should be enough) to check if message is already in the channel
+            const messages = await channel.messages.fetch({limit: 100});
             const message = [...messages.values()].find(
                 // Search by bot id and reaction message id
                 (message) =>
@@ -62,41 +59,36 @@ export const UpvoteEvent = new Event<'messageReactionAdd'>({
                     ),
             );
 
-            // Check if a message already exists
+            const msg = reaction.message;
             if (message) {
-                // Edit the existing message
                 await message.edit({
-                    content: `${reaction.count} <:upvote:${emoji?.id}> in <#${reaction.message.channelId}>`,
+                    content: `${reaction.count} <:upvote:${emoji?.id}> in <#${msg.channelId}>`,
                 });
-            } else {
-                // Create embed
-                const embed = new EmbedBuilder()
-                    .setColor(0x202225)
-                    .setAuthor({
-                        name: reaction.message.author!.username,
-                        iconURL: reaction.message.author!.avatarURL()!,
-                    })
-                    .setDescription(
-                        reaction.message.content!.length > 0
-                            ? reaction.message.content
-                            : null,
-                    )
-                    .setFields([
-                        {
-                            name: 'Source',
-                            value: `[Jump to message](${reaction.message.url})`,
-                        },
-                    ])
-                    .setImage(reaction.message.attachments.first()?.url ?? null)
-                    .setTimestamp(reaction.message.createdAt)
-                    .setFooter({text: `Message ID: ${reaction.message.id}`});
-
-                // Send a message in the specified channel
-                await channel.send({
-                    content: `${reaction.count} <:upvote:${emoji?.id}> in <#${reaction.message.channelId}>`,
-                    embeds: [embed],
-                });
+                return;
             }
+
+            const embed = new EmbedBuilder()
+                .setColor(0x202225)
+                .setAuthor({
+                    name: msg.author!.username,
+                    iconURL: msg.author!.avatarURL()!,
+                })
+                .setDescription(msg.content!.length > 0 ? msg.content : null)
+                .setFields([
+                    {
+                        name: 'Source',
+                        value: `[Jump to message](${msg.url})`,
+                    },
+                ])
+                .setImage(msg.attachments.first()?.url ?? null)
+                .setTimestamp(msg.createdAt)
+                .setFooter({text: `Message ID: ${msg.id}`});
+
+            // Send a message in the specified channel
+            await channel.send({
+                content: `${reaction.count} <:upvote:${emoji?.id}> in <#${msg.channelId}>`,
+                embeds: [embed],
+            });
         } catch (err) {
             logger.fatal('Unable to handle UpvoteEvent', err);
         }

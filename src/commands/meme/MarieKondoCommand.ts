@@ -5,7 +5,7 @@ import {Base64JimpImage} from '@/util/Base64JimpImage';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
 
-const logger = new Logger('wego-overseer:MarieKondoCommand');
+const logger = new Logger('wego-overseer:commands:MarieKondoCommand');
 
 // Magic constants
 const IMAGE_OFFSETS = {

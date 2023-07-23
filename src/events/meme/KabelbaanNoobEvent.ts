@@ -1,11 +1,12 @@
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:KabelBaanNoobEvent');
+const logger = new Logger('wego-overseer:events:KabelBaanNoobEvent');
+
 const kabelbaanDiscordId = '162624307745390592';
 const noobEmojiId = '375338339248898048';
 
-export const KabelbaanNoobEvent = new Event<'messageCreate'>({
+export const KabelbaanNoobEvent = new Event({
     name: 'messageCreate',
     run: async (_, message) => {
         try {

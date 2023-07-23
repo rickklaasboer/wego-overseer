@@ -5,6 +5,9 @@ import {BirthdaySetCommand} from '@/commands/birthday/BirthdaySetCommand';
 import {BirthdaySetChannelCommand} from '@/commands/birthday/BirthdaySetChannelCommand';
 import {BirthdayUpcomingCommand} from './BirthdayUpcomingCommand';
 import {BirthdayCalendarCommand} from './BirthdayCalendarCommand';
+import Logger from '@/telemetry/logger';
+
+const logger = new Logger('wego-overseer:commands:BirthdayCommand');
 
 export const BirthdayCommand = new EntryPointCommand({
     name: 'birthday',
@@ -17,6 +20,7 @@ export const BirthdayCommand = new EntryPointCommand({
         ['upcoming', BirthdayUpcomingCommand],
         ['calendar', BirthdayCalendarCommand],
     ]),
+    logger,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,

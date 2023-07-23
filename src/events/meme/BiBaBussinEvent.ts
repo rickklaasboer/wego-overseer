@@ -2,7 +2,7 @@ import Logger from '@/telemetry/logger';
 import Event from '../Event';
 import {randomNumber} from '@/util/karma';
 
-const logger = new Logger('wego-overseer:BiBaBussinEvent');
+const logger = new Logger('wego-overseer:events:BiBaBussinEvent');
 
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 
