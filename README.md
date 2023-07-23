@@ -84,9 +84,6 @@ YOUTUBE_SQS_QUEUE_URL=
 
 # Discord channel id to announce new videos
 YOUTUBE_ANNOUNCE_CHANNEL_ID=
-
-# Google API key for youtube data api
-GOOGLE_API_KEY=
 ```
 
 Now, run your database migrations (please refer to **'Setting up the development environment'** first for setting up the database)

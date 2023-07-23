@@ -8,9 +8,8 @@ import {
 } from '@aws-sdk/client-sqs';
 import {getEnvString} from '@/util/environment';
 import {YoutubeSQSPayload} from '@/types/youtube';
-import {EmbedBuilder} from 'discord.js';
 import {trans} from '@/util/localization';
-import {getChannel, getVideo} from '@/lib/youtube';
+import StringBuilder from '@/util/StringBuilder';
 
 const AWS_ACCESS_KEY_ID = getEnvString('AWS_ACCESS_KEY_ID', '');
 const AWS_SECRET_ACCESS_KEY = getEnvString('AWS_SECRET_ACCESS_KEY', '');
@@ -55,37 +54,27 @@ export const YouTubeSQSPollJob = new Job({
             );
 
             for (const message of response.Messages) {
-                const body = JSON.parse(
+                const body: YoutubeSQSPayload = JSON.parse(
                     message.Body ?? '{}',
-                ) as YoutubeSQSPayload;
+                );
 
-                const [youtubeChannel, video] = await Promise.all([
-                    getChannel(body.feed.entry['yt:channelId']),
-                    getVideo(body.feed.entry['yt:videoId']),
-                ]);
+                const sb = new StringBuilder();
 
-                const embed = new EmbedBuilder()
-                    .setTitle(
-                        trans(
-                            'jobs.youtube.embed.title',
-                            body.feed.entry.author.name,
-                            body.feed.entry.title,
-                        ),
-                    )
-                    .setDescription(
-                        trans(
-                            'jobs.youtube.embed.description',
-                            body.feed.entry.author.name,
-                            body.feed.entry.link['@_href'],
-                        ),
-                    )
-                    .setImage(video?.thumbnails.high.url ?? null)
-                    .setAuthor({
-                        name: body.feed.entry.author.name,
-                        iconURL: youtubeChannel?.thumbnails.high.url,
-                        url: body.feed.entry.author.uri,
-                    })
-                    .setURL(body.feed.entry.link['@_href']);
+                sb.append(
+                    trans(
+                        'jobs.youtube.embed.title',
+                        body.feed.entry.author.name,
+                        body.feed.entry.title,
+                    ),
+                );
+                sb.append('\n');
+                sb.append(
+                    trans(
+                        'jobs.youtube.embed.description',
+                        body.feed.entry.author.name,
+                        body.feed.entry.link['@_href'],
+                    ),
+                );
 
                 if (!channel?.isTextBased()) {
                     logger.error(
@@ -94,7 +83,7 @@ export const YouTubeSQSPollJob = new Job({
                     return;
                 }
 
-                await channel.send({embeds: [embed]});
+                await channel.send(sb.toString());
 
                 const deleteCmd = new DeleteMessageCommand({
                     QueueUrl: YOUTUBE_SQS_QUEUE_URL,
