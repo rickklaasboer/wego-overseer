@@ -536,10 +536,10 @@
     http-response-object "^3.0.1"
     parse-cache-control "^1.0.1"
 
-"@discord-player/equalizer@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.1.tgz#917934a47b09ef99893e967d6f3d69ee288e8547"
-  integrity sha512-PPjX8TBwzM85YKEdpYYL8aGbdSLIk9RK1h/uU5jeyiF6Uu5CiLH/XctDfcGW8cSgoaU4J0R6a8svCs9yhzHXSw==
+"@discord-player/equalizer@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.2.tgz#94c6309c62517da591c9cdc0a776d80b5aa523cf"
+  integrity sha512-U86em1cMtopXVuKFDxP8J2DcNOqwCAsYQ2tkzPoJvchsrezcI2cgvN3jtGt9FFECP3pLvSz96ZB9FOHZKG5Mqg==
 
 "@discord-player/extractor@4.3.1":
   version "4.3.1"
@@ -553,6 +553,11 @@
     soundcloud.ts "^0.5.0"
     spotify-url-info "^3.2.5"
     youtube-sr "^4.3.4"
+
+"@discord-player/ffmpeg@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@discord-player/ffmpeg/-/ffmpeg-0.1.0.tgz#3c8f1fc7dfdb033dc8ecd18a9e82fde2a3867196"
+  integrity sha512-0kW6q4gMQN2B4Z4EzmUgXrKQSXXmyhjdZBBZ/6jSHZ9fh814oOu+JXP01VvtWHwTylI7qJHIctEWtSyjEubCJg==
 
 "@discord-player/utils@^0.2.1":
   version "0.2.1"
@@ -3296,12 +3301,13 @@ discord-api-types@0.37.42, discord-api-types@^0.37.20, discord-api-types@^0.37.3
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.42.tgz#3c196267ed31e9ea249e6880c15e2af1c6428629"
   integrity sha512-1Huaj9cQ1W7/uryS8MZs/tZemnoKB94thM1cE40lep3rpU3q7WHqkdjN/veX0prTkYlPhcyLd/DeF/pBO8X8oQ==
 
-discord-player@6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.3.0.tgz#84e685cbb20e71e1c3536e964e8502fa26392e4d"
-  integrity sha512-+YA/ZsAOEMfZIWa2Xezcf9x1rIH9IP3Ak0uAt8e9x9Esv63v+hEtWgjeIgThxK+i5XgjUVQpPP2coesHA6MeUw==
+discord-player@6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.0.tgz#3ecb01e5d263ee1d9e188829cf0dd5f40f3a89b8"
+  integrity sha512-lW5IcGLycJK6mNtpz5/QqKuhhpBVm475xlsVKEUhoS1CFNcLqob5nAlEXurKjlIhxR+fFglSZ8jmtdFjR8p50g==
   dependencies:
-    "@discord-player/equalizer" "^0.2.1"
+    "@discord-player/equalizer" "^0.2.2"
+    "@discord-player/ffmpeg" "^0.1.0"
     "@discord-player/utils" "^0.2.1"
     "@discordjs/voice" latest
     libsodium-wrappers "^0.7.10"
