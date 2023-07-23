@@ -3,7 +3,7 @@ name: Docker release
 on:
     push:
         tags:
-            - '*'
+            - v*
 
 env:
     REGISTRY: ghcr.io
