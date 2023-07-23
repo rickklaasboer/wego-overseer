@@ -1,6 +1,6 @@
 {
     "name": "wego-overseer",
-    "version": "2.9.4",
+    "version": "2.10.0-preview.1",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -40,6 +40,7 @@
         "typescript": "5.0.4"
     },
     "dependencies": {
+        "@aws-sdk/client-sqs": "3.370.0",
         "@discord-player/extractor": "4.3.1",
         "@discordjs/opus": "0.9.0",
         "@discordjs/rest": "1.7.1",

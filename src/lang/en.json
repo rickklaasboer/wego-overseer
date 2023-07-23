@@ -194,6 +194,12 @@
                 "title": "It's %s's birthday today!",
                 "description": "Hooray! It's <@%s>'s birthday today! Wish them a happy birthday."
             }
+        },
+        "youtube": {
+            "embed": {
+                "title": "%s uploaded '%s'",
+                "description": "%s just uploaded a new video on YouTube! Check it out [here](%s)."
+            }
         }
     },
     "errors": {
