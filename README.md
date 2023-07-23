@@ -68,6 +68,25 @@ QCC_CHANNEL_ID=
 AOC_SESSION_COOKIE=
 # The fully qualified (private) leaderboard url
 AOC_LEADERBOARD_URL=
+<<<<<<< Updated upstream
+=======
+
+# kanikeenkortebroekaan.nl API url
+KANIKEENKORTEBROEKAAN_API_URL="https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/production",
+
+# duo.nl API url
+DUO_STUFI_API_URL="https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/production",
+
+# AWS credentials
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+
+# AWS SQS queue url
+YOUTUBE_SQS_QUEUE_URL=
+
+# Discord channel id to announce new videos
+YOUTUBE_ANNOUNCE_CHANNEL_ID=
+>>>>>>> Stashed changes
 ```
 
 Now, run your database migrations (please refer to **'Setting up the development environment'** first for setting up the database)

@@ -197,8 +197,8 @@
         },
         "youtube": {
             "embed": {
-                "title": "%s heeft '%s' geüpload!",
-                "description": "%s heeft zojuist een nieuwe video op YouTube geüpload! Bekijk het [hier](%s)."
+                "title": "%s heeft '%s' geüpload",
+                "description": "%s heeft zojuist een nieuwe video op YouTube geüpload! Bekijk het [hier](%s)"
             }
         }
     },
