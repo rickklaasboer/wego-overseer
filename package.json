@@ -47,7 +47,7 @@
         "cron": "2.3.1",
         "dayjs": "1.11.9",
         "discord-api-types": "0.37.42",
-        "discord-player": "6.3.0",
+        "discord-player": "6.6.0",
         "discord.js": "14.11.0",
         "dotenv": "16.0.3",
         "extract-domain": "2.4.8",
