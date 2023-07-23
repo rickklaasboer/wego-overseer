@@ -5,7 +5,7 @@ import extractUrls from 'extract-urls';
 import extractDomain from 'extract-domain';
 import {trans} from '@/util/localization';
 
-const logger = new Logger('wego-overseer:EmbedFixEvent');
+const logger = new Logger('wego-overseer:events:EmbedFixEvent');
 
 const FIXABLE = new Map([
     ['instagram', 'ddinstagram'],

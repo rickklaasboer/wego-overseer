@@ -4,7 +4,7 @@ import Logger from '@/telemetry/logger';
 import PollBuilder from '@/util/PollBuilder';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 
-const logger = new Logger('wego-overseer:KarmaCommand');
+const logger = new Logger('wego-overseer:commands:KarmaCommand');
 
 const DEFAULT_VOTE_OPTIONS = ['Yes', 'No', 'Maybe'];
 

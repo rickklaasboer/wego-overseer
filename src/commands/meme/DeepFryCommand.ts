@@ -12,7 +12,7 @@ import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {Maybe} from '@/types/util';
 import {trans} from '@/util/localization';
 
-const logger = new Logger('wego-overseer:DeepFryCommand');
+const logger = new Logger('wego-overseer:commands:DeepFryCommand');
 
 /**
  * Create follow up reply from interaction and image

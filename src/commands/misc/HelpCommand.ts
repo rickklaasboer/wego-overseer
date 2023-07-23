@@ -7,7 +7,7 @@ import {wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 
-const logger = new Logger('wego-overseer:HelpCommand');
+const logger = new Logger('wego-overseer:commands:HelpCommand');
 
 const COMMANDS_PER_PAGE = 6;
 

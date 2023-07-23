@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import {EmbedBuilder} from 'discord.js';
 import Job from '../Job';
 
-const logger = new Logger('wego-overseer:BirthdayJob');
+const logger = new Logger('wego-overseer:jobs:BirthdayJob');
 
 export const BirthdayJob = new Job({
     name: 'BirthdayJob',

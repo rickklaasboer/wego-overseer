@@ -9,7 +9,7 @@ import table from 'text-table';
 import Guild from '@/entities/Guild';
 import User from '@/entities/User';
 
-const logger = new Logger('wego-overseer:BirthdayCalendarCommand');
+const logger = new Logger('wego-overseer:commands:BirthdayCalendarCommand');
 
 export const BirthdayCalendarCommand = new InternalCommand({
     run: async (interaction) => {

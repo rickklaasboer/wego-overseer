@@ -7,9 +7,9 @@ import {containsUrl, isEmpty} from '@/util/misc';
 import {Collection} from 'discord.js';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:KarmaMessageCreateEvent');
+const logger = new Logger('wego-overseer:events:KarmaMessageCreateEvent');
 
-export const KarmaMessageCreateEvent = new Event<'messageCreate'>({
+export const KarmaMessageCreateEvent = new Event({
     name: 'messageCreate',
     run: async (_, message) => {
         try {

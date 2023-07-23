@@ -3,7 +3,7 @@ import {randomNumber} from '@/util/karma';
 import {trans} from '@/util/localization';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:IAmDadEvent');
+const logger = new Logger('wego-overseer:events:IAmDadEvent');
 
 const DUTCH_PART = 'ik ben';
 const ENGLISH_PART = 'i am';
@@ -30,7 +30,7 @@ function getLocale(isDutch: boolean, isEnglish: boolean): string {
     return isDutch ? 'nl' : isEnglish ? 'en' : '';
 }
 
-export const IAmDadEvent = new Event<'messageCreate'>({
+export const IAmDadEvent = new Event({
     name: 'messageCreate',
     run: async (_, message) => {
         try {

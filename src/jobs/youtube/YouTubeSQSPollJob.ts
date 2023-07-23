@@ -19,7 +19,7 @@ const YOUTUBE_ANNOUNCE_CHANNEL_ID = getEnvString(
     '',
 );
 
-const logger = new Logger('wego-overseer:YouTubeSQSPollJob');
+const logger = new Logger('wego-overseer:jobs:YouTubeSQSPollJob');
 
 const sqs = new SQSClient({
     region: 'eu-west-1',

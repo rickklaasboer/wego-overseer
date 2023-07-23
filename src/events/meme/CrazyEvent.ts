@@ -2,7 +2,7 @@
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:CrazyEvent');
+const logger = new Logger('wego-overseer:events:CrazyEvent');
 
 const REPLIES = new Map([
     ['crazy', 'Crazy? I was crazy once.'],

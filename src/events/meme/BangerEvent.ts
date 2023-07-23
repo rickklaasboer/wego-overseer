@@ -3,9 +3,9 @@ import {randomNumber} from '@/util/karma';
 import {trans} from '@/util/localization';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:BangerEvent');
+const logger = new Logger('wego-overseer:events:BangerEvent');
 
-export const BangerEvent = new Event<'messageCreate'>({
+export const BangerEvent = new Event({
     name: 'messageCreate',
     run: async (_, message) => {
         try {

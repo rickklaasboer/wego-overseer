@@ -5,7 +5,7 @@ import {tableWithHead} from '@/util/table';
 import {trans} from '@/util/localization';
 import {getEnvString} from '@/util/environment';
 
-const logger = new Logger('wego-overseer:AdventOfCodeCommand');
+const logger = new Logger('wego-overseer:commands:AdventOfCodeCommand');
 
 const AOC_SESSION_COOKIE = getEnvString('AOC_SESSION_COOKIE', '');
 const AOC_LEADERBOARD_URL = getEnvString('AOC_LEADERBOARD_URL', '');

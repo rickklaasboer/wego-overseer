@@ -1,6 +1,9 @@
 import Command from '@/commands/Command';
+import Logger from '@/telemetry/logger';
 import {getEnvString} from '@/util/environment';
 import dayjs from 'dayjs';
+
+const logger = new Logger('wego-overseer:commands:KortebroekCommand');
 
 const DUO_STUFI_API_URL = getEnvString('DUO_STUFI_API_URL', '');
 
@@ -34,7 +37,7 @@ export const StufiCommand = new Command({
                 )}.`,
             );
         } catch (err) {
-            console.error(err);
+            logger.fatal(err);
         }
     },
 });

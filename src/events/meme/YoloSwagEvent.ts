@@ -1,9 +1,9 @@
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:YoloSwagEvent');
+const logger = new Logger('wego-overseer:events:YoloSwagEvent');
 
-export const YoloSwagEvent = new Event<'messageCreate'>({
+export const YoloSwagEvent = new Event({
     name: 'messageCreate',
     run: async (_, message) => {
         try {

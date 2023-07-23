@@ -6,7 +6,7 @@ import Logger from '@/telemetry/logger';
 import PollBuilder, {VoteActionButtonPayload} from '@/util/PollBuilder';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:ReceiveVoteEvent');
+const logger = new Logger('wego-overseer:events:ReceiveVoteEvent');
 
 export const ReceiveVoteEvent = new Event({
     name: 'interactionCreate',

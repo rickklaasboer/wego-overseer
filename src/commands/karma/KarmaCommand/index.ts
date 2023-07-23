@@ -10,7 +10,7 @@ import {KarmaUserResetCommand} from '../KarmaUserResetCommand';
 import {KARMA_COMMAND_OPTIONS} from './options';
 import {ensureGuildIsAvailable, ensureUserIsAvailable} from './predicates';
 
-const logger = new Logger('wego-overseer:KarmaCommand');
+const logger = new Logger('wego-overseer:commands:KarmaCommand');
 
 const FORWARDABLE_COMMANDS = {
     channel: {

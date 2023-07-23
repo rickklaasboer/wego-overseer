@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
 
-const logger = new Logger('wego-overseer:LightshotCommand');
+const logger = new Logger('wego-overseer:commands:LightshotCommand');
 
 export const LightshotCommand = new Command({
     name: 'lightshot',

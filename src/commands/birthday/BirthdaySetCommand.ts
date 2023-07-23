@@ -12,7 +12,7 @@ import {bindUserToGuild} from './predicates/bindUserToGuild';
 import {EmbedBuilder, User} from 'discord.js';
 import {createNextOccuranceTimestamp} from '@/util/timestamp';
 
-const logger = new Logger('wego-overseer:BirthdaySetCommand');
+const logger = new Logger('wego-overseer:commands:BirthdaySetCommand');
 
 class NotAdminError extends Error {
     constructor() {

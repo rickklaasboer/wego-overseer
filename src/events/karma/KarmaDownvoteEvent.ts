@@ -8,9 +8,9 @@ import Logger from '@/telemetry/logger';
 import {randomNumber} from '@/util/karma';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:KarmaDownvoteEvent');
+const logger = new Logger('wego-overseer:events:KarmaDownvoteEvent');
 
-export const KarmaDownvoteEvent = new Event<'messageReactionAdd'>({
+export const KarmaDownvoteEvent = new Event({
     name: 'messageReactionAdd',
     run: async (_, reaction, user) => {
         try {

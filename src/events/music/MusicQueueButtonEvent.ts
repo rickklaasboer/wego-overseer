@@ -1,7 +1,7 @@
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 
-const logger = new Logger('wego-overseer:MusicQueueButtonEvent');
+const logger = new Logger('wego-overseer:events:MusicQueueButtonEvent');
 
 const EVENT_TYPES = Object.freeze({
     prev: 'PREV',

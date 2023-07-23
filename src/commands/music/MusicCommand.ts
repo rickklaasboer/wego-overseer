@@ -13,7 +13,7 @@ import {MusicSeekCommand} from '@/commands/music/MusicSeekCommand';
 import EntryPointCommand from '@/commands/EntryPointCommand';
 import Logger from '@/telemetry/logger';
 
-const logger = new Logger('wego-overseer:MusicCommand');
+const logger = new Logger('wego-overseer:commands:MusicCommand');
 
 export const MusicCommand = new EntryPointCommand({
     name: 'music',
