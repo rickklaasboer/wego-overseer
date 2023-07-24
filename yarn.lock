@@ -5585,10 +5585,10 @@ mv@~2:
     ncp "~2.0.0"
     rimraf "~2.4.0"
 
-mysql2@3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-3.3.3.tgz#b1010dffa394edf5c397c52bc340dfd3ada80257"
-  integrity sha512-MxDQJztArk4JFX1PKVjDhIXRzAmVJfuqZrVU+my6NeYBAA/XZRaDw5q7vga8TNvgyy3Lv3rivBFBBuJFbsdjaw==
+mysql2@3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-3.5.2.tgz#a06050e1514e9ac15711a8b883ffd51cb44b2dc8"
+  integrity sha512-cptobmhYkYeTBIFp2c0piw2+gElpioga1rUw5UidHvo8yaHijMZoo8A3zyBVoo/K71f7ZFvrShA9iMIy9dCzCA==
   dependencies:
     denque "^2.1.0"
     generate-function "^2.3.1"
