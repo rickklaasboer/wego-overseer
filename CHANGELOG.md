@@ -1,3 +1,10 @@
+## [2.10.6](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.5...v2.10.6) (2023-07-26)
+
+
+### Bug Fixes
+
+* add markdown formatting to youtube queueer messages ([7877800](https://github.com/rickklaasboer/wego-overseer/commit/78778004bae1dd4223354995431108db299ab2da))
+
 ## [2.10.5](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.4...v2.10.5) (2023-07-23)
 
 
