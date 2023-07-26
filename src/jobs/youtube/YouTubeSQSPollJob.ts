@@ -10,6 +10,7 @@ import {getEnvString} from '@/util/environment';
 import {YoutubeSQSPayload} from '@/types/youtube';
 import {trans} from '@/util/localization';
 import StringBuilder from '@/util/StringBuilder';
+import markdown from '@/util/markdown';
 
 const AWS_ACCESS_KEY_ID = getEnvString('AWS_ACCESS_KEY_ID', '');
 const AWS_SECRET_ACCESS_KEY = getEnvString('AWS_SECRET_ACCESS_KEY', '');
@@ -61,18 +62,22 @@ export const YouTubeSQSPollJob = new Job({
                 const sb = new StringBuilder();
 
                 sb.append(
-                    trans(
-                        'jobs.youtube.embed.title',
-                        body.feed.entry.author.name,
-                        body.feed.entry.title,
+                    markdown.header(
+                        trans(
+                            'jobs.youtube.embed.title',
+                            body.feed.entry.author.name,
+                            body.feed.entry.title,
+                        ),
                     ),
                 );
                 sb.append('\n');
                 sb.append(
-                    trans(
-                        'jobs.youtube.embed.description',
-                        body.feed.entry.author.name,
-                        body.feed.entry.link['@_href'],
+                    markdown.italics(
+                        trans(
+                            'jobs.youtube.embed.description',
+                            body.feed.entry.author.name,
+                            body.feed.entry.link['@_href'],
+                        ),
                     ),
                 );
 
