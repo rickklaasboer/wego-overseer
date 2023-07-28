@@ -2328,6 +2328,13 @@ aggregate-error@^4.0.0, aggregate-error@^4.0.1:
     clean-stack "^4.0.0"
     indent-string "^5.0.0"
 
+ajv-formats@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ajv-formats/-/ajv-formats-2.1.1.tgz#6e669400659eb74973bbf2e33327180a0996b520"
+  integrity sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==
+  dependencies:
+    ajv "^8.0.0"
+
 ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -2338,10 +2345,10 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.11.0, ajv@^8.6.2:
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.0.tgz#977e91dd96ca669f54a11e23e378e33b884a565f"
-  integrity sha512-wGgprdCvMalC0BztXvitD2hC04YffAvtsUn93JbGXYLAtCUO4xd17mCCZQxUOItiBwZvJScWo8NIvQMQ71rdpg==
+ajv@^8.0.0, ajv@^8.11.0, ajv@^8.6.2:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -6024,12 +6031,13 @@ object-inspect@^1.12.3:
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.12.3.tgz#ba62dffd67ee256c8c086dfae69e016cd1f198b9"
   integrity sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==
 
-objection@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/objection/-/objection-3.0.4.tgz#d2f60cec49f7f917c4b97260add9e2c2cdb52c0b"
-  integrity sha512-0XaStHtOBcux4nlffUj8gOpxUsAPE+sLDZPml6n79WQhInYLBvjctU/uv2kEUPPybAJK8YL6ETkLtft9UOj7nQ==
+objection@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/objection/-/objection-3.1.1.tgz#b744d4ff13c01863d6edec773f1315c964442510"
+  integrity sha512-v8dqQrFwZm9gRN3ZF4abF+hL6Jm5EbcUjOxVDan0lheOev0sggGGHBP8jgesZ68I0XXBjDFjGXCjTPZsWDu49A==
   dependencies:
     ajv "^8.6.2"
+    ajv-formats "^2.1.1"
     db-errors "^0.2.3"
 
 omggif@^1.0.10, omggif@^1.0.9:

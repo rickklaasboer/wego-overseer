@@ -57,7 +57,7 @@
         "jimp": "0.22.8",
         "knex": "2.5.1",
         "mysql2": "3.5.2",
-        "objection": "3.0.4",
+        "objection": "3.1.1",
         "soundcloud-scraper": "5.0.3",
         "spotify-url-info": "3.2.5",
         "text-table": "0.2.0",
