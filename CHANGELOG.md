@@ -1,3 +1,13 @@
+## [2.10.7](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.6...v2.10.7) (2023-07-28)
+
+
+### Bug Fixes
+
+* **deps:** bump @semantic-release/github from 9.0.3 to 9.0.4 ([a2d6689](https://github.com/rickklaasboer/wego-overseer/commit/a2d668997b6756b87698a58afc19c7ba2e7656fd))
+* **deps:** bump eslint from 8.42.0 to 8.45.0 ([b99d5d8](https://github.com/rickklaasboer/wego-overseer/commit/b99d5d892ca47c2ac6828908cb4c674071a84d12))
+* **deps:** bump mysql2 from 3.3.3 to 3.5.2 ([19eef3b](https://github.com/rickklaasboer/wego-overseer/commit/19eef3b216a813733d00d87fe04ea4d62307fc91))
+* **deps:** bump typescript from 5.0.4 to 5.1.6 ([18ea2d9](https://github.com/rickklaasboer/wego-overseer/commit/18ea2d970359da51edfdffdbbf36f9ac0fd006ae))
+
 ## [2.10.6](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.5...v2.10.6) (2023-07-26)
 
 
