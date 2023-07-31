@@ -1,3 +1,10 @@
+## [2.10.8](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.7...v2.10.8) (2023-07-31)
+
+
+### Bug Fixes
+
+* register error handler on boot ([d327bed](https://github.com/rickklaasboer/wego-overseer/commit/d327bedabec1d18483a5e5d2d74d7670b9353098))
+
 ## [2.10.7](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.6...v2.10.7) (2023-07-28)
 
 
