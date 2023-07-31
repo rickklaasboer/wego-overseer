@@ -136,6 +136,8 @@ export default class Bot {
         await this._client.login(this._token);
         await isReady;
 
+        this._client.on('error', this.handleError);
+
         logger.info(
             `Discord client successfully logged-in in ${dayjs().diff(now)}ms`,
         );
@@ -215,5 +217,12 @@ export default class Bot {
                 .map(({name}) => name)
                 .join(', ')}])`,
         );
+    }
+
+    /**
+     * Handle error
+     */
+    private handleError(error: Error): void {
+        logger.error(error);
     }
 }
