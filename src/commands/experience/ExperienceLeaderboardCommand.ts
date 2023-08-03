@@ -3,11 +3,11 @@ import InternalCommand from '../InternalCommand';
 import {safeFetchUser, wrapInCodeblock} from '@/util/discord';
 import {tableWithHead} from '@/util/table';
 import {xpToLevel} from '@/util/xp';
-import Experience from '@/entities/Experience';
+import ExperienceService from '@/services/ExperienceService';
 
 export const ExperienceLeaderboardCommand = new InternalCommand({
     run: async (interaction, _self, {client}) => {
-        const rows = await Experience.getLeaderboard(
+        const rows = await ExperienceService.getLeaderboard(
             interaction.guild?.id ?? '',
         );
 

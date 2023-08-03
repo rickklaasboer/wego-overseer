@@ -4,45 +4,32 @@ import {
     ensureGuildIsAvailable,
     ensureUserIsAvailable,
 } from '@/commands/karma/KarmaCommand/predicates';
-import dayjs from 'dayjs';
-import {toMysqlDateTime} from '@/util/mysql';
-import Experience from '@/entities/Experience';
 import {randomInt} from 'crypto';
+import ExperienceService from '@/services/ExperienceService';
 
 const logger = new Logger('wego-overseer:events:ReceiveExperienceEvent');
 
-// level = 0.07 * √XP
-// xp = (level/0.07)^2
-
 export const ReceiveExperienceEvent = new Event({
     name: 'messageCreate',
-    run: async ({db}, message) => {
+    run: async (_ctx, message) => {
         try {
             if (message.author.bot) return;
 
             await ensureGuildIsAvailable(message.guild?.id);
             await ensureUserIsAvailable(message.author.id);
 
-            const now = dayjs();
+            const isOnCooldown = await ExperienceService.isOnCooldown(
+                message.guild?.id ?? '',
+                message.author.id,
+            );
 
-            // prettier-ignore
-            const xp = await db.table('experience').whereBetween('createdAt', [
-                toMysqlDateTime(now.subtract(30, 'seconds').toDate()),
-                toMysqlDateTime(now.toDate()),
-            ]).first();
+            if (isOnCooldown) return;
 
-            if (xp) {
-                logger.debug(
-                    'User has already received experience in the last 30 seconds',
-                );
-                return;
-            }
-
-            await Experience.query().insert({
-                amount: randomInt(5, 15),
-                guildId: message.guild?.id,
-                userId: message.author?.id,
-            });
+            await ExperienceService.addExperience(
+                message.guild?.id ?? '',
+                message.author.id,
+                randomInt(5, 15),
+            );
         } catch (err) {
             logger.error('Unable to handle ReceiveExperienceEvent', err);
         }

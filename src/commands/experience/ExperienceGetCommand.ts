@@ -3,23 +3,20 @@ import InternalCommand from '../InternalCommand';
 import {EmbedBuilder} from 'discord.js';
 import {trans} from '@/util/localization';
 import {capitalize} from '@/util/string';
-import Experience from '@/entities/Experience';
+import ExperienceService from '@/services/ExperienceService';
 
 export const ExperienceGetCommand = new InternalCommand({
-    run: async (interaction, _self, {db}) => {
+    run: async (interaction) => {
         const user = interaction.options.getUser('user') ?? interaction.user;
 
-        const {totalExperience} = await db
-            .table('experience')
-            .sum('amount as totalExperience')
-            .where('guildId', '=', interaction.guild?.id ?? '')
-            .andWhere('userId', '=', user.id)
-            .first();
-
+        const totalExperience = await ExperienceService.getExperience(
+            interaction.guild?.id ?? '',
+            user.id,
+        );
         const level = xpToLevel(totalExperience, true);
 
         const leaderboardIndex = (
-            await Experience.getLeaderboard(interaction.guild?.id ?? '')
+            await ExperienceService.getLeaderboard(interaction.guild?.id ?? '')
         ).findIndex((exp) => {
             return exp.user.id === user.id;
         });

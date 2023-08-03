@@ -3,6 +3,7 @@ import {
     ensureUserIsAvailable,
 } from '@/commands/karma/KarmaCommand/predicates';
 import Event from '@/events/Event';
+import ExperienceService from '@/services/ExperienceService';
 import Logger from '@/telemetry/logger';
 import {xpToLevel} from '@/util/xp';
 
@@ -39,12 +40,10 @@ export const LevelUpEvent = new Event({
                 .andWhere('userId', '=', userId)
                 .first();
 
-            const {totalExperience} = await db
-                .table('experience')
-                .sum('amount as totalExperience')
-                .where('guildId', '=', guildId)
-                .andWhere('userId', '=', userId)
-                .first();
+            const totalExperience = await ExperienceService.getExperience(
+                guildId,
+                userId,
+            );
 
             const newLevel = xpToLevel(totalExperience, true);
 
