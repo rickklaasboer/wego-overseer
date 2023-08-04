@@ -175,6 +175,30 @@
                     }
                 }
             }
+        },
+        "experience": {
+            "add": {
+                "success": "Klaar! %s heeft %s XP gekregen! Hij/zij heeft nu %s XP."
+            },
+            "reset": {
+                "success": "Klaar! %s zijn/haar XP is gereset.",
+                "username_mismatch": "Oeps! Gebruikersnamen komen niet overeen, probeer het opnieuw."
+            },
+            "set": {
+                "success": "Klaar! %s' zijn/haar heeft nu %s XP."
+            },
+            "remove": {
+                "success": "Klaar! %s XP is verwijderd. %s heeft nu %s XP."
+            },
+            "common": {
+                "not_admin": "Je moet een administrator zijn om dit commando uit te voeren."
+            },
+            "get": {
+                "embed": {
+                    "title": "%s's XP",
+                    "description": "%s is level %s, heeft %s XP en is positie #%s op het leaderboard."
+                }
+            }
         }
     },
     "events": {

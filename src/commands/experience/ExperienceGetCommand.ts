@@ -24,13 +24,13 @@ export const ExperienceGetCommand = new InternalCommand({
         const embed = new EmbedBuilder()
             .setTitle(
                 capitalize(
-                    trans('events.experience.get.embed.title', user.username),
+                    trans('commands.experience.get.embed.title', user.username),
                 ),
             )
             .setDescription(
                 capitalize(
                     trans(
-                        'events.experience.get.embed.description',
+                        'commands.experience.get.embed.description',
                         user.username,
                         level,
                         totalExperience ?? 0,

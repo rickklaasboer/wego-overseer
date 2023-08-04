@@ -192,6 +192,14 @@
             },
             "common": {
                 "not_admin": "You must be an administrator to execute this command."
+            },
+            "experience": {
+                "get": {
+                    "embed": {
+                        "title": "%s's experience",
+                        "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard."
+                    }
+                }
             }
         }
     },
@@ -204,14 +212,6 @@
         },
         "fix_embed": {
             "msg": "Heya! I found an embed that might not work with Discord, so I fixed it for you! %s"
-        },
-        "experience": {
-            "get": {
-                "embed": {
-                    "title": "%s's experience",
-                    "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard."
-                }
-            }
         }
     },
     "jobs": {
