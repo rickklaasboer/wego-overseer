@@ -113,14 +113,15 @@ export const ExperienceCommand = new EntryPointCommand({
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'leaderboard',
             description: 'Get the experience leaderboard',
-            options: [
-                {
-                    type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
-                    name: 'web',
-                    description: 'Whether to get the web version',
-                    required: false,
-                },
-            ],
+            // TODO: Add this option when the web version is done
+            // options: [
+            //     {
+            //         type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
+            //         name: 'web',
+            //         description: 'Whether to get the web version',
+            //         required: false,
+            //     },
+            // ],
         },
     ],
 });
