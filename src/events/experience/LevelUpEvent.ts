@@ -4,6 +4,7 @@ import {
 } from '@/commands/karma/KarmaCommand/predicates';
 import Event from '@/events/Event';
 import ExperienceService from '@/services/ExperienceService';
+import UserGuildLevelService from '@/services/UserGuildLevelService';
 import Logger from '@/telemetry/logger';
 import {xpToLevel} from '@/util/xp';
 
@@ -11,51 +12,26 @@ const logger = new Logger('wego-overseer:events:LevelUpEvent');
 
 export const LevelUpEvent = new Event({
     name: 'messageCreate',
-    run: async ({db}, message) => {
+    run: async (_ctx, message) => {
         try {
             if (message.author.bot) return;
 
-            await ensureGuildIsAvailable(message.guild?.id);
-            await ensureUserIsAvailable(message.author.id);
+            const guildId = message.guild?.id ?? '';
+            const userId = message.author.id ?? '';
 
-            const [guildId, userId] = [
-                message.guild?.id ?? '',
-                message.author.id ?? '',
-            ];
+            await ensureGuildIsAvailable(guildId);
+            await ensureUserIsAvailable(userId);
 
-            await db
-                .table('user_guild_level')
-                .insert({
-                    guildId,
-                    userId,
-                    level: 0,
-                })
-                .onConflict(['guildId', 'userId'])
-                .ignore();
-
-            const {level} = await db
-                .table('user_guild_level')
-                .select('*')
-                .where('guildId', '=', guildId)
-                .andWhere('userId', '=', userId)
-                .first();
-
-            const totalExperience = await ExperienceService.getExperience(
+            const level = await UserGuildLevelService.getLevel(guildId, userId);
+            const experience = await ExperienceService.getExperience(
                 guildId,
                 userId,
             );
 
-            const newLevel = xpToLevel(totalExperience, true);
+            const newLevel = xpToLevel(experience, true);
 
             if (newLevel > level) {
-                logger.debug(
-                    `User ${message.author.username} in guild ${message.guild?.name} leveled up to level ${newLevel} from level ${level}`,
-                );
-                await db
-                    .table('user_guild_level')
-                    .update({level: newLevel})
-                    .where('guildId', '=', guildId)
-                    .andWhere('userId', '=', userId);
+                await UserGuildLevelService.setLevel(guildId, userId, newLevel);
             }
         } catch (err) {
             logger.error('Unable to handle LevelUpEvent', err);
