@@ -31,12 +31,19 @@ export default class ExperienceService {
         );
     }
 
+    /**
+     * Sets the experience of the user.
+     */
     static async setExperience(
         guildId: string,
         userId: string,
         amount: number,
     ): Promise<Experience> {
-        throw new Error('Not implemented');
+        // Reset the experience first.
+        await ExperienceService.resetExperience(guildId, userId);
+
+        // Then add the experience.
+        return ExperienceService.addExperience(guildId, userId, amount);
     }
 
     /**
@@ -54,12 +61,34 @@ export default class ExperienceService {
         });
     }
 
+    /**
+     * Removes experience from the user.
+     */
     static async removeExperience(
         guildId: string,
         userId: string,
         amount: number,
-    ): Promise<boolean> {
-        throw new Error('Not implemented');
+    ): Promise<void> {
+        await Experience.query().insert({
+            amount: -amount,
+            guildId,
+            userId,
+        });
+    }
+
+    /**
+     * Resets the experience of the user.
+     */
+    static async resetExperience(
+        guildId: string,
+        userId: string,
+    ): Promise<number> {
+        const affectedRows = await Experience.query()
+            .where('guildId', '=', guildId)
+            .andWhere('userId', '=', userId)
+            .delete();
+
+        return affectedRows;
     }
 
     /**
