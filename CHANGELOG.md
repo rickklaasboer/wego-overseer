@@ -1,3 +1,20 @@
+# [2.11.0-preview.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.8...v2.11.0-preview.1) (2023-08-08)
+
+
+### Bug Fixes
+
+* allow internal commands to ignore defered replies ([ea04b2e](https://github.com/rickklaasboer/wego-overseer/commit/ea04b2ed55a726d65f7a98ebc583b1ec71777d05))
+* stricter validation for experience commands ([5ddad08](https://github.com/rickklaasboer/wego-overseer/commit/5ddad0894ff929d2ba9efc0505578f477961a5f5))
+
+
+### Features
+
+* add experience command ([1df89c6](https://github.com/rickklaasboer/wego-overseer/commit/1df89c6333ed7a3b5c48bf4ee80730e80ed4ccff))
+* remove experience command ([c165772](https://github.com/rickklaasboer/wego-overseer/commit/c165772fa09cb565df1c60e1255c9b7fdcb5a2a5))
+* reset experience command/event ([0fe6045](https://github.com/rickklaasboer/wego-overseer/commit/0fe60452d973db26769a25efdf9ebebe4809cac4))
+* set experience command ([3145701](https://github.com/rickklaasboer/wego-overseer/commit/314570154c7689f9c869d741051cca60b7837b7e))
+* **wip:** create initial leveling system scaffolding ([4ef365a](https://github.com/rickklaasboer/wego-overseer/commit/4ef365aa6d359faed2e103d4b29ab35f5519ff14))
+
 ## [2.10.8](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.7...v2.10.8) (2023-07-31)
 
 
