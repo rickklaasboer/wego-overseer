@@ -12,22 +12,22 @@ export function setLocalizationInstance(obj: I18n): void {
 
 export function t(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: any[]
 ): string {
     if (!instance) return phrase.toString();
-    return instance.__(phrase, ...replace);
+    return instance.__(phrase, ...replace.map((r) => String(r)));
 }
 
 export function trans(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: any[]
 ): string {
     return t(phrase, ...replace);
 }
 
 export function translate(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: any[]
 ): string {
     return t(phrase, ...replace);
 }

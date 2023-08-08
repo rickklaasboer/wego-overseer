@@ -175,6 +175,32 @@
                     }
                 }
             }
+        },
+        "experience": {
+            "add": {
+                "success": "Done! %s has been given %s XP! They now have a total of %s XP."
+            },
+            "reset": {
+                "success": "Done! %s's experience has been reset.",
+                "username_mismatch": "Whoops! Usernames do not match, please try again."
+            },
+            "set": {
+                "success": "Done! %s's experience has been set to %s XP."
+            },
+            "remove": {
+                "success": "Done! %s experience has been removed. %s's now has a total of %s XP."
+            },
+            "common": {
+                "not_admin": "You must be an administrator to execute this command."
+            },
+            "experience": {
+                "get": {
+                    "embed": {
+                        "title": "%s's experience",
+                        "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard."
+                    }
+                }
+            }
         }
     },
     "events": {

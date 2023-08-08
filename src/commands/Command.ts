@@ -41,6 +41,7 @@ export type Props<T> = {
     description: string;
     options?: SlashCommandOption[];
     enabled?: boolean;
+    shouldDeferReply?: boolean;
     run(interaction: T, self: Command<T>, ctx: BotContext): Promise<void>;
 };
 
@@ -49,17 +50,26 @@ export default class Command<T = ChatInputCommandInteraction<CacheType>> {
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
     public enabled: boolean;
+    public shouldDeferReply: boolean;
     public run: (
         interaction: T,
         self: Command<T>,
         ctx: BotContext,
     ) => Promise<void>;
 
-    constructor({name, description, options, enabled = true, run}: Props<T>) {
+    constructor({
+        name,
+        description,
+        options,
+        enabled = true,
+        shouldDeferReply = true,
+        run,
+    }: Props<T>) {
         this.name = name;
         this.description = description;
         this.options = options;
         this.enabled = enabled;
+        this.shouldDeferReply = shouldDeferReply;
         this.run = run;
     }
 

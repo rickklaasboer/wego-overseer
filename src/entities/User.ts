@@ -2,6 +2,7 @@ import Model from '@/entities/Model';
 import {RelationMappings} from 'objection';
 import Guild from '@/entities/Guild';
 import Karma from '@/entities/Karma';
+import Experience from './Experience';
 
 export default class User extends Model {
     id!: string;
@@ -24,6 +25,14 @@ export default class User extends Model {
                 modelClass: Karma,
                 join: {
                     from: 'karma.receivedFromUserId',
+                    to: 'users.id',
+                },
+            },
+            experience: {
+                relation: Model.HasManyRelation,
+                modelClass: Experience,
+                join: {
+                    from: 'experience.id',
                     to: 'users.id',
                 },
             },

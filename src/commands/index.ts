@@ -18,6 +18,7 @@ import {MusicCommand} from '@/commands/music/MusicCommand';
 import {BirthdayCommand} from '@/commands/birthday';
 import {LightshotCommand} from './misc/LightshotCommand';
 import {WinnovationMemeCommand} from './meme/WinnovationMemeCommand';
+import {ExperienceCommand} from './experience/ExperienceCommand';
 
 export default [
     AdventOfCodeCommand,
@@ -40,4 +41,5 @@ export default [
     BirthdayCommand,
     LightshotCommand,
     WinnovationMemeCommand,
+    ExperienceCommand,
 ];

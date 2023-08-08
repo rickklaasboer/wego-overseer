@@ -13,6 +13,9 @@ import {BiBaBussinEvent} from '@/events/meme/BiBaBussinEvent';
 import {EmbedFixEvent} from '@/events/EmbedFixEvent';
 import {YoloSwagEvent} from '@/events/meme/YoloSwagEvent';
 import {CrazyEvent} from '@/events/meme/CrazyEvent';
+import {ReceiveExperienceEvent} from '@/events/experience/ReceiveExperienceEvent';
+import {LevelUpEvent} from '@/events/experience/LevelUpEvent';
+import {ConfirmResetExperienceEvent} from '@/events/experience/ConfirmResetExperienceEvent';
 
 export default [
     BangerEvent,
@@ -30,4 +33,7 @@ export default [
     EmbedFixEvent,
     YoloSwagEvent,
     CrazyEvent,
+    ReceiveExperienceEvent,
+    LevelUpEvent,
+    ConfirmResetExperienceEvent,
 ];
