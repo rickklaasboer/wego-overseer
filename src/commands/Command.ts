@@ -16,6 +16,8 @@ export enum APPLICATION_COMMAND_OPTIONS {
     ATTACHMENT = 11,
 }
 
+type Interaction = ChatInputCommandInteraction<CacheType>;
+
 type ApplicationCommandOption = {
     name: string;
     value: string | number;
@@ -36,33 +38,72 @@ export type SlashCommandOption = {
     autocomplete?: boolean;
 };
 
-export type Props<T> = {
+export type Props<T extends Interaction = Interaction> = {
     name: string;
     description: string;
     options?: SlashCommandOption[];
     enabled?: boolean;
+    shouldDeferReply?: boolean;
     run(interaction: T, self: Command<T>, ctx: BotContext): Promise<void>;
 };
 
-export default class Command<T = ChatInputCommandInteraction<CacheType>> {
+export default class Command<T extends Interaction = Interaction> {
     public name: string;
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
     public enabled: boolean;
-    public run: (
+    public shouldDeferReply: boolean;
+    protected _run: (
         interaction: T,
         self: Command<T>,
         ctx: BotContext,
     ) => Promise<void>;
 
-    constructor({name, description, options, enabled = true, run}: Props<T>) {
+    constructor({
+        name,
+        description,
+        options,
+        enabled = true,
+        shouldDeferReply = false,
+        run,
+    }: Props<T>) {
         this.name = name;
         this.description = description;
         this.options = options;
         this.enabled = enabled;
-        this.run = run;
+        this.shouldDeferReply = shouldDeferReply;
+        this._run = run;
     }
 
+    /**
+     * Returns the run method wrapped in a function that defers the reply
+     */
+    public get run(): (
+        interaction: T,
+        self: Command<T>,
+        ctx: BotContext,
+    ) => Promise<void> {
+        return this.wrappedRun;
+    }
+
+    /**
+     * Wraps the run method in a function that defers the reply
+     */
+    protected async wrappedRun(
+        interaction: T,
+        self: Command<T>,
+        ctx: BotContext,
+    ): Promise<void> {
+        if (this.shouldDeferReply) {
+            await interaction.deferReply();
+        }
+
+        return this._run(interaction, self, ctx);
+    }
+
+    /**
+     * Forwards the interaction to another command
+     */
     public async forwardTo(
         to: Command<T>,
         interaction: T,

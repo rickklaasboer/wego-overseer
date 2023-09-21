@@ -69,6 +69,7 @@ function getImageUrl(
 export const DeepFryCommand = new Command({
     name: 'deepfry',
     description: 'deepfry image',
+    shouldDeferReply: true,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
@@ -99,8 +100,6 @@ export const DeepFryCommand = new Command({
     ],
     run: async (interaction) => {
         try {
-            await interaction.deferReply();
-
             const imgUrl = getImageUrl(interaction);
             if (!imgUrl) throw new Error('No image found');
 

@@ -5,7 +5,7 @@ import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {trans} from '@/util/localization';
 import Logger from '@/telemetry/logger';
 
-const logger = new Logger('wego-overseer:commands:MotivationalQuoteCommand');
+const logger = new Logger('wego-overseer:commands:WinnovationMemeCommand');
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -16,6 +16,7 @@ const IMAGE_OFFSETS = {
 export const WinnovationMemeCommand = new Command({
     name: 'winnovation',
     description: 'winnovation meme generator',
+    shouldDeferReply: true,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
@@ -49,10 +50,10 @@ export const WinnovationMemeCommand = new Command({
             img.blit(fontCanvas, IMAGE_OFFSETS.x, IMAGE_OFFSETS.y);
 
             const wrappedImage = new Base64JimpImage(img);
-            await interaction.reply({files: [wrappedImage.toAttachment()]});
+            await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             logger.fatal(err);
-            await interaction.reply({
+            await interaction.followUp({
                 content: trans('errors.common.failed', 'winnovation meme'),
                 ephemeral: true,
             });
