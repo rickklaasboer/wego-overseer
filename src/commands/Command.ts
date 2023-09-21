@@ -16,6 +16,8 @@ export enum APPLICATION_COMMAND_OPTIONS {
     ATTACHMENT = 11,
 }
 
+type Interaction = ChatInputCommandInteraction<CacheType>;
+
 type ApplicationCommandOption = {
     name: string;
     value: string | number;
@@ -36,7 +38,7 @@ export type SlashCommandOption = {
     autocomplete?: boolean;
 };
 
-export type Props<T extends ChatInputCommandInteraction<CacheType>> = {
+export type Props<T extends Interaction = Interaction> = {
     name: string;
     description: string;
     options?: SlashCommandOption[];
@@ -45,13 +47,13 @@ export type Props<T extends ChatInputCommandInteraction<CacheType>> = {
     run(interaction: T, self: Command<T>, ctx: BotContext): Promise<void>;
 };
 
-export default class Command<T extends ChatInputCommandInteraction<CacheType>> {
+export default class Command<T extends Interaction = Interaction> {
     public name: string;
     public description: string;
     public options: Maybe<SlashCommandOption[]>;
     public enabled: boolean;
     public shouldDeferReply: boolean;
-    private _run: (
+    protected _run: (
         interaction: T,
         self: Command<T>,
         ctx: BotContext,
@@ -87,7 +89,7 @@ export default class Command<T extends ChatInputCommandInteraction<CacheType>> {
     /**
      * Wraps the run method in a function that defers the reply
      */
-    private async wrappedRun(
+    protected async wrappedRun(
         interaction: T,
         self: Command<T>,
         ctx: BotContext,
@@ -99,6 +101,9 @@ export default class Command<T extends ChatInputCommandInteraction<CacheType>> {
         return this._run(interaction, self, ctx);
     }
 
+    /**
+     * Forwards the interaction to another command
+     */
     public async forwardTo(
         to: Command<T>,
         interaction: T,

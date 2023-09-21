@@ -8,24 +8,24 @@ import {Maybe} from '@/types/util';
 type Interaction = ChatInputCommandInteraction<CacheType>;
 
 type Props = Omit<CommandProps<Interaction>, 'run'> & {
-    forwardables: Map<string, Command>;
+    forwardables: Map<string, Command<Interaction>>;
     logger?: Logger;
 };
 
-export default class EntryPointCommand extends Command<Interaction> {
+export default class EntryPointCommand extends Command {
     forwardables: Map<string, Command>;
     logger?: Maybe<Logger> = null;
 
     constructor({forwardables, logger, ...restProps}: Props) {
         super({...restProps, run: () => Promise.resolve()});
-        this.run = this._run;
+        this._run = this.wrappedRun;
         this.forwardables = forwardables;
         this.logger = logger;
     }
 
-    private async _run(
+    protected async wrappedRun(
         interaction: Interaction,
-        self: Command<Interaction>,
+        self: Command,
         ctx: BotContext,
     ): Promise<void> {
         try {
