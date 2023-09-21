@@ -46,7 +46,7 @@ export const KarmaCommand = new Command({
             // We don't have to surround all "subcommands" in their own try..catch
             // since this "host" command will already handle these for us.
             // How great!
-            await self.forwardTo(forwardable, interaction, ctx);
+            await self.forwardTo(forwardable, interaction, ctx)();
         } catch (err) {
             logger.fatal('Unable to handle KarmaCommand', err);
             await interaction.reply({

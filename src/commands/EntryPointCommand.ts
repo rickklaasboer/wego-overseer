@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {BotContext} from '@/Bot';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {Props as CommandProps} from './Command';
@@ -37,8 +38,8 @@ export default class EntryPointCommand extends Command {
                 throw new Error(`Invalid subcommand ${cmd}`);
             }
 
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            await self.forwardTo(this.forwardables.get(cmd)!, interaction, ctx);
+            const forwardable = this.forwardables.get(cmd)!;
+            await self.forwardTo(forwardable, interaction, ctx)();
         } catch (err) {
             this.logger?.fatal(
                 `Unable to handle ${this.name}`,

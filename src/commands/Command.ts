@@ -104,11 +104,13 @@ export default class Command<T extends Interaction = Interaction> {
     /**
      * Forwards the interaction to another command
      */
-    public async forwardTo(
+    public forwardTo(
         to: Command<T>,
         interaction: T,
         ctx: BotContext,
-    ): Promise<void> {
-        await to.run(interaction, this, ctx);
+    ): () => Promise<void> {
+        return async () => {
+            return to.run(interaction, this, ctx);
+        };
     }
 }
