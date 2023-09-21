@@ -1,3 +1,12 @@
+## [2.10.9](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.8...v2.10.9) (2023-09-21)
+
+
+### Bug Fixes
+
+* set image meme commands to defer replies by default ([c9dfbd3](https://github.com/rickklaasboer/wego-overseer/commit/c9dfbd36e4954a21aba16ce976e2a6f36131a145))
+* the previous fix ([c155299](https://github.com/rickklaasboer/wego-overseer/commit/c15529979a864d528ce720ffe6479c6da683b80f))
+* winnovation command crashes bot ([584cc34](https://github.com/rickklaasboer/wego-overseer/commit/584cc34172dd75cb53a55f5a1974dd4332eb4125))
+
 ## [2.10.8](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.7...v2.10.8) (2023-07-31)
 
 
