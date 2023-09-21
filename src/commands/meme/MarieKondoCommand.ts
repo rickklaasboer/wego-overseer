@@ -17,6 +17,7 @@ const IMAGE_OFFSETS = {
 export const MarieKondoCommand = new Command({
     name: 'mariekondo',
     description: 'x does not spark joy',
+    shouldDeferReply: true,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
@@ -60,10 +61,10 @@ export const MarieKondoCommand = new Command({
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            await interaction.reply({files: [wrappedImage.toAttachment()]});
+            await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             logger.fatal('Failed creating marie kondo meme', err);
-            await interaction.reply({
+            await interaction.followUp({
                 content: trans('errors.common.failed', 'marie kondo meme'),
                 ephemeral: true,
             });

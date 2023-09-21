@@ -14,6 +14,7 @@ const imageUrl = 'https://picsum.photos/300/400?grayscale&blur=5';
 export const MotivationalQuoteCommand = new Command({
     name: 'motivational',
     description: 'Generate a motivational picture',
+    shouldDeferReply: true,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
@@ -49,10 +50,10 @@ export const MotivationalQuoteCommand = new Command({
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            await interaction.reply({files: [wrappedImage.toAttachment()]});
+            await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             logger.fatal('Failed creating motivational quote meme', err);
-            await interaction.reply({
+            await interaction.followUp({
                 content: trans(
                     'errors.common.failed',
                     'Motivational Quote Command',

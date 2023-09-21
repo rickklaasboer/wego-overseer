@@ -17,6 +17,7 @@ const IMAGE_OFFSET = {
 export const JokeMemeCommand = new Command({
     name: 'joke',
     description: 'x and other hilarious jokes you can tell yourself',
+    shouldDeferReply: true,
     options: [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
@@ -48,10 +49,10 @@ export const JokeMemeCommand = new Command({
             );
 
             const wrappedImage = new Base64JimpImage(img);
-            await interaction.reply({files: [wrappedImage.toAttachment()]});
+            await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             logger.fatal(err);
-            await interaction.reply({
+            await interaction.followUp({
                 content: trans('errors.common.failed', 'joke meme'),
                 ephemeral: true,
             });
