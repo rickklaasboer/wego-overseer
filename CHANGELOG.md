@@ -1,3 +1,10 @@
+## [2.10.10](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.9...v2.10.10) (2023-09-23)
+
+
+### Bug Fixes
+
+* overseer crash when music fails to stream ([4370ff7](https://github.com/rickklaasboer/wego-overseer/commit/4370ff711b81e573c9a8bf4e5b4b0ec3d55d9e1d))
+
 ## [2.10.9](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.8...v2.10.9) (2023-09-21)
 
 
