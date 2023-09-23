@@ -1,3 +1,10 @@
+## [2.10.11](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.10...v2.10.11) (2023-09-23)
+
+
+### Bug Fixes
+
+* check if user is in memberlist before sending birthday message ([179a111](https://github.com/rickklaasboer/wego-overseer/commit/179a1112938a4c6a4e1b98c8885bc81ff5f60a35))
+
 ## [2.10.10](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.9...v2.10.10) (2023-09-23)
 
 
