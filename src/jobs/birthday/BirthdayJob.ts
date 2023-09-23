@@ -27,6 +27,18 @@ export const BirthdayJob = new Job({
                     );
                     const person = await client.users.fetch(user.id);
 
+                    const discordGuild = await client.guilds.fetch(guild.id);
+                    const discordGuildMember = await discordGuild.members.fetch(
+                        person.id,
+                    );
+
+                    if (!discordGuildMember) {
+                        logger.warn(
+                            `Unable to find ${person.username} in ${discordGuild.name}, skipping...`,
+                        );
+                        return;
+                    }
+
                     const embed = new EmbedBuilder()
                         .setTitle(
                             trans('jobs.birthday.embed.title', person.username),
