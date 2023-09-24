@@ -7139,18 +7139,18 @@ split@^1.0.1:
   dependencies:
     through "2"
 
-spotify-uri@~3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-3.0.3.tgz#d09ae7e013f12fe2c22eed06cda2463be220597b"
-  integrity sha512-mMstJ4dAMki6GbUjg94kp/h9ZH+7T7+ro/KUC00WVh+WKoLgMRrTKLkWMIwCZNO53Xa8DRHQw/6jwYtRZrVI3g==
+spotify-uri@~4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-4.0.0.tgz#a56d034146726d4f43630151a497efbf4c4230db"
+  integrity sha512-ZAJKcnfx73glWG+3SCDRvW4nkVMzA2hqZwJtSDZ/o87EoGawh/CZ8YkqZIoVcLkg94suicEa/ZOiBFSz1MJ6Pg==
 
-spotify-url-info@3.2.5, spotify-url-info@^3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.5.tgz#96396702aca6a937d614197fb2bc6f4e2a54821d"
-  integrity sha512-5LpA8PznECfTPRVcgYSyYOn7dr3aq+sHgl3JrDDKT7NVJ8exEhFD1NsmR8/kObc6qlr0H6t+AZDVVfv3HiEKaQ==
+spotify-url-info@3.2.6, spotify-url-info@^3.2.5:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.6.tgz#e7838372368488897ade3d4e2f4cab6ead0971b8"
+  integrity sha512-AOGU4uyT0FqyEXbyvZc+ZShnTGBY1eMd50BBZBPfiXPT4ihuzmxAmkWj9VzHT9NIjX7MtVDrszATllR8+WeFkw==
   dependencies:
     himalaya "~1.1.0"
-    spotify-uri "~3.0.3"
+    spotify-uri "~4.0.0"
 
 sqlstring@^2.3.2:
   version "2.3.3"
