@@ -1,3 +1,12 @@
+## [2.10.12](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.11...v2.10.12) (2023-09-24)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.370.0 to 3.414.0 ([0bc77dc](https://github.com/rickklaasboer/wego-overseer/commit/0bc77dc2b69e29c11ebf5217763a6d9fb1f28be8))
+* **deps:** bump objection from 3.0.4 to 3.1.1 ([a58ccf5](https://github.com/rickklaasboer/wego-overseer/commit/a58ccf58f9146ff4dd68bb9c78b0f0ca98ee9668))
+* **deps:** bump spotify-url-info from 3.2.5 to 3.2.6 ([e5bd767](https://github.com/rickklaasboer/wego-overseer/commit/e5bd7676bee6b1ca9fa7e64dc679a64f3d1ecbf7))
+
 ## [2.10.11](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.10...v2.10.11) (2023-09-23)
 
 
