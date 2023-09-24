@@ -550,17 +550,18 @@
   resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.2.tgz#94c6309c62517da591c9cdc0a776d80b5aa523cf"
   integrity sha512-U86em1cMtopXVuKFDxP8J2DcNOqwCAsYQ2tkzPoJvchsrezcI2cgvN3jtGt9FFECP3pLvSz96ZB9FOHZKG5Mqg==
 
-"@discord-player/extractor@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.0.tgz#0f9b472bd98d4cfe5a9cf6b5427a10c0636394e8"
-  integrity sha512-TpHZk6ZFS5ot504iVAfnaJrGe2xv9yMauI+2zNLCmAYPeFe6YUbliXrSRoOmKoZi5n1ahkP2VurbmBhqKqEVkw==
+"@discord-player/extractor@4.4.4":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.4.tgz#cf8dcd7a4d963a0403daec99bd8697fe4a899e7c"
+  integrity sha512-GO6GiZ+dccfAWVQxhz26TaxKEsKYwYE/MVmCkwCYAzaZ879nnG4so+OJi1l/uYbbZq0fjBCDX/2vkgm9gIw16Q==
   dependencies:
     file-type "^16.5.4"
-    genius-lyrics "^4.4.3"
+    genius-lyrics "^4.4.6"
+    isomorphic-unfetch "^4.0.2"
     node-html-parser "^6.1.4"
     reverbnation-scraper "^2.0.0"
-    soundcloud.ts "^0.5.0"
-    spotify-url-info "^3.2.5"
+    soundcloud.ts "^0.5.2"
+    spotify-url-info "^3.2.6"
     youtube-sr "^4.3.4"
 
 "@discord-player/ffmpeg@^0.1.0":
@@ -2754,7 +2755,7 @@ cheerio-select@^2.1.0:
     domhandler "^5.0.3"
     domutils "^3.0.1"
 
-cheerio@^1.0.0-rc.10, cheerio@^1.0.0-rc.9:
+cheerio@^1.0.0-rc.10:
   version "1.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.12.tgz#788bf7466506b1c6bf5fae51d24a2c4d62e47683"
   integrity sha512-VqR8m68vM46BNnuZ5NtnGBKIE/DfN0cRIzg9n40EIq9NOv90ayxLBXA8fXC5gquFRGJSTRqBq25Jt2ECLR431Q==
@@ -3173,6 +3174,11 @@ cz-conventional-changelog@3.3.0:
     word-wrap "^1.0.3"
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
+
+data-uri-to-buffer@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz#d8feb2b2881e6a4f58c2e08acfd0e2834e26222e"
+  integrity sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==
 
 dateformat@^3.0.3:
   version "3.0.3"
@@ -3845,6 +3851,14 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+fetch-blob@^3.1.2, fetch-blob@^3.1.4:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/fetch-blob/-/fetch-blob-3.2.0.tgz#f09b8d4bbd45adc6f0c20b7e787e793e309dcce9"
+  integrity sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==
+  dependencies:
+    node-domexception "^1.0.0"
+    web-streams-polyfill "^3.0.3"
+
 ffmpeg-static@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/ffmpeg-static/-/ffmpeg-static-5.1.0.tgz#133500f4566570c5a0e96795152b0526d8c936ad"
@@ -4000,6 +4014,13 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
+formdata-polyfill@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
+  integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
+  dependencies:
+    fetch-blob "^3.1.2"
+
 from2@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
@@ -4106,13 +4127,13 @@ generate-function@^2.3.1:
   dependencies:
     is-property "^1.0.2"
 
-genius-lyrics@^4.4.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.3.tgz#0b7e461d61a3bb058fdc238532d0875ab0d9c6f4"
-  integrity sha512-06L8GUg49FrUYEmSQvrSH74RH5S+qyerHwBpvk8vZLwWgpEw4mIWZDob5IpXT1ryhqazM9K6CXGNucKYPO8kng==
+genius-lyrics@^4.4.6:
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.6.tgz#b3d755152dc64008f4cbfb039e1ada2c740adfc4"
+  integrity sha512-TeSF4qXwLm+Nl8wUX+WUTJlEhPBanMw9EWpIHE2a/Qs4y2NBK99AHYfZJc73H1HVkZj4zPfscuGWlkQbbh0pDA==
   dependencies:
-    cheerio "^1.0.0-rc.9"
-    undici "^5.8.2"
+    node-html-parser "^6.1.9"
+    undici "^5.24.0"
 
 get-caller-file@^2.0.5:
   version "2.0.5"
@@ -4784,6 +4805,14 @@ isomorphic-fetch@^3.0.0:
   dependencies:
     node-fetch "^2.6.1"
     whatwg-fetch "^3.4.1"
+
+isomorphic-unfetch@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-4.0.2.tgz#5fc04eeb1053b7b702278e2cf7a3f246cb3a9214"
+  integrity sha512-1Yd+CF/7al18/N2BDbsLBcp6RO3tucSW+jcLq24dqdX5MNbCNTw1z4BsGsp4zNmjr/Izm2cs/cEqZPp4kvWSCA==
+  dependencies:
+    node-fetch "^3.2.0"
+    unfetch "^5.0.0"
 
 issue-parser@^6.0.0:
   version "6.0.0"
@@ -5710,6 +5739,11 @@ node-addon-api@^5.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.0.0.tgz#7d7e6f9ef89043befdb20c1989c905ebde18c501"
   integrity sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==
 
+node-domexception@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
+  integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
+
 node-emoji@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.11.0.tgz#69a0150e6946e2f115e9d7ea4df7971e2628301c"
@@ -5730,6 +5764,15 @@ node-fetch@^2.6.1, node-fetch@^2.6.7:
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
+
+node-fetch@^3.2.0:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.3.2.tgz#d1e889bacdf733b4ff3b2b243eb7a12866a0b78b"
+  integrity sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==
+  dependencies:
+    data-uri-to-buffer "^4.0.0"
+    fetch-blob "^3.1.4"
+    formdata-polyfill "^4.0.10"
 
 node-gyp@^9.0.0:
   version "9.1.0"
@@ -5763,10 +5806,10 @@ node-gyp@^9.3.1:
     tar "^6.1.2"
     which "^2.0.2"
 
-node-html-parser@^6.1.4:
-  version "6.1.5"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.5.tgz#c819dceb13a10a7642ff92f94f870b4f77968097"
-  integrity sha512-fAaM511feX++/Chnhe475a0NHD8M7AxDInsqQpz6x63GRF7xYNdS8Vo5dKsIVPgsOvG7eioRRTZQnWBrhDHBSg==
+node-html-parser@^6.1.4, node-html-parser@^6.1.9:
+  version "6.1.10"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.10.tgz#5db11eac3ccbea6fc1b04a22c8a0e3a0774cfae6"
+  integrity sha512-6/uWdWxjQWQ7tMcFK2wWlrflsQUzh1HsEzlIf2j5+TtzfhT2yUvg3DwZYAmjEHeR3uX74ko7exjHW69J0tOzIg==
   dependencies:
     css-select "^5.1.0"
     he "1.2.0"
@@ -7080,12 +7123,12 @@ soundcloud-scraper@5.0.3:
     m3u8stream "^0.8.4"
     node-fetch "^2.6.1"
 
-soundcloud.ts@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.0.tgz#8e835b72021e30ac6170a92e16c7542933557256"
-  integrity sha512-QZLJ0X+/hpj8/5rqTGnLl/U4d07qcobrfXrM3+VlCQcXG5v+7MZ6tVHDFPsDH0MWM8op541RwhvKc8JqWlyUHA==
+soundcloud.ts@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.2.tgz#60660b889afb31c0e504f089002228fbf576b298"
+  integrity sha512-/pc72HWYJpSpup+mJBE9pT31JsrMcxJGBlip3Vem+0Fsscg98xh1/7I2nCpAKuMAeV6MVyrisI8TfjO6T7qKJg==
   dependencies:
-    undici "^5.21.2"
+    undici "^5.22.1"
 
 source-map-support@^0.5.21:
   version "0.5.21"
@@ -7157,10 +7200,18 @@ spotify-uri@~4.0.0:
   resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-4.0.0.tgz#a56d034146726d4f43630151a497efbf4c4230db"
   integrity sha512-ZAJKcnfx73glWG+3SCDRvW4nkVMzA2hqZwJtSDZ/o87EoGawh/CZ8YkqZIoVcLkg94suicEa/ZOiBFSz1MJ6Pg==
 
-spotify-url-info@3.2.6, spotify-url-info@^3.2.5:
+spotify-url-info@3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.6.tgz#e7838372368488897ade3d4e2f4cab6ead0971b8"
   integrity sha512-AOGU4uyT0FqyEXbyvZc+ZShnTGBY1eMd50BBZBPfiXPT4ihuzmxAmkWj9VzHT9NIjX7MtVDrszATllR8+WeFkw==
+  dependencies:
+    himalaya "~1.1.0"
+    spotify-uri "~4.0.0"
+
+spotify-url-info@^3.2.6:
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.8.tgz#dd9c826773c0a0751192a2c39ea3fe707e53971e"
+  integrity sha512-IKkC8TdtO7tzxVNH8tEP4FL+2LGFed518BkAhkizZoN7X9BD6ZcppYP6PFiYNd0AkxSqdStnrMrt9lYUjc1LOw==
   dependencies:
     himalaya "~1.1.0"
     spotify-uri "~4.0.0"
@@ -7619,12 +7670,24 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.16.3.tgz#94c7a63337ee31227a18d03b8a3041c210fd1f1d"
   integrity sha512-uVbFqx9vvLhQg0iBaau9Z75AxWJ8tqM9AV890dIZCLApF4rTcyHwmAvLeEdYRs+BzYWu8Iw81F79ah0EfTXbaw==
 
-undici@^5.21.2, undici@^5.22.0, undici@^5.8.2:
+undici@^5.22.0:
   version "5.22.1"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.22.1.tgz#877d512effef2ac8be65e695f3586922e1a57d7b"
   integrity sha512-Ji2IJhFXZY0x/0tVBXeQwgPlLWw13GVzpsWPQ3rV50IFMMof2I55PZZxtm4P6iNq+L5znYN9nSTAq0ZyE6lSJw==
   dependencies:
     busboy "^1.6.0"
+
+undici@^5.22.1, undici@^5.24.0:
+  version "5.25.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.25.2.tgz#17ddc3e8ab3c77e473ae1547f3f2917a05da2820"
+  integrity sha512-tch8RbCfn1UUH1PeVCXva4V8gDpGAud/w0WubD6sHC46vYQ3KDxL+xv1A2UxK0N6jrVedutuPHxe1XIoqerwMw==
+  dependencies:
+    busboy "^1.6.0"
+
+unfetch@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-5.0.0.tgz#8a5b6e5779ebe4dde0049f7d7a81d4a1af99d142"
+  integrity sha512-3xM2c89siXg0nHvlmYsQ2zkLASvVMBisZm5lF3gFDqfF2xonNStDJyMpvaOBe0a1Edxmqrf2E0HBdmy9QyZaeg==
 
 unique-filename@^1.1.1:
   version "1.1.1"
@@ -7741,6 +7804,11 @@ wcwidth@^1.0.0, wcwidth@^1.0.1:
   integrity sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==
   dependencies:
     defaults "^1.0.3"
+
+web-streams-polyfill@^3.0.3:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
+  integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
