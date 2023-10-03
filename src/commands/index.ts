@@ -18,26 +18,28 @@ import {MusicCommand} from '@/commands/music/MusicCommand';
 import {BirthdayCommand} from '@/commands/birthday';
 import {LightshotCommand} from './misc/LightshotCommand';
 import {WinnovationMemeCommand} from './meme/WinnovationMemeCommand';
+import {EmojifyCommand} from './text/EmojifyCommand';
 
 export default [
     AdventOfCodeCommand,
+    BirthdayCommand,
     DeepFryCommand,
     DrakeMemeCommand,
+    EmojifyCommand,
     HelpCommand,
     JokeMemeCommand,
     KarmaCommand,
     KortebroekCommand,
+    LightshotCommand,
     MarieKondoCommand,
     MockifyCommand,
     MotivationalQuoteCommand,
+    MusicCommand,
     PingCommand,
     PollCommand,
     SpooktoberCommand,
     StufiCommand,
     UwuCommand,
     WhereMemeCommand,
-    MusicCommand,
-    BirthdayCommand,
-    LightshotCommand,
     WinnovationMemeCommand,
 ];
