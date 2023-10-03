@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.12...v2.11.0) (2023-10-03)
+
+
+### Features
+
+* emojify command ([0381bd5](https://github.com/rickklaasboer/wego-overseer/commit/0381bd5f3fe08375bc268a3bf78c87db193a1185))
+
 ## [2.10.12](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.11...v2.10.12) (2023-09-24)
 
 
