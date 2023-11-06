@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.11.0...v2.11.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* **deps:** bump cron and @types/cron ([a5b0445](https://github.com/rickklaasboer/wego-overseer/commit/a5b04459dd6a46027c220e8ce30a741394278a7c))
+
 # [2.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.10.12...v2.11.0) (2023-10-03)
 
 
