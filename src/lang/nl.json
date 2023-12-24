@@ -180,7 +180,7 @@
             "no_results": "Het lijkt erop dat er nog geen berichten in de quality content leaderboard staan. Probeer het later opnieuw!",
             "embed": {
                 "title": "Quality Content Leaderboard (Top 10)",
-                "row": "Bericht van %s **%s** upvotes: <#%s> - [link](https://discord.com/channels/%s/%s/%s)\n\n"
+                "row": "Bericht van %s met **%s** upvotes: <#%s> — [Spring naar bericht](https://discord.com/channels/%s/%s/%s)\n"
             }
         }
     },
