@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.0...v2.12.1) (2023-12-24)
+
+
+### Bug Fixes
+
+* quality content leaderboard argument order ([45db4c6](https://github.com/rickklaasboer/wego-overseer/commit/45db4c6f3ab88c71fd9f63b5a10b5ece20c47a7d))
+
 # [2.12.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.11.2...v2.12.0) (2023-12-24)
 
 
