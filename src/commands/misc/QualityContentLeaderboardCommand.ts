@@ -2,7 +2,7 @@ import Command from '@/commands/Command';
 import Logger from '@/telemetry/logger';
 import StringBuilder from '@/util/StringBuilder';
 import {safeFetchUser} from '@/util/discord';
-import {trans} from '@/util/localization';
+import {t} from '@/util/localization';
 import {EmbedBuilder} from 'discord.js';
 
 const logger = new Logger(
@@ -40,32 +40,37 @@ export const QualityContentLeaderboardCommand = new Command({
                 .limit(10)) as Row[];
 
             if (!results.length) {
-                await interaction.reply('No results found!');
+                await interaction.reply(
+                    t('commands.quality_content.no_results'),
+                );
             }
 
             const sb = new StringBuilder();
 
             for (const result of results) {
+                const user = await safeFetchUser(client, result.userId);
+
                 sb.append(
-                    `Message by ${await safeFetchUser(
-                        client,
-                        result.userId,
-                    )} **${result.upvotes}** upvotes: <#${
-                        result.channelId
-                    }> - [link](https://discord.com/channels/${
-                        result.guildId
-                    }/${result.channelId}/${result.messageId})\n\n`,
+                    t(
+                        'commands.quality_content.embed.row',
+                        user.username,
+                        String(result.upvotes),
+                        String(result.totalKarma),
+                        result.messageId,
+                        result.guildId,
+                        result.channelId,
+                    ),
                 );
             }
 
             const embed = new EmbedBuilder();
-            embed.setTitle('Quality Content Leaderboard (Top 10)');
+            embed.setTitle(t('commands.quality_content.embed.title'));
             embed.setDescription(sb.toString());
 
             await interaction.reply({embeds: [embed]});
         } catch (err) {
             await interaction.reply({
-                content: trans('errors.common.failed', 'ccleaderboard'),
+                content: t('errors.common.failed', 'ccleaderboard'),
                 ephemeral: true,
             });
             logger.fatal(

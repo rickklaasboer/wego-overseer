@@ -175,6 +175,13 @@
                     }
                 }
             }
+        },
+        "quality_content": {
+            "no_results": "It doesn't look like any posts made it to the quality content channel as of yet",
+            "embed": {
+                "title": "Quality Content Leaderboard (Top 10)",
+                "row": "Message by %s **%s** upvotes: <#%s> - [link](https://discord.com/channels/%s/%s/%s)\n\n"
+            }
         }
     },
     "events": {
