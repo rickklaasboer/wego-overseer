@@ -1,3 +1,10 @@
+## [2.12.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.1...v2.12.2) (2023-12-24)
+
+
+### Bug Fixes
+
+* i done goofed url formatting ([f522b74](https://github.com/rickklaasboer/wego-overseer/commit/f522b749e46b00a0afbb93ee236ebe29c3b48245))
+
 ## [2.12.1](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.0...v2.12.1) (2023-12-24)
 
 
