@@ -1,4 +1,9 @@
-import {BaseInteraction, CacheType, PermissionsBitField} from 'discord.js';
+import {
+    BaseInteraction,
+    CacheType,
+    Client,
+    PermissionsBitField,
+} from 'discord.js';
 
 /**
  * Wrap string in discord code block
@@ -16,4 +21,18 @@ export function isAdmin(interaction: BaseInteraction<CacheType>): boolean {
             PermissionsBitField.Flags.Administrator,
         ) ?? false
     );
+}
+
+/**
+ * Fetch user safely from discord
+ */
+export async function safeFetchUser(
+    client: Client,
+    userId: string,
+): Promise<{username: string}> {
+    try {
+        return await client.users.fetch(userId);
+    } catch (err) {
+        return {username: userId};
+    }
 }

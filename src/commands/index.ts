@@ -19,6 +19,7 @@ import {BirthdayCommand} from '@/commands/birthday';
 import {LightshotCommand} from './misc/LightshotCommand';
 import {WinnovationMemeCommand} from './meme/WinnovationMemeCommand';
 import {EmojifyCommand} from './text/EmojifyCommand';
+import {QualityContentLeaderboardCommand} from './misc/QualityContentLeaderboardCommand';
 
 export default [
     AdventOfCodeCommand,
@@ -42,4 +43,5 @@ export default [
     UwuCommand,
     WhereMemeCommand,
     WinnovationMemeCommand,
+    QualityContentLeaderboardCommand,
 ];
