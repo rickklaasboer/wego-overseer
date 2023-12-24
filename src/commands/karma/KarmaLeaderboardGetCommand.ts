@@ -1,5 +1,5 @@
 import Command from '@/commands/Command';
-import {wrapInCodeblock} from '@/util/discord';
+import {safeFetchUser, wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 import {Client} from 'discord.js';
@@ -8,20 +8,6 @@ type Row = {
     userId: string;
     totalReceivedKarma: string;
 };
-
-/**
- * Fetch user safely from discord
- */
-async function safeFetchUser(
-    client: Client,
-    userId: string,
-): Promise<{username: string}> {
-    try {
-        return await client.users.fetch(userId);
-    } catch (err) {
-        return {username: userId};
-    }
-}
 
 /**
  * Transform db row to table-formatted row
