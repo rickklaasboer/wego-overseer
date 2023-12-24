@@ -59,10 +59,10 @@ export const QualityContentLeaderboardCommand = new Command({
                         'commands.quality_content.embed.row',
                         user.username,
                         String(result.upvotes),
-                        String(result.messageId),
-                        result.guildId,
-                        result.messageId,
                         result.channelId,
+                        result.guildId,
+                        result.channelId,
+                        result.messageId,
                     ),
                 );
             }

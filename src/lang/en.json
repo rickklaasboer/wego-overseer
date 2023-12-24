@@ -180,7 +180,7 @@
             "no_results": "It doesn't look like any posts made it to the quality content channel as of yet",
             "embed": {
                 "title": "Quality Content Leaderboard (Top 10)",
-                "row": "Message by %s with **%s** upvotes: <#%s> — [Jump to message](https://discord.com/channels/%s/%s/%s)\n"
+                "row": "Message by %s with **%s** upvotes in <#%s> — [Jump to message](https://discord.com/channels/%s/%s/%s)\n"
             }
         }
     },
