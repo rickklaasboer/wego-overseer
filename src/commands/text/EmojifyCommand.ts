@@ -1,30 +1,48 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
-import Emojifier from '@/lib/emojify/Emojifier';
 import {trans} from '@/util/localization';
+import BaseCommand, {
+    SlashCommandOption,
+    APPLICATION_COMMAND_OPTIONS,
+} from '@/commands/BaseCommand';
+import {Maybe} from '@/types/util';
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
+import EmojifyService from '@/services/misc/EmojifyService';
+import {injectable} from 'inversify';
 
-const emojify = new Emojifier({
-    density: 100,
-    shouldFilterEmojis: false,
-});
+@injectable()
+export default class EmojifyCommand extends BaseCommand {
+    public name: string;
+    public description: string;
+    public options: Maybe<SlashCommandOption[]>;
+    public enabled: boolean;
 
-export const EmojifyCommand = new Command({
-    name: 'emojify',
-    description: 'Emojify a sentence',
-    options: [
-        {
-            type: APPLICATION_COMMAND_OPTIONS.STRING,
-            name: 'sentence',
-            description: 'The sentence to emojify',
-            required: true,
-            min_length: 1,
-        },
-    ],
-    run: async (interaction) => {
+    private emojifyService: EmojifyService;
+
+    constructor(emojifyService: EmojifyService) {
+        super();
+        this.name = 'emojify';
+        this.description = 'Emojify a sentence';
+        this.options = [
+            {
+                type: APPLICATION_COMMAND_OPTIONS.STRING,
+                name: 'sentence',
+                description: 'The sentence to emojify',
+                required: true,
+                min_length: 1,
+            },
+        ];
+        this.enabled = true;
+        this.emojifyService = emojifyService;
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(
+        interaction: ChatInputCommandInteraction<CacheType>,
+    ): Promise<void> {
         try {
-            await interaction.reply(
-                emojify.emojify(interaction.options.getString('sentence')!),
-            );
+            const sentence = interaction.options.getString('sentence')!;
+            await interaction.reply(this.emojifyService.emojify(sentence));
         } catch (err) {
             console.error(err);
             await interaction.reply({
@@ -32,5 +50,5 @@ export const EmojifyCommand = new Command({
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}

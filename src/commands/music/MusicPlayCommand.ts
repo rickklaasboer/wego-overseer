@@ -20,7 +20,6 @@ export const MusicPlayCommand = new Command({
 
         const channel = member.voice.channel;
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const query = interaction.options.getString('query')!;
         const {searchResult, queue} = await player.play(channel, query, {
             nodeOptions: {

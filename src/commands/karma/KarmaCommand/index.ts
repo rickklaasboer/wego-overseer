@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Command from '@/commands/Command';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';

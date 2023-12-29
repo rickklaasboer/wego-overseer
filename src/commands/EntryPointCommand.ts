@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {BotContext} from '@/Bot';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 import Command, {Props as CommandProps} from './Command';

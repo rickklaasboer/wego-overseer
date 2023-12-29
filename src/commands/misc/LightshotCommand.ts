@@ -1,23 +1,31 @@
-import Command from '@/commands/Command';
+import BaseCommand, {SlashCommandOption} from '@/commands/BaseCommand';
+import {Maybe} from '@/types/util';
 import crypto from 'crypto';
-import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
+import {injectable} from 'inversify';
 
-const logger = new Logger('wego-overseer:commands:LightshotCommand');
+@injectable()
+export default class LightshotCommand extends BaseCommand {
+    public name: string;
+    public description: string;
+    public options: Maybe<SlashCommandOption[]>;
+    public enabled: boolean;
 
-export const LightshotCommand = new Command({
-    name: 'lightshot',
-    description: 'Get a random lightshot URL',
-    run: async (interaction) => {
-        try {
-            const random = crypto.randomBytes(20).toString('hex').slice(0, 6);
-            await interaction.reply(`https://prnt.sc/${random}`);
-        } catch (err) {
-            await interaction.reply({
-                content: trans('errors.common.failed', 'lightshot'),
-                ephemeral: true,
-            });
-            logger.fatal('Unable to handle PollCommand', err);
-        }
-    },
-});
+    constructor() {
+        super();
+        this.name = 'lightshot';
+        this.description = 'Get a random lightshot URL';
+        this.options = null;
+        this.enabled = true;
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(
+        interaction: ChatInputCommandInteraction<CacheType>,
+    ): Promise<void> {
+        const random = crypto.randomBytes(20).toString('hex').slice(0, 6);
+        await interaction.reply(`https://prnt.sc/${random}`);
+    }
+}

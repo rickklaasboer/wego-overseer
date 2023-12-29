@@ -17,7 +17,6 @@ function getCommandArgs(interaction: ChatInputCommandInteraction<CacheType>): {
     const options =
         interaction.options.getString('options')?.split(',') ??
         DEFAULT_VOTE_OPTIONS;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const title = interaction.options.getString('title')!;
     const description =
         interaction.options.getString('description') ??

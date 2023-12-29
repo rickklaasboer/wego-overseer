@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Logger from '@/telemetry/logger';
 import Event from '../Event';
 

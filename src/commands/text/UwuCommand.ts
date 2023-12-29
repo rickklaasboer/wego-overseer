@@ -1,33 +1,43 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
-import {trans} from '@/util/localization';
-import Uwuifier from 'uwuifier';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    SlashCommandOption,
+} from '@/commands/BaseCommand';
+import UwuifyService from '@/services/misc/UwuifyService';
+import {Maybe} from '@/types/util';
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 
-const uwu = new Uwuifier();
+export default class UwuCommand extends BaseCommand {
+    public name: string;
+    public description: string;
+    public options: Maybe<SlashCommandOption[]>;
+    public enabled: boolean;
 
-export const UwuCommand = new Command({
-    name: 'uwu',
-    description: 'UwUify a sentence',
-    options: [
-        {
-            type: APPLICATION_COMMAND_OPTIONS.STRING,
-            name: 'sentence',
-            description: 'The sentence to UwUify',
-            required: true,
-            min_length: 1,
-        },
-    ],
-    run: async (interaction) => {
-        try {
-            await interaction.reply(
-                uwu.uwuifySentence(interaction.options.getString('sentence')!),
-            );
-        } catch (err) {
-            console.error(err);
-            await interaction.reply({
-                content: trans('errors.common.failed', 'uwu'),
-                ephemeral: true,
-            });
-        }
-    },
-});
+    private uwuifyService: UwuifyService;
+
+    constructor(uwuifyService: UwuifyService) {
+        super();
+        this.name = 'uwu';
+        this.description = 'UwUify a sentence';
+        this.options = [
+            {
+                type: APPLICATION_COMMAND_OPTIONS.STRING,
+                name: 'sentence',
+                description: 'The sentence to UwUify',
+                required: true,
+                min_length: 1,
+            },
+        ];
+        this.enabled = true;
+        this.uwuifyService = uwuifyService;
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(
+        interaction: ChatInputCommandInteraction<CacheType>,
+    ): Promise<void> {
+        const sentence = interaction.options.getString('sentence')!;
+        await interaction.reply(this.uwuifyService.uwuify(sentence));
+    }
+}

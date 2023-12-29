@@ -16,7 +16,6 @@ export const MusicNextCommand = new Command({
             return;
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const query = interaction.options.getString('query')!;
         const requested = await player.search(query, {
             requestedBy: interaction.user,

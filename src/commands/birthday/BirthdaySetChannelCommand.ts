@@ -10,7 +10,6 @@ export const BirthdaySetChannelCommand = new InternalCommand({
     run: async (interaction) => {
         try {
             const guild = await ensureGuildIsAvailable(interaction.guildId);
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const channel = interaction.options.getChannel('channel')!;
 
             if (!isAdmin(interaction)) {

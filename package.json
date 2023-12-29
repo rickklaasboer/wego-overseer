@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "tsx watch ./src/index.ts",
+        "dev:v3": "tsx watch ./src/app.ts",
         "dev:no-watch": "tsx ./src/index.ts",
         "knex": "knex --knexfile ./knexfile.ts"
     },
@@ -30,8 +31,10 @@
         "commitizen": "4.3.0",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.45.0",
+        "inversify": "^6.0.2",
         "lint-staged": "13.2.2",
         "prettier": "3.0.0",
+        "reflect-metadata": "^0.2.1",
         "semantic-release": "21.0.2",
         "ts-node": "10.9.1",
         "tsconfig-paths": "4.2.0",

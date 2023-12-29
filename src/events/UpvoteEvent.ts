@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Logger from '@/telemetry/logger';
 import {getEnvInt, getEnvString} from '@/util/environment';
 import {EmbedBuilder} from 'discord.js';
@@ -23,8 +22,8 @@ export const UpvoteEvent = new Event({
             if ((reaction.count ?? 0) < QCC_MIN_EMOJI_COUNT) return;
 
             // Get the emoji
-            const emoji = reaction.client.emojis.cache.find((emoji) =>
-                emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
+            const emoji = reaction.client.emojis.cache.find(
+                (emoji) => emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
             );
 
             // Make sure an emoji was found

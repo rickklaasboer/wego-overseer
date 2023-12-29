@@ -1,32 +1,45 @@
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    SlashCommandOption,
+} from '@/commands/BaseCommand';
+import MockifyService from '@/services/misc/MockifyService';
+import {Maybe} from '@/types/util';
+import {ChatInputCommandInteraction, CacheType} from 'discord.js';
+import {injectable} from 'inversify';
 
-/**
- * Transforms string into 'spongebob case' or 'mocked case'
- */
-function mockify(input: string): string {
-    return Array.from(input)
-        .map((c: string) =>
-            Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase(),
-        )
-        .join('');
+@injectable()
+export default class MockifyCommand extends BaseCommand {
+    public name: string;
+    public description: string;
+    public options: Maybe<SlashCommandOption[]>;
+    public enabled: boolean;
+
+    private mockifyService: MockifyService;
+
+    constructor(mockifyService: MockifyService) {
+        super();
+        this.name = 'mockify';
+        this.description = 'transform text to spongebob mocking';
+        this.options = [
+            {
+                type: APPLICATION_COMMAND_OPTIONS.STRING,
+                name: 'text',
+                description: 'text to be transformed',
+                required: true,
+                min_length: 1,
+            },
+        ];
+        this.enabled = true;
+        this.mockifyService = mockifyService;
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(
+        interaction: ChatInputCommandInteraction<CacheType>,
+    ): Promise<void> {
+        const text = interaction.options.getString('text')!;
+        await interaction.reply(this.mockifyService.mockify(text));
+    }
 }
-
-export const MockifyCommand = new Command({
-    name: 'mockify',
-    description: 'transform text to spongebob mocking',
-    options: [
-        {
-            type: APPLICATION_COMMAND_OPTIONS.STRING,
-            name: 'text',
-            description: 'text to be transformed',
-            required: true,
-            min_length: 1,
-        },
-    ],
-    run: async (interaction) => {
-        await interaction.reply(
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            mockify(interaction.options.getString('text')!),
-        );
-    },
-});

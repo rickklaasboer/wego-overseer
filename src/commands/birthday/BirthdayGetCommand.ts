@@ -1,27 +1,29 @@
-import {trans} from '@/util/localization';
-import {EmbedBuilder} from '@discordjs/builders';
-import {
-    ensureGuildIsAvailable,
-    ensureUserIsAvailable,
-} from '@/commands/karma/KarmaCommand/predicates';
-import InternalCommand from '../InternalCommand';
-import dayjs from 'dayjs';
-import Logger from '@/telemetry/logger';
+import InternalBaseCommand from '@/commands/InternalBaseCommand';
 import {default as LocalUser} from '@/entities/User';
-import {User as DiscordUser} from 'discord.js';
-import {bindUserToGuild} from './predicates/bindUserToGuild';
+import UserRepository from '@/repositories/UserRepository';
+import {Maybe} from '@/types/util';
+import {trans} from '@/util/localization';
 import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import dayjs from 'dayjs';
+import {
+    ChatInputCommandInteraction,
+    CacheType,
+    EmbedBuilder,
+    User as DiscordUser,
+} from 'discord.js';
+import {injectable} from 'inversify';
 
-const logger = new Logger('wego-overseer:commands:BirthdayGetCommand');
-
-function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
+function createEmbed(
+    user: Maybe<LocalUser>,
+    discordUser: DiscordUser,
+): EmbedBuilder {
     const embed = new EmbedBuilder();
 
     embed.setTitle(
         trans('commands.birthday.get.embed.title', discordUser.username),
     );
 
-    if (user.dateOfBirth) {
+    if (user?.dateOfBirth) {
         embed.setDescription(
             trans(
                 'commands.birthday.get.embed.description.birthday_known',
@@ -48,25 +50,34 @@ function createEmbed(user: LocalUser, discordUser: DiscordUser): EmbedBuilder {
     return embed;
 }
 
-export const BirthdayGetCommand = new InternalCommand({
-    run: async (interaction, _, {db}) => {
+@injectable()
+export default class BirthdayGetCommand extends InternalBaseCommand {
+    private userRepository: UserRepository;
+
+    constructor(userRepository: UserRepository) {
+        super();
+        this.userRepository = userRepository;
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(
+        interaction: ChatInputCommandInteraction<CacheType>,
+    ): Promise<void> {
         try {
-            const discordUser =
-                interaction.options.getUser('user') ?? interaction.user;
-            const user = await ensureUserIsAvailable(discordUser.id);
-            const guild = await ensureGuildIsAvailable(interaction.guildId);
+            const user = await this.userRepository.getByGuildId(
+                interaction.user.id,
+                interaction.guildId!,
+            );
 
-            await bindUserToGuild(db, user, guild);
+            const embed = createEmbed(user, interaction.user);
 
-            await interaction.followUp({
-                embeds: [createEmbed(user, discordUser)],
+            await interaction.reply({
+                embeds: [embed],
             });
         } catch (err) {
-            logger.fatal('Unable to handle BirthdayGetCommand', err);
-            await interaction.followUp({
-                content: trans('errors.common.failed', 'birthday get command'),
-                ephemeral: true,
-            });
+            console.error(err);
         }
-    },
-});
+    }
+}
