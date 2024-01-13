@@ -1,14 +1,24 @@
 import {wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {EmbedBuilder} from 'discord.js';
-import Command from '../Command';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
+import {injectable} from 'tsyringe';
 
-export const MusicNowCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {player}) => {
+@injectable()
+export default class MusicNowCommand extends BaseInternalCommand {
+    constructor(private playerService: DiscordPlayerService) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         if (!interaction.guild) return;
 
+        const player = await this.playerService.getPlayer();
         const queue = player.nodes.get(interaction.guild.id);
 
         if (!queue || !queue.currentTrack) {
@@ -37,5 +47,5 @@ export const MusicNowCommand = new Command({
             });
 
         await interaction.editReply({embeds: [embed]});
-    },
-});
+    }
+}

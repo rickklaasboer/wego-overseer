@@ -1,10 +1,20 @@
 import {trans} from '@/util/localization';
-import Command from '../Command';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
+import {injectable} from 'tsyringe';
 
-export const MusicClearCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {player}) => {
+@injectable()
+export default class MusicClearCommand extends BaseInternalCommand {
+    constructor(private playerService: DiscordPlayerService) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const player = await this.playerService.getPlayer();
         const guild = interaction.guild;
 
         if (!guild) return;
@@ -26,5 +36,5 @@ export const MusicClearCommand = new Command({
         queue.tracks.clear();
 
         await interaction.editReply(trans('commands.music.clear.success'));
-    },
-});
+    }
+}

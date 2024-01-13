@@ -1,12 +1,22 @@
 import {trans} from '@/util/localization';
 import {GuildMember} from 'discord.js';
-import Command from '../Command';
 import {QueryType} from 'discord-player';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
+import {injectable} from 'tsyringe';
 
-export const MusicPlayCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {player}) => {
+@injectable()
+export default class MusicPlayCommand extends BaseInternalCommand {
+    constructor(private playerService: DiscordPlayerService) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const player = await this.playerService.getPlayer();
         const member = interaction.member as GuildMember;
 
         if (!member.voice.channel) {
@@ -20,7 +30,6 @@ export const MusicPlayCommand = new Command({
 
         const channel = member.voice.channel;
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const query = interaction.options.getString('query')!;
         const {searchResult, queue} = await player.play(channel, query, {
             nodeOptions: {
@@ -59,5 +68,5 @@ export const MusicPlayCommand = new Command({
                 searchResult.tracks[0].title,
             ),
         );
-    },
-});
+    }
+}

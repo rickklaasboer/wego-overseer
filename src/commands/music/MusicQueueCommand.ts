@@ -8,18 +8,28 @@ import {
     ButtonStyle,
     EmbedBuilder,
 } from 'discord.js';
-import Command from '../Command';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
+import {injectable} from 'tsyringe';
 
-export const MusicQueueCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {player}) => {
+@injectable()
+export default class MusicQueueCommand extends BaseInternalCommand {
+    constructor(private playerService: DiscordPlayerService) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         const guild = interaction.guild;
 
         if (!guild) return;
 
         const embed = new EmbedBuilder();
 
+        const player = await this.playerService.getPlayer();
         const queue = player.nodes.get(interaction.guild.id);
 
         if (!queue) {
@@ -63,5 +73,5 @@ export const MusicQueueCommand = new Command({
         embed.setDescription(contents);
 
         await interaction.editReply({embeds: [embed], components: [row]});
-    },
-});
+    }
+}

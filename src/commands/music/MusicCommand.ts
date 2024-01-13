@@ -1,24 +1,24 @@
-import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
-import {MusicPlayCommand} from '@/commands/music/MusicPlayCommand';
-import {MusicPauseCommand} from '@/commands/music/MusicPauseCommand';
-import {MusicResumeCommand} from '@/commands/music/MusicResumeCommand';
-import {MusicSkipCommand} from '@/commands/music/MusicSkipCommand';
-import {MusicPrevCommand} from '@/commands/music/MusicPrevCommand';
-import {MusicNextCommand} from '@/commands/music/MusicNextCommand';
-import {MusicQueueCommand} from '@/commands/music/MusicQueueCommand';
-import {MusicStopCommand} from '@/commands/music/MusicStopCommand';
-import {MusicNowCommand} from '@/commands/music/MusicNowCommand';
-import {MusicClearCommand} from '@/commands/music/MusicClearCommand';
-import {MusicSeekCommand} from '@/commands/music/MusicSeekCommand';
-import EntryPointCommand from '@/commands/EntryPointCommand';
-import Logger from '@/telemetry/logger';
+import MusicPlayCommand from '@/commands/music/MusicPlayCommand';
+import MusicPauseCommand from '@/commands/music/MusicPauseCommand';
+import MusicResumeCommand from '@/commands/music/MusicResumeCommand';
+import MusicSkipCommand from '@/commands/music/MusicSkipCommand';
+import MusicPrevCommand from '@/commands/music/MusicPrevCommand';
+import MusicNextCommand from '@/commands/music/MusicNextCommand';
+import MusicQueueCommand from '@/commands/music/MusicQueueCommand';
+import MusicStopCommand from '@/commands/music/MusicStopCommand';
+import MusicNowCommand from '@/commands/music/MusicNowCommand';
+import MusicClearCommand from '@/commands/music/MusicClearCommand';
+import MusicSeekCommand from '@/commands/music/MusicSeekCommand';
+import BaseEntrypointCommand from '@/commands/BaseEntrypointCommand';
+import {Commandable} from '@/types/util';
+import {injectable} from 'tsyringe';
+import {APPLICATION_COMMAND_OPTIONS} from '@/commands/BaseCommand';
 
-const logger = new Logger('wego-overseer:commands:MusicCommand');
-
-export const MusicCommand = new EntryPointCommand({
-    name: 'music',
-    description: "Wego overseer's music player",
-    forwardables: new Map([
+@injectable()
+export default class MusicCommand extends BaseEntrypointCommand {
+    public name = 'music';
+    public description = "Wego overseer's music player";
+    public forwardables = new Map<string, Commandable>([
         ['play', MusicPlayCommand],
         ['pause', MusicPauseCommand],
         ['resume', MusicResumeCommand],
@@ -31,9 +31,8 @@ export const MusicCommand = new EntryPointCommand({
         ['clear', MusicClearCommand],
         ['seek', MusicSeekCommand],
         ['shuffle', MusicSeekCommand],
-    ]),
-    logger,
-    options: [
+    ]);
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'play',
@@ -116,5 +115,6 @@ export const MusicCommand = new EntryPointCommand({
                 },
             ],
         },
-    ],
-});
+    ];
+    public enabled = true;
+}

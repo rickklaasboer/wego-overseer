@@ -1,12 +1,22 @@
 import {trans} from '@/util/localization';
-import Command from '../Command';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
 
-export const MusicNextCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {player}) => {
+@injectable()
+export default class MusicNextCommand extends BaseInternalCommand {
+    constructor(private playerService: DiscordPlayerService) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         if (!interaction.guild) return;
 
+        const player = await this.playerService.getPlayer();
         const queue = player.nodes.get(interaction.guild.id);
 
         if (!queue) {
@@ -16,7 +26,6 @@ export const MusicNextCommand = new Command({
             return;
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const query = interaction.options.getString('query')!;
         const requested = await player.search(query, {
             requestedBy: interaction.user,
@@ -34,5 +43,5 @@ export const MusicNextCommand = new Command({
         await interaction.editReply(
             trans('commands.music.next.success', requested.tracks[0].title),
         );
-    },
-});
+    }
+}
