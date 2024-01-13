@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {trans} from '@/util/localization';
-import Logger from '@/telemetry/logger';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:DrakeMemeCommand');
-
-export const DrakeMemeCommand = new Command({
-    name: 'drake',
-    description: 'drake meme generator',
-    shouldDeferReply: true,
-    options: [
+@injectable()
+export default class DrakeMemeCommand implements BaseCommand {
+    name = 'drake';
+    description = 'Drake meme generator';
+    options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'top-text',
@@ -28,9 +28,15 @@ export const DrakeMemeCommand = new Command({
             min_length: 1,
             max_length: 128,
         },
-    ],
-    run: async (interaction) => {
+    ];
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
+            await interaction.deferReply();
+
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
             const img = await Jimp.read('./src/img/meme/drake.png');
 
@@ -68,11 +74,10 @@ export const DrakeMemeCommand = new Command({
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
-            logger.fatal(err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'drake meme'),
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}
