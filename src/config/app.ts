@@ -15,6 +15,7 @@ import MarieKondoCommand from '@/commands/meme/MarieKondoCommand';
 import MotivationalQuoteCommand from '@/commands/meme/MotivationalQuoteCommand';
 import WhereMemeCommand from '@/commands/meme/WhereMemeCommand';
 import WinnovationMemeCommand from '@/commands/meme/WinnovationMemeCommand';
+import QualityContentLeaderboardCommand from '@/commands/misc/QualityContentLeaderboardCommand';
 
 export default {
     /**
@@ -37,6 +38,7 @@ export default {
         ['motivational', MotivationalQuoteCommand],
         ['where', WhereMemeCommand],
         ['winnovation', WinnovationMemeCommand],
+        ['ccleaderboard', QualityContentLeaderboardCommand],
     ]),
 
     /**

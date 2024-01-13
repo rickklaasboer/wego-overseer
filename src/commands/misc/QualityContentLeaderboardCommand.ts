@@ -1,14 +1,12 @@
-import Command from '@/commands/Command';
-import Logger from '@/telemetry/logger';
+import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
+import config from '@/config';
+import KnexService from '@/services/KnexService';
+import DiscordClientService from '@/services/discord/DiscordClientService';
 import StringBuilder from '@/util/StringBuilder';
 import {safeFetchUser} from '@/util/discord';
-import {getEnvInt} from '@/util/environment';
 import {t} from '@/util/localization';
 import {EmbedBuilder} from 'discord.js';
-
-const logger = new Logger(
-    'wego-overseer:commands:QualityContentLeaderboardCommand',
-);
+import {injectable} from 'tsyringe';
 
 type Row = {
     id: string;
@@ -24,22 +22,35 @@ type Row = {
     totalKarma: number;
 };
 
-const QCC_MIN_EMOJI_COUNT = getEnvInt('QCC_MIN_EMOJI_COUNT', 5);
+@injectable()
+export default class QualityContentLeaderboardCommand implements BaseCommand {
+    name = 'ccleaderboard';
+    description = 'Display the quality content leaderboard';
 
-export const QualityContentLeaderboardCommand = new Command({
-    name: 'ccleaderboard',
-    description: 'Display the quality content leaderboard',
-    run: async (interaction, _, {db, client}) => {
+    constructor(
+        private clientService: DiscordClientService,
+        private knexService: KnexService,
+    ) {}
+
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const results = (await db
+            const knex = this.knexService.getKnex();
+
+            const results = (await knex
                 .table('karma')
                 .select(
-                    db.raw('*, count(*) as upvotes, SUM(amount) as totalKarma'),
+                    knex.raw(
+                        '*, count(*) as upvotes, SUM(amount) as totalKarma',
+                    ),
                 )
                 .where('guildId', interaction.guildId)
                 .groupBy('messageId')
                 .having('totalKarma', '>', 0)
-                .having('upvotes', '>=', QCC_MIN_EMOJI_COUNT)
+                .having(
+                    'upvotes',
+                    '>=',
+                    config.misc.qualityContent.minEmojiCount,
+                )
                 .orderBy('upvotes', 'desc')
                 .limit(10)) as Row[];
 
@@ -52,7 +63,10 @@ export const QualityContentLeaderboardCommand = new Command({
             const sb = new StringBuilder();
 
             for (const result of results) {
-                const user = await safeFetchUser(client, result.userId);
+                const user = await safeFetchUser(
+                    this.clientService.getClient(),
+                    result.userId,
+                );
 
                 sb.append(
                     t(
@@ -77,10 +91,6 @@ export const QualityContentLeaderboardCommand = new Command({
                 content: t('errors.common.failed', 'ccleaderboard'),
                 ephemeral: true,
             });
-            logger.fatal(
-                'Unable to handle QualityContentLeaderboardCommand',
-                err,
-            );
         }
-    },
-});
+    }
+}
