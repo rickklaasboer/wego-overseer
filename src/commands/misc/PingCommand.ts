@@ -1,11 +1,17 @@
-import Command from '@/commands/Command';
+import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
-export const PingCommand = new Command({
-    name: 'ping',
-    description: 'Ping!',
-    run: async (interaction) => {
+@injectable()
+export default class PingCommand implements BaseCommand {
+    public name = 'ping';
+    public description = 'Ping!';
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         await interaction.reply(
             `Pong! (${Math.abs(Date.now() - interaction.createdTimestamp)} ms)`,
         );
-    },
-});
+    }
+}
