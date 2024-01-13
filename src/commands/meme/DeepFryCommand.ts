@@ -5,14 +5,15 @@ import {
     InteractionReplyOptions,
     EmbedBuilder,
 } from 'discord.js';
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
-import Logger from '@/telemetry/logger';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {Maybe} from '@/types/util';
 import {trans} from '@/util/localization';
-
-const logger = new Logger('wego-overseer:commands:DeepFryCommand');
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
 /**
  * Create follow up reply from interaction and image
@@ -66,11 +67,11 @@ function getImageUrl(
     return getUserAvatarUrl(interaction);
 }
 
-export const DeepFryCommand = new Command({
-    name: 'deepfry',
-    description: 'deepfry image',
-    shouldDeferReply: true,
-    options: [
+@injectable()
+export default class DeepFryCommand implements BaseCommand {
+    name = 'deepfry';
+    description = 'Deepfry an image';
+    options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'image',
@@ -97,9 +98,15 @@ export const DeepFryCommand = new Command({
                 },
             ],
         },
-    ],
-    run: async (interaction) => {
+    ];
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
+            await interaction.deferReply();
+
             const imgUrl = getImageUrl(interaction);
             if (!imgUrl) throw new Error('No image found');
 
@@ -113,11 +120,10 @@ export const DeepFryCommand = new Command({
                 createFollowUp(interaction, wrappedImage),
             );
         } catch (err) {
-            logger.fatal(err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'deep fried image'),
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}
