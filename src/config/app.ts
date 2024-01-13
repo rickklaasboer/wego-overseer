@@ -16,6 +16,7 @@ import MotivationalQuoteCommand from '@/commands/meme/MotivationalQuoteCommand';
 import WhereMemeCommand from '@/commands/meme/WhereMemeCommand';
 import WinnovationMemeCommand from '@/commands/meme/WinnovationMemeCommand';
 import QualityContentLeaderboardCommand from '@/commands/misc/QualityContentLeaderboardCommand';
+import KarmaCommand from '@/commands/karma/KarmaCommand';
 
 export default {
     /**
@@ -39,6 +40,7 @@ export default {
         ['where', WhereMemeCommand],
         ['winnovation', WinnovationMemeCommand],
         ['ccleaderboard', QualityContentLeaderboardCommand],
+        ['karma', KarmaCommand],
     ]),
 
     /**

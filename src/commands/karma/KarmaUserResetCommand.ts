@@ -1,6 +1,7 @@
-import Command from '@/commands/Command';
-import Karma from '@/entities/Karma';
-import {isAdmin} from '@/util/discord';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import UserIsAdmin from '@/middleware/UserIsAdmin';
+import KarmaRepository from '@/repositories/KarmaRepository';
 import {trans} from '@/util/localization';
 import {
     ActionRowBuilder,
@@ -9,6 +10,7 @@ import {
     TextInputStyle,
     User,
 } from 'discord.js';
+import {injectable} from 'tsyringe';
 
 /**
  * Create modal
@@ -33,22 +35,19 @@ function createModal(user: User): ModalBuilder {
     return modalBuilder;
 }
 
-export const KarmaUserResetCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction) => {
-        const user = interaction.options.getUser('user') ?? interaction.user;
+@injectable()
+export default class KarmaUserResetCommand extends BaseInternalCommand {
+    public middleware = [UserIsAdmin];
 
-        if (!isAdmin(interaction)) {
-            await interaction.reply({
-                content: trans(
-                    'errors.common.command.no_permission',
-                    interaction.user.id,
-                ),
-                ephemeral: true,
-            });
-            return;
-        }
+    constructor(private karmaRepository: KarmaRepository) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const user = interaction.options.getUser('user') ?? interaction.user;
 
         const modal = createModal(user);
         await interaction.showModal(modal);
@@ -70,10 +69,10 @@ export const KarmaUserResetCommand = new Command({
             return;
         }
 
-        const rowsAffected = await Karma.query()
-            .where('guildId', '=', interaction.guildId)
-            .andWhere('userId', '=', user.id)
-            .delete();
+        const rowsAffected = await this.karmaRepository.resetKarma(
+            interaction.guildId!,
+            user.id,
+        );
 
         await submitted.reply({
             content: trans(
@@ -83,5 +82,5 @@ export const KarmaUserResetCommand = new Command({
             ),
             ephemeral: true,
         });
-    },
-});
+    }
+}

@@ -1,39 +1,43 @@
-import Command from '@/commands/Command';
-import Channel from '@/entities/Channel';
-import {ensureChannelIsAvailable} from './KarmaCommand/predicates';
-import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import EnsureChannelIsAvailable from '@/middleware/EnsureChannelIsAvailable';
+import UserIsAdmin from '@/middleware/UserIsAdmin';
+import ChannelRepository from '@/repositories/ChannelRepository';
+import {injectable} from 'tsyringe';
 
-export const KarmaChannelDisableCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction) => {
-        const {id, name = ''} = interaction.options.getChannel('channel') ?? {};
+@injectable()
+export default class KarmaChannelDisableCommand extends BaseInternalCommand {
+    public middleware = [EnsureChannelIsAvailable, UserIsAdmin];
 
-        if (!isAdmin(interaction)) {
-            await interaction.reply({
-                content: trans(
-                    'errors.common.command.no_permission',
-                    interaction.user.id,
-                ),
-                ephemeral: true,
-            });
-            return;
-        }
+    constructor(private channelRepository: ChannelRepository) {
+        super();
+    }
 
-        const channel = await ensureChannelIsAvailable(
-            id,
-            interaction.guild?.id,
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const discordChannel = interaction.options.getChannel('channel');
+        const channel = await this.channelRepository.getById(
+            discordChannel?.id ?? '',
         );
 
+        if (!channel) {
+            throw new Error('Channel not found');
+        }
+
         if (channel.isKarmaChannel) {
-            await Channel.query()
-                .findById(channel.id)
-                .patch({isKarmaChannel: false});
+            await this.channelRepository.update(channel.id, {
+                isKarmaChannel: false,
+            });
         }
 
         await interaction.reply(
-            trans('commands.karma.channel.disable.success', name ?? ''),
+            trans(
+                'commands.karma.channel.disable.success',
+                discordChannel?.name ?? '',
+            ),
         );
-    },
-});
+    }
+}

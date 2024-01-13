@@ -1,8 +1,12 @@
-import Command from '@/commands/Command';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import KarmaRepository from '@/repositories/KarmaRepository';
+import DiscordClientService from '@/services/discord/DiscordClientService';
 import {safeFetchUser, wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
 import {Client} from 'discord.js';
+import {injectable} from 'tsyringe';
 
 type Row = {
     userId: string;
@@ -21,22 +25,27 @@ async function dbRowToTableRow(
     return [i + 1, username, row.totalReceivedKarma].map(String);
 }
 
-export const KarmaLeaderboardGetCommand = new Command({
-    name: 'internal',
-    description: 'internal',
-    run: async (interaction, _, {db, client}) => {
-        // Raw query using knex because generated query by objection
-        // would result in a very inefficient query
-        const results = (await db
-            .table('karma')
-            .select('userId')
-            .sum('amount as totalReceivedKarma')
-            .where('guildId', '=', interaction.guild?.id ?? '')
-            .orderBy('totalReceivedKarma', 'desc')
-            .groupBy('userId')) as Row[];
+@injectable()
+export default class KarmaLeaderboardGetCommand extends BaseInternalCommand {
+    constructor(
+        private karmaRepository: KarmaRepository,
+        private clientService: DiscordClientService,
+    ) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const results = await this.karmaRepository.getLeaderboard(
+            interaction.guildId!,
+        );
 
         const rows = await Promise.all(
-            results.map((row, i) => dbRowToTableRow(row, i, client)),
+            results.map((row, i) =>
+                dbRowToTableRow(row, i, this.clientService.getClient()),
+            ),
         );
 
         await interaction.reply(
@@ -51,5 +60,5 @@ export const KarmaLeaderboardGetCommand = new Command({
                 ),
             ),
         );
-    },
-});
+    }
+}
