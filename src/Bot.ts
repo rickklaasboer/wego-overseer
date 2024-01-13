@@ -13,6 +13,8 @@ import EmojifyCommand from '@/commands/text/EmojifyCommand';
 import MockifyCommand from '@/commands/text/MockifyCommand';
 import UwuifyCommand from '@/commands/text/UwuifyCommand';
 import MusicCommand from '@/commands/music/MusicCommand';
+import {Pipeline} from '@/util/Pipeline';
+import BirthdayCommand from '@/commands/birthday/BirthdayCommand';
 
 /**
  * @deprecated
@@ -36,6 +38,7 @@ export default class Bot {
         ['mockify', MockifyCommand],
         ['uwuify', UwuifyCommand],
         ['music', MusicCommand],
+        ['birthday', BirthdayCommand],
     ]);
 
     constructor(
@@ -74,8 +77,6 @@ export default class Bot {
             },
         );
 
-        console.log(JSON.stringify(commands, null, 4));
-
         await this.restService
             .getRest()
             .put(Routes.applicationCommands(DISCORD_APPLICATION_ID), {
@@ -102,7 +103,15 @@ export default class Bot {
             );
 
             try {
-                await command.execute(interaction as DefaultInteraction);
+                const pipeline =
+                    container.resolve<Pipeline<DefaultInteraction>>(Pipeline);
+
+                const passed = await pipeline
+                    .send(interaction as DefaultInteraction)
+                    .through(command.middleware ?? [])
+                    .go();
+
+                await command.execute(passed);
             } catch (err) {
                 console.error(
                     `Unable to execute command /${command.name} (${err})`,

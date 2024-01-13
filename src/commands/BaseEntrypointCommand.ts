@@ -3,6 +3,7 @@ import BaseCommand, {
     SlashCommandOption,
 } from '@/commands/BaseCommand';
 import {Commandable} from '@/types/util';
+import {Pipeline} from '@/util/Pipeline';
 import {container} from 'tsyringe';
 
 export default abstract class BaseEntrypointCommand implements BaseCommand {
@@ -27,6 +28,14 @@ export default abstract class BaseEntrypointCommand implements BaseCommand {
         const resolvable = this.forwardables.get(subcommand)!;
         const command = container.resolve(resolvable);
 
-        await command.execute(interaction);
+        const pipeline =
+            container.resolve<Pipeline<DefaultInteraction>>(Pipeline);
+
+        const passed = await pipeline
+            .send(interaction as DefaultInteraction)
+            .through(command.middleware ?? [])
+            .go();
+
+        await command.execute(passed);
     }
 }

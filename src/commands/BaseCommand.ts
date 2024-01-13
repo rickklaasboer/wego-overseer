@@ -1,3 +1,5 @@
+import BaseMiddleware from '@/middleware/BaseMiddleware';
+import {Constructable} from '@/types/util';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
 
 export enum APPLICATION_COMMAND_OPTIONS {
@@ -62,8 +64,7 @@ export default interface BaseCommand<
     /**
      * The middleware to use for this command
      */
-    // TODO: implement
-    // public middleware: (typeof Middleware<T>)[] = [];
+    middleware?: Constructable<BaseMiddleware<DefaultInteraction>>[];
 
     /**
      * Run the command
