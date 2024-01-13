@@ -1,15 +1,10 @@
 import {EmbedBuilder} from 'discord.js';
-import Command from '@/commands/Command';
 import {getEnvString} from '@/util/environment';
 import dayjs from 'dayjs';
-import Logger from '@/telemetry/logger';
+import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:KortebroekCommand');
-
-const KANIKEENKORTEBROEKAAN_API_URL = getEnvString(
-    'KANIKEENKORTEBROEKAAN_API_URL',
-    '',
-);
+const API_URL = getEnvString('KANIKEENKORTEBROEKAAN_API_URL', '');
 
 type KanIkEenKorteBroekAanApiResponse = {
     data: {
@@ -29,14 +24,17 @@ type KanIkEenKorteBroekAanApiResponse = {
     };
 };
 
-export const KortebroekCommand = new Command({
-    name: 'kanikeenkortebroekaan',
-    description: 'Kan ik een korte broek aan?',
-    run: async (interaction) => {
+@injectable()
+export default class KortebroekCommand implements BaseCommand {
+    name = 'kanikeenkortebroekaan';
+    description = 'Kan ik een korte broek aan?';
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(
-                `${KANIKEENKORTEBROEKAAN_API_URL}/cani`,
-            );
+            const request = await fetch(`${API_URL}/cani`);
             const {data} =
                 (await request.json()) as KanIkEenKorteBroekAanApiResponse;
 
@@ -53,7 +51,7 @@ export const KortebroekCommand = new Command({
                 ],
             });
         } catch (err) {
-            logger.fatal(err);
+            console.error(err);
         }
-    },
-});
+    }
+}
