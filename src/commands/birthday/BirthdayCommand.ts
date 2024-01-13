@@ -1,27 +1,25 @@
-import EntryPointCommand from '@/commands/EntryPointCommand';
 import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
-import {BirthdayGetCommand} from '@/commands/birthday/BirthdayGetCommand';
-import {BirthdaySetCommand} from '@/commands/birthday/BirthdaySetCommand';
-import {BirthdaySetChannelCommand} from '@/commands/birthday/BirthdaySetChannelCommand';
-import {BirthdayUpcomingCommand} from './BirthdayUpcomingCommand';
-import {BirthdayCalendarCommand} from './BirthdayCalendarCommand';
-import Logger from '@/telemetry/logger';
+import BirthdayGetCommand from '@/commands/birthday/BirthdayGetCommand';
+import BirthdaySetCommand from '@/commands/birthday/BirthdaySetCommand';
+import BirthdaySetChannelCommand from '@/commands/birthday/BirthdaySetChannelCommand';
+import BirthdayUpcomingCommand from './BirthdayUpcomingCommand';
+import BirthdayCalendarCommand from './BirthdayCalendarCommand';
+import BaseEntrypointCommand from '@/commands/BaseEntrypointCommand';
+import {Commandable} from '@/types/util';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:BirthdayCommand');
-
-export const BirthdayCommand = new EntryPointCommand({
-    name: 'birthday',
-    description:
-        'Birthdays! (by entering your date of birth you agree to us selling your soul)',
-    forwardables: new Map([
+@injectable()
+export default class BirthdayCommand extends BaseEntrypointCommand {
+    public name = 'birthday';
+    public description = "Wego overseer's birthday bonanza";
+    public forwardables = new Map<string, Commandable>([
         ['get', BirthdayGetCommand],
         ['set', BirthdaySetCommand],
         ['setchannel', BirthdaySetChannelCommand],
         ['upcoming', BirthdayUpcomingCommand],
         ['calendar', BirthdayCalendarCommand],
-    ]),
-    logger,
-    options: [
+    ]);
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'get',
@@ -93,5 +91,6 @@ export const BirthdayCommand = new EntryPointCommand({
             name: 'calendar',
             description: "Get the server's birthday calendar",
         },
-    ],
-});
+    ];
+    public enabled = true;
+}

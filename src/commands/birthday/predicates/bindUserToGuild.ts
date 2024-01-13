@@ -1,5 +1,6 @@
 import Guild from '@/entities/Guild';
 import User from '@/entities/User';
+import {Maybe} from '@/types/util';
 import {Knex} from 'knex';
 
 /**
@@ -22,9 +23,13 @@ async function guildUserExists(
  */
 export async function bindUserToGuild(
     db: Knex,
-    user: User,
-    guild: Guild,
+    user: Maybe<User>,
+    guild: Maybe<Guild>,
 ): Promise<void> {
+    if (!user || !guild) {
+        throw new Error('User or guild is not available');
+    }
+
     if (!(await guildUserExists(db, user.id, guild.id))) {
         // Connect user to guild
         await db.table('guilds_users').insert({

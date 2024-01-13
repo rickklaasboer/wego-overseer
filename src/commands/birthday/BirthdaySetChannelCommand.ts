@@ -1,26 +1,27 @@
-import Logger from '@/telemetry/logger';
-import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
-import InternalCommand from '../InternalCommand';
-import {ensureGuildIsAvailable} from '../karma/KarmaCommand/predicates';
+import {injectable} from 'tsyringe';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
+import GuildRepository from '@/repositories/GuildRepository';
+import UserIsAdmin from '@/middleware/UserIsAdmin';
 
-const logger = new Logger('wego-overseer:commands:BirthdaySetChannelCommand');
+@injectable()
+export default class BirthdaySetChannelCommand extends BaseInternalCommand {
+    public middleware = [EnsureGuildIsAvailable, UserIsAdmin];
 
-export const BirthdaySetChannelCommand = new InternalCommand({
-    run: async (interaction) => {
+    constructor(private guildRepository: GuildRepository) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const guild = await ensureGuildIsAvailable(interaction.guildId);
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const channel = interaction.options.getChannel('channel')!;
 
-            if (!isAdmin(interaction)) {
-                await interaction.followUp(
-                    trans('errors.common.command.no_permission'),
-                );
-                return;
-            }
-
-            await guild.$query().update({
+            await this.guildRepository.update(interaction.guildId!, {
                 birthdayChannelId: channel.id,
             });
 
@@ -28,10 +29,9 @@ export const BirthdaySetChannelCommand = new InternalCommand({
                 trans('commands.birthday.setchannel.success', channel.id),
             );
         } catch (err) {
-            logger.fatal('Unable to handle BirthdaySetChannelCommand', err);
             await interaction.followUp(
                 trans('errors.common.command.unknown_error'),
             );
         }
-    },
-});
+    }
+}

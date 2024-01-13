@@ -1,33 +1,39 @@
 import {trans} from '@/util/localization';
-import {ensureGuildIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
-import InternalCommand from '../InternalCommand';
-import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
 import {EmbedBuilder} from 'discord.js';
 import table from 'text-table';
 import {createBirthdayRows, sortBirthdays} from './BirthdayCalendarCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
+import GuildRepository from '@/repositories/GuildRepository';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:BirthdayUpcomingCommand');
+@injectable()
+export default class BirthdayUpcomingCommand extends BaseInternalCommand {
+    public middleware = [EnsureGuildIsAvailable];
 
-export const BirthdayUpcomingCommand = new InternalCommand({
-    run: async (interaction) => {
+    constructor(private guildRepository: GuildRepository) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const guild = await ensureGuildIsAvailable(interaction.guildId);
-
             const now = dayjs();
 
-            const birthdays = await guild
-                .$query()
-                .withGraphFetched({users: true})
-                .modifyGraph('users', (q) => {
-                    q.whereRaw(
-                        "(DATE_FORMAT(dateOfBirth, '%m-%d') BETWEEN ? and ?)",
-                        [
-                            now.format('MM-DD'),
-                            now.add(3, 'months').format('MM-DD'),
-                        ],
-                    );
-                });
+            // Lets keep this on one line for now
+            // prettier-ignore
+            const guild = await this.guildRepository.getGuildByIdWithUpcomingBirthdaysBetween(
+                interaction.guildId!,
+                [now.format('MM-DD'), now.add(3, 'months').format('MM-DD')],
+            );
+
+            if (!guild) {
+                throw new Error('Guild not found');
+            }
 
             const embed = new EmbedBuilder().setTitle(
                 trans(
@@ -37,8 +43,14 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 ),
             );
 
-            const birthdaysSorted = sortBirthdays(birthdays);
-            const rows = await createBirthdayRows(birthdaysSorted);
+            const guildSortedByBirthday = sortBirthdays(guild);
+            const rows = await createBirthdayRows(guildSortedByBirthday);
+            const upcomingBirtdaysTable = table(rows);
+
+            // TODO: handle
+            if (upcomingBirtdaysTable.length < 1) {
+                throw new Error('No upcoming birthdays found');
+            }
 
             embed.setDescription(table(rows));
 
@@ -46,7 +58,7 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 embeds: [embed],
             });
         } catch (err) {
-            logger.fatal('Unable to handle BirthdayUpcomingCommand', err);
+            console.error(err);
             await interaction.followUp({
                 content: trans(
                     'errors.common.failed',
@@ -55,5 +67,5 @@ export const BirthdayUpcomingCommand = new InternalCommand({
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}

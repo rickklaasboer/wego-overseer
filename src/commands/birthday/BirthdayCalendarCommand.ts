@@ -1,27 +1,32 @@
 import {trans} from '@/util/localization';
-import {ensureGuildIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
-import InternalCommand from '../InternalCommand';
-import Logger from '@/telemetry/logger';
 import {EmbedBuilder} from '@discordjs/builders';
 import dayjs from 'dayjs';
 import {createNextOccuranceTimestamp} from '@/util/timestamp';
 import table from 'text-table';
 import Guild from '@/entities/Guild';
 import User from '@/entities/User';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
+import GuildRepository from '@/repositories/GuildRepository';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:BirthdayCalendarCommand');
+@injectable()
+export default class BirthdayCalendarCommand extends BaseInternalCommand {
+    public middleware = [EnsureGuildIsAvailable];
 
-export const BirthdayCalendarCommand = new InternalCommand({
-    run: async (interaction) => {
+    constructor(private guildRepository: GuildRepository) {
+        super();
+    }
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const guild = await ensureGuildIsAvailable(interaction.guildId);
-
-            const birthdays = await guild
-                .$query()
-                .withGraphFetched({users: true})
-                .modifyGraph('users', (q) => {
-                    q.whereNotNull('dateOfBirth');
-                });
+            const guild = await this.guildRepository.getGuildByIdWithBirthdays(
+                interaction.guildId!,
+            );
 
             const embed = new EmbedBuilder().setTitle(
                 trans(
@@ -30,8 +35,12 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 ),
             );
 
-            const birthdaysSorted = sortBirthdays(birthdays);
-            const rows = await createBirthdayRows(birthdaysSorted);
+            if (!guild) {
+                throw new Error('Guild not found');
+            }
+
+            const guildSortedByBirthday = sortBirthdays(guild);
+            const rows = await createBirthdayRows(guildSortedByBirthday);
 
             embed.setDescription(table(rows));
 
@@ -39,7 +48,7 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 embeds: [embed],
             });
         } catch (err) {
-            logger.fatal('Unable to handle BirthdayCalendarCommand', err);
+            console.error(err);
             await interaction.followUp({
                 content: trans(
                     'errors.common.failed',
@@ -48,11 +57,13 @@ export const BirthdayCalendarCommand = new InternalCommand({
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}
 
-export function sortBirthdays(birthdays: Guild) {
-    return birthdays.users.sort(({dateOfBirth: a}, {dateOfBirth: b}) => {
+// TODO: move
+// also rename because it sortes users in guild by birthday, not the birthdays themselves
+export function sortBirthdays(guild: Guild) {
+    return guild.users.sort(({dateOfBirth: a}, {dateOfBirth: b}) => {
         const now = dayjs();
         const birthdayA = dayjs(a).year(now.year());
         const birthdayB = dayjs(b).year(now.year());
@@ -66,9 +77,12 @@ export function sortBirthdays(birthdays: Guild) {
     });
 }
 
-export async function createBirthdayRows(birthdays: User[]) {
+// TODO: move
+// also i dont know why this is async
+// probably doesnt need to be
+export async function createBirthdayRows(guild: User[]) {
     return await Promise.all(
-        birthdays.map(async ({id, dateOfBirth}) => {
+        guild.map(async ({id, dateOfBirth}) => {
             return [
                 `${dayjs(dateOfBirth).format(
                     'DD/MM/YYYY',

@@ -3,26 +3,18 @@ import {isAdmin} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {pad} from '@/util/misc';
 import dayjs, {Dayjs} from 'dayjs';
-import InternalCommand from '../InternalCommand';
-import {
-    ensureGuildIsAvailable,
-    ensureUserIsAvailable,
-} from '../karma/KarmaCommand/predicates';
-import {bindUserToGuild} from './predicates/bindUserToGuild';
 import {EmbedBuilder, User} from 'discord.js';
 import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
+import {DefaultInteraction} from '@/commands/BaseCommand';
+import BindUserToGuild from '@/middleware/BindUserToGuild';
+import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
+import EnsureUserIsAvailable from '@/middleware/EnsureUserIsAvailable';
+import UserRepository from '@/repositories/UserRepository';
+import {injectable} from 'tsyringe';
+import {AuthorizationError} from '@/util/errors/AuthorizationError';
 
 const logger = new Logger('wego-overseer:commands:BirthdaySetCommand');
-
-class NotAdminError extends Error {
-    constructor() {
-        super(
-            "Requester tried to change target's birthday, but is not an administrator.",
-        );
-
-        this.name = 'NotAdminError';
-    }
-}
 
 function createEmbed(target: User, requester: User, date: Dayjs) {
     const embed = new EmbedBuilder();
@@ -52,20 +44,26 @@ function createEmbed(target: User, requester: User, date: Dayjs) {
     return embed;
 }
 
-export const BirthdaySetCommand = new InternalCommand({
-    run: async (interaction, _, {db}) => {
+@injectable()
+export default class BirthdaySetCommand extends BaseInternalCommand {
+    public middleware = [
+        EnsureUserIsAvailable,
+        EnsureGuildIsAvailable,
+        BindUserToGuild,
+    ];
+
+    constructor(private userRepository: UserRepository) {
+        super();
+    }
+
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
             const requester = interaction.user;
             const target = interaction.options.getUser('user') ?? requester;
 
-            const user = await ensureUserIsAvailable(target?.id);
-            const guild = await ensureGuildIsAvailable(interaction.guildId);
-
-            await bindUserToGuild(db, user, guild);
-
             // If requester is not an admin, but tries to change someone else's birthday
             if (requester.id !== target?.id && !isAdmin(interaction)) {
-                throw new NotAdminError();
+                throw new AuthorizationError();
             }
 
             const birthDate = [
@@ -74,7 +72,7 @@ export const BirthdaySetCommand = new InternalCommand({
                 pad(interaction.options.getNumber('day'), 2),
             ];
 
-            await user.$query().update({
+            await this.userRepository.update(target.id, {
                 dateOfBirth: dayjs(birthDate.join('/')).format('YYYY-MM-DD'),
             });
 
@@ -86,7 +84,7 @@ export const BirthdaySetCommand = new InternalCommand({
         } catch (error) {
             logger.fatal('Unable to handle BirthdaySetCommand', error);
 
-            if (error instanceof NotAdminError) {
+            if (error instanceof AuthorizationError) {
                 await interaction.followUp(
                     trans('commands.birthday.set.not_admin'),
                 );
@@ -95,5 +93,5 @@ export const BirthdaySetCommand = new InternalCommand({
 
             await interaction.followUp(trans('commands.birthday.set.failure'));
         }
-    },
-});
+    }
+}
