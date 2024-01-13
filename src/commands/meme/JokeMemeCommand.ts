@@ -1,9 +1,12 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {trans} from '@/util/localization';
 import Logger from '@/telemetry/logger';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
 const logger = new Logger('wego-overseer:commands:JokeMemeCommand');
 
@@ -14,11 +17,11 @@ const IMAGE_OFFSET = {
     y_height: 190,
 };
 
-export const JokeMemeCommand = new Command({
-    name: 'joke',
-    description: 'x and other hilarious jokes you can tell yourself',
-    shouldDeferReply: true,
-    options: [
+@injectable()
+export default class JokeMemeCommand implements BaseCommand {
+    name = 'joke';
+    description = 'Other hilarious jokes you can tell yourself';
+    options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',
@@ -27,9 +30,15 @@ export const JokeMemeCommand = new Command({
             min_length: 1,
             max_length: 115,
         },
-    ],
-    run: async (interaction) => {
+    ];
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
+            await interaction.deferReply();
+
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
             const img = await Jimp.read('./src/img/meme/joke.png');
 
@@ -57,5 +66,5 @@ export const JokeMemeCommand = new Command({
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}
