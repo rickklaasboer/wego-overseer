@@ -15,6 +15,8 @@ import UwuifyCommand from '@/commands/text/UwuifyCommand';
 import MusicCommand from '@/commands/music/MusicCommand';
 import {Pipeline} from '@/util/Pipeline';
 import BirthdayCommand from '@/commands/birthday/BirthdayCommand';
+import KortebroekCommand from '@/commands/fun/KortebroekCommand';
+import StufiCommand from '@/commands/fun/StufiCommand';
 
 /**
  * @deprecated
@@ -39,6 +41,8 @@ export default class Bot {
         ['uwuify', UwuifyCommand],
         ['music', MusicCommand],
         ['birthday', BirthdayCommand],
+        ['kortebroek', KortebroekCommand],
+        ['stufi', StufiCommand],
     ]);
 
     constructor(

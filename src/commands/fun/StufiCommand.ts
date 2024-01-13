@@ -1,11 +1,9 @@
-import Command from '@/commands/Command';
-import Logger from '@/telemetry/logger';
+import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import {getEnvString} from '@/util/environment';
 import dayjs from 'dayjs';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:KortebroekCommand');
-
-const DUO_STUFI_API_URL = getEnvString('DUO_STUFI_API_URL', '');
+const API_URL = getEnvString('DUO_STUFI_API_URL', '');
 
 export type DuoApiResponse = {
     data: {
@@ -21,12 +19,17 @@ export type DuoApiResponse = {
     };
 };
 
-export const StufiCommand = new Command({
-    name: 'wanneerstufi',
-    description: 'Wanneer weer gratis geld van ome DUO?',
-    run: async (interaction) => {
+@injectable()
+export default class StufiCommand implements BaseCommand {
+    name = 'wanneerstufi';
+    description = 'Wanneer weer gratis geld van ome DUO?';
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(`${DUO_STUFI_API_URL}/stufi`);
+            const request = await fetch(`${API_URL}/stufi`);
             const {data} = (await request.json()) as DuoApiResponse;
 
             await interaction.reply(
@@ -37,7 +40,7 @@ export const StufiCommand = new Command({
                 )}.`,
             );
         } catch (err) {
-            logger.fatal(err);
+            console.error(err);
         }
-    },
-});
+    }
+}
