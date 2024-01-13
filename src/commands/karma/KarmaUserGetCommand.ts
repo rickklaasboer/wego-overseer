@@ -21,7 +21,7 @@ export default class KarmaUserGetCommand extends BaseInternalCommand {
             user.id,
         );
 
-        await interaction.reply(
+        await interaction.followUp(
             trans(
                 'commands.karma.user.get.result',
                 user.username,

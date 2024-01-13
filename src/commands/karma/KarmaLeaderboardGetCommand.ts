@@ -48,7 +48,7 @@ export default class KarmaLeaderboardGetCommand extends BaseInternalCommand {
             ),
         );
 
-        await interaction.reply(
+        await interaction.followUp(
             wrapInCodeblock(
                 tableWithHead(
                     [

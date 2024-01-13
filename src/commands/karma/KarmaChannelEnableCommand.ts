@@ -33,7 +33,7 @@ export default class KarmaChannelEnableCommand extends BaseInternalCommand {
             });
         }
 
-        await interaction.reply(
+        await interaction.followUp(
             trans(
                 'commands.karma.channel.disable.success',
                 discordChannel?.name ?? '',

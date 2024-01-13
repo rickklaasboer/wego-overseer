@@ -2,6 +2,7 @@ import BaseCommand, {
     DefaultInteraction,
     SlashCommandOption,
 } from '@/commands/BaseCommand';
+import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import {Commandable} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
 import {container} from 'tsyringe';
@@ -17,8 +18,6 @@ export default abstract class BaseEntrypointCommand implements BaseCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        await interaction.deferReply();
-
         const subcommand = interaction.options.getSubcommand();
 
         if (!this.forwardables.has(subcommand)) {
@@ -27,6 +26,10 @@ export default abstract class BaseEntrypointCommand implements BaseCommand {
 
         const resolvable = this.forwardables.get(subcommand)!;
         const command = container.resolve(resolvable);
+
+        if ((command as BaseInternalCommand).shouldDeferReply) {
+            await interaction.deferReply();
+        }
 
         const pipeline =
             container.resolve<Pipeline<DefaultInteraction>>(Pipeline);

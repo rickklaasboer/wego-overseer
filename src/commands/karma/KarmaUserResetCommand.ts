@@ -37,6 +37,7 @@ function createModal(user: User): ModalBuilder {
 
 @injectable()
 export default class KarmaUserResetCommand extends BaseInternalCommand {
+    public shouldDeferReply = false;
     public middleware = [UserIsAdmin];
 
     constructor(private karmaRepository: KarmaRepository) {
@@ -74,7 +75,7 @@ export default class KarmaUserResetCommand extends BaseInternalCommand {
             user.id,
         );
 
-        await submitted.reply({
+        await submitted.followUp({
             content: trans(
                 'commands.karma.user.reset.success',
                 rowsAffected.toFixed(),
