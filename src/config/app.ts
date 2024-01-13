@@ -8,6 +8,13 @@ import MusicCommand from '@/commands/music/MusicCommand';
 import EmojifyCommand from '@/commands/text/EmojifyCommand';
 import MockifyCommand from '@/commands/text/MockifyCommand';
 import UwuifyCommand from '@/commands/text/UwuifyCommand';
+import DeepFryCommand from '@/commands/meme/DeepFryCommand';
+import DrakeMemeCommand from '@/commands/meme/DrakeMemeCommand';
+import JokeMemeCommand from '@/commands/meme/JokeMemeCommand';
+import MarieKondoCommand from '@/commands/meme/MarieKondoCommand';
+import MotivationalQuoteCommand from '@/commands/meme/MotivationalQuoteCommand';
+import WhereMemeCommand from '@/commands/meme/WhereMemeCommand';
+import WinnovationMemeCommand from '@/commands/meme/WinnovationMemeCommand';
 
 export default {
     /**
@@ -23,6 +30,13 @@ export default {
         ['birthday', BirthdayCommand],
         ['kortebroek', KortebroekCommand],
         ['stufi', StufiCommand],
+        ['deepfry', DeepFryCommand],
+        ['drake', DrakeMemeCommand],
+        ['joke', JokeMemeCommand],
+        ['mariekondo', MarieKondoCommand],
+        ['motivational', MotivationalQuoteCommand],
+        ['where', WhereMemeCommand],
+        ['winnovation', WinnovationMemeCommand],
     ]),
 
     /**
