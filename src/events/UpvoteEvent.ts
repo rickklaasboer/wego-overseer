@@ -23,8 +23,8 @@ export const UpvoteEvent = new Event({
             if ((reaction.count ?? 0) < QCC_MIN_EMOJI_COUNT) return;
 
             // Get the emoji
-            const emoji = reaction.client.emojis.cache.find((emoji) =>
-                emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
+            const emoji = reaction.client.emojis.cache.find(
+                (emoji) => emoji.name?.toLowerCase().includes(QCC_EMOJI_NAME),
             );
 
             // Make sure an emoji was found
