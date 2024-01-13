@@ -7,3 +7,9 @@ export type Constructable<T> = {
 };
 
 export type Commandable<T extends BaseCommand = BaseCommand> = Constructable<T>;
+
+// TODO: Add eventable type
+export type Eventable<T = unknown> = Constructable<T>;
+
+// TODO: Add jobable type
+export type Jobable<T = unknown> = Constructable<T>;

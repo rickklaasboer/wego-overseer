@@ -2,9 +2,7 @@ import {EmbedBuilder} from 'discord.js';
 import Command from '@/commands/Command';
 import {getRandomGiphyGif} from '@/lib/giphy';
 import {trans} from '@/util/localization';
-import {getEnvString} from '@/util/environment';
-
-const GIPHY_API_KEY = getEnvString('GIPHY_API_KEY', '');
+import config from '@/config';
 
 export const SpooktoberCommand = new Command({
     name: 'spooktober',
@@ -19,7 +17,7 @@ export const SpooktoberCommand = new Command({
         }
 
         const response = await getRandomGiphyGif({
-            api_key: GIPHY_API_KEY,
+            api_key: config.misc.giphy.apiKey,
             tag: 'halloween',
         });
 

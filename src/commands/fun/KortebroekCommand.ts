@@ -1,10 +1,8 @@
 import {EmbedBuilder} from 'discord.js';
-import {getEnvString} from '@/util/environment';
 import dayjs from 'dayjs';
 import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
-
-const API_URL = getEnvString('KANIKEENKORTEBROEKAAN_API_URL', '');
+import config from '@/config';
 
 type KanIkEenKorteBroekAanApiResponse = {
     data: {
@@ -34,7 +32,10 @@ export default class KortebroekCommand implements BaseCommand {
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(`${API_URL}/cani`);
+            const request = await fetch(
+                `${config.misc.kanIkEenKorteBroekAanApiUrl}/cani`,
+            );
+
             const {data} =
                 (await request.json()) as KanIkEenKorteBroekAanApiResponse;
 

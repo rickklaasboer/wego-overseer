@@ -1,9 +1,7 @@
-import {getEnvString} from '@/util/environment';
+import config from '@/config';
 import {tap} from '@/util/tap';
 import {REST} from 'discord.js';
 import {singleton} from 'tsyringe';
-
-const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
 
 @singleton()
 export default class DiscordRestService {
@@ -11,7 +9,7 @@ export default class DiscordRestService {
 
     constructor() {
         this.rest = tap(new REST({version: '9'}), (rest) => {
-            rest.setToken(DISCORD_TOKEN);
+            rest.setToken(config.discord.token);
         });
     }
 

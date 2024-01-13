@@ -2,21 +2,11 @@ import {Client, Routes} from 'discord.js';
 import {Player} from 'discord-player';
 import {Knex} from 'knex';
 import {container, singleton} from 'tsyringe';
-import {getEnvString} from '@/util/environment';
-import {Commandable} from '@/types/util';
 import {DefaultInteraction} from '@/commands/BaseCommand';
+import {Pipeline} from '@/util/Pipeline';
+import config from '@/config';
 import DiscordClientService from '@/services/discord/DiscordClientService';
 import DiscordRestService from '@/services/discord/DiscordRestService';
-import PingCommand from '@/commands/misc/PingCommand';
-import LightshotCommand from '@/commands/misc/LightshotCommand';
-import EmojifyCommand from '@/commands/text/EmojifyCommand';
-import MockifyCommand from '@/commands/text/MockifyCommand';
-import UwuifyCommand from '@/commands/text/UwuifyCommand';
-import MusicCommand from '@/commands/music/MusicCommand';
-import {Pipeline} from '@/util/Pipeline';
-import BirthdayCommand from '@/commands/birthday/BirthdayCommand';
-import KortebroekCommand from '@/commands/fun/KortebroekCommand';
-import StufiCommand from '@/commands/fun/StufiCommand';
 
 /**
  * @deprecated
@@ -28,23 +18,8 @@ export type BotContext = {
     player: Player;
 };
 
-const DISCORD_APPLICATION_ID = getEnvString('DISCORD_APPLICATION_ID', '');
-const DISCORD_TOKEN = getEnvString('DISCORD_TOKEN', '');
-
 @singleton()
 export default class Bot {
-    private commandMap = new Map<string, Commandable>([
-        ['ping', PingCommand],
-        ['lightshot', LightshotCommand],
-        ['emojify', EmojifyCommand],
-        ['mockify', MockifyCommand],
-        ['uwuify', UwuifyCommand],
-        ['music', MusicCommand],
-        ['birthday', BirthdayCommand],
-        ['kortebroek', KortebroekCommand],
-        ['stufi', StufiCommand],
-    ]);
-
     constructor(
         private clientService: DiscordClientService,
         private restService: DiscordRestService,
@@ -63,14 +38,14 @@ export default class Bot {
     private async boot(): Promise<void> {
         await this.register();
 
-        await this.clientService.getClient().login(DISCORD_TOKEN);
+        await this.clientService.getClient().login(config.discord.token);
     }
 
     /**
      * Register required instances
      */
     private async register(): Promise<void> {
-        const commands = [...this.commandMap.entries()].map(
+        const commands = [...config.app.commands.entries()].map(
             ([, resolvable]) => {
                 const command = container.resolve(resolvable);
                 return {
@@ -83,7 +58,7 @@ export default class Bot {
 
         await this.restService
             .getRest()
-            .put(Routes.applicationCommands(DISCORD_APPLICATION_ID), {
+            .put(Routes.applicationCommands(config.discord.applicationId), {
                 body: commands,
             });
 
@@ -100,10 +75,10 @@ export default class Bot {
 
         client.on('interactionCreate', async (interaction) => {
             if (!interaction.isCommand()) return;
-            if (!this.commandMap.has(interaction.commandName)) return;
+            if (!config.app.commands.has(interaction.commandName)) return;
 
             const command = container.resolve(
-                this.commandMap.get(interaction.commandName)!,
+                config.app.commands.get(interaction.commandName)!,
             );
 
             try {

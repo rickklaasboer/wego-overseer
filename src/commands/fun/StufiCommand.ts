@@ -1,9 +1,7 @@
 import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
-import {getEnvString} from '@/util/environment';
+import config from '@/config';
 import dayjs from 'dayjs';
 import {injectable} from 'tsyringe';
-
-const API_URL = getEnvString('DUO_STUFI_API_URL', '');
 
 export type DuoApiResponse = {
     data: {
@@ -29,7 +27,7 @@ export default class StufiCommand implements BaseCommand {
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(`${API_URL}/stufi`);
+            const request = await fetch(`${config.misc.duoStufiApiUrl}/stufi`);
             const {data} = (await request.json()) as DuoApiResponse;
 
             await interaction.reply(
