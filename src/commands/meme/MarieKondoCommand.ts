@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
-import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
-
-const logger = new Logger('wego-overseer:commands:MarieKondoCommand');
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -14,11 +14,11 @@ const IMAGE_OFFSETS = {
     y: 12,
 };
 
-export const MarieKondoCommand = new Command({
-    name: 'mariekondo',
-    description: 'x does not spark joy',
-    shouldDeferReply: true,
-    options: [
+@injectable()
+export default class MarieKondoCommand implements BaseCommand {
+    name = 'mariekondo';
+    description = 'Does not spark joy';
+    options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',
@@ -27,9 +27,15 @@ export const MarieKondoCommand = new Command({
             min_length: 1,
             max_length: 32,
         },
-    ],
-    run: async (interaction) => {
+    ];
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
+            await interaction.deferReply();
+
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
             const img = await Jimp.read('./src/img/meme/marie.png');
 
@@ -63,11 +69,10 @@ export const MarieKondoCommand = new Command({
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
-            logger.fatal('Failed creating marie kondo meme', err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'marie kondo meme'),
                 ephemeral: true,
             });
         }
-    },
-});
+    }
+}
