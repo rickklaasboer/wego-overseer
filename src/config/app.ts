@@ -17,6 +17,7 @@ import WhereMemeCommand from '@/commands/meme/WhereMemeCommand';
 import WinnovationMemeCommand from '@/commands/meme/WinnovationMemeCommand';
 import QualityContentLeaderboardCommand from '@/commands/misc/QualityContentLeaderboardCommand';
 import KarmaCommand from '@/commands/karma/KarmaCommand';
+import AdventOfCodeCommand from '@/commands/misc/AdventOfCodeCommand';
 
 export default {
     /**
@@ -41,6 +42,7 @@ export default {
         ['winnovation', WinnovationMemeCommand],
         ['ccleaderboard', QualityContentLeaderboardCommand],
         ['karma', KarmaCommand],
+        ['aoc', AdventOfCodeCommand],
     ]),
 
     /**
