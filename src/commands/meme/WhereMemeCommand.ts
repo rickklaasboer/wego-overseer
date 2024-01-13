@@ -1,8 +1,10 @@
-import {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Jimp from 'jimp';
 import {Base64JimpImage} from '@/util/Base64JimpImage';
 import {trans} from '@/util/localization';
-import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
 
 // Magic constants
