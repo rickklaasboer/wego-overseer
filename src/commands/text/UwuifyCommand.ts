@@ -7,9 +7,9 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class UwuifyCommand implements BaseCommand {
-    name = 'uwuify';
-    description = 'UwUify a sentence';
-    options = [
+    public name = 'uwuify';
+    public description = 'UwUify a sentence';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'sentence',

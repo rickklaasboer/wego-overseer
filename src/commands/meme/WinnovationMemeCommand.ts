@@ -15,9 +15,9 @@ const IMAGE_OFFSETS = {
 
 @injectable()
 export default class WinnovationMemeCommand implements BaseCommand {
-    name = 'winnovation';
-    description = 'Winnovation meme generator';
-    options = [
+    public name = 'winnovation';
+    public description = 'Winnovation meme generator';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'sign-text',

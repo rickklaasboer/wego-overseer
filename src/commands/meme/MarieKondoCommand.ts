@@ -16,9 +16,9 @@ const IMAGE_OFFSETS = {
 
 @injectable()
 export default class MarieKondoCommand implements BaseCommand {
-    name = 'mariekondo';
-    description = 'Does not spark joy';
-    options = [
+    public name = 'mariekondo';
+    public description = 'Does not spark joy';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',

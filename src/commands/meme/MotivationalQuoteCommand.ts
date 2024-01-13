@@ -13,9 +13,9 @@ const imageUrl = 'https://picsum.photos/300/400?grayscale&blur=5';
 
 @injectable()
 export default class MotivationalQuoteCommand implements BaseCommand {
-    name = 'motivational';
-    description = 'Generate a motivational picture';
-    options = [
+    public name = 'motivational';
+    public description = 'Generate a motivational picture';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',

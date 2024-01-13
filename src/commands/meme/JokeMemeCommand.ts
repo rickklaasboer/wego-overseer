@@ -19,9 +19,9 @@ const IMAGE_OFFSET = {
 
 @injectable()
 export default class JokeMemeCommand implements BaseCommand {
-    name = 'joke';
-    description = 'Other hilarious jokes you can tell yourself';
-    options = [
+    public name = 'joke';
+    public description = 'Other hilarious jokes you can tell yourself';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',

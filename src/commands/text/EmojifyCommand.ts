@@ -7,9 +7,9 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class EmojifyCommand implements BaseCommand {
-    name = 'emojify';
-    description = 'Emojify a sentence';
-    options = [
+    public name = 'emojify';
+    public description = 'Emojify a sentence';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'sentence',

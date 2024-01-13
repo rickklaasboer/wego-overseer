@@ -24,8 +24,8 @@ type Row = {
 
 @injectable()
 export default class QualityContentLeaderboardCommand implements BaseCommand {
-    name = 'ccleaderboard';
-    description = 'Display the quality content leaderboard';
+    public name = 'ccleaderboard';
+    public description = 'Display the quality content leaderboard';
 
     constructor(
         private clientService: DiscordClientService,

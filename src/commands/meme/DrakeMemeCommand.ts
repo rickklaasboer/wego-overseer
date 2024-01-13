@@ -9,9 +9,9 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class DrakeMemeCommand implements BaseCommand {
-    name = 'drake';
-    description = 'Drake meme generator';
-    options = [
+    public name = 'drake';
+    public description = 'Drake meme generator';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'top-text',

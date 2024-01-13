@@ -7,9 +7,9 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class MockifyCommand implements BaseCommand {
-    name = 'mockify';
-    description = 'Mockify a sentence';
-    options = [
+    public name = 'mockify';
+    public description = 'Mockify a sentence';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'sentence',

@@ -24,8 +24,8 @@ type KanIkEenKorteBroekAanApiResponse = {
 
 @injectable()
 export default class KortebroekCommand implements BaseCommand {
-    name = 'kanikeenkortebroekaan';
-    description = 'Kan ik een korte broek aan?';
+    public name = 'kanikeenkortebroekaan';
+    public description = 'Kan ik een korte broek aan?';
 
     /**
      * Run the command

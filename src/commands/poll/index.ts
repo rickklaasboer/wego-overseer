@@ -1,10 +1,7 @@
 import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
 import Poll from '@/entities/Poll';
-import Logger from '@/telemetry/logger';
 import PollBuilder from '@/util/PollBuilder';
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
-
-const logger = new Logger('wego-overseer:commands:KarmaCommand');
 
 const DEFAULT_VOTE_OPTIONS = ['Yes', 'No', 'Maybe'];
 
@@ -72,7 +69,7 @@ export const PollCommand = new Command({
             const pollBuilder = new PollBuilder(poll, interaction);
             await interaction.reply(await pollBuilder.toReply());
         } catch (err) {
-            logger.fatal('Unable to handle PollCommand', err);
+            console.error(err);
         }
     },
 });

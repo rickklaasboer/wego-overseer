@@ -13,9 +13,9 @@ const IMAGE_OFFSETS = {
 
 @injectable()
 export default class WhereMemeCommand implements BaseCommand {
-    name = 'where';
-    description = 'Where monke meme generator';
-    options = [
+    public name = 'where';
+    public description = 'Where monke meme generator';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
             name: 'text',

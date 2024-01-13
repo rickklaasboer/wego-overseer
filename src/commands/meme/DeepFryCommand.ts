@@ -69,9 +69,9 @@ function getImageUrl(
 
 @injectable()
 export default class DeepFryCommand implements BaseCommand {
-    name = 'deepfry';
-    description = 'Deepfry an image';
-    options = [
+    public name = 'deepfry';
+    public description = 'Deepfry an image';
+    public options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'image',

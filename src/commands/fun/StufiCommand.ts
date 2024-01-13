@@ -19,8 +19,8 @@ export type DuoApiResponse = {
 
 @injectable()
 export default class StufiCommand implements BaseCommand {
-    name = 'wanneerstufi';
-    description = 'Wanneer weer gratis geld van ome DUO?';
+    public name = 'wanneerstufi';
+    public description = 'Wanneer weer gratis geld van ome DUO?';
 
     /**
      * Run the command

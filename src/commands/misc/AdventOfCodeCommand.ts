@@ -21,8 +21,8 @@ type AOCLeaderboardResponse = {
 
 @injectable()
 export default class AdventOfCodeCommand implements BaseCommand {
-    name = 'aoc';
-    description = 'Get the advent of code leaderboard for wego';
+    public name = 'aoc';
+    public description = 'Get the advent of code leaderboard for wego';
 
     /**
      * Run the command
