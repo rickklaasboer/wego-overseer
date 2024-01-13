@@ -1,23 +1,30 @@
-import Command from '@/commands/Command';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
 import crypto from 'crypto';
-import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:LightshotCommand');
+@injectable()
+export default class LightshotCommand implements BaseCommand {
+    public name = 'lightshot';
+    public description = 'Get a random lightshot URL';
+    public options = [
+        {
+            name: 'length',
+            description: 'Length of identifier (default: 6)',
+            min_value: 6,
+            max_value: 64,
+            type: APPLICATION_COMMAND_OPTIONS.INTEGER,
+        },
+    ];
 
-export const LightshotCommand = new Command({
-    name: 'lightshot',
-    description: 'Get a random lightshot URL',
-    run: async (interaction) => {
-        try {
-            const random = crypto.randomBytes(20).toString('hex').slice(0, 6);
-            await interaction.reply(`https://prnt.sc/${random}`);
-        } catch (err) {
-            await interaction.reply({
-                content: trans('errors.common.failed', 'lightshot'),
-                ephemeral: true,
-            });
-            logger.fatal('Unable to handle PollCommand', err);
-        }
-    },
-});
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const length = interaction.options.getInteger('length') ?? 6;
+        const random = crypto.randomBytes(64).toString('hex').slice(0, length);
+        await interaction.reply(`https://prnt.sc/${random}`);
+    }
+}
