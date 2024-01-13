@@ -1,32 +1,33 @@
-import Command, {APPLICATION_COMMAND_OPTIONS} from '@/commands/Command';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import MockifyService from '@/services/text/MockifyService';
+import {injectable} from 'tsyringe';
 
-/**
- * Transforms string into 'spongebob case' or 'mocked case'
- */
-function mockify(input: string): string {
-    return Array.from(input)
-        .map((c: string) =>
-            Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase(),
-        )
-        .join('');
-}
-
-export const MockifyCommand = new Command({
-    name: 'mockify',
-    description: 'transform text to spongebob mocking',
-    options: [
+@injectable()
+export default class MockifyCommand implements BaseCommand {
+    name = 'mockify';
+    description = 'Mockify a sentence';
+    options = [
         {
             type: APPLICATION_COMMAND_OPTIONS.STRING,
-            name: 'text',
-            description: 'text to be transformed',
+            name: 'sentence',
+            description: 'Sentence to mockify',
             required: true,
             min_length: 1,
         },
-    ],
-    run: async (interaction) => {
-        await interaction.reply(
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            mockify(interaction.options.getString('text')!),
+    ];
+
+    constructor(private mockifyService: MockifyService) {}
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        const sentence = this.mockifyService.mockify(
+            interaction.options.getString('sentence')!,
         );
-    },
-});
+        await interaction.reply(sentence);
+    }
+}
