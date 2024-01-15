@@ -1,4 +1,4 @@
-import {Client, Routes} from 'discord.js';
+import {Client, ClientEvents, Constructable, Routes} from 'discord.js';
 import {Player} from 'discord-player';
 import {Knex} from 'knex';
 import {container, singleton} from 'tsyringe';
@@ -9,6 +9,8 @@ import DiscordClientService from '@/services/discord/DiscordClientService';
 import DiscordRestService from '@/services/discord/DiscordRestService';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
+import BaseMiddleware from '@/middleware/BaseMiddleware';
+import BaseEvent from '@/events/BaseEvent';
 
 /**
  * @deprecated
@@ -146,6 +148,33 @@ export default class Bot {
      * Register events
      */
     private async registerEvents(): Promise<void> {
+        for (const [, resolvable] of config.app.events.entries()) {
+            const event =
+                container.resolve<BaseEvent<keyof ClientEvents>>(resolvable);
+            const client = this.clientService.getClient();
+
+            client.on(event.event, async (...args) => {
+                try {
+                    const pipeline =
+                        container.resolve<
+                            Pipeline<ClientEvents[keyof ClientEvents]>
+                        >(Pipeline);
+
+                    const passed = await pipeline
+                        .send(args)
+                        .through(event.middleware ?? [])
+                        .go();
+
+                    await event.execute(...passed);
+                } catch (err) {
+                    this.logger.error(
+                        `Unable to execute event ${event.name}`,
+                        err,
+                    );
+                }
+            });
+        }
+
         this.logger.info(
             `Successfully registered ${
                 config.app.events.size
