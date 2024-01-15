@@ -10,7 +10,7 @@ export type DuoApiResponse = {
         paid_in_unit: string;
         paid_in_date: string;
     };
-    error: any;
+    error: unknown;
     meta: {
         app: string;
         message: string;

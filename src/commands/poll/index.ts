@@ -1,74 +1,87 @@
-// import Poll from '@/entities/Poll';
-// import PollBuilder from '@/util/PollBuilder';
-// import {ChatInputCommandInteraction, CacheType} from 'discord.js';
+import BaseCommand, {
+    APPLICATION_COMMAND_OPTIONS,
+    DefaultInteraction,
+} from '@/commands/BaseCommand';
+import PollOptionRepository from '@/repositories/PollOptionRepository';
+import PollRepository from '@/repositories/PollRepository';
+import Logger from '@/telemetry/logger';
+import PollBuilder from '@/util/PollBuilder';
+import {injectable} from 'tsyringe';
 
-// const DEFAULT_VOTE_OPTIONS = ['Yes', 'No', 'Maybe'];
+@injectable()
+export default class PollCommand implements BaseCommand {
+    public name = 'poll';
+    public description = 'Create a poll for others to vote';
+    public options = [
+        {
+            type: APPLICATION_COMMAND_OPTIONS.STRING,
+            name: 'title',
+            required: true,
+            description: 'Title for poll',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.STRING,
+            name: 'description',
+            description: 'Description for poll',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.STRING,
+            name: 'options',
+            description:
+                'Comma-seperated list of options, defaults to Yes, No, Maybe',
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
+            name: 'allow_multiple_votes',
+            description: 'Whether or not users can vote multiple times',
+        },
+    ];
+    private defaultVoteOptions = ['Yes', 'No', 'Maybe'];
 
-// function getCommandArgs(interaction: ChatInputCommandInteraction<CacheType>): {
-//     options: string[];
-//     title: string;
-//     description: string;
-//     allowMultipleVotes: boolean;
-// } {
-//     const options =
-//         interaction.options.getString('options')?.split(',') ??
-//         DEFAULT_VOTE_OPTIONS;
-//     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-//     const title = interaction.options.getString('title')!;
-//     const description =
-//         interaction.options.getString('description') ??
-//         'No description provided';
-//     const allowMultipleVotes =
-//         interaction.options.getBoolean('allow_multiple_votes') ?? false;
+    constructor(
+        private pollRepository: PollRepository,
+        private pollOptionRepository: PollOptionRepository,
+        private logger: Logger,
+    ) {}
 
-//     return {options, title, description, allowMultipleVotes};
-// }
+    /**
+     * Run the command
+     */
+    public async execute(interaction: DefaultInteraction): Promise<void> {
+        try {
+            const {options, ...rest} = this.getCommandArguments(interaction);
 
-// export const PollCommand = new Command({
-//     name: 'poll',
-//     description: 'Create a poll for others to vote',
-//     options: [
-//         {
-//             type: APPLICATION_COMMAND_OPTIONS.STRING,
-//             name: 'title',
-//             required: true,
-//             description: 'Title for poll',
-//         },
-//         {
-//             type: APPLICATION_COMMAND_OPTIONS.STRING,
-//             name: 'description',
-//             description: 'Description for poll',
-//         },
-//         {
-//             type: APPLICATION_COMMAND_OPTIONS.STRING,
-//             name: 'options',
-//             description: `Comma-seperated list of options, defaults to ${DEFAULT_VOTE_OPTIONS.join(
-//                 ', ',
-//             )}`,
-//         },
-//         {
-//             type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
-//             name: 'allow_multiple_votes',
-//             description: 'Whether or not users can vote multiple times',
-//         },
-//     ],
-//     run: async (interaction) => {
-//         try {
-//             const {options, ...rest} = getCommandArgs(interaction);
+            const poll = await this.pollRepository.create(rest);
+            const optionRows = options.map((option) => ({
+                name: option,
+            }));
 
-//             const poll = await Poll.query().insert(rest);
-//             const optionRows = options.map((option) => ({
-//                 name: option,
-//             }));
+            for (const {name} of optionRows) {
+                await this.pollOptionRepository.create({
+                    pollId: poll.id,
+                    name,
+                });
+            }
 
-//             for (const row of optionRows) {
-//                 await Poll.relatedQuery('options').for(poll.id).insert(row);
-//             }
+            const pollBuilder = new PollBuilder(poll, interaction);
+            await interaction.reply(await pollBuilder.toReply());
+        } catch (err) {
+            this.logger.fatal('Failed to run poll command', err);
+        }
+    }
 
-//             const pollBuilder = new PollBuilder(poll, interaction);
-//             await interaction.reply(await pollBuilder.toReply());
-//         } catch (err) {
-//             console.error(err);
-//         }
-//     },
-// });
+    /**
+     * Get the command arguments
+     */
+    private getCommandArguments({options}: DefaultInteraction) {
+        const opts =
+            options.getString('options')?.split(',') ?? this.defaultVoteOptions;
+        const title = options.getString('title')!;
+        const description =
+            options.getString('description') ?? 'No description provided';
+        const allowMultipleVotes =
+            options.getBoolean('allow_multiple_votes') ?? false;
+
+        return {options: opts, title, description, allowMultipleVotes};
+    }
+}

@@ -1,16 +1,29 @@
-import {ensureUserIsAvailable} from '@/commands/karma/KarmaCommand/predicates';
 import Poll from '@/entities/Poll';
 import PollOption from '@/entities/PollOption';
 import PollVote from '@/entities/PollVote';
-import Logger from '@/telemetry/logger';
 import PollBuilder, {VoteActionButtonPayload} from '@/util/PollBuilder';
-import Event from '../Event';
+import BaseEvent from '@/events/BaseEvent';
+import {Interaction, CacheType} from 'discord.js';
+import Logger from '@/telemetry/logger';
+import {injectable} from 'tsyringe';
+import EnsureUserIsAvailable from '@/middleware/EnsureUserIsAvailable';
 
-const logger = new Logger('wego-overseer:events:ReceiveVoteEvent');
+@injectable()
+export default class ReceiveVoteEvent
+    implements BaseEvent<'interactionCreate'>
+{
+    public name = 'ReceiveVoteEvent';
+    public event = 'interactionCreate' as const;
 
-export const ReceiveVoteEvent = new Event({
-    name: 'interactionCreate',
-    run: async (_, interaction) => {
+    // TODO: fix
+    // public middleware = [EnsureUserIsAvailable];
+
+    constructor(private logger: Logger) {}
+
+    /**
+     * Run the command
+     */
+    public async execute(interaction: Interaction<CacheType>): Promise<void> {
         try {
             // Terminate if not a button
             if (!interaction.isButton()) return;
@@ -20,8 +33,6 @@ export const ReceiveVoteEvent = new Event({
 
             // Terminate if not a vote button
             if (!eventType.startsWith('VOTE')) return;
-
-            await ensureUserIsAvailable(interaction.user.id);
 
             await interaction.deferUpdate();
 
@@ -70,7 +81,7 @@ export const ReceiveVoteEvent = new Event({
             const pollBuilder = new PollBuilder(refetched, interaction);
             await interaction.message.edit(await pollBuilder.toReply());
         } catch (err) {
-            logger.error('Unable to handle ReceiveVoteEvent', err);
+            this.logger.fatal('Failed to run poll command', err);
         }
-    },
-});
+    }
+}

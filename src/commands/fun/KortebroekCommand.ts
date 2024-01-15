@@ -15,7 +15,7 @@ type KanIkEenKorteBroekAanApiResponse = {
         chance_of_rain: string;
         record: Array<Record<string, Array<string>>>;
     };
-    error: any;
+    error: unknown;
     meta: {
         app: string;
         message: string;
