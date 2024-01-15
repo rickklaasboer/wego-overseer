@@ -46,11 +46,7 @@ export default class QualityContentLeaderboardCommand implements BaseCommand {
                 .where('guildId', interaction.guildId)
                 .groupBy('messageId')
                 .having('totalKarma', '>', 0)
-                .having(
-                    'upvotes',
-                    '>=',
-                    config.misc.qualityContent.minEmojiCount,
-                )
+                .having('upvotes', '>=', config.qualityContent.minEmojiCount)
                 .orderBy('upvotes', 'desc')
                 .limit(10)) as Row[];
 

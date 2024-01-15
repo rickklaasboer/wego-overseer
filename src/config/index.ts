@@ -7,5 +7,5 @@ export default {
     app,
     database,
     discord,
-    misc,
+    ...misc,
 };

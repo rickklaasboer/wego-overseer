@@ -29,15 +29,12 @@ export default class AdventOfCodeCommand implements BaseCommand {
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(
-                config.misc.adventOfCode.leaderboardUrl,
-                {
-                    headers: {
-                        accept: 'application/json',
-                        cookie: config.misc.adventOfCode.cookie,
-                    },
+            const request = await fetch(config.adventOfCode.leaderboardUrl, {
+                headers: {
+                    accept: 'application/json',
+                    cookie: config.adventOfCode.cookie,
                 },
-            );
+            });
 
             const response = (await request.json()) as AOCLeaderboardResponse;
 
