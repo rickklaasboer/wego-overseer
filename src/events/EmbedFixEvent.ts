@@ -1,21 +1,27 @@
-import Logger from '@/telemetry/logger';
-import Event from '@/events/Event';
 import {containsUrl} from '@/util/misc';
 import extractUrls from 'extract-urls';
 import extractDomain from 'extract-domain';
 import {trans} from '@/util/localization';
+import BaseEvent from '@/events/BaseEvent';
+import {Message} from 'discord.js';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:events:EmbedFixEvent');
+@injectable()
+export default class EmbedFixEvent implements BaseEvent<'messageCreate'> {
+    public name = 'EmbedFixEvent';
+    public event = 'messageCreate' as const;
+    public enabled = true;
+    private fixable = new Map([
+        ['instagram', 'ddinstagram'],
+        ['reddit', 'rxddit'],
+        ['tiktok', 'vxtiktok'],
+        ['twitter', 'fxtwitter'],
+    ]);
 
-const FIXABLE = new Map([
-    ['instagram', 'ddinstagram'],
-    ['tiktok', 'vxtiktok'],
-    ['twitter', 'fxtwitter'],
-]);
-
-export const EmbedFixEvent = new Event({
-    name: 'messageCreate',
-    run: async (_, message) => {
+    /**
+     * Run the event
+     */
+    public async execute(message: Message<boolean>) {
         try {
             // Terminate if user is a bot
             if (message.author.bot) return;
@@ -28,11 +34,11 @@ export const EmbedFixEvent = new Event({
             const [domain] = extractDomain(hostname, {tld: true}).split('.');
 
             // Terminate if domain is not fixable
-            if (!FIXABLE.has(domain)) return;
+            if (!this.fixable.has(domain)) return;
 
             const replaced = link.replace(
                 domain,
-                FIXABLE.get(domain) ?? domain,
+                this.fixable.get(domain) ?? domain,
             );
 
             const thread = await message.startThread({
@@ -43,7 +49,7 @@ export const EmbedFixEvent = new Event({
             await thread.setLocked(true);
             await thread.setArchived(true);
         } catch (err) {
-            logger.fatal('Unable to handle EmbedFixEvent', err);
+            console.error('Unable to handle EmbedFixEvent', err);
         }
-    },
-});
+    }
+}
