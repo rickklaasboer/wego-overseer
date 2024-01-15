@@ -1,7 +1,9 @@
 import BaseEvent from '@/events/BaseEvent';
 import Logger from '@/telemetry/logger';
 import {Message} from 'discord.js';
+import {injectable} from 'tsyringe';
 
+@injectable()
 export default class YoloSwagEvent implements BaseEvent<'messageCreate'> {
     public name = 'YoloSwagEvent';
     public event = 'messageCreate' as const;

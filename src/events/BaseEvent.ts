@@ -1,5 +1,6 @@
 import BaseMiddleware from '@/middleware/BaseMiddleware';
-import {ClientEvents, Constructable} from 'discord.js';
+import {Constructable} from '@/types/util';
+import {ClientEvents} from 'discord.js';
 
 export default interface BaseEvent<T extends keyof ClientEvents> {
     /**
@@ -18,7 +19,7 @@ export default interface BaseEvent<T extends keyof ClientEvents> {
     enabled?: boolean;
 
     /**
-     * The middleware to use for this command
+     * The middleware to use for this event
      */
     middleware?: Constructable<BaseMiddleware<ClientEvents[T]>>[];
 

@@ -1,4 +1,4 @@
-import {Client, ClientEvents, Constructable, Routes} from 'discord.js';
+import {Client, ClientEvents, Routes} from 'discord.js';
 import {Player} from 'discord-player';
 import {Knex} from 'knex';
 import {container, singleton} from 'tsyringe';
@@ -9,7 +9,6 @@ import DiscordClientService from '@/services/discord/DiscordClientService';
 import DiscordRestService from '@/services/discord/DiscordRestService';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
-import BaseMiddleware from '@/middleware/BaseMiddleware';
 import BaseEvent from '@/events/BaseEvent';
 
 /**
