@@ -1,11 +1,11 @@
-import Logger from '@/telemetry/logger';
-import Event from '../Event';
+import BaseEvent from '@/events/BaseEvent';
+import {Message} from 'discord.js';
 
-const logger = new Logger('wego-overseer:events:YoloSwagEvent');
+export default class YoloSwagEvent implements BaseEvent<'messageCreate'> {
+    public name = 'YoloSwagEvent';
+    public event = 'messageCreate' as const;
 
-export const YoloSwagEvent = new Event({
-    name: 'messageCreate',
-    run: async (_, message) => {
+    public async execute(message: Message<boolean>): Promise<void> {
         try {
             // Terminate if user is a bot
             if (message.author.bot) return;
@@ -14,7 +14,7 @@ export const YoloSwagEvent = new Event({
                 await message.reply('swag');
             }
         } catch (err) {
-            logger.fatal('Unable to handle YoloSwagEvent', err);
+            console.error('Unable to handle YoloSwagEvent', err);
         }
-    },
-});
+    }
+}
