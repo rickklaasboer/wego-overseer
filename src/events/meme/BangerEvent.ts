@@ -1,13 +1,18 @@
-import Logger from '@/telemetry/logger';
 import {randomNumber} from '@/util/karma';
 import {trans} from '@/util/localization';
-import Event from '../Event';
+import BaseEvent from '@/events/BaseEvent';
+import {Message} from 'discord.js';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:events:BangerEvent');
+@injectable()
+export default class BangerEvent implements BaseEvent<'messageCreate'> {
+    public name = 'BangerEvent';
+    public event = 'messageCreate' as const;
 
-export const BangerEvent = new Event({
-    name: 'messageCreate',
-    run: async (_, message) => {
+    /**
+     * Run the event
+     */
+    public async execute(message: Message<boolean>): Promise<void> {
         try {
             // Terminate if user is a bot
             if (message.author.bot) return;
@@ -22,12 +27,11 @@ export const BangerEvent = new Event({
             // Super 100% random chance if the event should fire or not
             // this is to prevent spam
             const shouldFire = randomNumber(1, 10) === 7;
+            if (!(shouldFire && word && word.length >= 5)) return;
 
-            if (shouldFire && word && word.length >= 5) {
-                await message.reply(trans('events.banger.msg', word));
-            }
+            await message.reply(trans('events.banger.msg', word));
         } catch (err) {
-            logger.fatal('Unable to handle BangerEvent', err);
+            console.error('Unable to handle BangerEvent', err);
         }
-    },
-});
+    }
+}
