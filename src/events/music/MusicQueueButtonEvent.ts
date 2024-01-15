@@ -1,18 +1,27 @@
-import Logger from '@/telemetry/logger';
-import Event from '../Event';
+import BaseEvent from '@/events/BaseEvent';
+import {Interaction, CacheType} from 'discord.js';
+import DiscordPlayerService from '@/services/music/DiscordPlayerService';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:events:MusicQueueButtonEvent');
+@injectable()
+export default class MusicQueueButtonEvent
+    implements BaseEvent<'interactionCreate'>
+{
+    public name = 'MusicQueueButtonEvent';
+    public event = 'interactionCreate' as const;
+    private eventTypes = {
+        prev: 'PREV',
+        playPause: 'PLAYPAUSE',
+        stop: 'STOP',
+        next: 'NEXT',
+    };
 
-const EVENT_TYPES = Object.freeze({
-    prev: 'PREV',
-    play_pause: 'PLAYPAUSE',
-    stop: 'STOP',
-    next: 'NEXT',
-});
+    constructor(private playerService: DiscordPlayerService) {}
 
-export const MusicQueueButtonEvent = new Event({
-    name: 'interactionCreate',
-    run: async ({player}, interaction) => {
+    /**
+     * Run the event
+     */
+    public async execute(interaction: Interaction<CacheType>): Promise<void> {
         try {
             // Terminate if not a button
             if (!interaction.isButton()) return;
@@ -30,6 +39,7 @@ export const MusicQueueButtonEvent = new Event({
                 );
             }
 
+            const player = await this.playerService.getPlayer();
             const queue = player.nodes.get(interaction.guild?.id);
 
             if (!queue) {
@@ -38,27 +48,27 @@ export const MusicQueueButtonEvent = new Event({
                 );
             }
 
-            if (action === EVENT_TYPES.prev) {
+            if (action === this.eventTypes.prev) {
                 await queue.history.back();
                 return;
             }
 
-            if (action === EVENT_TYPES.play_pause) {
+            if (action === this.eventTypes.playPause) {
                 queue.node.pause();
                 return;
             }
 
-            if (action === EVENT_TYPES.stop) {
+            if (action === this.eventTypes.stop) {
                 queue.delete();
                 return;
             }
 
-            if (action === EVENT_TYPES.next) {
+            if (action === this.eventTypes.next) {
                 queue.node.skip();
                 return;
             }
         } catch (err) {
-            logger.error('Unable to handle MusicQueueButtonEvent', err);
+            console.error('Unable to handle MusicQueueButtonEvent', err);
         }
-    },
-});
+    }
+}
