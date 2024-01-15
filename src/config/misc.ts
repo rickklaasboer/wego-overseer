@@ -1,4 +1,4 @@
-import {getEnvInt, getEnvString} from '@/util/environment';
+import {getEnvBool, getEnvInt, getEnvString} from '@/util/environment';
 
 export default {
     giphy: {
@@ -29,5 +29,8 @@ export default {
     noob: {
         kabelkaanDiscordId: getEnvString('KABELBAAN_DISCORD_ID', ''),
         noobEmojiId: getEnvString('NOOB_EMOJI_ID', ''),
+    },
+    knex: {
+        enableLogger: getEnvBool('ENABLE_KNEX_LOGGER', false),
     },
 };

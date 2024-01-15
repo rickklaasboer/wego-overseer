@@ -49,7 +49,7 @@ const inappropriateEmojis = [
 /**
  * Check if a string contains an inappropriate emoji
  */
-function isInappropriate(str: string) {
+function isInappropriate(str: string): boolean {
     return inappropriateEmojis.some((emoji) => str.includes(emoji));
 }
 
@@ -65,7 +65,7 @@ export default class Emojifier {
     /**
      * Emojify a string
      */
-    public emojify = (input: string) => {
+    public emojify(input: string): string {
         const words = input.replace(/\n/g, ' ').split(' ');
         const result = words
             .reduce((acc: string, wordRaw: string) => {
@@ -106,5 +106,5 @@ export default class Emojifier {
             .trim();
 
         return result;
-    };
+    }
 }

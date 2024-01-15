@@ -12,10 +12,14 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import DiscordPlayerService from '@/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class MusicQueueCommand extends BaseInternalCommand {
-    constructor(private playerService: DiscordPlayerService) {
+    constructor(
+        private playerService: DiscordPlayerService,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -23,33 +27,50 @@ export default class MusicQueueCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const guild = interaction.guild;
+        try {
+            const guild = interaction.guild;
 
-        if (!guild) return;
+            if (!guild) return;
 
-        const embed = new EmbedBuilder();
+            const embed = new EmbedBuilder();
 
-        const player = await this.playerService.getPlayer();
-        const queue = player.nodes.get(interaction.guild.id);
+            const player = await this.playerService.getPlayer();
+            const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue) {
-            await interaction.editReply(
-                trans('commands.music.queue.queue_empty', guild.id),
+            if (!queue) {
+                this.logger.info('Tried to get queue, but it does not exist');
+                await interaction.editReply(
+                    trans('commands.music.queue.queue_empty', guild.id),
+                );
+                return;
+            }
+
+            const contents = wrapInCodeblock(
+                tableWithHead(
+                    [
+                        trans('commands.music.queue.table.head.position'),
+                        trans('commands.music.queue.table.head.title'),
+                    ],
+                    queue.tracks.map(({title}, i) => [String(i + 1), title]),
+                ),
             );
-            return;
+
+            embed.setDescription(contents);
+
+            await interaction.editReply({
+                embeds: [embed],
+                components: [this.getActionRow()],
+            });
+        } catch (err) {
+            this.logger.fatal('Failed to get queue', err);
         }
+    }
 
-        const contents = wrapInCodeblock(
-            tableWithHead(
-                [
-                    trans('commands.music.queue.table.head.position'),
-                    trans('commands.music.queue.table.head.title'),
-                ],
-                queue.tracks.map(({title}, i) => [String(i + 1), title]),
-            ),
-        );
-
-        const row = tap(new ActionRowBuilder<ButtonBuilder>(), (r) => {
+    /**
+     * Get the action row
+     */
+    private getActionRow(): ActionRowBuilder<ButtonBuilder> {
+        return tap(new ActionRowBuilder<ButtonBuilder>(), (r) => {
             r.addComponents([
                 new ButtonBuilder()
                     .setCustomId('MUSIC_PREV')
@@ -69,9 +90,5 @@ export default class MusicQueueCommand extends BaseInternalCommand {
                     .setStyle(ButtonStyle.Secondary),
             ]);
         });
-
-        embed.setDescription(contents);
-
-        await interaction.editReply({embeds: [embed], components: [row]});
     }
 }

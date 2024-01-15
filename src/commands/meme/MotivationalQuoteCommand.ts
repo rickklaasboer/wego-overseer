@@ -6,6 +6,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 // https://picsum.photos/width/height
 // https://picsum.photos/
@@ -26,6 +27,11 @@ export default class MotivationalQuoteCommand implements BaseCommand {
         },
     ];
 
+    constructor(private logger: Logger) {}
+
+    /**
+     * Run the command
+     */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
             await interaction.deferReply();
@@ -54,6 +60,7 @@ export default class MotivationalQuoteCommand implements BaseCommand {
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
+            this.logger.fatal('Failed to create motivational quote', err);
             await interaction.followUp({
                 content: trans(
                     'errors.common.failed',

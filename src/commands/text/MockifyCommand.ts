@@ -3,6 +3,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import MockifyService from '@/services/text/MockifyService';
+import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -19,15 +20,23 @@ export default class MockifyCommand implements BaseCommand {
         },
     ];
 
-    constructor(private mockifyService: MockifyService) {}
+    constructor(
+        private mockifyService: MockifyService,
+        private logger: Logger,
+    ) {}
 
     /**
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const sentence = this.mockifyService.mockify(
-            interaction.options.getString('sentence')!,
-        );
-        await interaction.reply(sentence);
+        try {
+            const sentence = this.mockifyService.mockify(
+                interaction.options.getString('sentence')!,
+            );
+
+            await interaction.reply(sentence);
+        } catch (err) {
+            this.logger.fatal('Failed to mockify sentence', err);
+        }
     }
 }

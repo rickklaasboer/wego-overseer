@@ -3,11 +3,14 @@ import {trans} from '@/util/localization';
 import BaseEvent from '@/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class BangerEvent implements BaseEvent<'messageCreate'> {
     public name = 'BangerEvent';
     public event = 'messageCreate' as const;
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the event
@@ -31,7 +34,7 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
 
             await message.reply(trans('events.banger.msg', word));
         } catch (err) {
-            console.error('Unable to handle BangerEvent', err);
+            this.logger.fatal('Failed to run BangerEvent', err);
         }
     }
 }

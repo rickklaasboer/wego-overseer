@@ -1,4 +1,5 @@
 import config from '@/config';
+import Logger from '@/telemetry/logger';
 import knex, {Knex} from 'knex';
 import {singleton} from 'tsyringe';
 
@@ -6,7 +7,7 @@ import {singleton} from 'tsyringe';
 export default class KnexService {
     private knex: Knex;
 
-    constructor() {
+    constructor(private logger: Logger) {
         this.knex = knex({
             client: config.database.client,
             connection: {
@@ -16,6 +17,10 @@ export default class KnexService {
                 database: config.database.database,
             },
         });
+
+        if (config.knex.enableLogger) {
+            this.knex.on('query', this.logger.debug);
+        }
     }
 
     /**

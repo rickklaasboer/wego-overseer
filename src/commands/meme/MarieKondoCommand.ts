@@ -6,6 +6,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -28,6 +29,8 @@ export default class MarieKondoCommand implements BaseCommand {
             max_length: 32,
         },
     ];
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the command
@@ -69,6 +72,7 @@ export default class MarieKondoCommand implements BaseCommand {
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
+            this.logger.fatal('Failed to create marie kondo meme', err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'marie kondo meme'),
                 ephemeral: true,

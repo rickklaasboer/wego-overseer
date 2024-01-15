@@ -2,6 +2,7 @@ import BaseCommand, {
     APPLICATION_COMMAND_OPTIONS,
     DefaultInteraction,
 } from '@/commands/BaseCommand';
+import Logger from '@/telemetry/logger';
 import crypto from 'crypto';
 import {injectable} from 'tsyringe';
 
@@ -19,12 +20,21 @@ export default class LightshotCommand implements BaseCommand {
         },
     ];
 
+    constructor(private logger: Logger) {}
+
     /**
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const length = interaction.options.getInteger('length') ?? 6;
-        const random = crypto.randomBytes(64).toString('hex').slice(0, length);
-        await interaction.reply(`https://prnt.sc/${random}`);
+        try {
+            const length = interaction.options.getInteger('length') ?? 6;
+            const random = crypto
+                .randomBytes(64)
+                .toString('hex')
+                .slice(0, length);
+            await interaction.reply(`https://prnt.sc/${random}`);
+        } catch (err) {
+            this.logger.fatal('Failed to get lightshot URL', err);
+        }
     }
 }

@@ -1,9 +1,12 @@
 import BaseEvent from '@/events/BaseEvent';
+import Logger from '@/telemetry/logger';
 import {Message} from 'discord.js';
 
 export default class YoloSwagEvent implements BaseEvent<'messageCreate'> {
     public name = 'YoloSwagEvent';
     public event = 'messageCreate' as const;
+
+    constructor(private logger: Logger) {}
 
     public async execute(message: Message<boolean>): Promise<void> {
         try {
@@ -14,7 +17,7 @@ export default class YoloSwagEvent implements BaseEvent<'messageCreate'> {
                 await message.reply('swag');
             }
         } catch (err) {
-            console.error('Unable to handle YoloSwagEvent', err);
+            this.logger.fatal('Failed to run YoloSwagEvent', err);
         }
     }
 }

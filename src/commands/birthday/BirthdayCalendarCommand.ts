@@ -10,12 +10,16 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
 import GuildRepository from '@/repositories/GuildRepository';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class BirthdayCalendarCommand extends BaseInternalCommand {
     public middleware = [EnsureGuildIsAvailable];
 
-    constructor(private guildRepository: GuildRepository) {
+    constructor(
+        private guildRepository: GuildRepository,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -48,7 +52,7 @@ export default class BirthdayCalendarCommand extends BaseInternalCommand {
                 embeds: [embed],
             });
         } catch (err) {
-            console.error(err);
+            this.logger.fatal('Failed to get birthday calendar', err);
             await interaction.followUp({
                 content: trans(
                     'errors.common.failed',

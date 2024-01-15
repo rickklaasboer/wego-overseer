@@ -6,6 +6,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 // Magic constants
 const IMAGE_OFFSETS = {
@@ -28,6 +29,11 @@ export default class WhereMemeCommand implements BaseCommand {
         },
     ];
 
+    constructor(private logger: Logger) {}
+
+    /**
+     * Run the command
+     */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
             await interaction.deferReply();
@@ -56,6 +62,7 @@ export default class WhereMemeCommand implements BaseCommand {
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
+            this.logger.fatal('Failed to generate where meme', err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'where meme'),
                 ephemeral: true,

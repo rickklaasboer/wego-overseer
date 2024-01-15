@@ -2,6 +2,7 @@ import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import config from '@/config';
 import KnexService from '@/services/KnexService';
 import DiscordClientService from '@/services/discord/DiscordClientService';
+import Logger from '@/telemetry/logger';
 import StringBuilder from '@/util/StringBuilder';
 import {safeFetchUser} from '@/util/discord';
 import {t} from '@/util/localization';
@@ -30,6 +31,7 @@ export default class QualityContentLeaderboardCommand implements BaseCommand {
     constructor(
         private clientService: DiscordClientService,
         private knexService: KnexService,
+        private logger: Logger,
     ) {}
 
     public async execute(interaction: DefaultInteraction): Promise<void> {
@@ -51,6 +53,7 @@ export default class QualityContentLeaderboardCommand implements BaseCommand {
                 .limit(10)) as Row[];
 
             if (!results.length) {
+                this.logger.info('No results for quality content leaderboard');
                 await interaction.reply(
                     t('commands.quality_content.no_results'),
                 );
@@ -83,6 +86,7 @@ export default class QualityContentLeaderboardCommand implements BaseCommand {
 
             await interaction.reply({embeds: [embed]});
         } catch (err) {
+            this.logger.fatal('Failed to get quality content leaderboard', err);
             await interaction.reply({
                 content: t('errors.common.failed', 'ccleaderboard'),
                 ephemeral: true,

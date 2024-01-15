@@ -4,6 +4,7 @@ import {trans} from '@/util/localization';
 import config from '@/config';
 import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 type AOCLeaderboardResponse = {
     owner_id: string;
@@ -23,6 +24,8 @@ type AOCLeaderboardResponse = {
 export default class AdventOfCodeCommand implements BaseCommand {
     public name = 'aoc';
     public description = 'Get the advent of code leaderboard for wego';
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the command
@@ -61,6 +64,7 @@ export default class AdventOfCodeCommand implements BaseCommand {
 
             await interaction.reply(content);
         } catch (err) {
+            this.logger.fatal('Failed to get advent of code leaderboard', err);
             await interaction.reply({
                 content: trans(
                     'errors.common.failed',

@@ -5,6 +5,7 @@ import {trans} from '@/util/localization';
 import BaseEvent from '@/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class EmbedFixEvent implements BaseEvent<'messageCreate'> {
@@ -17,6 +18,8 @@ export default class EmbedFixEvent implements BaseEvent<'messageCreate'> {
         ['tiktok', 'vxtiktok'],
         ['twitter', 'fxtwitter'],
     ]);
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the event
@@ -49,7 +52,7 @@ export default class EmbedFixEvent implements BaseEvent<'messageCreate'> {
             await thread.setLocked(true);
             await thread.setArchived(true);
         } catch (err) {
-            console.error('Unable to handle EmbedFixEvent', err);
+            this.logger.fatal('Failed to run EmbedFixEvent', err);
         }
     }
 }

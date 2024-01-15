@@ -8,12 +8,16 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import EnsureGuildIsAvailable from '@/middleware/EnsureGuildIsAvailable';
 import GuildRepository from '@/repositories/GuildRepository';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class BirthdayUpcomingCommand extends BaseInternalCommand {
     public middleware = [EnsureGuildIsAvailable];
 
-    constructor(private guildRepository: GuildRepository) {
+    constructor(
+        private guildRepository: GuildRepository,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -49,6 +53,9 @@ export default class BirthdayUpcomingCommand extends BaseInternalCommand {
 
             // TODO: handle
             if (upcomingBirtdaysTable.length < 1) {
+                this.logger.info(
+                    'Tried getting upcoming birthdays but there were none within 3 months',
+                );
                 throw new Error('No upcoming birthdays found');
             }
 
@@ -58,7 +65,7 @@ export default class BirthdayUpcomingCommand extends BaseInternalCommand {
                 embeds: [embed],
             });
         } catch (err) {
-            console.error(err);
+            this.logger.fatal('Failed to get upcoming birthdays', err);
             await interaction.followUp({
                 content: trans(
                     'errors.common.failed',

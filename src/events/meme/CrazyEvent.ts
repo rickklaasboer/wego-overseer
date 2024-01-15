@@ -13,6 +13,8 @@ export default class CrazyEvent implements BaseEvent<'messageCreate'> {
         ['a rubber room with rats', 'And rats make me crazy!'],
     ]);
 
+    constructor(private logger: Logger) {}
+
     /**
      * Run the event
      */
@@ -29,7 +31,7 @@ export default class CrazyEvent implements BaseEvent<'messageCreate'> {
                 await message.reply(this.possibleReplies.get('crazy')!);
             }
         } catch (err) {
-            console.error('Unable to handle CrazyEvent', err);
+            this.logger.fatal('Faled to run CrazyEvent', err);
         }
     }
 }

@@ -3,6 +3,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import EmojifyService from '@/services/text/EmojifyService';
+import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -19,16 +20,23 @@ export default class EmojifyCommand implements BaseCommand {
         },
     ];
 
-    constructor(private emojifyService: EmojifyService) {}
+    constructor(
+        private emojifyService: EmojifyService,
+        private logger: Logger,
+    ) {}
 
     /**
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const sentence = this.emojifyService.emojify(
-            interaction.options.getString('sentence')!,
-        );
+        try {
+            const sentence = this.emojifyService.emojify(
+                interaction.options.getString('sentence')!,
+            );
 
-        await interaction.reply(sentence);
+            await interaction.reply(sentence);
+        } catch (err) {
+            this.logger.fatal('Failed to emojify sentence', err);
+        }
     }
 }

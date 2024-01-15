@@ -14,36 +14,6 @@ import UserRepository from '@/repositories/UserRepository';
 import {injectable} from 'tsyringe';
 import {AuthorizationError} from '@/util/errors/AuthorizationError';
 
-const logger = new Logger('wego-overseer:commands:BirthdaySetCommand');
-
-function createEmbed(target: User, requester: User, date: Dayjs) {
-    const embed = new EmbedBuilder();
-
-    embed.setTitle(trans('commands.birthday.set.embed.title', target.username));
-
-    embed.setDescription(
-        requester.id === target.id
-            ? trans(
-                  'commands.birthday.set.embed.description.success',
-                  date.format('DD/MM/YYYY'),
-                  createNextOccuranceTimestamp(date),
-              )
-            : trans(
-                  'commands.birthday.set.embed.description.other_user',
-                  target.username,
-                  date.format('DD/MM/YYYY'),
-                  createNextOccuranceTimestamp(date),
-              ),
-    );
-
-    embed.setThumbnail(target.displayAvatarURL());
-    embed.setFooter({
-        text: trans('commands.birthday.set.embed.footer', requester.tag),
-        iconURL: requester.displayAvatarURL(),
-    });
-    return embed;
-}
-
 @injectable()
 export default class BirthdaySetCommand extends BaseInternalCommand {
     public middleware = [
@@ -52,7 +22,10 @@ export default class BirthdaySetCommand extends BaseInternalCommand {
         BindUserToGuild,
     ];
 
-    constructor(private userRepository: UserRepository) {
+    constructor(
+        private userRepository: UserRepository,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -63,6 +36,9 @@ export default class BirthdaySetCommand extends BaseInternalCommand {
 
             // If requester is not an admin, but tries to change someone else's birthday
             if (requester.id !== target?.id && !isAdmin(interaction)) {
+                this.logger.info(
+                    'User tried to set birthday of other user, but did not have permission',
+                );
                 throw new AuthorizationError();
             }
 
@@ -79,10 +55,10 @@ export default class BirthdaySetCommand extends BaseInternalCommand {
             const date = dayjs(birthDate.join('/'));
 
             await interaction.followUp({
-                embeds: [createEmbed(target, requester, date)],
+                embeds: [this.createEmbed(target, requester, date)],
             });
         } catch (error) {
-            logger.fatal('Unable to handle BirthdaySetCommand', error);
+            this.logger.fatal('Failed to set birthday', error);
 
             if (error instanceof AuthorizationError) {
                 await interaction.followUp(
@@ -93,5 +69,42 @@ export default class BirthdaySetCommand extends BaseInternalCommand {
 
             await interaction.followUp(trans('commands.birthday.set.failure'));
         }
+    }
+
+    /**
+     * Create the embed
+     */
+    private createEmbed(
+        target: User,
+        requester: User,
+        date: Dayjs,
+    ): EmbedBuilder {
+        const embed = new EmbedBuilder();
+
+        embed.setTitle(
+            trans('commands.birthday.set.embed.title', target.username),
+        );
+
+        embed.setDescription(
+            requester.id === target.id
+                ? trans(
+                      'commands.birthday.set.embed.description.success',
+                      date.format('DD/MM/YYYY'),
+                      createNextOccuranceTimestamp(date),
+                  )
+                : trans(
+                      'commands.birthday.set.embed.description.other_user',
+                      target.username,
+                      date.format('DD/MM/YYYY'),
+                      createNextOccuranceTimestamp(date),
+                  ),
+        );
+
+        embed.setThumbnail(target.displayAvatarURL());
+        embed.setFooter({
+            text: trans('commands.birthday.set.embed.footer', requester.tag),
+            iconURL: requester.displayAvatarURL(),
+        });
+        return embed;
     }
 }

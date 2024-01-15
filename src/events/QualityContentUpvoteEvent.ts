@@ -10,6 +10,7 @@ import config from '@/config';
 import BaseEvent from '@/events/BaseEvent';
 import {injectable} from 'tsyringe';
 import DiscordClientService from '@/services/discord/DiscordClientService';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class QualityContentUpvoteEvent
@@ -19,7 +20,10 @@ export default class QualityContentUpvoteEvent
     public event = 'messageReactionAdd' as const;
     public enabled = true;
 
-    constructor(private clientService: DiscordClientService) {}
+    constructor(
+        private clientService: DiscordClientService,
+        private logger: Logger,
+    ) {}
 
     /**
      * Run the event
@@ -41,7 +45,7 @@ export default class QualityContentUpvoteEvent
             );
 
             if (!channel || !channel.isTextBased()) {
-                console.error('Could not find channel to send message in');
+                this.logger.error('Could not find channel to send message in');
                 return;
             }
 
@@ -51,6 +55,9 @@ export default class QualityContentUpvoteEvent
             );
 
             if (existingMessage) {
+                this.logger.info(
+                    'Found existing message for quality content, updating...',
+                );
                 await existingMessage.edit({
                     content: `${reaction.count} <:upvote:${emoji.id}> in <#${reaction.message.channelId}>`,
                 });
@@ -63,7 +70,7 @@ export default class QualityContentUpvoteEvent
                 embeds: [embed],
             });
         } catch (err) {
-            console.error('Unable to handle UpvoteEvent', err);
+            this.logger.fatal('Failed to run QualityContentUpvoteEvent', err);
         }
     }
 

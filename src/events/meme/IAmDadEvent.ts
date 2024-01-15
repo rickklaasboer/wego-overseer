@@ -3,6 +3,7 @@ import {trans} from '@/util/localization';
 import BaseEvent from '@/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class IAmDadEvent implements BaseEvent<'messageCreate'> {
@@ -12,6 +13,8 @@ export default class IAmDadEvent implements BaseEvent<'messageCreate'> {
         nl: 'ik ben',
         en: 'i am',
     };
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the event
@@ -39,7 +42,7 @@ export default class IAmDadEvent implements BaseEvent<'messageCreate'> {
                 trans({phrase: 'events.iamdadevent.msg', locale}, part),
             );
         } catch (err) {
-            console.error('Unable to handle IAmDadEvent', err);
+            this.logger.fatal('Failed to run IAmDadEvent', err);
         }
     }
 

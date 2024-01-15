@@ -1,5 +1,6 @@
 import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import config from '@/config';
+import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
 import {injectable} from 'tsyringe';
 
@@ -22,6 +23,8 @@ export default class StufiCommand implements BaseCommand {
     public name = 'wanneerstufi';
     public description = 'Wanneer weer gratis geld van ome DUO?';
 
+    constructor(private logger: Logger) {}
+
     /**
      * Run the command
      */
@@ -38,7 +41,7 @@ export default class StufiCommand implements BaseCommand {
                 )}.`,
             );
         } catch (err) {
-            console.error(err);
+            this.logger.fatal('Failed to get stufi', err);
         }
     }
 }

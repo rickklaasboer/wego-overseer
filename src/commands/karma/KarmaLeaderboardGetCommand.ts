@@ -2,6 +2,7 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import KarmaRepository from '@/repositories/KarmaRepository';
 import DiscordClientService from '@/services/discord/DiscordClientService';
+import Logger from '@/telemetry/logger';
 import {safeFetchUser, wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
@@ -30,6 +31,7 @@ export default class KarmaLeaderboardGetCommand extends BaseInternalCommand {
     constructor(
         private karmaRepository: KarmaRepository,
         private clientService: DiscordClientService,
+        private logger: Logger,
     ) {
         super();
     }
@@ -38,27 +40,31 @@ export default class KarmaLeaderboardGetCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const results = await this.karmaRepository.getLeaderboard(
-            interaction.guildId!,
-        );
+        try {
+            const results = await this.karmaRepository.getLeaderboard(
+                interaction.guildId!,
+            );
 
-        const rows = await Promise.all(
-            results.map((row, i) =>
-                dbRowToTableRow(row, i, this.clientService.getClient()),
-            ),
-        );
-
-        await interaction.followUp(
-            wrapInCodeblock(
-                tableWithHead(
-                    [
-                        trans('commands.karma.leaderboard.table.index'),
-                        trans('commands.karma.leaderboard.table.user'),
-                        trans('commands.karma.leaderboard.table.karma'),
-                    ],
-                    rows,
+            const rows = await Promise.all(
+                results.map((row, i) =>
+                    dbRowToTableRow(row, i, this.clientService.getClient()),
                 ),
-            ),
-        );
+            );
+
+            await interaction.followUp(
+                wrapInCodeblock(
+                    tableWithHead(
+                        [
+                            trans('commands.karma.leaderboard.table.index'),
+                            trans('commands.karma.leaderboard.table.user'),
+                            trans('commands.karma.leaderboard.table.karma'),
+                        ],
+                        rows,
+                    ),
+                ),
+            );
+        } catch (err) {
+            this.logger.fatal('Failed to get karma leaderboard', err);
+        }
     }
 }

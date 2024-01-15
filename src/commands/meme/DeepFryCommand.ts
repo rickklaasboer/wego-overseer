@@ -14,6 +14,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 /**
  * Create follow up reply from interaction and image
@@ -100,6 +101,8 @@ export default class DeepFryCommand implements BaseCommand {
         },
     ];
 
+    constructor(private logger: Logger) {}
+
     /**
      * Run the command
      */
@@ -120,6 +123,7 @@ export default class DeepFryCommand implements BaseCommand {
                 createFollowUp(interaction, wrappedImage),
             );
         } catch (err) {
+            this.logger.fatal('Failed to deep fry image', err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'deep fried image'),
                 ephemeral: true,

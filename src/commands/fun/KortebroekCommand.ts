@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
 import config from '@/config';
+import Logger from '@/telemetry/logger';
 
 type KanIkEenKorteBroekAanApiResponse = {
     data: {
@@ -26,6 +27,8 @@ type KanIkEenKorteBroekAanApiResponse = {
 export default class KortebroekCommand implements BaseCommand {
     public name = 'kanikeenkortebroekaan';
     public description = 'Kan ik een korte broek aan?';
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the command
@@ -52,7 +55,7 @@ export default class KortebroekCommand implements BaseCommand {
                 ],
             });
         } catch (err) {
-            console.error(err);
+            this.logger.fatal('Failed to get kan ik een korte broek aan', err);
         }
     }
 }

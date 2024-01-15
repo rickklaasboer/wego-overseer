@@ -8,8 +8,6 @@ import BaseCommand, {
 } from '@/commands/BaseCommand';
 import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:commands:JokeMemeCommand');
-
 // Magic constant
 const IMAGE_OFFSET = {
     x: 5,
@@ -31,6 +29,8 @@ export default class JokeMemeCommand implements BaseCommand {
             max_length: 115,
         },
     ];
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the command
@@ -60,7 +60,7 @@ export default class JokeMemeCommand implements BaseCommand {
             const wrappedImage = new Base64JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
-            logger.fatal(err);
+            this.logger.fatal('Failed to create joke meme', err);
             await interaction.followUp({
                 content: trans('errors.common.failed', 'joke meme'),
                 ephemeral: true,

@@ -4,10 +4,14 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import DiscordPlayerService from '@/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class MusicSeekCommand extends BaseInternalCommand {
-    constructor(private playerService: DiscordPlayerService) {
+    constructor(
+        private playerService: DiscordPlayerService,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -15,27 +19,34 @@ export default class MusicSeekCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const guild = interaction.guild;
+        try {
+            const guild = interaction.guild;
 
-        if (!guild) return;
+            if (!guild) return;
 
-        const player = await this.playerService.getPlayer();
-        const queue = player.nodes.get(interaction.guild.id);
+            const player = await this.playerService.getPlayer();
+            const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.isPlaying()) {
+            if (!queue || !queue.isPlaying()) {
+                this.logger.info(
+                    'Tried to seek music, but nothing was playing or queue did not exist',
+                );
+                await interaction.editReply(
+                    trans('commands.music.seek.nothing_playing'),
+                );
+                return;
+            }
+
+            const position = interaction.options.getNumber('seconds')!;
+            await queue.node.seek(position);
+
+            const [min, sec] = secondsToTime(position).map(String);
+
             await interaction.editReply(
-                trans('commands.music.seek.nothing_playing'),
+                trans('commands.music.seek.success', min, sec),
             );
-            return;
+        } catch (err) {
+            this.logger.fatal('Failed to seek music', err);
         }
-
-        const position = interaction.options.getNumber('seconds')!;
-        await queue.node.seek(position);
-
-        const [min, sec] = secondsToTime(position).map(String);
-
-        await interaction.editReply(
-            trans('commands.music.seek.success', min, sec),
-        );
     }
 }

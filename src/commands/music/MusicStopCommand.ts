@@ -3,10 +3,14 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import DiscordPlayerService from '@/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
+import Logger from '@/telemetry/logger';
 
 @injectable()
 export default class MusicStopCommand extends BaseInternalCommand {
-    constructor(private playerService: DiscordPlayerService) {
+    constructor(
+        private playerService: DiscordPlayerService,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -14,21 +18,28 @@ export default class MusicStopCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const guild = interaction.guild;
+        try {
+            const guild = interaction.guild;
 
-        if (!guild) return;
+            if (!guild) return;
 
-        const player = await this.playerService.getPlayer();
-        const queue = player.nodes.get(interaction.guild.id);
+            const player = await this.playerService.getPlayer();
+            const queue = player.nodes.get(interaction.guild.id);
 
-        if (!queue || !queue.isPlaying()) {
-            await interaction.editReply(
-                trans('commands.music.stop.nothing_playing'),
-            );
-            return;
+            if (!queue || !queue.isPlaying()) {
+                this.logger.info(
+                    'Tried to stop music, but nothing was playing or queue did not exist',
+                );
+                await interaction.editReply(
+                    trans('commands.music.stop.nothing_playing'),
+                );
+                return;
+            }
+
+            queue.delete();
+            await interaction.editReply(trans('commands.music.stop.success'));
+        } catch (err) {
+            this.logger.fatal('Failed to stop music', err);
         }
-
-        queue.delete();
-        await interaction.editReply(trans('commands.music.stop.success'));
     }
 }

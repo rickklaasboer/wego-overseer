@@ -1,5 +1,6 @@
 import config from '@/config';
 import BaseEvent from '@/events/BaseEvent';
+import Logger from '@/telemetry/logger';
 import {GuildEmoji, Message} from 'discord.js';
 import {injectable} from 'tsyringe';
 
@@ -7,6 +8,8 @@ import {injectable} from 'tsyringe';
 export default class KabelbaanNoobEvent implements BaseEvent<'messageCreate'> {
     public name = 'KabelbaanNoobEvent';
     public event = 'messageCreate' as const;
+
+    constructor(private logger: Logger) {}
 
     /**
      * Run the event
@@ -21,7 +24,7 @@ export default class KabelbaanNoobEvent implements BaseEvent<'messageCreate'> {
             if (!message.content.includes(emoji.toString())) return;
             await message.react(emoji.toString());
         } catch (err) {
-            console.error('Unable to handle KabelBaanNoobEvent', err);
+            this.logger.fatal('Failed to run KabelbaanNoobEvent', err);
         }
     }
 

@@ -3,6 +3,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/commands/BaseCommand';
 import UwuifyService from '@/services/text/UwuifyService';
+import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -19,15 +20,23 @@ export default class UwuifyCommand implements BaseCommand {
         },
     ];
 
-    constructor(private uwuifyService: UwuifyService) {}
+    constructor(
+        private uwuifyService: UwuifyService,
+        private logger: Logger,
+    ) {}
 
     /**
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const sentence = this.uwuifyService.uwuify(
-            interaction.options.getString('sentence')!,
-        );
-        await interaction.reply(sentence);
+        try {
+            const sentence = this.uwuifyService.uwuify(
+                interaction.options.getString('sentence')!,
+            );
+
+            await interaction.reply(sentence);
+        } catch (err) {
+            this.logger.fatal('Failed to uwuify sentence', err);
+        }
     }
 }

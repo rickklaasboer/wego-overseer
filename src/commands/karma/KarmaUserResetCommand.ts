@@ -2,6 +2,7 @@ import {DefaultInteraction} from '@/commands/BaseCommand';
 import BaseInternalCommand from '@/commands/BaseInternalCommand';
 import UserIsAdmin from '@/middleware/UserIsAdmin';
 import KarmaRepository from '@/repositories/KarmaRepository';
+import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
 import {
     ActionRowBuilder,
@@ -40,7 +41,10 @@ export default class KarmaUserResetCommand extends BaseInternalCommand {
     public shouldDeferReply = false;
     public middleware = [UserIsAdmin];
 
-    constructor(private karmaRepository: KarmaRepository) {
+    constructor(
+        private karmaRepository: KarmaRepository,
+        private logger: Logger,
+    ) {
         super();
     }
 
@@ -48,40 +52,49 @@ export default class KarmaUserResetCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        const user = interaction.options.getUser('user') ?? interaction.user;
+        try {
+            const user =
+                interaction.options.getUser('user') ?? interaction.user;
 
-        const modal = createModal(user);
-        await interaction.showModal(modal);
+            const modal = createModal(user);
+            await interaction.showModal(modal);
 
-        const submitted = await interaction.awaitModalSubmit({
-            time: 60000,
-            filter: (i) => i.user.id === interaction.user.id,
-        });
+            const submitted = await interaction.awaitModalSubmit({
+                time: 60000,
+                filter: (i) => i.user.id === interaction.user.id,
+            });
 
-        if (!submitted) return;
+            if (!submitted) return;
 
-        const username = submitted.fields.getTextInputValue('USERNAME_INPUT');
+            const username =
+                submitted.fields.getTextInputValue('USERNAME_INPUT');
 
-        if (username !== user.username) {
-            await submitted.reply({
-                content: trans('commands.karma.user.reset.no_match'),
+            if (username !== user.username) {
+                this.logger.info(
+                    'User tried resetting karma but failed to match usernames, ignoring...',
+                );
+                await submitted.reply({
+                    content: trans('commands.karma.user.reset.no_match'),
+                    ephemeral: true,
+                });
+                return;
+            }
+
+            const rowsAffected = await this.karmaRepository.resetKarma(
+                interaction.guildId!,
+                user.id,
+            );
+
+            await submitted.followUp({
+                content: trans(
+                    'commands.karma.user.reset.success',
+                    rowsAffected.toFixed(),
+                    user.username,
+                ),
                 ephemeral: true,
             });
-            return;
+        } catch (err) {
+            this.logger.fatal('Failed to reset karma for user', err);
         }
-
-        const rowsAffected = await this.karmaRepository.resetKarma(
-            interaction.guildId!,
-            user.id,
-        );
-
-        await submitted.followUp({
-            content: trans(
-                'commands.karma.user.reset.success',
-                rowsAffected.toFixed(),
-                user.username,
-            ),
-            ephemeral: true,
-        });
     }
 }
