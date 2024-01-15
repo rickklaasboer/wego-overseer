@@ -1,31 +1,35 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Logger from '@/telemetry/logger';
-import Event from '../Event';
+import BaseEvent from '@/events/BaseEvent';
+import {Message} from 'discord.js';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:events:CrazyEvent');
+@injectable()
+export default class CrazyEvent implements BaseEvent<'messageCreate'> {
+    public name = 'CrazyEvent';
+    public event = 'messageCreate' as const;
+    private possibleReplies = new Map([
+        ['crazy', 'Crazy? I was crazy once.'],
+        ['they locked me in a room', 'A rubber room'],
+        ['a rubber room with rats', 'And rats make me crazy!'],
+    ]);
 
-const REPLIES = new Map([
-    ['crazy', 'Crazy? I was crazy once.'],
-    ['they locked me in a room', 'A rubber room'],
-    ['a rubber room with rats', 'And rats make me crazy!'],
-]);
-
-export const CrazyEvent = new Event({
-    name: 'messageCreate',
-    run: async (_, message) => {
+    /**
+     * Run the event
+     */
+    public async execute(message: Message<boolean>): Promise<void> {
         try {
             // Terminate if user is a bot
             if (message.author.bot) return;
 
             const msg = message.content.toLowerCase();
 
-            if (REPLIES.has(msg)) {
-                await message.reply(REPLIES.get(msg)!);
+            if (this.possibleReplies.has(msg)) {
+                await message.reply(this.possibleReplies.get(msg)!);
             } else if (msg.includes('crazy')) {
-                await message.reply(REPLIES.get('crazy')!);
+                await message.reply(this.possibleReplies.get('crazy')!);
             }
         } catch (err) {
-            logger.fatal('Unable to handle CrazyEvent', err);
+            console.error('Unable to handle CrazyEvent', err);
         }
-    },
-});
+    }
+}
