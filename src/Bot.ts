@@ -1,15 +1,15 @@
-import {Client, ClientEvents, Routes} from 'discord.js';
+import {Client, Routes} from 'discord.js';
 import {Player} from 'discord-player';
 import {Knex} from 'knex';
 import {container, singleton} from 'tsyringe';
-import {DefaultInteraction} from '@/commands/BaseCommand';
-import {Pipeline} from '@/util/Pipeline';
 import config from '@/config';
 import DiscordClientService from '@/services/discord/DiscordClientService';
 import DiscordRestService from '@/services/discord/DiscordRestService';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
-import BaseEvent from '@/events/BaseEvent';
+import BaseEvent, {EventKeys} from '@/events/BaseEvent';
+import CommandHandler from '@/handlers/CommandHandler';
+import EventHandler from '@/handlers/EventHandler';
 
 /**
  * @deprecated
@@ -26,6 +26,8 @@ export default class Bot {
     constructor(
         private clientService: DiscordClientService,
         private restService: DiscordRestService,
+        private commandHandler: CommandHandler,
+        private eventHandler: EventHandler,
         private logger: Logger,
     ) {}
 
@@ -99,39 +101,7 @@ export default class Bot {
         const client = this.clientService.getClient();
 
         client.on('interactionCreate', async (interaction) => {
-            if (!interaction.isCommand()) return;
-            if (!config.app.commands.has(interaction.commandName)) return;
-
-            const command = container.resolve(
-                config.app.commands.get(interaction.commandName)!,
-            );
-
-            try {
-                const pipeline =
-                    container.resolve<Pipeline<DefaultInteraction>>(Pipeline);
-
-                const passed = await pipeline
-                    .send(interaction as DefaultInteraction)
-                    .through(command.middleware ?? [])
-                    .go();
-
-                await command.execute(passed);
-            } catch (err) {
-                this.logger.error(
-                    `Unable to execute command /${command.name} (${err})`,
-                );
-
-                if (!interaction.replied) {
-                    const payload = {
-                        content: `Something went wrong while trying to execute /${command.name}`,
-                        ephemeral: true,
-                    };
-
-                    interaction.deferred
-                        ? interaction.followUp(payload)
-                        : interaction.reply(payload);
-                }
-            }
+            await this.commandHandler.handle(interaction);
         });
 
         this.logger.info(
@@ -148,29 +118,11 @@ export default class Bot {
      */
     private async registerEvents(): Promise<void> {
         for (const [, resolvable] of config.app.events.entries()) {
-            const event =
-                container.resolve<BaseEvent<keyof ClientEvents>>(resolvable);
+            const event = container.resolve<BaseEvent<EventKeys>>(resolvable);
             const client = this.clientService.getClient();
 
             client.on(event.event, async (...args) => {
-                try {
-                    const pipeline =
-                        container.resolve<
-                            Pipeline<ClientEvents[keyof ClientEvents]>
-                        >(Pipeline);
-
-                    const passed = await pipeline
-                        .send(args)
-                        .through(event.middleware ?? [])
-                        .go();
-
-                    await event.execute(...passed);
-                } catch (err) {
-                    this.logger.error(
-                        `Unable to execute event ${event.name}`,
-                        err,
-                    );
-                }
+                await this.eventHandler.handle(event, ...args);
             });
         }
 
@@ -192,23 +144,6 @@ export default class Bot {
         );
     }
 
-    // /**
-    //  * Register event handlers
-    //  */
-    // private registerEventHandlers(): void {
-    //     for (const event of this._events) {
-    //         if (event.enabled) {
-    //             this._client.on(event.name, (...args) => {
-    //                 event.run(this._ctx, ...args);
-    //             });
-    //         }
-    //     }
-    //     logger.info(
-    //         `Successfully registered ${
-    //             this._events.length
-    //         } event(s) ([${this._events.map(({name}) => name).join(', ')}])`,
-    //     );
-    // }
     // /**
     //  * Register jobs
     //  */
