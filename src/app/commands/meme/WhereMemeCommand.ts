@@ -1,5 +1,5 @@
 import Jimp from 'jimp';
-import {Base64JimpImage} from '@/util/Base64JimpImage';
+import {JimpImage} from '@/util/JimpImage';
 import {trans} from '@/util/localization';
 import BaseCommand, {
     APPLICATION_COMMAND_OPTIONS,
@@ -59,7 +59,7 @@ export default class WhereMemeCommand implements BaseCommand {
                 img.getHeight(),
             );
 
-            const wrappedImage = new Base64JimpImage(img);
+            const wrappedImage = new JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             this.logger.fatal('Failed to generate where meme', err);

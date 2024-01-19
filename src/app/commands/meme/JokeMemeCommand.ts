@@ -1,5 +1,5 @@
 import Jimp from 'jimp';
-import {Base64JimpImage} from '@/util/Base64JimpImage';
+import {JimpImage} from '@/util/JimpImage';
 import {trans} from '@/util/localization';
 import Logger from '@/telemetry/logger';
 import BaseCommand, {
@@ -57,7 +57,7 @@ export default class JokeMemeCommand implements BaseCommand {
                 IMAGE_OFFSET.y_height,
             );
 
-            const wrappedImage = new Base64JimpImage(img);
+            const wrappedImage = new JimpImage(img);
             await interaction.followUp({files: [wrappedImage.toAttachment()]});
         } catch (err) {
             this.logger.fatal('Failed to create joke meme', err);

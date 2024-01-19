@@ -7,6 +7,7 @@ import ChannelRepository from '@/app/repositories/ChannelRepository';
 import {injectable} from 'tsyringe';
 import EnsureGuildIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureGuildIsAvailable';
 import EnsureChannelIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureChannelIsAvailable';
+import Channel from '@/app/entities/Channel';
 
 @injectable()
 export default class KarmaMessageCreateEvent
@@ -37,8 +38,7 @@ export default class KarmaMessageCreateEvent
                 throw new Error('Channel is not available');
             }
 
-            if (!channel.isKarmaChannel) return;
-            if (this.shouldCancel(message)) return;
+            if (this.shouldCancel(message, channel)) return;
 
             const emojis = message.guild?.emojis.cache
                 .filter((e) => e.name === 'upvote' || e.name === 'downvote')
@@ -61,11 +61,12 @@ export default class KarmaMessageCreateEvent
      *
      * @see https://github.com/rickklaasboer/wego-overseer/issues/70
      */
-    private shouldCancel(message: Message<boolean>): boolean {
+    private shouldCancel(message: Message<boolean>, channel: Channel): boolean {
         return (
-            isEmpty(message.embeds) &&
-            isEmpty(message.attachments) &&
-            !containsUrl(message.content)
+            !channel.isKarmaChannel ||
+            (isEmpty(message.embeds) &&
+                isEmpty(message.attachments) &&
+                !containsUrl(message.content))
         );
     }
 }

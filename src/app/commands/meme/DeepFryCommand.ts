@@ -6,7 +6,7 @@ import {
     EmbedBuilder,
 } from 'discord.js';
 import Jimp from 'jimp';
-import {Base64JimpImage} from '@/util/Base64JimpImage';
+import {JimpImage} from '@/util/JimpImage';
 import {Maybe} from '@/types/util';
 import {trans} from '@/util/localization';
 import BaseCommand, {
@@ -21,7 +21,7 @@ import Logger from '@/telemetry/logger';
  */
 function createFollowUp(
     interaction: ChatInputCommandInteraction<CacheType>,
-    image: Base64JimpImage,
+    image: JimpImage,
 ): string | MessagePayload | InteractionReplyOptions {
     const embed = new EmbedBuilder()
         .setTitle('Deepfry')
@@ -118,7 +118,7 @@ export default class DeepFryCommand implements BaseCommand {
             img.contrast(1);
             img.brightness(0.2);
 
-            const wrappedImage = new Base64JimpImage(img);
+            const wrappedImage = new JimpImage(img);
             await interaction.followUp(
                 createFollowUp(interaction, wrappedImage),
             );

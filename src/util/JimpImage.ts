@@ -5,7 +5,7 @@ import type Jimp from 'jimp';
  * Wrapper class for jimp image that parses the image to base64 automagically
  * Also allows creating buffer/discord attachment from generated string
  */
-export class Base64JimpImage {
+export class JimpImage {
     private base64String: string;
 
     constructor(img: Jimp) {
