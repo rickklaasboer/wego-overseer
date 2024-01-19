@@ -1,6 +1,6 @@
+import {noop} from '@/util/misc';
 import {CronCommand, CronJob as BaseCronJob} from 'cron';
 import {DateTime} from 'luxon';
-import {noop} from './misc';
 
 type CronParameters = {
     cronTime: string | Date | DateTime;

@@ -1,7 +1,7 @@
 import Model from '@/app/entities/Model';
+import PollOption from '@/app/entities/PollOption';
 import {randomUUID} from 'crypto';
 import {Pojo, RelationMappings} from 'objection';
-import PollOption from './PollOption';
 
 export default class Poll extends Model {
     id!: string;

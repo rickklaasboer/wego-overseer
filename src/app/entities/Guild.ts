@@ -1,7 +1,7 @@
 import Model from '@/app/entities/Model';
 import {RelationMappings} from 'objection';
-import Channel from './Channel';
-import User from './User';
+import User from '@/app/entities/User';
+import Channel from '@/app/entities/Channel';
 
 export default class Guild extends Model {
     id!: string;

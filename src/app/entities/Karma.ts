@@ -1,9 +1,9 @@
+import Channel from '@/app/entities/Channel';
+import Guild from '@/app/entities/Guild';
 import Model from '@/app/entities/Model';
+import User from '@/app/entities/User';
 import {randomUUID} from 'crypto';
 import {RelationMappings} from 'objection';
-import Channel from './Channel';
-import Guild from './Guild';
-import User from './User';
 
 export default class Karma extends Model {
     id!: string;

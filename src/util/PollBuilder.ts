@@ -1,4 +1,8 @@
 import Poll from '@/app/entities/Poll';
+import StringBuilder from '@/util/StringBuilder';
+import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
+import {tableWithHead} from '@/util/table';
 import {EmbedBuilder, EmbedFooterOptions} from '@discordjs/builders';
 import {
     ChatInputCommandInteraction,
@@ -9,10 +13,6 @@ import {
     ButtonInteraction,
     BaseMessageOptions,
 } from 'discord.js';
-import {wrapInCodeblock} from './discord';
-import {trans} from './localization';
-import StringBuilder from './StringBuilder';
-import {tableWithHead} from './table';
 
 type Interaction =
     | ChatInputCommandInteraction<CacheType>

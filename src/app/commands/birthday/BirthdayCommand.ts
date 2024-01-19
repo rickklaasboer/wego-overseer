@@ -1,12 +1,12 @@
 import BirthdayGetCommand from '@/app/commands/birthday/BirthdayGetCommand';
 import BirthdaySetCommand from '@/app/commands/birthday/BirthdaySetCommand';
 import BirthdaySetChannelCommand from '@/app/commands/birthday/BirthdaySetChannelCommand';
-import BirthdayUpcomingCommand from './BirthdayUpcomingCommand';
-import BirthdayCalendarCommand from './BirthdayCalendarCommand';
 import BaseEntrypointCommand from '@/app/commands/BaseEntrypointCommand';
 import {Commandable} from '@/types/util';
 import {injectable} from 'tsyringe';
 import {APPLICATION_COMMAND_OPTIONS} from '@/app/commands/BaseCommand';
+import BirthdayCalendarCommand from '@/app/commands/birthday/BirthdayCalendarCommand';
+import BirthdayUpcomingCommand from '@/app/commands/birthday/BirthdayUpcomingCommand';
 
 @injectable()
 export default class BirthdayCommand extends BaseEntrypointCommand {

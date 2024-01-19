@@ -1,8 +1,8 @@
 import Model from '@/app/entities/Model';
+import PollOption from '@/app/entities/PollOption';
+import User from '@/app/entities/User';
 import {randomUUID} from 'crypto';
 import {RelationMappings} from 'objection';
-import PollOption from './PollOption';
-import User from './User';
 
 export default class PollVote extends Model {
     id!: string;
