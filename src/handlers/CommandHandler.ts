@@ -34,7 +34,7 @@ export default class CommandHandler {
             await command.execute(passed);
         } catch (err) {
             this.logger.error(
-                `Unable to execute command /${command.name} (${err})`,
+                `Failed to execute command /${command.name} (${err})`,
             );
 
             // We can safely assume that the command is a slash command

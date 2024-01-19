@@ -40,7 +40,7 @@ export default class MusicQueueButtonEvent
             if (!interaction.guild?.id) {
                 this.logger.error('Could not find guild for interaction');
                 throw new Error(
-                    'Unable to handle MusicQueueButtonEvent because guild is undefined',
+                    'Failed to handle MusicQueueButtonEvent because guild is undefined',
                 );
             }
 
@@ -50,7 +50,7 @@ export default class MusicQueueButtonEvent
             if (!queue) {
                 this.logger.error('Could not find queue for interaction');
                 throw new Error(
-                    'Unable to handle MusicQueueButtonEvent because queue is undefined',
+                    'Failed to handle MusicQueueButtonEvent because queue is undefined',
                 );
             }
 
