@@ -1,6 +1,10 @@
-import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
+import BaseCommand, {
+    DefaultInteraction,
+    SlashCommandOption,
+} from '@/app/commands/BaseCommand';
 import config from '@/config';
 import Logger from '@/telemetry/logger';
+import {Maybe} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
 import {CacheType, Interaction} from 'discord.js';
 import {container, injectable} from 'tsyringe';
@@ -57,5 +61,23 @@ export default class CommandHandler {
 
             ctx.deferred ? ctx.followUp(payload) : ctx.reply(payload);
         }
+    }
+
+    /**
+     * Get commands to send to Discord REST API
+     */
+    public getRestable(): {
+        name: string;
+        description: string;
+        options: Maybe<SlashCommandOption[]>;
+    }[] {
+        return [...config.app.commands.entries()].map(([, resolvable]) => {
+            const command = container.resolve(resolvable);
+            return {
+                name: command.name,
+                description: command.description,
+                options: command.options,
+            };
+        });
     }
 }

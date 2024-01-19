@@ -59,21 +59,11 @@ export default class Bot {
      */
     private async register(): Promise<void> {
         const now = dayjs();
-        const commands = [...config.app.commands.entries()].map(
-            ([, resolvable]) => {
-                const command = container.resolve(resolvable);
-                return {
-                    name: command.name,
-                    description: command.description,
-                    options: command.options,
-                };
-            },
-        );
 
         await this.restService
             .getRest()
             .put(Routes.applicationCommands(config.discord.applicationId), {
-                body: commands,
+                body: this.commandHandler.getRestable(),
             });
 
         this.logger.info(
