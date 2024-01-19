@@ -1,106 +1,131 @@
 import Logger from '@/telemetry/logger';
-import CronJobWithDefaults from '@/util/CronJobWithDefaults';
-import Job from '../Job';
+import CronJob from '@/util/CronJob';
 import {
     SQSClient,
     ReceiveMessageCommand,
     DeleteMessageCommand,
+    ReceiveMessageCommandOutput,
 } from '@aws-sdk/client-sqs';
-import {getEnvString} from '@/util/environment';
 import {YoutubeSQSPayload} from '@/types/youtube';
 import {trans} from '@/util/localization';
 import StringBuilder from '@/util/StringBuilder';
 import markdown from '@/util/markdown';
-
-const AWS_ACCESS_KEY_ID = getEnvString('AWS_ACCESS_KEY_ID', '');
-const AWS_SECRET_ACCESS_KEY = getEnvString('AWS_SECRET_ACCESS_KEY', '');
-const YOUTUBE_SQS_QUEUE_URL = getEnvString('YOUTUBE_SQS_QUEUE_URL', '');
-const YOUTUBE_ANNOUNCE_CHANNEL_ID = getEnvString(
-    'YOUTUBE_ANNOUNCE_CHANNEL_ID',
-    '',
-);
-
-const logger = new Logger('wego-overseer:jobs:YouTubeSQSPollJob');
+import BaseJob from '@/app/jobs/BaseJob';
+import DiscordClientService from '@/app/services/discord/DiscordClientService';
+import {injectable} from 'tsyringe';
+import config from '@/config';
 
 const sqs = new SQSClient({
     region: 'eu-west-1',
     credentials: {
-        accessKeyId: AWS_ACCESS_KEY_ID,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY,
+        accessKeyId: config.aws.accessKeyId,
+        secretAccessKey: config.aws.secretAccessKey,
     },
 });
 
-export const YouTubeSQSPollJob = new Job({
-    name: 'YouTubeSQSPollJob',
-    job: new CronJobWithDefaults({
-        // Run every minute
+@injectable()
+export default class YouTubeSQSPollJob implements BaseJob {
+    public name = 'YouTubeSQSPollJob';
+    public job = new CronJob({
         cronTime: '* * * * *',
         timeZone: 'Europe/Amsterdam',
-    }),
-    onTick: async ({client}) => {
+    });
+
+    constructor(
+        private clientService: DiscordClientService,
+        private logger: Logger,
+    ) {}
+
+    /**
+     * Run the job
+     */
+    public async execute(): Promise<void> {
         try {
-            const receiveCmd = new ReceiveMessageCommand({
-                QueueUrl: YOUTUBE_SQS_QUEUE_URL,
-                MaxNumberOfMessages: 10,
-            });
+            const client = this.clientService.getClient();
+            const messages = await this.getMessages();
 
-            const response = await sqs.send(receiveCmd);
-
-            if (!response.Messages?.length) {
+            if (!messages.Messages?.length) {
                 return;
             }
 
             const channel = await client.channels.fetch(
-                YOUTUBE_ANNOUNCE_CHANNEL_ID,
+                config.youtube.announceChannelId,
             );
 
-            for (const message of response.Messages) {
+            for (const message of messages.Messages) {
                 const body: YoutubeSQSPayload = JSON.parse(
                     message.Body ?? '{}',
                 );
 
-                const sb = new StringBuilder();
-
-                sb.append(
-                    markdown.header(
-                        trans(
-                            'jobs.youtube.embed.title',
-                            body.feed.entry.author.name,
-                            body.feed.entry.title,
-                        ),
-                    ),
-                );
-                sb.append('\n');
-                sb.append(
-                    markdown.italics(
-                        trans(
-                            'jobs.youtube.embed.description',
-                            body.feed.entry.author.name,
-                            body.feed.entry.link['@_href'],
-                        ),
-                    ),
-                );
-
                 if (!channel?.isTextBased()) {
-                    logger.error(
-                        'Unable to find channel or channel is not text based',
+                    this.logger.error(
+                        'Failed to find channel or channel is not text based',
                     );
                     return;
                 }
 
-                await channel.send(sb.toString());
+                await channel.send(this.buildMessage(body));
+                await this.deleteMessage(message.ReceiptHandle);
 
-                const deleteCmd = new DeleteMessageCommand({
-                    QueueUrl: YOUTUBE_SQS_QUEUE_URL,
-                    ReceiptHandle: message.ReceiptHandle,
-                });
-
-                await sqs.send(deleteCmd);
-
-                logger.info('Received message from YouTube SQS', body);
+                this.logger.info('Received message from YouTube SQS', body);
             }
         } catch (err) {
-            logger.fatal('Unable to handle YouTubeSQSPollJob', err);
+            this.logger.fatal('Failed to run YouTubeSQSPollJob', err);
         }
-    },
-});
+    }
+
+    /**
+     * Get the messages from the SQS queue
+     */
+    private async getMessages(): Promise<ReceiveMessageCommandOutput> {
+        const receiveCmd = new ReceiveMessageCommand({
+            QueueUrl: config.youtube.sqsQueueUrl,
+            MaxNumberOfMessages: 10,
+        });
+
+        return await sqs.send(receiveCmd);
+    }
+
+    /**
+     * Delete the message from the SQS queue
+     */
+    private async deleteMessage(
+        receiptHandle: string | undefined,
+    ): Promise<void> {
+        const deleteCmd = new DeleteMessageCommand({
+            QueueUrl: config.youtube.sqsQueueUrl,
+            ReceiptHandle: receiptHandle,
+        });
+
+        await sqs.send(deleteCmd);
+    }
+
+    /**
+     * Build the message
+     */
+    private buildMessage(body: YoutubeSQSPayload): string {
+        const sb = new StringBuilder();
+
+        sb.append(
+            markdown.header(
+                trans(
+                    'jobs.youtube.embed.title',
+                    body.feed.entry.author.name,
+                    body.feed.entry.title,
+                ),
+            ),
+        );
+        sb.append('\n');
+        sb.append(
+            markdown.italics(
+                trans(
+                    'jobs.youtube.embed.description',
+                    body.feed.entry.author.name,
+                    body.feed.entry.link['@_href'],
+                ),
+            ),
+        );
+
+        return sb.toString();
+    }
+}

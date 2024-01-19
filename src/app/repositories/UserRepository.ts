@@ -1,6 +1,7 @@
 import User from '@/app/entities/User';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import {Maybe} from '@/types/util';
+import dayjs from 'dayjs';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -30,11 +31,7 @@ export default class UserRepository implements BaseRepository<User> {
             .where('guilds.id', guildId)
             .findById(id);
 
-        if (result instanceof User) {
-            return result;
-        }
-
-        return null;
+        return result;
     }
 
     /**
@@ -42,6 +39,17 @@ export default class UserRepository implements BaseRepository<User> {
      */
     public async getAll(): Promise<User[]> {
         const results = await User.query();
+        return results;
+    }
+
+    /**
+     * Get all users with guilds
+     */
+    public async getAllWithGuilds(): Promise<User[]> {
+        const results = await User.query()
+            .joinRelated('guilds')
+            .whereNotNull('dateOfBirth');
+
         return results;
     }
 

@@ -31,6 +31,8 @@ import KarmaDownvoteEvent from '@/app/events/karma/KarmaDownvoteEvent';
 import KarmaRemoveUpvoteEvent from '@/app/events/karma/KarmaRemoveUpvoteEvent';
 import KarmaRemoveDownvoteEvent from '@/app/events/karma/KarmaRemoveDownvoteEvent';
 import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent';
+import BirthdayJob from '@/app/jobs/birthday/BirthdayJob';
+import YouTubeSQSPollJob from '@/app/jobs/youtube/YouTubeSQSPollJob';
 
 export default {
     /**
@@ -80,5 +82,8 @@ export default {
     /**
      * All jobs that will be handled by the bot
      */
-    jobs: new Map<string, Jobable>([]),
+    jobs: new Map<string, Jobable>([
+        ['birthday', BirthdayJob],
+        ['youtubesqspoll', YouTubeSQSPollJob],
+    ]),
 };
