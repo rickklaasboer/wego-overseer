@@ -3,11 +3,11 @@ import {Player} from 'discord-player';
 import {Knex} from 'knex';
 import {container, singleton} from 'tsyringe';
 import config from '@/config';
-import DiscordClientService from '@/services/discord/DiscordClientService';
-import DiscordRestService from '@/services/discord/DiscordRestService';
+import DiscordClientService from '@/app/services/discord/DiscordClientService';
+import DiscordRestService from '@/app/services/discord/DiscordRestService';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
-import BaseEvent, {EventKeys} from '@/events/BaseEvent';
+import BaseEvent, {EventKeys} from '@/app/events/BaseEvent';
 import CommandHandler from '@/handlers/CommandHandler';
 import EventHandler from '@/handlers/EventHandler';
 

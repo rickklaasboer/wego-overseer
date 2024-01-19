@@ -1,4 +1,4 @@
-import BaseMiddleware, {NextFn} from '@/middleware/BaseMiddleware';
+import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import {Constructable} from '@/types/util';
 import {container, injectable} from 'tsyringe';
 

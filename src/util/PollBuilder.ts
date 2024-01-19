@@ -1,4 +1,4 @@
-import Poll from '@/entities/Poll';
+import Poll from '@/app/entities/Poll';
 import {EmbedBuilder, EmbedFooterOptions} from '@discordjs/builders';
 import {
     ChatInputCommandInteraction,

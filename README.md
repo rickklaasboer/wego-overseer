@@ -181,7 +181,7 @@ Let's say you want to create a command that says "Hello \<username\>!" when they
 
 ```ts
 import {ChatInputCommandInteraction, CacheType} from 'discord.js';
-import Command from '@/commands/Command';
+import Command from '@/app/commands/Command';
 
 export const GreetCommand = new Command<ChatInputCommandInteraction<CacheType>>(
     {

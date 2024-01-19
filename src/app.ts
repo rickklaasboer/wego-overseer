@@ -3,7 +3,7 @@ import 'dotenv/config';
 import {container} from 'tsyringe';
 import {Model} from 'objection';
 import Bot from '@/Bot';
-import KnexService from '@/services/KnexService';
+import KnexService from '@/app/services/KnexService';
 
 const bot = container.resolve(Bot);
 

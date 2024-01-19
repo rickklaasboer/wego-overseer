@@ -1,4 +1,4 @@
-import BaseCommand, {DefaultInteraction} from '@/commands/BaseCommand';
+import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import config from '@/config';
 import Logger from '@/telemetry/logger';
 import {Pipeline} from '@/util/Pipeline';

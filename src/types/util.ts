@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import BaseCommand from '@/commands/BaseCommand';
-import BaseEvent from '@/events/BaseEvent';
+import BaseCommand from '@/app/commands/BaseCommand';
+import BaseEvent from '@/app/events/BaseEvent';
 import {ClientEvents} from 'discord.js';
 
 export type Maybe<T> = T | null | undefined;

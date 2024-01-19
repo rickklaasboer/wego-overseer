@@ -1,4 +1,4 @@
-import BaseEvent, {ClientEventsKeys, EventKeys} from '@/events/BaseEvent';
+import BaseEvent, {ClientEventsKeys, EventKeys} from '@/app/events/BaseEvent';
 import Logger from '@/telemetry/logger';
 import {Pipeline} from '@/util/Pipeline';
 import {container, injectable} from 'tsyringe';
