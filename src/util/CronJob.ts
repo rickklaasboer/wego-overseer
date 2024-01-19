@@ -1,4 +1,4 @@
-import {CronCommand, CronJob} from 'cron';
+import {CronCommand, CronJob as BaseCronJob} from 'cron';
 import {DateTime} from 'luxon';
 import {noop} from './misc';
 
@@ -16,7 +16,7 @@ type CronParameters = {
     unrefTimeout?: boolean;
 };
 
-export default class CronJobWithDefaults extends CronJob {
+export default class CronJob extends BaseCronJob {
     constructor({
         cronTime,
         onTick = noop,

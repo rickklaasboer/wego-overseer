@@ -1,30 +1,40 @@
-import User from '@/app/entities/User';
 import Logger from '@/telemetry/logger';
-import CronJobWithDefaults from '@/util/CronJobWithDefaults';
+import CronJob from '@/util/CronJob';
 import {trans} from '@/util/localization';
-import dayjs from 'dayjs';
-import {EmbedBuilder} from 'discord.js';
-import Job from '../Job';
+import {EmbedBuilder, User} from 'discord.js';
+import BaseJob from '@/app/jobs/BaseJob';
+import DiscordClientService from '@/app/services/discord/DiscordClientService';
+import {injectable} from 'tsyringe';
+import UserRepository from '@/app/repositories/UserRepository';
 
-const logger = new Logger('wego-overseer:jobs:BirthdayJob');
-
-export const BirthdayJob = new Job({
-    name: 'BirthdayJob',
-    job: new CronJobWithDefaults({
+@injectable()
+export default class BirthdayJob implements BaseJob {
+    public name = 'BirthdayJob';
+    public job = new CronJob({
         cronTime: '0 12 * * *',
         timeZone: 'Europe/Amsterdam',
-    }),
-    onTick: async ({client}) => {
+    });
+
+    constructor(
+        private clientService: DiscordClientService,
+        private userRepository: UserRepository,
+        private logger: Logger,
+    ) {}
+
+    /**
+     * Run the job
+     */
+    public async execute(): Promise<void> {
         try {
-            const users = await User.query()
-                .where('dateOfBirth', 'LIKE', dayjs().format('____-MM-DD'))
-                .withGraphFetched({guilds: true});
+            const client = this.clientService.getClient();
+            const users = await this.userRepository.getAllWithGuilds();
 
             for (const user of users) {
                 for (const guild of user.guilds) {
                     const channel = await client.channels.fetch(
                         guild.birthdayChannelId,
                     );
+
                     const person = await client.users.fetch(user.id);
 
                     const discordGuild = await client.guilds.fetch(guild.id);
@@ -33,20 +43,13 @@ export const BirthdayJob = new Job({
                     );
 
                     if (!discordGuildMember) {
-                        logger.warn(
-                            `Unable to find ${person.username} in ${discordGuild.name}, skipping...`,
+                        this.logger.warn(
+                            `Failed to find ${person.username} in ${discordGuild.name}, skipping...`,
                         );
                         return;
                     }
 
-                    const embed = new EmbedBuilder()
-                        .setTitle(
-                            trans('jobs.birthday.embed.title', person.username),
-                        )
-                        .setDescription(
-                            trans('jobs.birthday.embed.description', person.id),
-                        )
-                        .setThumbnail(person.displayAvatarURL());
+                    const embed = this.getEmbed(person);
 
                     if (channel?.isTextBased()) {
                         await channel.send({embeds: [embed]});
@@ -54,7 +57,17 @@ export const BirthdayJob = new Job({
                 }
             }
         } catch (err) {
-            logger.fatal('Unable to handle BirthdayJob', err);
+            this.logger.fatal('Failed to run BirthdayJob', err);
         }
-    },
-});
+    }
+
+    /**
+     * Get the embed for the birthday
+     */
+    private getEmbed(user: User): EmbedBuilder {
+        return new EmbedBuilder()
+            .setTitle(trans('jobs.birthday.embed.title', user.username))
+            .setDescription(trans('jobs.birthday.embed.description', user.id))
+            .setThumbnail(user.displayAvatarURL());
+    }
+}

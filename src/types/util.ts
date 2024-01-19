@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import BaseCommand from '@/app/commands/BaseCommand';
 import BaseEvent from '@/app/events/BaseEvent';
+import BaseJob from '@/app/jobs/BaseJob';
 import {ClientEvents} from 'discord.js';
 
 export type Maybe<T> = T | null | undefined;
@@ -15,5 +16,4 @@ export type Eventable<
     T extends BaseEvent<keyof ClientEvents> = BaseEvent<keyof ClientEvents>,
 > = Constructable<T>;
 
-// TODO: Add jobable type
-export type Jobable<T = unknown> = Constructable<T>;
+export type Jobable<T extends BaseJob = BaseJob> = Constructable<T>;
