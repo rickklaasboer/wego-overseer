@@ -36,6 +36,11 @@ services:
             MYSQL_ROOT_PASSWORD: testing
             MYSQL_DATABASE: local
             TZ: UTC
+    memcached:
+        image: memcached
+        restart: always
+        ports:
+            - '11211:11211'
     phpmyadmin:
         image: phpmyadmin
         restart: always
