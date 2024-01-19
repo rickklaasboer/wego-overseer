@@ -1,6 +1,7 @@
 import BaseJob from '@/app/jobs/BaseJob';
 import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
+import cron from 'node-cron';
 
 @injectable()
 export default class JobHandler {
@@ -9,12 +10,13 @@ export default class JobHandler {
     /**
      * Handle the Job
      */
-    public async handle({name, job, execute}: BaseJob): Promise<void> {
+    public async handle(job: BaseJob): Promise<void> {
         try {
-            job.addCallback(async () => await execute());
-            job.start();
+            cron.schedule(job.schedule, async () => {
+                await job.execute();
+            });
         } catch (err) {
-            this.logger.error(`Failed to execute job ${name}`, err);
+            this.logger.error(`Failed to execute job ${job.name}`, err);
         }
     }
 }

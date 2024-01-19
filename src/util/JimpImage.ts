@@ -6,16 +6,16 @@ import type Jimp from 'jimp';
  * Also allows creating buffer/discord attachment from generated string
  */
 export class JimpImage {
-    private base64String: string;
+    private base64: string;
 
     constructor(img: Jimp) {
-        this.base64String = '';
+        this.base64 = '';
 
         img.getBase64('image/jpeg', (err, data) => {
             if (err) {
                 throw err;
             } else {
-                this.base64String = data;
+                this.base64 = data;
             }
         });
     }
@@ -24,7 +24,7 @@ export class JimpImage {
      * Create buffer from base64 string
      */
     public toBuffer(): Buffer {
-        return Buffer.from(this.base64String.split(',')[1], 'base64');
+        return Buffer.from(this.base64.split(',')[1], 'base64');
     }
 
     /**
@@ -34,13 +34,5 @@ export class JimpImage {
         return new AttachmentBuilder(this.toBuffer(), {
             name: 'unknown.jpg',
         });
-    }
-
-    /**
-     * Get the generated base64 string
-     * NOTE: currently not used
-     */
-    public getBase64String() {
-        return this.base64String;
     }
 }

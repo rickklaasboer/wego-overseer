@@ -1,5 +1,4 @@
 import Logger from '@/telemetry/logger';
-import CronJob from '@/util/CronJob';
 import {
     SQSClient,
     ReceiveMessageCommand,
@@ -18,10 +17,7 @@ import config from '@/config';
 @injectable()
 export default class YouTubeSQSPollJob implements BaseJob {
     public name = 'YouTubeSQSPollJob';
-    public job = new CronJob({
-        cronTime: '* * * * *',
-        timeZone: 'Europe/Amsterdam',
-    });
+    public schedule = '* * * * *';
     private sqs = new SQSClient({
         region: 'eu-west-1',
         credentials: {

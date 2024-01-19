@@ -1,5 +1,4 @@
 import Logger from '@/telemetry/logger';
-import CronJob from '@/util/CronJob';
 import {trans} from '@/util/localization';
 import {EmbedBuilder, User} from 'discord.js';
 import BaseJob from '@/app/jobs/BaseJob';
@@ -10,10 +9,7 @@ import UserRepository from '@/app/repositories/UserRepository';
 @injectable()
 export default class BirthdayJob implements BaseJob {
     public name = 'BirthdayJob';
-    public job = new CronJob({
-        cronTime: '0 12 * * *',
-        timeZone: 'Europe/Amsterdam',
-    });
+    public schedule = '0 12 * * *';
 
     constructor(
         private clientService: DiscordClientService,
