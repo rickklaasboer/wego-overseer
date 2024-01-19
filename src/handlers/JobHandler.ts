@@ -16,7 +16,7 @@ export default class JobHandler {
                 await job.execute();
             });
         } catch (err) {
-            this.logger.error(`Failed to execute job ${job.name}`, err);
+            this.logger.fatal(`Failed to execute job ${job.name}`, err);
         }
     }
 }
