@@ -26,6 +26,11 @@ import CrazyEvent from '@/app/events/meme/CrazyEvent';
 import IAmDadEvent from '@/app/events/meme/IAmDadEvent';
 import BangerEvent from '@/app/events/meme/BangerEvent';
 import MusicQueueButtonEvent from '@/app/events/music/MusicQueueButtonEvent';
+import KarmaUpvoteEvent from '@/app/events/karma/KarmaUpvoteEvent';
+import KarmaDownvoteEvent from '@/app/events/karma/KarmaDownvoteEvent';
+import KarmaRemoveUpvoteEvent from '@/app/events/karma/KarmaRemoveUpvoteEvent';
+import KarmaRemoveDownvoteEvent from '@/app/events/karma/KarmaRemoveDownvoteEvent';
+import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent';
 
 export default {
     /**
@@ -65,6 +70,11 @@ export default {
         ['iamdad', IAmDadEvent],
         ['banger', BangerEvent],
         ['musicqueuebutton', MusicQueueButtonEvent],
+        ['karmaupvote', KarmaUpvoteEvent],
+        ['karmadownvote', KarmaDownvoteEvent],
+        ['karmaremoveuvpote', KarmaRemoveUpvoteEvent],
+        ['karmaremovedownvote', KarmaRemoveDownvoteEvent],
+        ['karmamessagecreate', KarmaMessageCreateEvent],
     ]),
 
     /**

@@ -22,6 +22,14 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     }
 
     /**
+     * Check if karma exists
+     */
+    public async exists(data: Partial<Karma>): Promise<[boolean, string]> {
+        const result = await Karma.query().where(data).first();
+        return [!!result, result?.id ?? ''];
+    }
+
+    /**
      * Get all karma
      */
     public async getAll(): Promise<Karma[]> {

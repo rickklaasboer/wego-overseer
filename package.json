@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "tsx watch ./src/index.ts",
-        "dev:v3": "node -r tsconfig-paths/register -r ts-node/register src/app.ts | bunyan",
+        "dev:v3": "npx nodemon --watch src --watch 'src/**/*' -e ts,json --exec \"node -r tsconfig-paths/register -r ts-node/register src/app.ts | bunyan\"",
         "dev:no-watch": "tsx ./src/index.ts",
         "knex": "knex --knexfile ./knexfile.ts"
     },

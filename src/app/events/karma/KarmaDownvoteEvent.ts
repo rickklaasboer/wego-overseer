@@ -1,76 +1,102 @@
-import {
-    ensureChannelIsAvailable,
-    ensureGuildIsAvailable,
-    ensureUserIsAvailable,
-} from '@/app/commands/karma/KarmaCommand/predicates';
-import Karma from '@/app/entities/Karma';
 import Logger from '@/telemetry/logger';
 import {randomNumber} from '@/util/karma';
-import Event from '../Event';
+import BaseEvent from '@/app/events/BaseEvent';
+import {
+    MessageReaction,
+    PartialMessageReaction,
+    User,
+    PartialUser,
+    Message,
+    PartialMessage,
+} from 'discord.js';
+import EnsureGuildIsAvailable from '@/app/middleware/events/EnsureGuildIsAvailable';
+import EnsureUserIsAvailable from '@/app/middleware/events/EnsureUserIsAvailable';
+import EnsureAuthorIsAvailable from '@/app/middleware/events/EnsureAuthorIsAvailable';
+import EnsureChannelIsAvailable from '@/app/middleware/events/EnsureChannelIsAvailable';
+import ChannelRepository from '@/app/repositories/ChannelRepository';
+import KarmaRepository from '@/app/repositories/KarmaRepository';
+import FetchMessageFromReaction from '@/app/middleware/events/FetchMessageFromReaction';
+import {injectable} from 'tsyringe';
 
-const logger = new Logger('wego-overseer:events:KarmaDownvoteEvent');
+@injectable()
+export default class KarmaDownvoteEvent
+    implements BaseEvent<'messageReactionAdd'>
+{
+    public name = 'KarmaDownvoteEvent';
+    public event = 'messageReactionAdd' as const;
 
-export const KarmaDownvoteEvent = new Event({
-    name: 'messageReactionAdd',
-    run: async (_, reaction, user) => {
+    public middleware = [
+        FetchMessageFromReaction,
+        EnsureGuildIsAvailable,
+        EnsureUserIsAvailable,
+        EnsureAuthorIsAvailable,
+        EnsureChannelIsAvailable,
+    ];
+
+    constructor(
+        private channelRepository: ChannelRepository,
+        private karmaRepository: KarmaRepository,
+        private logger: Logger,
+    ) {}
+
+    /**
+     * Run the event
+     */
+    public async execute(
+        reaction: MessageReaction | PartialMessageReaction,
+        user: User | PartialUser,
+    ): Promise<void> {
         try {
             if (user.bot) return;
+            if (reaction.emoji.name !== 'downvote') return;
 
-            if (reaction.emoji.name !== 'downvote') {
-                return;
-            }
-
-            const message = reaction.message;
-
-            // Discord provides incomplete message on messageReactionAdd
-            await message.fetch();
-
-            const upvote = message.guild?.emojis.cache.find((e) => {
-                return e.name === 'upvote';
-            });
-
-            // Remove upvotes from user if any
-            await message.reactions
-                .resolve(upvote?.id ?? '')
-                ?.users.remove(user.id);
-
-            await ensureGuildIsAvailable(message.guild?.id);
-            await ensureUserIsAvailable(user.id);
-            await ensureUserIsAvailable(message.author?.id);
-            const channel = await ensureChannelIsAvailable(
-                message.channel.id,
-                message.guild?.id,
+            const channel = await this.channelRepository.getById(
+                reaction.message.channel.id,
             );
+
+            if (!channel) {
+                throw new Error('Channel is not available');
+            }
 
             if (!channel.isKarmaChannel) return;
 
-            const keys = {
-                messageId: message.id,
-                channelId: message.channel.id,
-                guildId: message.guild?.id,
+            await this.removeExistingVotes(reaction.message, user);
+
+            const values = {
+                messageId: reaction.message.id,
+                channelId: reaction.message.channel.id,
+                guildId: reaction.message.guild?.id,
                 receivedFromUserId: user.id,
-                userId: message.author?.id,
+                userId: reaction.message.author?.id,
             };
 
-            const result = await Karma.query()
-                .where({...keys})
-                .first();
+            const [exists, karmaId] = await this.karmaRepository.exists(values);
+            const amount = -randomNumber(1, 5);
 
-            if (result instanceof Karma) {
-                await Karma.query()
-                    .findById(result.id)
-                    .patch({
-                        amount: -randomNumber(1, 5),
-                        ...keys,
-                    });
+            if (exists) {
+                await this.karmaRepository.update(karmaId, {...values, amount});
             } else {
-                await Karma.query().insert({
-                    amount: -randomNumber(1, 5),
-                    ...keys,
-                });
+                await this.karmaRepository.create({...values, amount});
             }
         } catch (err) {
-            logger.error('Unable to handle KarmaDownvoteEvent', err);
+            this.logger.fatal('Failed to run KarmaDownvoteEvent', err);
         }
-    },
-});
+    }
+
+    /**
+     * Remove existing votes
+     */
+    private async removeExistingVotes(
+        message: Message<boolean> | PartialMessage,
+        user: User | PartialUser,
+    ): Promise<void> {
+        const upvote = message.guild?.emojis.cache.find((e) => {
+            return e.name === 'upvote';
+        });
+
+        // Remove upvotes from user if any
+        await message.reactions
+            .resolve(upvote?.id ?? '')
+            ?.users.remove(user.id);
+    }
+}

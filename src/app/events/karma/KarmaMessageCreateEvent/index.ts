@@ -1,0 +1,71 @@
+import Logger from '@/telemetry/logger';
+import {containsUrl, isEmpty} from '@/util/misc';
+import {Collection, Message} from 'discord.js';
+import BaseEvent from '@/app/events/BaseEvent';
+
+import ChannelRepository from '@/app/repositories/ChannelRepository';
+import {injectable} from 'tsyringe';
+import EnsureGuildIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureGuildIsAvailable';
+import EnsureChannelIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureChannelIsAvailable';
+
+@injectable()
+export default class KarmaMessageCreateEvent
+    implements BaseEvent<'messageCreate'>
+{
+    public name = 'KarmaMessageCreateEvent';
+    public event = 'messageCreate' as const;
+
+    public middleware = [EnsureGuildIsAvailable, EnsureChannelIsAvailable];
+
+    constructor(
+        private channelRepository: ChannelRepository,
+        private logger: Logger,
+    ) {}
+
+    /**
+     * Run the event
+     */
+    public async execute(message: Message<boolean>): Promise<void> {
+        try {
+            if (message.author.bot) return;
+
+            const channel = await this.channelRepository.getById(
+                message.channel.id,
+            );
+
+            if (!channel) {
+                throw new Error('Channel is not available');
+            }
+
+            if (!channel.isKarmaChannel) return;
+            if (this.shouldCancel(message)) return;
+
+            const emojis = message.guild?.emojis.cache
+                .filter((e) => e.name === 'upvote' || e.name === 'downvote')
+                .sort((a, b) => b.name?.localeCompare(a.name ?? '') ?? 0);
+
+            if ((emojis?.size ?? 0) < 2) {
+                throw new Error('Upvote or downvote emoji not available');
+            }
+
+            for (const [key] of emojis ?? new Collection()) {
+                await message.react(key);
+            }
+        } catch (err) {
+            this.logger.fatal('Failed to run KarmaMessageCreateEvent', err);
+        }
+    }
+
+    /**
+     * Whether or not the message should receive upvote/downvote reactions
+     *
+     * @see https://github.com/rickklaasboer/wego-overseer/issues/70
+     */
+    private shouldCancel(message: Message<boolean>): boolean {
+        return (
+            isEmpty(message.embeds) &&
+            isEmpty(message.attachments) &&
+            !containsUrl(message.content)
+        );
+    }
+}

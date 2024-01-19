@@ -32,7 +32,7 @@ export default class KarmaChannelEnableCommand extends BaseInternalCommand {
                 throw new Error('Channel not found');
             }
 
-            if (channel.isKarmaChannel) {
+            if (!channel.isKarmaChannel) {
                 await this.channelRepository.update(channel.id, {
                     isKarmaChannel: true,
                 });
@@ -40,7 +40,7 @@ export default class KarmaChannelEnableCommand extends BaseInternalCommand {
 
             await interaction.followUp(
                 trans(
-                    'commands.karma.channel.disable.success',
+                    'commands.karma.channel.enable.success',
                     discordChannel?.name ?? '',
                 ),
             );
