@@ -10,6 +10,8 @@ import dayjs from 'dayjs';
 import BaseEvent, {EventKeys} from '@/app/events/BaseEvent';
 import CommandHandler from '@/handlers/CommandHandler';
 import EventHandler from '@/handlers/EventHandler';
+import JobHandler from '@/handlers/JobHandler';
+import BaseJob from '@/app/jobs/BaseJob';
 
 /**
  * @deprecated
@@ -28,6 +30,7 @@ export default class Bot {
         private restService: DiscordRestService,
         private commandHandler: CommandHandler,
         private eventHandler: EventHandler,
+        private jobHandler: JobHandler,
         private logger: Logger,
     ) {}
 
@@ -137,25 +140,15 @@ export default class Bot {
      * Register jobs
      */
     private async registerJobs(): Promise<void> {
+        for (const [, resolvable] of config.app.jobs.entries()) {
+            const job = container.resolve<BaseJob>(resolvable);
+            this.jobHandler.handle(job);
+        }
+
         this.logger.info(
             `Successfully registered ${
                 config.app.jobs.size
             } job(s) ([${Array.from(config.app.jobs.keys()).join(', ')}])`,
         );
     }
-
-    // /**
-    //  * Register jobs
-    //  */
-    // private registerJobs(): void {
-    //     for (const {job, onTick} of this._jobs) {
-    //         job.addCallback(async () => await onTick(this._ctx));
-    //         job.start();
-    //     }
-    //     logger.info(
-    //         `Successfully registered ${this._jobs.length} job(s) ([${this._jobs
-    //             .map(({name}) => name)
-    //             .join(', ')}])`,
-    //     );
-    // }
 }
