@@ -1,6 +1,4 @@
-import {Client, Routes} from 'discord.js';
-import {Player} from 'discord-player';
-import {Knex} from 'knex';
+import {Routes} from 'discord.js';
 import {container, singleton} from 'tsyringe';
 import config from '@/config';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
@@ -12,16 +10,6 @@ import CommandHandler from '@/handlers/CommandHandler';
 import EventHandler from '@/handlers/EventHandler';
 import JobHandler from '@/handlers/JobHandler';
 import BaseJob from '@/app/jobs/BaseJob';
-
-/**
- * @deprecated
- */
-export type BotContext = {
-    client: Client;
-    db: Knex;
-    bot: Bot;
-    player: Player;
-};
 
 @singleton()
 export default class Bot {

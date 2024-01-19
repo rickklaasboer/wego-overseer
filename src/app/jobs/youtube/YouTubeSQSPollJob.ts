@@ -15,20 +15,19 @@ import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import {injectable} from 'tsyringe';
 import config from '@/config';
 
-const sqs = new SQSClient({
-    region: 'eu-west-1',
-    credentials: {
-        accessKeyId: config.aws.accessKeyId,
-        secretAccessKey: config.aws.secretAccessKey,
-    },
-});
-
 @injectable()
 export default class YouTubeSQSPollJob implements BaseJob {
     public name = 'YouTubeSQSPollJob';
     public job = new CronJob({
         cronTime: '* * * * *',
         timeZone: 'Europe/Amsterdam',
+    });
+    private sqs = new SQSClient({
+        region: 'eu-west-1',
+        credentials: {
+            accessKeyId: config.aws.accessKeyId,
+            secretAccessKey: config.aws.secretAccessKey,
+        },
     });
 
     constructor(
@@ -83,7 +82,7 @@ export default class YouTubeSQSPollJob implements BaseJob {
             MaxNumberOfMessages: 10,
         });
 
-        return await sqs.send(receiveCmd);
+        return await this.sqs.send(receiveCmd);
     }
 
     /**
@@ -97,7 +96,7 @@ export default class YouTubeSQSPollJob implements BaseJob {
             ReceiptHandle: receiptHandle,
         });
 
-        await sqs.send(deleteCmd);
+        await this.sqs.send(deleteCmd);
     }
 
     /**
