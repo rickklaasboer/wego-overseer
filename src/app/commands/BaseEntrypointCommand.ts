@@ -6,13 +6,14 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import Logger from '@/telemetry/logger';
 import {Commandable} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
-import {container} from 'tsyringe';
+import {container, injectable} from 'tsyringe';
 
-export default abstract class BaseEntrypointCommand implements BaseCommand {
-    public abstract name: string;
-    public abstract description: string;
-    public abstract forwardables: Map<string, Commandable>;
-    public abstract options?: SlashCommandOption[];
+@injectable()
+export default class BaseEntrypointCommand implements BaseCommand {
+    public name = '';
+    public description = '';
+    public forwardables: Map<string, Commandable> = new Map();
+    public options?: SlashCommandOption[];
 
     constructor(private logger: Logger) {}
 

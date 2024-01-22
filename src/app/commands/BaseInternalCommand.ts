@@ -1,10 +1,15 @@
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
+import {injectable} from 'tsyringe';
 
-export default abstract class BaseInternalCommand implements BaseCommand {
+@injectable()
+export default class BaseInternalCommand implements BaseCommand {
     public name = '__INTERNAL_DO_NOT_REGISTER_OR_GET_PUBLICLY_SHAMED__';
     public description = '__INTERNAL_DO_NOT_REGISTER_OR_GET_PUBLICLY_SHAMED__';
     public options = undefined;
     public shouldDeferReply = true;
 
-    public abstract execute(interaction: DefaultInteraction): Promise<void>;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public execute(_interaction: DefaultInteraction): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
 }
