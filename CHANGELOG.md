@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.1...v3.0.2) (2024-01-22)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.1.6 to 5.3.3 ([fb2f7ba](https://github.com/rickklaasboer/wego-overseer/commit/fb2f7bad9c27ec5417fb2eb74ee84e0191c31ad8))
+
 ## [3.0.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.0...v3.0.1) (2024-01-22)
 
 
