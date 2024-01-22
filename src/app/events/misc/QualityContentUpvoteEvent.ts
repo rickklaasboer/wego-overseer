@@ -18,7 +18,6 @@ export default class QualityContentUpvoteEvent
 {
     public name = 'QualityContentUpvoteEvent';
     public event = 'messageReactionAdd' as const;
-    public enabled = true;
 
     constructor(
         private clientService: DiscordClientService,

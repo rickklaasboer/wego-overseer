@@ -83,5 +83,4 @@ export default class KarmaCommand extends BaseEntrypointCommand {
             ],
         },
     ];
-    public enabled = true;
 }

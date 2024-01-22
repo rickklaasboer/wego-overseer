@@ -11,7 +11,6 @@ import Logger from '@/telemetry/logger';
 export default class EmbedFixEvent implements BaseEvent<'messageCreate'> {
     public name = 'EmbedFixEvent';
     public event = 'messageCreate' as const;
-    public enabled = true;
     private fixable = new Map([
         ['instagram', 'ddinstagram'],
         ['reddit', 'rxddit'],

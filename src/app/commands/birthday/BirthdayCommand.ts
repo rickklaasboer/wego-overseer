@@ -92,5 +92,4 @@ export default class BirthdayCommand extends BaseEntrypointCommand {
             description: "Get the server's birthday calendar",
         },
     ];
-    public enabled = true;
 }

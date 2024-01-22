@@ -57,11 +57,6 @@ export default interface BaseCommand<
     options?: SlashCommandOption[];
 
     /**
-     * Whether the command is enabled or not
-     */
-    enabled?: boolean;
-
-    /**
      * The middleware to use for this command
      */
     middleware?: Constructable<BaseMiddleware<DefaultInteraction>>[];

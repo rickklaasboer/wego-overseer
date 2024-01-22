@@ -17,11 +17,6 @@ export default interface BaseEvent<T extends keyof ClientEvents> {
     event: T;
 
     /**
-     * Whether the event is enabled or not
-     */
-    enabled?: boolean;
-
-    /**
      * The middleware to use for this event
      */
     middleware?: Constructable<BaseMiddleware<ClientEvents[T]>>[];

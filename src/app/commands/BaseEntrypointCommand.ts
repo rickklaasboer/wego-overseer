@@ -13,7 +13,6 @@ export default abstract class BaseEntrypointCommand implements BaseCommand {
     public abstract description: string;
     public abstract forwardables: Map<string, Commandable>;
     public abstract options?: SlashCommandOption[];
-    public abstract enabled?: boolean;
 
     constructor(private logger: Logger) {}
 

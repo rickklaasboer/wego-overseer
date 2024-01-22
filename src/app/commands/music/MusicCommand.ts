@@ -116,5 +116,4 @@ export default class MusicCommand extends BaseEntrypointCommand {
             ],
         },
     ];
-    public enabled = true;
 }
