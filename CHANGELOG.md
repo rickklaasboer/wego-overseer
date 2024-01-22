@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.0...v3.0.1) (2024-01-22)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.0.3 to 16.3.2 ([c0494a5](https://github.com/rickklaasboer/wego-overseer/commit/c0494a5a2fcdcdabc10def830ef8a23322bc551f))
+
 # [3.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.2...v3.0.0) (2024-01-22)
 
 
