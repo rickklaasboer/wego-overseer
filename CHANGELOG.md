@@ -1,3 +1,66 @@
+# [3.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.2...v3.0.0) (2024-01-22)
+
+
+### Bug Fixes
+
+* **command:** update AdventOfCodeCommand to use tsyringe ([f8017f7](https://github.com/rickklaasboer/wego-overseer/commit/f8017f713d4b9b3fcd1e184a735751933b5783df))
+* **command:** update BirthdayCommand to use tsyringe ([bfe5e3f](https://github.com/rickklaasboer/wego-overseer/commit/bfe5e3f66c50f03be90d09c5b3c353b98b8d3ab9))
+* **command:** update DeepFryCommand to use tsyringe ([8326711](https://github.com/rickklaasboer/wego-overseer/commit/8326711bc5753446a959424bcf4084ee42409544))
+* **command:** update DrakeMemeCommand to use tsyringe ([b57fb31](https://github.com/rickklaasboer/wego-overseer/commit/b57fb31ae852739e4ccdc1c97680897b5cc13eeb))
+* **command:** update EmojifyCommand to use tsyringe ([56db96f](https://github.com/rickklaasboer/wego-overseer/commit/56db96f8b00e75aa67f31b5f504003507e24832d))
+* **command:** update JokeMemeCommand to use tsyringe ([4a8a7fd](https://github.com/rickklaasboer/wego-overseer/commit/4a8a7fdabdcea1ca60af4d1dd1ac082ba0183e11))
+* **command:** update KarmaCommand to use tsyringe ([7c5d25f](https://github.com/rickklaasboer/wego-overseer/commit/7c5d25fc0c67115026a4e399564a60f1895c749b))
+* **command:** update KortebroekCommand to use tsyringe ([43f0d7d](https://github.com/rickklaasboer/wego-overseer/commit/43f0d7d5f37b89f6d8953392f6a1d5ec4554434c))
+* **command:** update LightshotCommand to use tsyringe ([8b2377f](https://github.com/rickklaasboer/wego-overseer/commit/8b2377f87f54a431e09582ef498fd58ba4511037))
+* **command:** update MarieKondoCommand to use tsyringe ([f30ed74](https://github.com/rickklaasboer/wego-overseer/commit/f30ed74ec6ad29d8fd4fb07f591617db1ef41e48))
+* **command:** update MockifyCommand to use tsyringe ([e59e5b7](https://github.com/rickklaasboer/wego-overseer/commit/e59e5b7be8ff73b7c8426e59c575914b0bfe7ce0))
+* **command:** update MotivationalQuoteCommand to use tsyringe ([32874f2](https://github.com/rickklaasboer/wego-overseer/commit/32874f24eb4ff3632e2fc593c67aa22119d97cf4))
+* **command:** update MusicCommand to use tsyringe ([74ce748](https://github.com/rickklaasboer/wego-overseer/commit/74ce748bce3ef4b1aa6f3ab00dfbe9851e774594))
+* **command:** update PingCommand to use tsyringe ([c3a286b](https://github.com/rickklaasboer/wego-overseer/commit/c3a286b26983b07dfd4129484dc3afb92a250722))
+* **command:** update QualityContentLeaderboardCommand to use tsyringe ([b3b7d6b](https://github.com/rickklaasboer/wego-overseer/commit/b3b7d6bb6624ec243446afe587d36b5707d610ce))
+* **command:** update StufiCommand to use tsyringe ([95a20c7](https://github.com/rickklaasboer/wego-overseer/commit/95a20c77534fded9cb76da7dc743849104b8d635))
+* **command:** update UwuifyCommand to use tsyringe ([7c1dc9b](https://github.com/rickklaasboer/wego-overseer/commit/7c1dc9bf7aa561176afdcc7eefddb4c7ca0fc686))
+* **command:** update WhereMemeCommand to use tsyringe ([35d760b](https://github.com/rickklaasboer/wego-overseer/commit/35d760b5b442f7b3fd97eed0c55f5d5fef95b00e))
+* **command:** update WinnovationMemeCommand to use tsyringe ([6f7b2ff](https://github.com/rickklaasboer/wego-overseer/commit/6f7b2ff34cc11e228f2602d069bc012ddc1db250))
+* **event:** update BangerEvent' to use tsyringe ([1d111d8](https://github.com/rickklaasboer/wego-overseer/commit/1d111d8d5583a64bcc262ec705ebe3be66a1ba6d))
+* **event:** update CrazyEvent' to use tsyringe ([666001f](https://github.com/rickklaasboer/wego-overseer/commit/666001fe836d6f4d6583fe60588f94843446e038))
+* **event:** update EmbedFixEvent' to use tsyringe ([b95ba58](https://github.com/rickklaasboer/wego-overseer/commit/b95ba588bd7f47be20f0e71c8e08e43028c2f48c))
+* **event:** update IAmDadEvent' to use tsyringe ([a2a3791](https://github.com/rickklaasboer/wego-overseer/commit/a2a3791de57fc7dfbdf9c3ffec8bcdbdb1cf03c2))
+* **event:** update KabelbaanNoobEvent to use tsyringe ([e1c0432](https://github.com/rickklaasboer/wego-overseer/commit/e1c0432f1330633f263a3a0d23d7a24a59c1818e))
+* **event:** update Karma to use tsyringe ([6979bd2](https://github.com/rickklaasboer/wego-overseer/commit/6979bd2550249903cc511363a668a1932b9d6663))
+* **event:** update MusicQueueButtonEvent' to use tsyringe ([5eb378e](https://github.com/rickklaasboer/wego-overseer/commit/5eb378e627285a5b31fc0144b6584bcbcae10e7d))
+* **event:** update QualityContentUpvoteEvent to use tsyringe ([c52776d](https://github.com/rickklaasboer/wego-overseer/commit/c52776dc72b715d4d6baad03c98bd65365d29250))
+* **event:** update YoloSwagEvent' to use tsyringe ([f627455](https://github.com/rickklaasboer/wego-overseer/commit/f627455bcc24fbb536b3724ce1ec11f4675c54af))
+* get translations working again ([ea91ac9](https://github.com/rickklaasboer/wego-overseer/commit/ea91ac9a3e008e9260e22e195d34d82e5297c4e6))
+* half-assed attempt at fixing ReceiveVoteEvent ([9c3911a](https://github.com/rickklaasboer/wego-overseer/commit/9c3911ab8d200f6ba77f3732fd9c063d30651984))
+* it aint broke no more ([944fb9e](https://github.com/rickklaasboer/wego-overseer/commit/944fb9edd43bbb8e0abbab6692d17de0df0b5380))
+* **job:** rework jobs to work again with tsyringe ([d7efe4d](https://github.com/rickklaasboer/wego-overseer/commit/d7efe4d497003cdeaa0c212f0f676fb19ce15466))
+* **job:** update BirthdayJob to use tsyringe ([45d645f](https://github.com/rickklaasboer/wego-overseer/commit/45d645f2302127c51e3bb171e7e68944682deb88))
+* **job:** update YouTubeSQSPollJob to use tsyringe ([50a82a8](https://github.com/rickklaasboer/wego-overseer/commit/50a82a8b9870f625a5f2c5af723531680b901544))
+* make both BaseEntrypointCommand and BaseInternalCommand not abstract so they can be injected by tsyringe ([34c2126](https://github.com/rickklaasboer/wego-overseer/commit/34c2126a52aa328b7bcae3aed3595775e4aa0457))
+* move sqs client inside tsyringe scope ([bc22605](https://github.com/rickklaasboer/wego-overseer/commit/bc22605e566ce670b55280605d2bf4b2179491e1))
+* remove BiBaBussinEvent ([75b69b3](https://github.com/rickklaasboer/wego-overseer/commit/75b69b3fcaa96ecab73d4fbbf82c1b05ed3c4e09))
+* remove HelpCommand ([8fe4a4c](https://github.com/rickklaasboer/wego-overseer/commit/8fe4a4c1f0bf9d4eddc950b5cf55cd8c61604d4d))
+* remove SpooktoberCommand command ([87414bd](https://github.com/rickklaasboer/wego-overseer/commit/87414bd21c865703502f19bcc45d8e48cbd945c8))
+* remove unused enabled property from commands/events ([452aa20](https://github.com/rickklaasboer/wego-overseer/commit/452aa20f3c602e2cd45ff6eea95aa7dec4aedd17))
+* **services:** bootstrap KnexService ([25d2d5f](https://github.com/rickklaasboer/wego-overseer/commit/25d2d5f63d720d4c2ab9b161f7ffc3c53316e493))
+* **services:** bootstrap LocalizationService ([a68faa6](https://github.com/rickklaasboer/wego-overseer/commit/a68faa60f44d504bded9bc14d0a5feb4f08598c8))
+* **services:** migrate discord client/rest clients to services ([b912fac](https://github.com/rickklaasboer/wego-overseer/commit/b912facb70cd19dbebb4246fc222b1dea96e33d8))
+* use follow up instead of reply for karma interactions ([5d825f3](https://github.com/rickklaasboer/wego-overseer/commit/5d825f39743ced27a13db914eb029a0c9b1db5d0))
+
+
+### Features
+
+* add job handler ([c35a132](https://github.com/rickklaasboer/wego-overseer/commit/c35a132936afbe0333c3c0711e62e1b5a6882364))
+* init tsyringe ([0f66032](https://github.com/rickklaasboer/wego-overseer/commit/0f660324e9060aa6b4143350dfdddaf7bd518b77))
+* introduce support for middleware & pipelines ([65bbcc4](https://github.com/rickklaasboer/wego-overseer/commit/65bbcc4e61d61a3ff303333f3404bee35e81a15a))
+* **release:** wego-overseer v3 ([1c7f7e3](https://github.com/rickklaasboer/wego-overseer/commit/1c7f7e39b29716f129601631f818172747357068))
+
+
+### BREAKING CHANGES
+
+* **release:** everything diffy
+
 ## [2.12.2](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.1...v2.12.2) (2023-12-24)
 
 
