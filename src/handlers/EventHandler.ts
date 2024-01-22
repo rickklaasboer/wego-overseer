@@ -27,7 +27,7 @@ export default class EventHandler {
 
             await event.execute(...passed);
         } catch (err) {
-            this.logger.error(`Failed toexecute event ${event.name}`, err);
+            this.logger.error(`Failed to execute event ${event.name}`, err);
         }
     }
 }
