@@ -6,7 +6,7 @@ import BaseEvent from '@/app/events/BaseEvent';
 import {Interaction, CacheType} from 'discord.js';
 import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
-import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';
+import EnsureUserIsAvailable from '@/app/events/poll/ReceiveVoteEvent/middleware/EnsureUserIsAvailable';
 
 @injectable()
 export default class ReceiveVoteEvent
@@ -15,13 +15,14 @@ export default class ReceiveVoteEvent
     public name = 'ReceiveVoteEvent';
     public event = 'interactionCreate' as const;
 
-    // TODO: fix
-    // public middleware = [EnsureUserIsAvailable];
+    public middleware = [EnsureUserIsAvailable];
 
     constructor(private logger: Logger) {}
 
     /**
      * Run the command
+     *
+     * TODO: refactor this sometime, because it's a bit of a mess, but it works, kinda, sometimes.
      */
     public async execute(interaction: Interaction<CacheType>): Promise<void> {
         try {
