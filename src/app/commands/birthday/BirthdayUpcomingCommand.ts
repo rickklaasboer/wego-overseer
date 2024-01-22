@@ -8,10 +8,7 @@ import EnsureGuildIsAvailable from '@/app/middleware/commands/EnsureGuildIsAvail
 import GuildRepository from '@/app/repositories/GuildRepository';
 import {injectable} from 'tsyringe';
 import Logger from '@/telemetry/logger';
-import {
-    createBirthdayRows,
-    sortBirthdays,
-} from '@/app/commands/birthday/BirthdayCalendarCommand';
+import {sortUsersByBirthday, createBirthdayRows} from '@/util/birthday';
 
 @injectable()
 export default class BirthdayUpcomingCommand extends BaseInternalCommand {
@@ -50,11 +47,10 @@ export default class BirthdayUpcomingCommand extends BaseInternalCommand {
                 ),
             );
 
-            const guildSortedByBirthday = sortBirthdays(guild);
+            const guildSortedByBirthday = sortUsersByBirthday(guild);
             const rows = await createBirthdayRows(guildSortedByBirthday);
             const upcomingBirtdaysTable = table(rows);
 
-            // TODO: handle
             if (upcomingBirtdaysTable.length < 1) {
                 this.logger.info(
                     'Tried getting upcoming birthdays but there were none within 3 months',
