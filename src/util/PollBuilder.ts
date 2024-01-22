@@ -1,4 +1,8 @@
-import Poll from '@/entities/Poll';
+import Poll from '@/app/entities/Poll';
+import StringBuilder from '@/util/StringBuilder';
+import {wrapInCodeblock} from '@/util/discord';
+import {trans} from '@/util/localization';
+import {tableWithHead} from '@/util/table';
 import {EmbedBuilder, EmbedFooterOptions} from '@discordjs/builders';
 import {
     ChatInputCommandInteraction,
@@ -9,10 +13,6 @@ import {
     ButtonInteraction,
     BaseMessageOptions,
 } from 'discord.js';
-import {wrapInCodeblock} from './discord';
-import {trans} from './localization';
-import StringBuilder from './StringBuilder';
-import {tableWithHead} from './table';
 
 type Interaction =
     | ChatInputCommandInteraction<CacheType>
@@ -20,6 +20,15 @@ type Interaction =
 
 export type VoteActionButtonPayload = [string, string, string];
 
+/**
+ * Everything below this line is magic. Don't touch it.
+ *
+ * I don't even know what's going on here anymore, but it works (sometimes).
+ * Should probably be refactored at some point.
+ * Not now though, I'm too lazy. I'm sorry.
+ *
+ * Just for future reference, I was here on 16-01-2024.
+ */
 export default class PollBuilder {
     private poll: Poll;
     private interaction: Interaction;

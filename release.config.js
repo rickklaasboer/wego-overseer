@@ -1,6 +1,6 @@
 /* eslint-disable */
 module.exports = {
-    branches: ['main', { name: 'preview', prerelease: true }],
+    branches: ['main', {name: 'preview', prerelease: true}],
     plugins: [
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',

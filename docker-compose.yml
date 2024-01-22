@@ -36,13 +36,18 @@ services:
             MYSQL_ROOT_PASSWORD: testing
             MYSQL_DATABASE: local
             TZ: UTC
+    memcached:
+        image: memcached
+        restart: always
+        ports:
+            - '11211:11211'
     phpmyadmin:
         image: phpmyadmin
         restart: always
-        ports: 
+        ports:
             - '8080:80'
         environment:
             - PMA_HOST=mysql
-            - PMA_PORT=3306 
+            - PMA_PORT=3306
         depends_on:
             - mysql

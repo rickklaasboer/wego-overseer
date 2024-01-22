@@ -1,49 +1,50 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import Bunyan, {LoggerOptions} from 'bunyan';
+import Bunyan from 'bunyan';
+import {injectable} from 'tsyringe';
 
+@injectable()
 export default class Logger {
     private bunyan: Bunyan;
 
-    constructor(name: string, options?: LoggerOptions) {
+    constructor() {
         this.bunyan = Bunyan.createLogger({
-            name: name,
+            name: 'wego-overseer',
             level: 0,
-            ...options,
         });
+    }
+
+    /**
+     * Log a debug message
+     */
+    public debug(err: Error | Object | unknown, ...params: any[]): void {
+        params.length ? this.bunyan.debug(err, params) : this.bunyan.debug(err);
+    }
+
+    /**
+     * Log an info message
+     */
+    public info(err: Error | Object | unknown, ...params: any[]): void {
+        params.length ? this.bunyan.info(err, params) : this.bunyan.info(err);
+    }
+
+    /**
+     * Log a warning message
+     */
+    public warn(err: Error | Object | unknown, ...params: any[]): void {
+        params.length ? this.bunyan.warn(err, params) : this.bunyan.warn(err);
+    }
+
+    /**
+     * Log an error message
+     */
+    public error(err: Error | Object | unknown, ...params: any[]): void {
+        params.length ? this.bunyan.error(err, params) : this.bunyan.error(err);
     }
 
     /**
      * Log a fatal error message
      */
-    fatal = (err: Error | Object | unknown, ...params: any[]) => {
+    public fatal(err: Error | Object | unknown, ...params: any[]): void {
         params.length ? this.bunyan.fatal(err, params) : this.bunyan.fatal(err);
-    };
-
-    /**
-     * Log an error message
-     */
-    error = (err: Error | Object | unknown, ...params: any[]) => {
-        params.length ? this.bunyan.error(err, params) : this.bunyan.error(err);
-    };
-
-    /**
-     * Log a warning message
-     */
-    warn = (err: Error | Object | unknown, ...params: any[]) => {
-        params.length ? this.bunyan.warn(err, params) : this.bunyan.warn(err);
-    };
-
-    /**
-     * Log an info message
-     */
-    info = (err: Error | Object | unknown, ...params: any[]) => {
-        params.length ? this.bunyan.info(err, params) : this.bunyan.info(err);
-    };
-
-    /**
-     * Log a debug message
-     */
-    debug = (err: Error | Object | unknown, ...params: any[]) => {
-        params.length ? this.bunyan.debug(err, params) : this.bunyan.debug(err);
-    };
+    }
 }
