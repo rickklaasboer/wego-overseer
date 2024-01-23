@@ -41,7 +41,7 @@ export default class DrakeMemeCommand implements BaseCommand {
             await interaction.deferReply();
 
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/meme/drake.png');
+            const img = await Jimp.read('https://i.imgur.com/EI41xgV.png');
 
             const topText = interaction.options.getString('top-text')!;
             const bottomText = interaction.options.getString('bottom-text')!;

@@ -40,7 +40,7 @@ export default class MarieKondoCommand implements BaseCommand {
             await interaction.deferReply();
 
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/meme/marie.png');
+            const img = await Jimp.read('https://i.imgur.com/kwfd7Y3.png');
 
             // Create room for text on top of image
             img.contain(

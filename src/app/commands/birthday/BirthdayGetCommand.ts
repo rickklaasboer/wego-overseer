@@ -1,5 +1,5 @@
 import {trans} from '@/util/localization';
-import {EmbedBuilder} from '@discordjs/builders';
+import {EmbedBuilder} from 'discord.js';
 import dayjs from 'dayjs';
 import {default as LocalUser} from '@/app/entities/User';
 import {User as DiscordUser} from 'discord.js';

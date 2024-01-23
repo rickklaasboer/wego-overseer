@@ -39,7 +39,7 @@ export default class WhereMemeCommand implements BaseCommand {
             await interaction.deferReply();
 
             const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
-            const img = await Jimp.read('./src/img/meme/monke.png');
+            const img = await Jimp.read('https://i.imgur.com/KEYU6B1.png');
 
             let text = interaction.options.getString('text')!;
             if (!text.toLowerCase().startsWith('where')) {
