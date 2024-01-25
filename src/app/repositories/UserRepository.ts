@@ -47,8 +47,20 @@ export default class UserRepository implements BaseRepository<User> {
      */
     public async getAllWithGuilds(): Promise<User[]> {
         const results = await User.query()
-            .joinRelated('guilds')
+            .withGraphFetched({guilds: true})
             .whereNotNull('dateOfBirth');
+
+        return results;
+    }
+
+    /**
+     * Get all users with guilds
+     */
+    public async getTodaysBirthdays(): Promise<User[]> {
+        const results = await User.query()
+            .whereNotNull('dateOfBirth')
+            .where('dateOfBirth', 'LIKE', dayjs().format('____-MM-DD'))
+            .withGraphFetched({guilds: true});
 
         return results;
     }
