@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.4...v3.0.5) (2024-01-25)
+
+
+### Bug Fixes
+
+* turn around isQualityContentChannel check ([f634edd](https://github.com/rickklaasboer/wego-overseer/commit/f634edde12972ad5114b65660186d5ed782fc3cd))
+
 ## [3.0.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.3...v3.0.4) (2024-01-25)
 
 
