@@ -1,3 +1,11 @@
+## [3.0.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.3...v3.0.4) (2024-01-25)
+
+
+### Bug Fixes
+
+* fetch entire reaction on quality content ([761b9f7](https://github.com/rickklaasboer/wego-overseer/commit/761b9f7f7bca0f28b940852bb1b22fb47bd25dcf))
+* graph fetch guilds on users instead of joining ([a8e2b14](https://github.com/rickklaasboer/wego-overseer/commit/a8e2b1447b4fbe5cf1ad07a3452aacc02a19a009))
+
 ## [3.0.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.2...v3.0.3) (2024-01-25)
 
 
