@@ -31,10 +31,6 @@ export default class BaseEntrypointCommand implements BaseCommand {
             const resolvable = this.forwardables.get(subcommand)!;
             const command = container.resolve(resolvable);
 
-            if ((command as BaseInternalCommand).shouldDeferReply) {
-                await interaction.deferReply();
-            }
-
             const pipeline =
                 container.resolve<Pipeline<DefaultInteraction>>(Pipeline);
 
@@ -43,9 +39,18 @@ export default class BaseEntrypointCommand implements BaseCommand {
                 .through(command.middleware ?? [])
                 .go();
 
+            // This has to be done here, because timing issues
+            if ((command as BaseInternalCommand).shouldDeferReply) {
+                await interaction.deferReply();
+            }
+
             await command.execute(passed);
         } catch (err) {
-            this.logger.fatal('Failed to execute command', err);
+            this.logger.fatal(
+                'BaseEntrypointCommand',
+                'Failed to execute command',
+                err,
+            );
         }
     }
 }
