@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.2...v3.0.3) (2024-01-25)
+
+
+### Bug Fixes
+
+* timing issue on entrypoint command default defer ([f3cfcf2](https://github.com/rickklaasboer/wego-overseer/commit/f3cfcf2f5fae09fdf9ab7ad015eee8dc12ca2447))
+
 ## [3.0.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.1...v3.0.2) (2024-01-22)
 
 
