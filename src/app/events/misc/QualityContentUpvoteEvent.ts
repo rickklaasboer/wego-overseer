@@ -11,6 +11,7 @@ import BaseEvent from '@/app/events/BaseEvent';
 import {injectable} from 'tsyringe';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import Logger from '@/telemetry/logger';
+import FetchPartialReaction from '@/app/middleware/events/FetchPartialReaction';
 
 @injectable()
 export default class QualityContentUpvoteEvent
@@ -18,6 +19,8 @@ export default class QualityContentUpvoteEvent
 {
     public name = 'QualityContentUpvoteEvent';
     public event = 'messageReactionAdd' as const;
+
+    public middleware = [FetchPartialReaction];
 
     constructor(
         private clientService: DiscordClientService,
@@ -29,7 +32,7 @@ export default class QualityContentUpvoteEvent
      */
     public async execute(reaction: MessageReaction): Promise<void> {
         try {
-            if (this.isQualityContentChannel(reaction)) return;
+            if (!this.isQualityContentChannel(reaction)) return;
             if (!this.meetsUpvoteThreshold(reaction)) return;
 
             const emoji = this.getEmoji(
@@ -115,7 +118,7 @@ export default class QualityContentUpvoteEvent
         const message = [...messages.values()].find(
             (message) =>
                 message.author.id === this.clientService.getClient().user?.id &&
-                message.embeds[0].footer?.text.includes(reaction.message.id),
+                message.embeds[0]?.footer?.text.includes(reaction.message.id),
         );
 
         return message;
