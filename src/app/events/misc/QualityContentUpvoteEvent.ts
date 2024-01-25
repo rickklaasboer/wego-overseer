@@ -32,7 +32,7 @@ export default class QualityContentUpvoteEvent
      */
     public async execute(reaction: MessageReaction): Promise<void> {
         try {
-            if (!this.isQualityContentChannel(reaction)) return;
+            if (this.isQualityContentChannel(reaction)) return;
             if (!this.meetsUpvoteThreshold(reaction)) return;
 
             const emoji = this.getEmoji(
