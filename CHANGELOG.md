@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.5...v3.1.0) (2024-01-26)
+
+
+### Bug Fixes
+
+* **deps:** use own version of uwuifier because of esm bullshittery ([9809284](https://github.com/rickklaasboer/wego-overseer/commit/9809284cb78fa35d0bf715986d22edc03e26835d))
+
+
+### Features
+
+* **bundling:** rollup builds ([6884ec1](https://github.com/rickklaasboer/wego-overseer/commit/6884ec1c4e6fd22bf32be6f5d7fab66b065a18fd))
+
 ## [3.0.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.4...v3.0.5) (2024-01-25)
 
 
