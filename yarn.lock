@@ -7998,11 +7998,6 @@ uuid@8.3.2, uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-uwuifier@4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/uwuifier/-/uwuifier-4.0.4.tgz#bdcd29218be15773e416930a039796516b7d5b96"
-  integrity sha512-1t+aQ5Owy/RnfWFpqE6DneZmWng/cPROtTDC4EjAL6pd4rwzhZU/n9Hv0fjCwtpYN19AjnwTiJs+DCiDxo4HTw==
-
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz#6336e8d71965cb3d35a1bbb7868445a7c05264bf"
