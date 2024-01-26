@@ -51,7 +51,7 @@
         "@discordjs/rest": "1.7.1",
         "@discordjs/voice": "0.16.0",
         "bunyan": "1.8.15",
-        "dayjs": "1.11.9",
+        "dayjs": "1.11.10",
         "discord-api-types": "0.37.42",
         "discord-player": "6.6.6",
         "discord.js": "14.11.0",
