@@ -1,3 +1,39 @@
+## [3.0.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.4...v3.0.5) (2024-01-25)
+
+
+### Bug Fixes
+
+* turn around isQualityContentChannel check ([f634edd](https://github.com/rickklaasboer/wego-overseer/commit/f634edde12972ad5114b65660186d5ed782fc3cd))
+
+## [3.0.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.3...v3.0.4) (2024-01-25)
+
+
+### Bug Fixes
+
+* fetch entire reaction on quality content ([761b9f7](https://github.com/rickklaasboer/wego-overseer/commit/761b9f7f7bca0f28b940852bb1b22fb47bd25dcf))
+* graph fetch guilds on users instead of joining ([a8e2b14](https://github.com/rickklaasboer/wego-overseer/commit/a8e2b1447b4fbe5cf1ad07a3452aacc02a19a009))
+
+## [3.0.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.2...v3.0.3) (2024-01-25)
+
+
+### Bug Fixes
+
+* timing issue on entrypoint command default defer ([f3cfcf2](https://github.com/rickklaasboer/wego-overseer/commit/f3cfcf2f5fae09fdf9ab7ad015eee8dc12ca2447))
+
+## [3.0.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.1...v3.0.2) (2024-01-22)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.1.6 to 5.3.3 ([fb2f7ba](https://github.com/rickklaasboer/wego-overseer/commit/fb2f7bad9c27ec5417fb2eb74ee84e0191c31ad8))
+
+## [3.0.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.0...v3.0.1) (2024-01-22)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.0.3 to 16.3.2 ([c0494a5](https://github.com/rickklaasboer/wego-overseer/commit/c0494a5a2fcdcdabc10def830ef8a23322bc551f))
+
 # [3.0.0](https://github.com/rickklaasboer/wego-overseer/compare/v2.12.2...v3.0.0) (2024-01-22)
 
 

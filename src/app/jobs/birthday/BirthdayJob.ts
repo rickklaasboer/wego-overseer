@@ -23,7 +23,7 @@ export default class BirthdayJob implements BaseJob {
     public async execute(): Promise<void> {
         try {
             const client = this.clientService.getClient();
-            const users = await this.userRepository.getAllWithGuilds();
+            const users = await this.userRepository.getTodaysBirthdays();
 
             for (const user of users) {
                 for (const guild of user.guilds) {
