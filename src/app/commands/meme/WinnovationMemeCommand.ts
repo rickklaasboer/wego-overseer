@@ -39,7 +39,7 @@ export default class WinnovationMemeCommand implements BaseCommand {
             await interaction.deferReply();
 
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/meme/winnovation.png');
+            const img = await Jimp.read('https://i.imgur.com/25BX2bB.png');
             const canvas = await Jimp.create(img.getWidth(), img.getHeight());
             const signText = interaction.options.getString('sign-text')!;
 

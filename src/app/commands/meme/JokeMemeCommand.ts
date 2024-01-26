@@ -40,7 +40,7 @@ export default class JokeMemeCommand implements BaseCommand {
             await interaction.deferReply();
 
             const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-            const img = await Jimp.read('./src/img/meme/joke.png');
+            const img = await Jimp.read('https://i.imgur.com/UE5DiNU.png');
 
             const text = interaction.options.getString('text')!;
 

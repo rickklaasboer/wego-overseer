@@ -3,7 +3,7 @@ import StringBuilder from '@/util/StringBuilder';
 import {wrapInCodeblock} from '@/util/discord';
 import {trans} from '@/util/localization';
 import {tableWithHead} from '@/util/table';
-import {EmbedBuilder, EmbedFooterOptions} from '@discordjs/builders';
+import {EmbedBuilder, EmbedFooterOptions} from 'discord.js';
 import {
     ChatInputCommandInteraction,
     CacheType,

@@ -1,5 +1,5 @@
 import {trans} from '@/util/localization';
-import {EmbedBuilder} from '@discordjs/builders';
+import {EmbedBuilder} from 'discord.js';
 import table from 'text-table';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';

@@ -1,7 +1,7 @@
 // All credit goes to Mark Farnum for the original implementation of this algorithm
 // @see https://github.com/farkmarnum/emojify
 // @see https://emojify.net/
-import EMOJI_DATA from '@/lib/emojify/data/emoji.json';
+import EMOJI_DATA from './data/emoji.json';
 
 type EmojifyOptions = {
     density?: number;

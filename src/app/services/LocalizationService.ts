@@ -2,15 +2,24 @@
 import {I18n, TranslateOptions} from 'i18n';
 import {singleton} from 'tsyringe';
 
+// We cannot use paths here, because rollup's json plugin does not seem to work with paths
+import LANG_EN from '../../lang/en.json';
+import LANG_NL from '../../lang/nl.json';
+
 @singleton()
 export default class LocalizationService {
     private i18n: I18n;
 
     constructor() {
         this.i18n = new I18n({
-            directory: __dirname + '/../../lang',
             objectNotation: true,
             defaultLocale: 'en',
+            staticCatalog: {
+                // TypeScript is wrong, so we need to cast to any
+                // It do be like that sometimes
+                en: LANG_EN as any,
+                nl: LANG_NL as any,
+            },
         });
     }
 

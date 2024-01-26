@@ -1,5 +1,5 @@
+import Uwuifier from '@/lib/uwuifier';
 import {singleton} from 'tsyringe';
-import Uwuifier from 'uwuifier';
 
 @singleton()
 export default class UwuifyService {
