@@ -32,7 +32,7 @@ Or using `docker-compose`:
 version: '3.3'
 services:
     wego_overseer:
-        retart: unless-stopped
+        restart: unless-stopped
         environment:
             # Docker will automagically pull these from .env
             DISCORD_APPLICATION_ID: ${DISCORD_APPLICATION_ID}
