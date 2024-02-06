@@ -1,3 +1,12 @@
+## [3.1.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.1.0...v3.1.1) (2024-02-06)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/node-fetch from 2.6.4 to 2.6.11 ([2957b4c](https://github.com/rickklaasboer/wego-overseer/commit/2957b4c5f48bca2d96a93e0296c5c4d98b24f013))
+* **deps:** bump dayjs from 1.11.9 to 1.11.10 ([c771859](https://github.com/rickklaasboer/wego-overseer/commit/c771859a0e5e27b294ad4c8a52b3256c30386a43))
+* **deps:** bump lint-staged from 13.2.2 to 15.2.2 ([96c107e](https://github.com/rickklaasboer/wego-overseer/commit/96c107e73b897ebaaa0f5123ec1a4221f07a99fa))
+
 # [3.1.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.0.5...v3.1.0) (2024-01-26)
 
 
