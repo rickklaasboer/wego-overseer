@@ -5,13 +5,13 @@ export default {
         apiKey: getEnvString('GIPHY_API_KEY', ''),
     },
     qualityContent: {
-        emojiName: getEnvString('QCC_EMOJI_NAME', ''),
-        minEmojiCount: getEnvInt('QCC_MIN_EMOJI_COUNT', 1),
+        emojiName: getEnvString('QCC_EMOJI_NAME', 'upvote'),
+        minEmojiCount: getEnvInt('QCC_MIN_EMOJI_COUNT', 5),
         channelId: getEnvString('QCC_CHANNEL_ID', ''),
     },
     trashContent: {
-        emojiName: getEnvString('TCC_EMOJI_NAME', ''),
-        minEmojiCount: getEnvInt('TCC_MIN_EMOJI_COUNT', 1),
+        emojiName: getEnvString('TCC_EMOJI_NAME', 'downvote'),
+        minEmojiCount: getEnvInt('TCC_MIN_EMOJI_COUNT', 5),
         channelId: getEnvString('TCC_CHANNEL_ID', ''),
     },
     adventOfCode: {

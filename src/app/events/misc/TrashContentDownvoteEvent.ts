@@ -146,3 +146,4 @@ export default class TrashContentDownvoteEvent
             .setFooter({text: `Message ID: ${msg.id}`});
     }
 }
+
