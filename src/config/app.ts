@@ -20,6 +20,7 @@ import KarmaCommand from '@/app/commands/karma/KarmaCommand';
 import AdventOfCodeCommand from '@/app/commands/misc/AdventOfCodeCommand';
 import EmbedFixEvent from '@/app/events/misc/EmbedFixEvent';
 import QualityContentUpvoteEvent from '@/app/events/misc/QualityContentUpvoteEvent';
+import TrashContentDownvoteEvent from '@/app/events/misc/TrashContentDownvoteEvent';
 import KabelbaanNoobEvent from '@/app/events/meme/KabelbaanNoobEvent';
 import YoloSwagEvent from '@/app/events/meme/YoloSwagEvent';
 import CrazyEvent from '@/app/events/meme/CrazyEvent';
@@ -66,6 +67,7 @@ export default {
     events: new Map<string, Eventable>([
         ['embedfix', EmbedFixEvent],
         ['qualitycontentupvote', QualityContentUpvoteEvent],
+        ['trashcontentdownvote', TrashContentDownvoteEvent],
         ['kabelbaannoob', KabelbaanNoobEvent],
         ['yoloswag', YoloSwagEvent],
         ['crazy', CrazyEvent],

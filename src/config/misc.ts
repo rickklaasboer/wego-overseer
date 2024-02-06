@@ -9,6 +9,11 @@ export default {
         minEmojiCount: getEnvInt('QCC_MIN_EMOJI_COUNT', 1),
         channelId: getEnvString('QCC_CHANNEL_ID', ''),
     },
+    trashContent: {
+        emojiName: getEnvString('TCC_EMOJI_NAME', ''),
+        minEmojiCount: getEnvInt('TCC_MIN_EMOJI_COUNT', 1),
+        channelId: getEnvString('TCC_CHANNEL_ID', ''),
+    },
     adventOfCode: {
         cookie: getEnvString('AOC_SESSION_COOKIE', ''),
         leaderboardUrl: getEnvString('AOC_LEADERBOARD_URL', ''),
