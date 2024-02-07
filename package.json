@@ -33,7 +33,7 @@
         "@typescript-eslint/parser": "5.62.0",
         "commitizen": "4.3.0",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "8.45.0",
+        "eslint": "8.56.0",
         "lint-staged": "15.2.2",
         "prettier": "3.0.0",
         "rollup": "4.9.6",
