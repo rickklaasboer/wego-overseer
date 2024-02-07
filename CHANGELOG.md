@@ -1,3 +1,12 @@
+## [3.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.0...v3.2.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* **deps:** bump eslint from 8.45.0 to 8.56.0 ([46628f3](https://github.com/rickklaasboer/wego-overseer/commit/46628f3d822d0adf7eb04992cf7b1663c63ce4ae))
+* **deps:** bump mysql2 from 3.5.2 to 3.9.1 ([68c6ef5](https://github.com/rickklaasboer/wego-overseer/commit/68c6ef5477fe2d7afc2ed258d45cb9c3f0e584be))
+* **deps:** bump ytdl-core from 4.11.4 to 4.11.5 ([de8b889](https://github.com/rickklaasboer/wego-overseer/commit/de8b8899def9053835403e9d56aaf59fe9359614))
+
 # [3.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.1.1...v3.2.0) (2024-02-07)
 
 
