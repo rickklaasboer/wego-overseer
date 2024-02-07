@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.1.1...v3.2.0) (2024-02-07)
+
+
+### Features
+
+* add trash content ([daa729b](https://github.com/rickklaasboer/wego-overseer/commit/daa729bb35e8d0fd6ed951a4dcf613b667fa13e0))
+
 ## [3.1.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.1.0...v3.1.1) (2024-02-06)
 
 
