@@ -8297,10 +8297,10 @@ youtube-sr@^4.3.9:
   resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.9.tgz#c621adab0c7055d1dcd0c2d2f9caa761ff85f85a"
   integrity sha512-wPGEgVevSn32BJu5jiSHdvoryUCTCIM9LYT+yMDDpUfaev2Dh46dB+4qU31NgJ9XOsNxGlEKmc9qxUO5L0CE/Q==
 
-ytdl-core@4.11.4:
-  version "4.11.4"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.11.4.tgz#0ee2bd04d8effa7b8762a3ba0e3d038e37dc10f2"
-  integrity sha512-tsVvqt++B5LSTMnCKQb4H/PFBewKj7gGPJ6KIM5gOFGMKNZj4qglGAl4QGFG8cNPP6wY54P80FDID5eN2di0GQ==
+ytdl-core@4.11.5:
+  version "4.11.5"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.11.5.tgz#8cc3dc9e4884e24e8251250cfb56313a300811f0"
+  integrity sha512-27LwsW4n4nyNviRCO1hmr8Wr5J1wLLMawHCQvH8Fk0hiRqrxuIu028WzbJetiYH28K8XDbeinYW4/wcHQD1EXA==
   dependencies:
     m3u8stream "^0.8.6"
     miniget "^4.2.2"
