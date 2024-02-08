@@ -53,7 +53,7 @@
         "bunyan": "1.8.15",
         "dayjs": "1.11.10",
         "discord-api-types": "0.37.42",
-        "discord-player": "6.6.6",
+        "discord-player": "6.6.7",
         "discord.js": "14.11.0",
         "dotenv": "16.4.1",
         "extract-domain": "2.4.8",
