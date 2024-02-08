@@ -25,7 +25,7 @@ type Row = {
 
 @injectable()
 export default class QualityContentLeaderboardCommand implements BaseCommand {
-    public name = 'ccleaderboard';
+    public name = 'qcleaderboard';
     public description = 'Display the quality content leaderboard';
 
     constructor(
