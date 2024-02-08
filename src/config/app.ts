@@ -56,7 +56,7 @@ export default {
         ['motivational', MotivationalQuoteCommand],
         ['where', WhereMemeCommand],
         ['winnovation', WinnovationMemeCommand],
-        ['ccleaderboard', QualityContentLeaderboardCommand],
+        ['qcleaderboard', QualityContentLeaderboardCommand],
         ['karma', KarmaCommand],
         ['aoc', AdventOfCodeCommand],
     ]),
