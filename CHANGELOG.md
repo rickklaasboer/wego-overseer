@@ -1,3 +1,12 @@
+## [3.2.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.1...v3.2.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-player from 6.6.6 to 6.6.7 ([1584e99](https://github.com/rickklaasboer/wego-overseer/commit/1584e9927a2c8d2f29a30c16c504a4ed1791466f))
+* **deps:** bump dotenv from 16.3.2 to 16.4.1 ([cbbba3f](https://github.com/rickklaasboer/wego-overseer/commit/cbbba3f1fa7ba6d75644816a87d0ea94e1e97721))
+* **deps:** bump prettier from 3.0.0 to 3.2.5 ([d18d05b](https://github.com/rickklaasboer/wego-overseer/commit/d18d05b3ffe50857d3c1935985449467f9370578))
+
 ## [3.2.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.0...v3.2.1) (2024-02-07)
 
 
