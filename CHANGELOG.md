@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.4...v3.3.0) (2024-02-09)
+
+
+### Features
+
+* add version command and set activity to current version ([a99417c](https://github.com/rickklaasboer/wego-overseer/commit/a99417c0699604fd37b72271ab98e5923a581aef))
+
 ## [3.2.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.3...v3.2.4) (2024-02-09)
 
 
