@@ -1,4 +1,4 @@
-import {Routes} from 'discord.js';
+import {ActivityType, Routes} from 'discord.js';
 import {container, singleton} from 'tsyringe';
 import config from '@/config';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
@@ -50,6 +50,8 @@ export default class Bot {
         await this.register();
 
         await this.clientService.getClient().login(config.discord.token);
+
+        this.setBotActivity();
 
         this.logger.info(`Successfully booted in ${dayjs().diff(now)}ms`);
     }
@@ -128,5 +130,18 @@ export default class Bot {
                 config.app.jobs.size
             } job(s) ([${Array.from(config.app.jobs.keys()).join(', ')}])`,
         );
+    }
+
+    /**
+     * Set bot activity
+     */
+    private setBotActivity(): void {
+        const client = this.clientService.getClient();
+        const version = process.env.APP_VERSION;
+
+        client.user?.setActivity({
+            name: `version ${version}`,
+            type: ActivityType.Playing,
+        });
     }
 }
