@@ -34,8 +34,11 @@ import KarmaRemoveDownvoteEvent from '@/app/events/karma/KarmaRemoveDownvoteEven
 import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent';
 import BirthdayJob from '@/app/jobs/birthday/BirthdayJob';
 import YouTubeSQSPollJob from '@/app/jobs/youtube/YouTubeSQSPollJob';
+import VersionCommand from '@/app/commands/misc/VersionCommand';
+// import {getEnvString} from '@/util/environment';
 
 export default {
+    version: process.env.APP_VERSION ?? 'Unknown',
     /**
      * All commands that will be handled by the bot
      */
@@ -59,6 +62,7 @@ export default {
         ['ccleaderboard', QualityContentLeaderboardCommand],
         ['karma', KarmaCommand],
         ['aoc', AdventOfCodeCommand],
+        ['version', VersionCommand],
     ]),
 
     /**

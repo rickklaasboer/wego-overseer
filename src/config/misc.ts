@@ -38,4 +38,8 @@ export default {
     knex: {
         enableLogger: getEnvBool('ENABLE_KNEX_LOGGER', false),
     },
+    github: {
+        apiToken: getEnvString('GITHUB_API_TOKEN', ''),
+        apiUrl: getEnvString('GITHUB_API_URL', ''),
+    },
 };
