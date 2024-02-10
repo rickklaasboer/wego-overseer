@@ -15,7 +15,7 @@ module.exports = {
             '@semantic-release/git',
             {
                 message:
-                    'chore(release): wego-overseer v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+                    'chore(release): wego-overseer v${nextRelease.version}\n\n${nextRelease.notes}',
             },
         ],
         '@semantic-release/github',
