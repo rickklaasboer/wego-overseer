@@ -2,6 +2,8 @@ import Karma from '@/app/entities/Karma';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import KnexService from '@/app/services/KnexService';
 import {Maybe} from '@/types/util';
+import Logger from 'bunyan';
+import { raw } from 'mysql2';
 import {injectable} from 'tsyringe';
 
 type LeaderboardRow = {
@@ -79,17 +81,37 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     }
 
     /**
-     * Get karma of user
+     * Get sum karma of user
      */
-    public async getKarma(
+    public async getKarmaSum(
         guildId: PrimaryKey,
         userId: PrimaryKey,
-    ): Promise<Karma & {totalKarma: number}> {
+    ): Promise<Karma &  {totalKarma: number}> {
         const result = (await Karma.query()
             .where({guildId, userId})
             .sum('amount as totalKarma')
             .first()) as Karma & {totalKarma: number};
 
+        return result;
+    }
+
+    /**
+     * Get individual karma of user
+     */
+    public async getKarma(
+        guildId: PrimaryKey,
+        userId: PrimaryKey,
+    ): Promise<Karma[]> {
+        const knex = this.knexService.getKnex();
+        
+        const result = (await Karma.query()
+        .select(knex.raw("DATE_FORMAT(createdAt, '%x-%v') AS week, SUM(amount) AS weekly_sum"))
+            .where({guildId, userId})
+            .orderBy('createdAt', 'asc')
+            .groupBy('week')
+            .limit(250)
+        );
+        
         return result;
     }
 

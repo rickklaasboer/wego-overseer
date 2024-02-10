@@ -22,7 +22,7 @@ export default class KarmaUserGetCommand extends BaseInternalCommand {
             const user =
                 interaction.options.getUser('user') ?? interaction.user;
 
-            const sum = await this.karmaRepository.getKarma(
+            const sum = await this.karmaRepository.getKarmaSum(
                 interaction.guildId!,
                 user.id,
             );

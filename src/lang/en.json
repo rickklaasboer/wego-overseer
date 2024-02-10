@@ -61,6 +61,11 @@
                     "no_match": "Usernames did not match, please try again.",
                     "success": "Done! Removed %s karma entries of %s. They now have 0 karma."
                 }
+            },
+            "graph": {
+                "get": {
+                    "result": "%s has a total of %s karma"
+                }
             }
         },
         "music": {
