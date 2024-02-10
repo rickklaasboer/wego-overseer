@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.0...v3.3.1) (2024-02-10)
+
+
+### Bug Fixes
+
+* trigger release ([c75d6d6](https://github.com/rickklaasboer/wego-overseer/commit/c75d6d6aec54496e90130e5045f68e5c70723893))
+
 # [3.3.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.2.4...v3.3.0) (2024-02-09)
 
 
