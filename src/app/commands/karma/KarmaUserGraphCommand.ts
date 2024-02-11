@@ -36,15 +36,41 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
                   datasets: [
                     {
                         label: 'Total Karma', 
-                        data: clusters.map((k,i) => {return clusters.slice(0, i+1).reduce((sum,current) => Number(sum)+Number(current.amount), 0)})
+                        data: clusters.map((k,i) => {return clusters.slice(0, i+1).reduce((sum,current) => Number(sum)+Number(current.amount), 0)}),
+                        lineTension: 0.5,
+                        order: 1,
+                        yAxisID: 'y1',
                     },
                     {
                         type: 'bar',
                         label: 'Delta Karma', 
                         data: clusters.map((k) => k.amount),
+                        order: 2,
+                        yAxisID: 'y2',
+                        backgroundColor: "rgba(220,148,72, 0.5)",
                     }
                   ],
                 },
+                options: {
+                    scales: {
+                      yAxes: [
+                        {
+                          id: 'y1',
+                          display: true,
+                          position: 'left',
+                          stacked: true,
+                        },
+                        {
+                          id: 'y2',
+                          display: true,
+                          position: 'right',
+                          gridLines: {
+                            drawOnChartArea: false,
+                          },
+                        },
+                      ],
+                    },
+                }
               };
               
             const response = await fetch('https://quickchart.io/chart/create',
