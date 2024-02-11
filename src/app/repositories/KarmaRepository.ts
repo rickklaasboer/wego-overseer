@@ -87,7 +87,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     public async getKarmaSum(
         guildId: PrimaryKey,
         userId: PrimaryKey,
-    ): Promise<Karma &  {totalKarma: number}> {
+    ): Promise<Karma & {totalKarma: number}> {
         const result = (await Karma.query()
             .where({guildId, userId})
             .sum('amount as totalKarma')
@@ -109,7 +109,8 @@ export default class KarmaRepository implements BaseRepository<Karma> {
         .select(knex.raw("DATE_FORMAT(createdAt, '%x-%v') AS week, SUM(amount) AS amount, guildId, userId"))
             .where({guildId, userId})
             .orderBy('createdAt', 'asc')
-            .groupBy('week') as KarmaClusterWeek[]
+            .groupBy('week')
+            .limit(293) as KarmaClusterWeek[]
         );
         
         return result;
