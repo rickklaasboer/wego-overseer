@@ -1,5 +1,6 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
+import KarmaClusterWeek from '@/app/entities/KarmaClusterWeek';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
@@ -19,58 +20,50 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
      * Run the command
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
-        // NOG GROTE STUK
         try {
             const user =
                 interaction.options.getUser('user') ?? interaction.user;
 
-            const sum:any = await this.karmaRepository.getKarma(
+            const clusters = await this.karmaRepository.getKarma(
                 interaction.guildId!,
                 user.id,
-            );
+            );  
 
             const chart = {
                 type: 'line',
                 data: {
-                  labels: sum.map((k:any) => k.week),
+                  labels: clusters.map((k) => k.week),
                   datasets: [
                     {
                         label: 'Total Karma', 
-                        data: sum.map((k:{week:string,weekly_sum:number},i:number) => { return sum.slice(0, i+1).reduce((sum:number,current:{week:string,weekly_sum:number}) => sum+current.weekly_sum, 0) })
-                        // data: sum.map((k:any) => k.weekly_sum)
+                        data: clusters.map((k,i) => {return clusters.slice(0, i+1).reduce((sum,current) => Number(sum)+Number(current.amount), 0)})
                     },
                     {
                         type: 'bar',
                         label: 'Delta Karma', 
-                        data: sum.map((k:any) => k.weekly_sum)
+                        data: clusters.map((k) => k.amount),
                     }
                   ],
-                  lineTension: 0.1
                 },
               };
-
-            const encodedChart = encodeURIComponent(JSON.stringify(chart));
-            const chartUrl = `https://quickchart.io/chart?c=${encodedChart}`;
-            const data = {
-                chart: chart
-              }
+              
             const response = await fetch('https://quickchart.io/chart/create',
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    chart: chart
+                })
             });
 
             const responseData = await response.json();
 
-            this.logger.info(responseData);
-
             const text = trans(
                 'commands.karma.graph.get.result',
                 user.username,
-                sum.reduce((sum:any,current:any) => sum+current.weekly_sum, 0).toString()
+                clusters.reduce((sum,current) => Number(sum)+Number(current.amount), 0).toString()
             );
             const chartEmbed = {
                 title: 'Karma Chart',
@@ -82,8 +75,6 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
 
             await interaction.followUp(
                 {embeds: [chartEmbed]}
-                
-                
             );
         } catch (err) {
             this.logger.fatal('Failed to get karma for user', err);

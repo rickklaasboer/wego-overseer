@@ -1,4 +1,5 @@
 import Karma from '@/app/entities/Karma';
+import KarmaClusterWeek from '@/app/entities/KarmaClusterWeek';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import KnexService from '@/app/services/KnexService';
 import {Maybe} from '@/types/util';
@@ -101,15 +102,14 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     public async getKarma(
         guildId: PrimaryKey,
         userId: PrimaryKey,
-    ): Promise<Karma[]> {
+    ): Promise<KarmaClusterWeek[]> {
         const knex = this.knexService.getKnex();
         
-        const result = (await Karma.query()
-        .select(knex.raw("DATE_FORMAT(createdAt, '%x-%v') AS week, SUM(amount) AS weekly_sum"))
+        const result = (await KarmaClusterWeek.query()
+        .select(knex.raw("DATE_FORMAT(createdAt, '%x-%v') AS week, SUM(amount) AS amount, guildId, userId"))
             .where({guildId, userId})
             .orderBy('createdAt', 'asc')
-            .groupBy('week')
-            .limit(250)
+            .groupBy('week') as KarmaClusterWeek[]
         );
         
         return result;
