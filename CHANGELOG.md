@@ -1,3 +1,13 @@
+## [3.3.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.2...v3.3.3) (2024-02-12)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/text-table from 0.2.2 to 0.2.5 ([02d9151](https://github.com/rickklaasboer/wego-overseer/commit/02d915179e8d6bfaaf842253c3219f8974c6be46))
+* **deps:** bump jimp from 0.22.8 to 0.22.10 ([abe18ab](https://github.com/rickklaasboer/wego-overseer/commit/abe18ab85c58dbf79fd7da5cba4919eaf5933d3e))
+* **deps:** bump objection from 3.1.1 to 3.1.3 ([b5f94fe](https://github.com/rickklaasboer/wego-overseer/commit/b5f94fe0e0ec16df5dc29c866d6d4e1179b98528))
+* **deps:** bump youtube-sr from 4.3.4 to 4.3.10 ([452a255](https://github.com/rickklaasboer/wego-overseer/commit/452a255b2227c464acffdba03f7809d95becf4e6))
+
 ## [3.3.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.1...v3.3.2) (2024-02-10)
 
 
