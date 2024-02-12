@@ -1,3 +1,10 @@
+## [3.3.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.3...v3.3.4) (2024-02-12)
+
+
+### Bug Fixes
+
+* semantic-release workflow ([332183e](https://github.com/rickklaasboer/wego-overseer/commit/332183e62272d6769bbba4973940c7c38a38cb04))
+
 ## [3.3.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.2...v3.3.3) (2024-02-12)
 
 
