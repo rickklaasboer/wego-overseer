@@ -28,7 +28,7 @@
         "@types/node": "18.11.18",
         "@types/node-cron": "3.0.11",
         "@types/node-fetch": "2.6.11",
-        "@types/text-table": "0.2.2",
+        "@types/text-table": "0.2.5",
         "@typescript-eslint/eslint-plugin": "5.62.0",
         "@typescript-eslint/parser": "5.62.0",
         "commitizen": "4.3.0",
