@@ -1,3 +1,13 @@
+## [3.3.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.4...v3.3.5) (2024-02-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.509.0 to 3.511.0 ([63d1a9e](https://github.com/rickklaasboer/wego-overseer/commit/63d1a9e1c62f8eddc787efd66ff1dc5eb2f91693))
+* **deps:** bump @discordjs/rest from 1.7.1 to 2.2.0 ([0d962ef](https://github.com/rickklaasboer/wego-overseer/commit/0d962efa40c4e723c96e11fdd828a1a4a0fd0d04))
+* **deps:** bump ffmpeg-static from 5.1.0 to 5.2.0 ([966a6ee](https://github.com/rickklaasboer/wego-overseer/commit/966a6eeba8af9a9ffc2bc5dda20eaa45337116eb))
+* **deps:** bump ts-node from 10.9.1 to 10.9.2 ([dc7184d](https://github.com/rickklaasboer/wego-overseer/commit/dc7184d0ab559dfaa9164ff17b96f69b333a083a))
+
 ## [3.3.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.3...v3.3.4) (2024-02-12)
 
 
