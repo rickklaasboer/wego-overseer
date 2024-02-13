@@ -49,7 +49,7 @@
         "@aws-sdk/client-sqs": "3.511.0",
         "@discord-player/extractor": "4.4.6",
         "@discordjs/opus": "0.9.0",
-        "@discordjs/rest": "1.7.1",
+        "@discordjs/rest": "2.2.0",
         "@discordjs/voice": "0.16.0",
         "bunyan": "1.8.15",
         "dayjs": "1.11.10",
