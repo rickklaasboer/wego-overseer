@@ -1,3 +1,10 @@
+## [3.3.6](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.5...v3.3.6) (2024-02-13)
+
+
+### Bug Fixes
+
+* **deps:** bump discord.js from 14.11.0 to 14.14.1 ([87790a3](https://github.com/rickklaasboer/wego-overseer/commit/87790a3cff42f6e92db47aac614d3784abdb8370))
+
 ## [3.3.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.4...v3.3.5) (2024-02-13)
 
 
