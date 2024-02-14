@@ -23,7 +23,7 @@
         "@semantic-release/git": "10.0.1",
         "@semantic-release/github": "9.0.4",
         "@semantic-release/release-notes-generator": "11.0.4",
-        "@types/bunyan": "1.8.8",
+        "@types/bunyan": "1.8.11",
         "@types/i18n": "0.13.10",
         "@types/node": "18.11.18",
         "@types/node-cron": "3.0.11",
