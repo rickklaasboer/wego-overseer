@@ -1,3 +1,10 @@
+## [3.3.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.8...v3.3.9) (2024-02-14)
+
+
+### Bug Fixes
+
+* capitalisation ([f21990a](https://github.com/rickklaasboer/wego-overseer/commit/f21990a60c054758bfeb988fa91919655115c5a3))
+
 ## [3.3.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.7...v3.3.8) (2024-02-14)
 
 
