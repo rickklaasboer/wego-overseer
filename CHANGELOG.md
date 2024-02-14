@@ -1,3 +1,10 @@
+## [3.3.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.7...v3.3.8) (2024-02-14)
+
+
+### Bug Fixes
+
+* enable karma in every channel ([4b1d643](https://github.com/rickklaasboer/wego-overseer/commit/4b1d64359eb56a3aa96a81c31c8bc83f6b6375fb))
+
 ## [3.3.7](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.6...v3.3.7) (2024-02-14)
 
 
