@@ -1,3 +1,13 @@
+## [3.3.7](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.6...v3.3.7) (2024-02-14)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/bunyan from 1.8.8 to 1.8.11 ([caca8b6](https://github.com/rickklaasboer/wego-overseer/commit/caca8b6ce1899fe3de71cebed2c8302e0d6a7907))
+* **deps:** bump extract-urls from 1.3.4 to 1.4.0 ([6cfea3d](https://github.com/rickklaasboer/wego-overseer/commit/6cfea3d04eeb1e8c32e6cf3c7ac0e47139dcdba2))
+* **deps:** bump knex from 2.5.1 to 3.1.0 ([d0e363c](https://github.com/rickklaasboer/wego-overseer/commit/d0e363c0143b5486ccf458f73ac08cd4d6bfa935))
+* **deps:** bump objection from 3.1.3 to 3.1.4 ([8715802](https://github.com/rickklaasboer/wego-overseer/commit/8715802a8f7cb51def69892db901adc78744de8a))
+
 ## [3.3.6](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.5...v3.3.6) (2024-02-13)
 
 
