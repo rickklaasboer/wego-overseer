@@ -6394,10 +6394,10 @@ object-assign@^4.1.1:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
 
-objection@3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/objection/-/objection-3.1.3.tgz#8186ed2019225b987fbecb9ee67d25c60cfac458"
-  integrity sha512-X4DH8/xKBS34bwWOSLAPyceg0JgLhLiUuz+cEEyDA8iDFoT1UM9UbtwBpwHV11hYskAKxOgVlNHeveFQiOPDXA==
+objection@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/objection/-/objection-3.1.4.tgz#0dfe58c42e9c09f5d092d0e69677cf806fd8fd31"
+  integrity sha512-BI1YQ18JicfoODgCdKxmw4W8f24/e9hCEQpOTux0xmyd8hOidOzDd1WopOMxqxo7FA+Jfw8XTfZIUaqDnS7r0g==
   dependencies:
     ajv "^8.12.0"
     ajv-formats "^2.1.1"
