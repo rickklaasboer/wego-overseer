@@ -182,6 +182,9 @@
                 "title": "Quality Content Leaderboard (Top 10)",
                 "row": "Bericht van %s met **%s** upvotes: in <#%s> — [Spring naar bericht](https://discord.com/channels/%s/%s/%s)\n"
             }
+        },
+        "version": {
+            "message": "Deze server draait Wego Overseer versie `v%s` met Node versie `%s`. Wego overseer loopt %s versie(s) achter, de laatste versie is `%s`."
         }
     },
     "events": {
