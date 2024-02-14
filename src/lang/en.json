@@ -184,7 +184,7 @@
             }
         },
         "version": {
-            "message": "This server is running Wego Overseer version v%s using Node %s. You are %s version(s) behind, latest version is %s."
+            "message": "This server is running Wego Overseer version `v%s` using Node version `%s`. Wego Overseer is running %s version(s) behind, latest version is `%s`."
         }
     },
     "events": {
