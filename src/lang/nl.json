@@ -184,7 +184,7 @@
             }
         },
         "version": {
-            "message": "Deze server draait Wego Overseer versie `v%s` met Node versie `%s`. Wego overseer loopt %s versie(s) achter, de laatste versie is `%s`."
+            "message": "Deze server draait Wego Overseer versie `v%s` met Node versie `%s`. Wego Overseer loopt %s versie(s) achter, de laatste versie is `%s`."
         }
     },
     "events": {
