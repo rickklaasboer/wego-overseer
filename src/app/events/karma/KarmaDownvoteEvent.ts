@@ -58,8 +58,6 @@ export default class KarmaDownvoteEvent
                 throw new Error('Channel is not available');
             }
 
-            if (!channel.isKarmaChannel) return;
-
             await this.removeExistingVotes(reaction.message, user);
 
             const values = {
