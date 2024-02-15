@@ -1,3 +1,11 @@
+## [3.3.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.9...v3.3.10) (2024-02-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.511.0 to 3.514.0 ([c1038be](https://github.com/rickklaasboer/wego-overseer/commit/c1038be93570c1ddd2079f2bb3a2c267f6d6405d))
+* **deps:** bump @discordjs/voice from 0.16.0 to 0.16.1 ([35931bd](https://github.com/rickklaasboer/wego-overseer/commit/35931bd9750682625493d225b3a194eed4a8f998))
+
 ## [3.3.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.8...v3.3.9) (2024-02-14)
 
 
