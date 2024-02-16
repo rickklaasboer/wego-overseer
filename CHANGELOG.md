@@ -1,3 +1,12 @@
+## [3.3.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.10...v3.3.11) (2024-02-16)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.4.1 to 16.4.4 ([d6744cd](https://github.com/rickklaasboer/wego-overseer/commit/d6744cde61175e0c0600446ec4097902e6045aa9))
+* **deps:** bump rollup from 4.9.6 to 4.11.0 ([ec2c084](https://github.com/rickklaasboer/wego-overseer/commit/ec2c0849e5521e99515b2973dd1793bb7dc63f34))
+* **deps:** bump spotify-url-info from 3.2.6 to 3.2.13 ([ee9684d](https://github.com/rickklaasboer/wego-overseer/commit/ee9684d2057ecc6c5254601304bb6360491a4ed8))
+
 ## [3.3.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.9...v3.3.10) (2024-02-15)
 
 
