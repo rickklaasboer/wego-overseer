@@ -1,3 +1,11 @@
+## [3.3.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.11...v3.3.12) (2024-02-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.514.0 to 3.515.0 ([7c30532](https://github.com/rickklaasboer/wego-overseer/commit/7c30532a099671d8e5fa795444f50f3cda6a1d5f))
+* **deps:** bump discord-api-types from 0.37.69 to 0.37.70 ([87663db](https://github.com/rickklaasboer/wego-overseer/commit/87663dbe8b05b521f4e40457806a274e2dbd193b))
+
 ## [3.3.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.10...v3.3.11) (2024-02-16)
 
 
