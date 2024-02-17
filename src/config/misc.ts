@@ -41,6 +41,10 @@ export default {
     karmagraph: {
         width: getEnvInt('KARMA_GRAPH_WIDTH', 500),
         height: getEnvInt('KARMA_GRAPH_HEIGHT', 300),
-        url: getEnvString('KARMA_GRAPH_CHART_API_URL', '')
-    }
+        url: getEnvString('KARMA_GRAPH_CHART_API_URL', ''),
+    },
+    github: {
+        apiToken: getEnvString('GITHUB_API_TOKEN', ''),
+        apiUrl: getEnvString('GITHUB_API_URL', ''),
+    },
 };

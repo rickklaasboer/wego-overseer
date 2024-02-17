@@ -8,9 +8,16 @@ on:
 
 jobs:
     release:
+        if: github.actor != 'semantic-release-bot' && github.actor != 'wego-gg'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                persist-credentials: false
+            - uses: webfactory/ssh-agent@v0.7.0
+              with:
+                ssh-private-key: ${{ secrets.GH_SSH_KEY }}
             - uses: actions/setup-node@v2
               with:
                   node-version: 18
@@ -19,6 +26,6 @@ jobs:
             - name: Release
               run: npx semantic-release
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN  }}
                   NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
