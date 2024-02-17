@@ -1,10 +1,7 @@
 import Karma from '@/app/entities/Karma';
-import KarmaClusterWeek from '@/app/entities/KarmaClusterWeek';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import KnexService from '@/app/services/KnexService';
 import {Maybe} from '@/types/util';
-import Logger from 'bunyan';
-import { raw } from 'mysql2';
 import {injectable} from 'tsyringe';
 
 type LeaderboardRow = {
