@@ -97,26 +97,6 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     }
 
     /**
-     * Get individual karma of user
-     */
-    public async getKarma(
-        guildId: PrimaryKey,
-        userId: PrimaryKey,
-    ): Promise<KarmaClusterWeek[]> {
-        const knex = this.knexService.getKnex();
-        
-        const result = (await KarmaClusterWeek.query()
-        .select(knex.raw("DATE_FORMAT(createdAt, '%x-%v') AS week, SUM(amount) AS amount, guildId, userId"))
-            .where({guildId, userId})
-            .orderBy('createdAt', 'asc')
-            .groupBy('week')
-            .limit(293) as KarmaClusterWeek[]
-        );
-        
-        return result;
-    }
-
-    /**
      * Reset karma of user
      */
     public async resetKarma(
