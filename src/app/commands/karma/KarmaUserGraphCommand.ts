@@ -26,7 +26,7 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
         super();
     }
 
-    private createChart(clusters: Row[]): Object {
+    private createChart(clusters: Row[]) {
       const chart = {width: config.karmagraph.width, height: config.karmagraph.height, c:{
         type: 'line',
         data: {

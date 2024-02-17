@@ -14,7 +14,7 @@ export default class DiscordRestService {
     /**
      * Get graph url 
      */
-    public async getGraph(chart_object: Object): Promise<Graph> {
+    public async getGraph(chart_object: any): Promise<Graph> {
         const request = await fetch(config.karmagraph.url, {
             method: 'POST',
             headers: {...this.defaultHeaders},
