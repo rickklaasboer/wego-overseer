@@ -189,6 +189,9 @@
                 "title": "Quality Content Leaderboard (Top 10)",
                 "row": "Message by %s with **%s** upvotes in <#%s> — [Jump to message](https://discord.com/channels/%s/%s/%s)\n"
             }
+        },
+        "version": {
+            "message": "This server is running Wego Overseer version `v%s` using Node version `%s`. Wego Overseer is running %s version(s) behind, latest version is `%s`."
         }
     },
     "events": {

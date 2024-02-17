@@ -55,8 +55,6 @@ export default class KarmaRemoveUpvoteEvent
                 throw new Error('Channel is not available');
             }
 
-            if (!channel.isKarmaChannel) return;
-
             const values = {
                 messageId: reaction.message.id,
                 channelId: reaction.message.channel.id,
