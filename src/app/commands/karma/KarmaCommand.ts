@@ -92,7 +92,8 @@ export default class KarmaCommand extends BaseEntrypointCommand {
                 {
                     type: APPLICATION_COMMAND_OPTIONS.USER,
                     name: 'user',
-                    description: 'User to get karmagraph for',
+                    description: 'User to get karma graph for',
+
                 },
             ],
         },
