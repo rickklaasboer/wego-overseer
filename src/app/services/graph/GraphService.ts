@@ -1,6 +1,7 @@
 import {injectable} from 'tsyringe';
 import {Graph} from '@/types/graph';
-import Logger from '@/telemetry/logger';
+import config from '@/config';
+
 
 
 
@@ -14,7 +15,7 @@ export default class DiscordRestService {
      * Get graph url 
      */
     public async getGraph(chart_object: Object): Promise<Graph> {
-        const request = await fetch(`https://quickchart.io/chart/create`, {
+        const request = await fetch(config.karmagraph.url, {
             method: 'POST',
             headers: {...this.defaultHeaders},
             body: JSON.stringify(chart_object)

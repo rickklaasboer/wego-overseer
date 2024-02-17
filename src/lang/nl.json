@@ -64,8 +64,11 @@
             },
             "graph": {
                 "get": {
-                    "result": "%s heeft een totaal van %s karma"
+                    "result": "%s heeft een totaal van %s karma",
+                    "not_available": "Het lijkt erop dat %s nog geen berichten karma heeft ontvangen. Probeer het later opnieuw!",
+                    "title": "Karma grafiek"
                 }
+                
             }
         },
         "music": {

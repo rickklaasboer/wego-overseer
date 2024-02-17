@@ -6,6 +6,7 @@ import {EmbedBuilder} from 'discord.js';
 import {injectable} from 'tsyringe';
 import GraphService from '@/app/services/graph/GraphService';
 import KnexService from '@/app/services/KnexService';
+import config from '@/config';
 
 
 type Row = {
@@ -26,7 +27,7 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
     }
 
     private createChart(clusters: Row[]): Object {
-      const chart = {c:{
+      const chart = {width: config.karmagraph.width, height: config.karmagraph.height, c:{
         type: 'line',
         data: {
           labels: clusters.map((k) => k.week),
@@ -90,22 +91,16 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
                 .limit(293)) as Row[];
 
             if (!clusters.length) {
-              this.logger.info('No results for quality content leaderboard');
               await interaction.reply(
-                  trans('commands.quality_content.no_results'),
+                  trans('commands.karma.graph.get.not_available', user.username),
               );
             }
-
-            
             
             const response = await this.graphService.getGraph(this.createChart(clusters));
-            this.logger.warn(response)
             const embed = new EmbedBuilder()
             .setTitle(
               trans(
-                  'commands.karma.graph.get.result',
-                  user.username,
-                  clusters.reduce((sum,current) => Number(sum)+Number(current.amount), 0).toString()
+                  'commands.karma.graph.get.title',
               ),
             )
             .setDescription(
