@@ -4,6 +4,7 @@ import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
+import {toHumandReadableNumber} from '@/util/misc';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -34,7 +35,11 @@ export default class ExperienceSetCommand extends BaseInternalCommand {
             );
 
             await interaction.followUp(
-                trans('commands.experience.set.success', user.username, amount),
+                trans(
+                    'commands.experience.set.success',
+                    user.username,
+                    toHumandReadableNumber(amount),
+                ),
             );
         } catch (err) {
             this.logger.fatal('Unable to run experience set command', err);

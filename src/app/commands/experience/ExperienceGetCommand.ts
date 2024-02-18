@@ -4,6 +4,7 @@ import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import ExperienceService from '@/app/services/ExperienceService';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
+import {toHumandReadableNumber} from '@/util/misc';
 import {capitalize} from '@/util/string';
 import {EmbedBuilder, User} from 'discord.js';
 import {injectable} from 'tsyringe';
@@ -32,6 +33,7 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
                 user.id,
             );
             const level = this.experienceService.xpToLevel(total, true);
+            const xpUntilNextLevel = this.experienceService.nextLevelXp(total);
 
             const leaderboardIndex = (
                 await this.experienceRepository.getLeaderboard(guildId)
@@ -44,6 +46,7 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
                 level,
                 total,
                 leaderboardIndex,
+                xpUntilNextLevel,
             );
 
             await interaction.followUp({embeds: [embed]});
@@ -60,6 +63,7 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
         level: number,
         totalExperience: number,
         leaderboardIndex: number,
+        xpUntilNextLevel: number,
     ): EmbedBuilder {
         return new EmbedBuilder()
             .setTitle(
@@ -72,9 +76,10 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
                     trans(
                         'commands.experience.get.embed.description',
                         user.username,
-                        level,
-                        totalExperience ?? 0,
-                        leaderboardIndex + 1,
+                        toHumandReadableNumber(level),
+                        toHumandReadableNumber(totalExperience ?? 0),
+                        toHumandReadableNumber(leaderboardIndex + 1),
+                        toHumandReadableNumber(xpUntilNextLevel),
                     ),
                 ),
             )

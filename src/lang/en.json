@@ -213,7 +213,7 @@
             "get": {
                 "embed": {
                     "title": "%s's experience",
-                    "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard."
+                    "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard. They need %s XP to reach the next level."
                 }
             }
         }

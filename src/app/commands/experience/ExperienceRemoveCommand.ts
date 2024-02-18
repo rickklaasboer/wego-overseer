@@ -4,6 +4,7 @@ import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
+import {toHumandReadableNumber} from '@/util/misc';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -40,9 +41,9 @@ export default class ExperienceRemoveCommand extends BaseInternalCommand {
             await interaction.followUp(
                 trans(
                     'commands.experience.remove.success',
-                    amount,
+                    toHumandReadableNumber(amount),
                     user.username,
-                    newExperience,
+                    toHumandReadableNumber(newExperience),
                 ),
             );
         } catch (err) {

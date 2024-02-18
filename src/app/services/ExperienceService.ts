@@ -21,4 +21,12 @@ export default class ExperienceService {
     public levelToXp(level: number): number {
         return (level / this.multiplier) ** 2;
     }
+
+    /**
+     * Get amount of XP needed to reach the next level.
+     */
+    public nextLevelXp(xp: number): number {
+        const currentLevel = this.xpToLevel(xp, true);
+        return Math.floor(this.levelToXp(currentLevel + 1) - xp);
+    }
 }

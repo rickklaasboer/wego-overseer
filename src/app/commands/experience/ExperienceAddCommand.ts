@@ -4,6 +4,7 @@ import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization';
+import {toHumandReadableNumber} from '@/util/misc';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -41,8 +42,8 @@ export default class ExperienceAddCommand extends BaseInternalCommand {
                 trans(
                     'commands.experience.add.success',
                     user.username,
-                    amount,
-                    newExperience,
+                    toHumandReadableNumber(amount),
+                    toHumandReadableNumber(newExperience),
                 ),
             );
         } catch (err) {
