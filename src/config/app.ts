@@ -35,6 +35,9 @@ import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent'
 import BirthdayJob from '@/app/jobs/birthday/BirthdayJob';
 import YouTubeSQSPollJob from '@/app/jobs/youtube/YouTubeSQSPollJob';
 import VersionCommand from '@/app/commands/misc/VersionCommand';
+import ReceiveExperienceEvent from '@/app/events/experience/ReceiveExperienceEvent';
+import LevelUpEvent from '@/app/events/experience/LevelUpEvent';
+import ExperienceCommand from '@/app/commands/experience/ExperienceCommand';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -62,6 +65,7 @@ export default {
         ['karma', KarmaCommand],
         ['aoc', AdventOfCodeCommand],
         ['version', VersionCommand],
+        ['experience', ExperienceCommand],
     ]),
 
     /**
@@ -82,6 +86,8 @@ export default {
         ['karmaremoveuvpote', KarmaRemoveUpvoteEvent],
         ['karmaremovedownvote', KarmaRemoveDownvoteEvent],
         ['karmamessagecreate', KarmaMessageCreateEvent],
+        ['receiveexperience', ReceiveExperienceEvent],
+        ['levelup', LevelUpEvent],
     ]),
 
     /**

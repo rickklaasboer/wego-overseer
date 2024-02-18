@@ -11,12 +11,7 @@ export default class UserRepository implements BaseRepository<User> {
      */
     public async getById(id: PrimaryKey): Promise<Maybe<User>> {
         const result = await User.query().findById(id);
-
-        if (result instanceof User) {
-            return result;
-        }
-
-        return null;
+        return result;
     }
 
     /**
@@ -71,6 +66,19 @@ export default class UserRepository implements BaseRepository<User> {
     public async create(data: Partial<User>): Promise<User> {
         const result = await User.query().insert(data);
         return result;
+    }
+
+    /**
+     * Get a user by its ID or create it if it doesn't exist
+     */
+    public async getByIdOrCreate(data: Partial<User>): Promise<User> {
+        const exists = await this.getById(data.id!);
+
+        if (!exists) {
+            return this.create(data);
+        }
+
+        return exists;
     }
 
     /**

@@ -1,10 +1,9 @@
-import User from '@/app/entities/User';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import UserRepository from '@/app/repositories/UserRepository';
 import {ClientEvents} from 'discord.js';
 import {injectable} from 'tsyringe';
 
-type Event = ClientEvents['messageReactionAdd' | 'messageReactionRemove'];
+type Event = ClientEvents['messageCreate'];
 
 @injectable()
 export default class EnsureAuthorIsAvailable<
@@ -18,22 +17,15 @@ export default class EnsureAuthorIsAvailable<
      * Run the middleware
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
-        const [reaction] = ctx;
-
-        // Discord provides incomplete message on messageReactionAdd
-        await reaction.message.fetch();
-        if (!reaction.message.author?.id) {
-            throw new Error('Message author is not available');
-        }
-        const userId = reaction.message.author.id;
-
+        const [message] = ctx;
+        const userId = message.author.id;
         const user = await this.userRepository.getById(userId);
 
-        if (!(user instanceof User)) {
+        if (!user) {
             await this.userRepository.create({
                 id: userId,
-                username: reaction.message.author.username,
-                avatar: reaction.message.author.avatar ?? '',
+                username: message.author.username,
+                avatar: message.author.avatar ?? '',
             });
         }
 

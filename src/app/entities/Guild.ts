@@ -2,6 +2,7 @@ import Model from '@/app/entities/Model';
 import {RelationMappings} from 'objection';
 import User from '@/app/entities/User';
 import Channel from '@/app/entities/Channel';
+import Experience from '@/app/entities/Experience';
 
 export default class Guild extends Model {
     id!: string;
@@ -29,6 +30,14 @@ export default class Guild extends Model {
                         to: 'guilds_users.userId',
                     },
                     to: 'users.id',
+                },
+            },
+            experience: {
+                relation: Model.HasManyRelation,
+                modelClass: Experience,
+                join: {
+                    from: 'experience.id',
+                    to: 'guilds.id',
                 },
             },
         };
