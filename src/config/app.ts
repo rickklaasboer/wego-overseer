@@ -38,6 +38,7 @@ import VersionCommand from '@/app/commands/misc/VersionCommand';
 import ReceiveExperienceEvent from '@/app/events/experience/ReceiveExperienceEvent';
 import LevelUpEvent from '@/app/events/experience/LevelUpEvent';
 import ExperienceCommand from '@/app/commands/experience/ExperienceCommand';
+import ConfirmResetExperienceEvent from '@/app/events/experience/ConfirmResetExperienceEvent';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -88,6 +89,7 @@ export default {
         ['karmamessagecreate', KarmaMessageCreateEvent],
         ['receiveexperience', ReceiveExperienceEvent],
         ['levelup', LevelUpEvent],
+        ['confirmresetexperience', ConfirmResetExperienceEvent],
     ]),
 
     /**
