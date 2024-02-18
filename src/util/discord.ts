@@ -33,6 +33,7 @@ export async function safeFetchUser(
     try {
         return await client.users.fetch(userId);
     } catch (err) {
+        console.error(`Unable to fetch user with id ${userId}`, err);
         return {username: userId};
     }
 }

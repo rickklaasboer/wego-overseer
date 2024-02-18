@@ -20,7 +20,11 @@ export default class EnsureUserIsAvailable<
         const user = await this.userRepository.getById(userId);
 
         if (!(user instanceof User)) {
-            await this.userRepository.create({id: userId});
+            await this.userRepository.create({
+                id: userId,
+                username: ctx.user.username,
+                avatar: ctx.user.avatar ?? '',
+            });
         }
 
         await next(ctx);
