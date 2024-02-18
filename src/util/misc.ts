@@ -1,4 +1,5 @@
-import {Maybe} from '@/types/util';
+import {Constructable, Maybe} from '@/types/util';
+import {container} from 'tsyringe';
 
 /**
  * Transform seconds to minutes and seconds
@@ -41,6 +42,13 @@ export function pad(n: Maybe<number>, maxLength: number): string {
     }
 
     return subject;
+}
+
+/**
+ * Get item from dependency injection container
+ */
+export function app<T>(resolvable: Constructable<T>): T {
+    return container.resolve(resolvable);
 }
 
 /**
