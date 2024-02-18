@@ -1,3 +1,11 @@
+## [3.3.13](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.12...v3.3.13) (2024-02-18)
+
+
+### Bug Fixes
+
+* Apply suggestions from code review ([89d18bb](https://github.com/rickklaasboer/wego-overseer/commit/89d18bbc6361606b21117ee42c136742cd88338d))
+* eslint shit. idk i am noob ([f06423a](https://github.com/rickklaasboer/wego-overseer/commit/f06423a335a2a3ae84ff112347c4761889aad622))
+
 ## [3.3.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.11...v3.3.12) (2024-02-16)
 
 
