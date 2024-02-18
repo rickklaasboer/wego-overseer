@@ -61,6 +61,14 @@
                     "no_match": "Gebruikersnamen komen niet overeen, probeer het opnieuw.",
                     "success": "Klaar! %s karma-items van %s verwijderd. Hij/zij heeft nu 0 karma."
                 }
+            },
+            "graph": {
+                "get": {
+                    "result": "%s heeft een totaal van %s karma",
+                    "not_available": "Het lijkt erop dat %s nog geen berichten karma heeft ontvangen. Probeer het later opnieuw!",
+                    "title": "Karma grafiek"
+                }
+                
             }
         },
         "music": {
