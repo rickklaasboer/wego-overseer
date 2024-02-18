@@ -79,9 +79,9 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     }
 
     /**
-     * Get karma of user
+     * Get sum karma of user
      */
-    public async getKarma(
+    public async getKarmaSum(
         guildId: PrimaryKey,
         userId: PrimaryKey,
     ): Promise<Karma & {totalKarma: number}> {

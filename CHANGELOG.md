@@ -1,3 +1,94 @@
+## [3.3.13](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.12...v3.3.13) (2024-02-18)
+
+
+### Bug Fixes
+
+* Apply suggestions from code review ([89d18bb](https://github.com/rickklaasboer/wego-overseer/commit/89d18bbc6361606b21117ee42c136742cd88338d))
+* eslint shit. idk i am noob ([f06423a](https://github.com/rickklaasboer/wego-overseer/commit/f06423a335a2a3ae84ff112347c4761889aad622))
+
+## [3.3.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.11...v3.3.12) (2024-02-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.514.0 to 3.515.0 ([7c30532](https://github.com/rickklaasboer/wego-overseer/commit/7c30532a099671d8e5fa795444f50f3cda6a1d5f))
+* **deps:** bump discord-api-types from 0.37.69 to 0.37.70 ([87663db](https://github.com/rickklaasboer/wego-overseer/commit/87663dbe8b05b521f4e40457806a274e2dbd193b))
+
+## [3.3.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.10...v3.3.11) (2024-02-16)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.4.1 to 16.4.4 ([d6744cd](https://github.com/rickklaasboer/wego-overseer/commit/d6744cde61175e0c0600446ec4097902e6045aa9))
+* **deps:** bump rollup from 4.9.6 to 4.11.0 ([ec2c084](https://github.com/rickklaasboer/wego-overseer/commit/ec2c0849e5521e99515b2973dd1793bb7dc63f34))
+* **deps:** bump spotify-url-info from 3.2.6 to 3.2.13 ([ee9684d](https://github.com/rickklaasboer/wego-overseer/commit/ee9684d2057ecc6c5254601304bb6360491a4ed8))
+
+## [3.3.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.9...v3.3.10) (2024-02-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.511.0 to 3.514.0 ([c1038be](https://github.com/rickklaasboer/wego-overseer/commit/c1038be93570c1ddd2079f2bb3a2c267f6d6405d))
+* **deps:** bump @discordjs/voice from 0.16.0 to 0.16.1 ([35931bd](https://github.com/rickklaasboer/wego-overseer/commit/35931bd9750682625493d225b3a194eed4a8f998))
+
+## [3.3.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.8...v3.3.9) (2024-02-14)
+
+
+### Bug Fixes
+
+* capitalisation ([f21990a](https://github.com/rickklaasboer/wego-overseer/commit/f21990a60c054758bfeb988fa91919655115c5a3))
+
+## [3.3.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.7...v3.3.8) (2024-02-14)
+
+
+### Bug Fixes
+
+* enable karma in every channel ([4b1d643](https://github.com/rickklaasboer/wego-overseer/commit/4b1d64359eb56a3aa96a81c31c8bc83f6b6375fb))
+
+## [3.3.7](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.6...v3.3.7) (2024-02-14)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/bunyan from 1.8.8 to 1.8.11 ([caca8b6](https://github.com/rickklaasboer/wego-overseer/commit/caca8b6ce1899fe3de71cebed2c8302e0d6a7907))
+* **deps:** bump extract-urls from 1.3.4 to 1.4.0 ([6cfea3d](https://github.com/rickklaasboer/wego-overseer/commit/6cfea3d04eeb1e8c32e6cf3c7ac0e47139dcdba2))
+* **deps:** bump knex from 2.5.1 to 3.1.0 ([d0e363c](https://github.com/rickklaasboer/wego-overseer/commit/d0e363c0143b5486ccf458f73ac08cd4d6bfa935))
+* **deps:** bump objection from 3.1.3 to 3.1.4 ([8715802](https://github.com/rickklaasboer/wego-overseer/commit/8715802a8f7cb51def69892db901adc78744de8a))
+
+## [3.3.6](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.5...v3.3.6) (2024-02-13)
+
+
+### Bug Fixes
+
+* **deps:** bump discord.js from 14.11.0 to 14.14.1 ([87790a3](https://github.com/rickklaasboer/wego-overseer/commit/87790a3cff42f6e92db47aac614d3784abdb8370))
+
+## [3.3.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.4...v3.3.5) (2024-02-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.509.0 to 3.511.0 ([63d1a9e](https://github.com/rickklaasboer/wego-overseer/commit/63d1a9e1c62f8eddc787efd66ff1dc5eb2f91693))
+* **deps:** bump @discordjs/rest from 1.7.1 to 2.2.0 ([0d962ef](https://github.com/rickklaasboer/wego-overseer/commit/0d962efa40c4e723c96e11fdd828a1a4a0fd0d04))
+* **deps:** bump ffmpeg-static from 5.1.0 to 5.2.0 ([966a6ee](https://github.com/rickklaasboer/wego-overseer/commit/966a6eeba8af9a9ffc2bc5dda20eaa45337116eb))
+* **deps:** bump ts-node from 10.9.1 to 10.9.2 ([dc7184d](https://github.com/rickklaasboer/wego-overseer/commit/dc7184d0ab559dfaa9164ff17b96f69b333a083a))
+
+## [3.3.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.3...v3.3.4) (2024-02-12)
+
+
+### Bug Fixes
+
+* semantic-release workflow ([332183e](https://github.com/rickklaasboer/wego-overseer/commit/332183e62272d6769bbba4973940c7c38a38cb04))
+
+## [3.3.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.2...v3.3.3) (2024-02-12)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/text-table from 0.2.2 to 0.2.5 ([02d9151](https://github.com/rickklaasboer/wego-overseer/commit/02d915179e8d6bfaaf842253c3219f8974c6be46))
+* **deps:** bump jimp from 0.22.8 to 0.22.10 ([abe18ab](https://github.com/rickklaasboer/wego-overseer/commit/abe18ab85c58dbf79fd7da5cba4919eaf5933d3e))
+* **deps:** bump objection from 3.1.1 to 3.1.3 ([b5f94fe](https://github.com/rickklaasboer/wego-overseer/commit/b5f94fe0e0ec16df5dc29c866d6d4e1179b98528))
+* **deps:** bump youtube-sr from 4.3.4 to 4.3.10 ([452a255](https://github.com/rickklaasboer/wego-overseer/commit/452a255b2227c464acffdba03f7809d95becf4e6))
+
 ## [3.3.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.1...v3.3.2) (2024-02-10)
 
 
