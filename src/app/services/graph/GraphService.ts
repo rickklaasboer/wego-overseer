@@ -2,9 +2,6 @@ import {injectable} from 'tsyringe';
 import {Graph} from '@/types/graph';
 import config from '@/config';
 
-
-
-
 @injectable()
 export default class DiscordRestService {
     private defaultHeaders = {
@@ -14,11 +11,11 @@ export default class DiscordRestService {
     /**
      * Get graph url 
      */
-    public async getGraph(chart_object: any): Promise<Graph> {
+    public async getGraph(options: unknown): Promise<Graph> {
         const request = await fetch(config.karmagraph.url, {
             method: 'POST',
             headers: {...this.defaultHeaders},
-            body: JSON.stringify(chart_object)
+            body: JSON.stringify(options)
         });
         const response = await request.json();
         return response as Graph;

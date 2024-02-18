@@ -8,7 +8,6 @@ import GraphService from '@/app/services/graph/GraphService';
 import KnexService from '@/app/services/KnexService';
 import config from '@/config';
 
-
 type Row = {
   week: string;
   amount: number;
