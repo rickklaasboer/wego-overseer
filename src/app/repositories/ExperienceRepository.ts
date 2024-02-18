@@ -99,13 +99,19 @@ export default class ExperienceRepository {
      */
     public async getLeaderboard(
         guildId: string,
+        page?: number,
     ): Promise<(Experience & {totalExperience: number})[]> {
+        const limit = 25;
+        const offset = (page ?? 1) * limit - limit;
+
         return (await Experience.query()
             .withGraphFetched({user: true})
             .where('guildId', '=', guildId)
             .sum('amount as totalExperience')
             .groupBy('userId')
-            .orderBy('totalExperience', 'desc')) as (Experience & {
+            .orderBy('totalExperience', 'desc')
+            .limit(limit)
+            .offset(offset)) as (Experience & {
             totalExperience: number;
         })[];
     }

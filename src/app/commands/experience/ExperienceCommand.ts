@@ -114,15 +114,21 @@ export default class ExperienceCommand extends BaseEntrypointCommand {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
             name: 'leaderboard',
             description: 'Get the experience leaderboard',
-            // TODO: Add this option when the web version is done
-            // options: [
-            //     {
-            //         type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
-            //         name: 'web',
-            //         description: 'Whether to get the web version',
-            //         required: false,
-            //     },
-            // ],
+            options: [
+                // TODO: Add this option when the web version is done
+                // {
+                //     type: APPLICATION_COMMAND_OPTIONS.BOOLEAN,
+                //     name: 'web',
+                //     description: 'Whether to get the web version',
+                //     required: false,
+                // },
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.INTEGER,
+                    name: 'page',
+                    description: 'The page number to get',
+                    required: false,
+                },
+            ],
         },
         {
             type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,

@@ -24,11 +24,13 @@ export default class ExperienceLeaderboardCommand extends BaseInternalCommand {
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
+            const page = interaction.options.getInteger('page', false) ?? 1;
             const rows = await this.experienceRepository.getLeaderboard(
                 interaction.guild?.id ?? '',
+                page,
             );
 
-            const table = await this.createTable(rows);
+            const table = await this.createTable(rows, page);
             const embed = new EmbedBuilder()
                 .setTitle(`${interaction.guild?.name}'s Leaderboard`)
                 .setThumbnail(interaction.guild?.iconURL() ?? '')
@@ -48,7 +50,10 @@ export default class ExperienceLeaderboardCommand extends BaseInternalCommand {
      */
     private async createTable(
         rows: (Experience & {totalExperience: number})[],
+        page: number,
     ): Promise<string> {
+        const rankWithOffset = page * 25 - 25;
+
         const table = tableWithHead(
             ['#', 'User', 'Level', 'Experience'],
             await Promise.all(
@@ -58,7 +63,12 @@ export default class ExperienceLeaderboardCommand extends BaseInternalCommand {
                         true,
                     );
 
-                    return [i + 1, user.username, level, totalExperience];
+                    return [
+                        i + rankWithOffset + 1,
+                        user.username,
+                        level,
+                        totalExperience,
+                    ];
                 }),
             ),
         );
