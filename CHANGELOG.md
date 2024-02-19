@@ -1,3 +1,10 @@
+## [3.3.14](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.13...v3.3.14) (2024-02-19)
+
+
+### Bug Fixes
+
+* **deps:** bump rollup from 4.11.0 to 4.12.0 ([189c70e](https://github.com/rickklaasboer/wego-overseer/commit/189c70e92eee6de31f4b3b5f414ca51723f56fcf))
+
 ## [3.3.13](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.12...v3.3.13) (2024-02-18)
 
 
