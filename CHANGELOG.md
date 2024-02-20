@@ -1,3 +1,11 @@
+## [3.3.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.14...v3.3.15) (2024-02-20)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.4.4 to 16.4.5 ([9295c6a](https://github.com/rickklaasboer/wego-overseer/commit/9295c6a376fd6d796a0e5818e0c2468d7756fc8f))
+* **deps:** bump extract-urls from 1.4.0 to 1.4.1 ([1dbddd2](https://github.com/rickklaasboer/wego-overseer/commit/1dbddd20667eb845835099b8ea1a37495dcd0338))
+
 ## [3.3.14](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.13...v3.3.14) (2024-02-19)
 
 
