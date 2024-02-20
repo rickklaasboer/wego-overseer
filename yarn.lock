@@ -3859,10 +3859,10 @@ extract-domain@2.4.8:
   optionalDependencies:
     psl "^1.8.0"
 
-extract-urls@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/extract-urls/-/extract-urls-1.4.0.tgz#6140e1d1337fbcb7b6bb4e427bb634f9d641520f"
-  integrity sha512-x8OnCTbXW/I4BkdPeKuw9/1rThb9yoPRrKeYKafuSEEJ2epthzm/eSI2jYgZ0g2GiSydj2QGSogsJMlOi9isQA==
+extract-urls@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/extract-urls/-/extract-urls-1.4.1.tgz#d45acd0cf9b4728cdb6605d8f0614b56ab02c2e1"
+  integrity sha512-SAzLx5yMh7Ocf09g7wyjZeS6mwiitUvMFeWmlll+vOOf4/iFnidXpCavBL2cYhaYci5gKG/ZYAC38zONlLFzBA==
 
 fast-deep-equal@3.1.3, fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"

@@ -57,7 +57,7 @@
         "discord.js": "14.14.1",
         "dotenv": "16.4.4",
         "extract-domain": "2.4.8",
-        "extract-urls": "1.4.0",
+        "extract-urls": "1.4.1",
         "ffmpeg-static": "5.2.0",
         "i18n": "0.15.1",
         "jimp": "0.22.10",
