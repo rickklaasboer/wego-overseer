@@ -55,7 +55,7 @@
         "discord-api-types": "0.37.70",
         "discord-player": "6.6.7",
         "discord.js": "14.14.1",
-        "dotenv": "16.4.4",
+        "dotenv": "16.4.5",
         "extract-domain": "2.4.8",
         "extract-urls": "1.4.1",
         "ffmpeg-static": "5.2.0",
