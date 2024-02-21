@@ -1,3 +1,10 @@
+## [3.3.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.17...v3.3.18) (2024-02-21)
+
+
+### Bug Fixes
+
+* use correct command name for stufi command ([06fedbe](https://github.com/rickklaasboer/wego-overseer/commit/06fedbe8a784ed316d7fe40867b6d8cfa47ce216))
+
 ## [3.3.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.16...v3.3.17) (2024-02-21)
 
 
