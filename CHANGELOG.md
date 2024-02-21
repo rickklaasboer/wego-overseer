@@ -1,3 +1,10 @@
+## [3.3.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.15...v3.3.16) (2024-02-21)
+
+
+### Bug Fixes
+
+* Poll Command registered ([aecd372](https://github.com/rickklaasboer/wego-overseer/commit/aecd37205a842e0aace39ca3adc41fb39d7dc362))
+
 ## [3.3.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.14...v3.3.15) (2024-02-20)
 
 
