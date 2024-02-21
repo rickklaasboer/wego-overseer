@@ -1,3 +1,10 @@
+## [3.3.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.16...v3.3.17) (2024-02-21)
+
+
+### Bug Fixes
+
+* use correct command name for kortebroek command ([85c81b8](https://github.com/rickklaasboer/wego-overseer/commit/85c81b80d0c942898d3c6d3348c4f622b6f5858d))
+
 ## [3.3.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.15...v3.3.16) (2024-02-21)
 
 
