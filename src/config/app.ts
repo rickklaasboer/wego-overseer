@@ -35,6 +35,7 @@ import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent'
 import BirthdayJob from '@/app/jobs/birthday/BirthdayJob';
 import YouTubeSQSPollJob from '@/app/jobs/youtube/YouTubeSQSPollJob';
 import VersionCommand from '@/app/commands/misc/VersionCommand';
+import PollCommand from '@/app/commands/poll/PollCommand';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -49,7 +50,7 @@ export default {
         ['uwuify', UwuifyCommand],
         ['music', MusicCommand],
         ['birthday', BirthdayCommand],
-        ['kortebroek', KortebroekCommand],
+        ['kanikeenkortebroekaan', KortebroekCommand],
         ['wanneerstufi', StufiCommand],
         ['deepfry', DeepFryCommand],
         ['drake', DrakeMemeCommand],
@@ -62,6 +63,7 @@ export default {
         ['karma', KarmaCommand],
         ['aoc', AdventOfCodeCommand],
         ['version', VersionCommand],
+        ['poll', PollCommand],
     ]),
 
     /**
