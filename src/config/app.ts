@@ -51,7 +51,7 @@ export default {
         ['music', MusicCommand],
         ['birthday', BirthdayCommand],
         ['kanikeenkortebroekaan', KortebroekCommand],
-        ['stufi', StufiCommand],
+        ['wanneerstufi', StufiCommand],
         ['deepfry', DeepFryCommand],
         ['drake', DrakeMemeCommand],
         ['joke', JokeMemeCommand],
