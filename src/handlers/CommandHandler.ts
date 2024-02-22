@@ -17,7 +17,7 @@ export default class CommandHandler {
      * Handle the command
      */
     public async handle(ctx: Interaction<CacheType>): Promise<void> {
-        if (!ctx.isCommand()) return;
+        if (!ctx.isChatInputCommand()) return;
         if (!config.app.commands.has(ctx.commandName)) return;
 
         const command = container.resolve(

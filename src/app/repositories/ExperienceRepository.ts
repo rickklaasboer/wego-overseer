@@ -119,7 +119,7 @@ export default class ExperienceRepository {
     /**
      * Checks if user is on cooldown for receiving experience.
      */
-    public async isOnCooldown(
+    public async hasCooldown(
         guildId: string,
         userId: string,
     ): Promise<boolean> {

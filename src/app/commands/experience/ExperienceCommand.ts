@@ -6,6 +6,7 @@ import ExperienceImportCommand from '@/app/commands/experience/ExperienceImportC
 import ExperienceLeaderboardCommand from '@/app/commands/experience/ExperienceLeaderboardCommand';
 import ExperienceRemoveCommand from '@/app/commands/experience/ExperienceRemoveCommand';
 import ExperienceResetCommand from '@/app/commands/experience/ExperienceResetCommand';
+import ExperienceSetAnnouncementChannel from '@/app/commands/experience/ExperienceSetAnnouncementChannel';
 import ExperienceSetCommand from '@/app/commands/experience/ExperienceSetCommand';
 import {Commandable} from '@/types/util';
 import {injectable} from 'tsyringe';
@@ -22,6 +23,7 @@ export default class ExperienceCommand extends BaseEntrypointCommand {
         ['reset', ExperienceResetCommand],
         ['leaderboard', ExperienceLeaderboardCommand],
         ['import', ExperienceImportCommand],
+        ['setannouncementchannel', ExperienceSetAnnouncementChannel],
     ]);
     public options = [
         {
@@ -140,6 +142,19 @@ export default class ExperienceCommand extends BaseEntrypointCommand {
                     name: 'file',
                     description:
                         'The file to import (make sure it is a .json file!)',
+                    required: true,
+                },
+            ],
+        },
+        {
+            type: APPLICATION_COMMAND_OPTIONS.SUB_COMMAND,
+            name: 'setannouncementchannel',
+            description: 'Set the announcement channel for experience',
+            options: [
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.CHANNEL,
+                    name: 'channel',
+                    description: 'Channel to send level up announcements to',
                     required: true,
                 },
             ],

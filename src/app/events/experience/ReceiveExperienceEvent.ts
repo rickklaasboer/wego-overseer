@@ -28,12 +28,12 @@ export default class ReceiveExperienceEvent
         try {
             if (message.author.bot) return;
 
-            const isOnCooldown = await this.experienceRepository.isOnCooldown(
+            const hasCooldown = await this.experienceRepository.hasCooldown(
                 message.guild?.id ?? '',
                 message.author.id,
             );
 
-            if (isOnCooldown) return;
+            if (hasCooldown) return;
 
             await this.experienceRepository.addExperience(
                 message.guild?.id ?? '',

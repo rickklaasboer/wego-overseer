@@ -50,7 +50,9 @@ export default class ExperienceImportCommand extends BaseInternalCommand {
                 this.mee6LeaderboardValidator.validate(data);
 
             if (!isValid && errors) {
-                interaction.followUp({embeds: [this.createErrorEmbed(errors)]});
+                await interaction.followUp({
+                    embeds: [this.createErrorEmbed(errors)],
+                });
                 return;
             }
 

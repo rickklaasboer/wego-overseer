@@ -7,6 +7,7 @@ import Experience from '@/app/entities/Experience';
 export default class Guild extends Model {
     id!: string;
     birthdayChannelId!: string;
+    levelUpChannelId!: string;
 
     users!: User[];
 

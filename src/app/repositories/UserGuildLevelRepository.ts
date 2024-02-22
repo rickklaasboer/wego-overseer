@@ -1,19 +1,28 @@
 import UserGuildLevel from '@/app/entities/UserGuildLevel';
+import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import {injectable} from 'tsyringe';
 
 @injectable()
 export default class UserGuildLevelRepository {
+    constructor(private experienceRepository: ExperienceRepository) {}
+
     /**
      * Gets the level of user.
      */
     public async getLevel(guildId: string, userId: string): Promise<number> {
         const result = await UserGuildLevel.query().findById([guildId, userId]);
 
-        if (result instanceof UserGuildLevel) {
-            return result.level;
+        if (!result) {
+            const level = await this.experienceRepository.getLevel(
+                guildId,
+                userId,
+            );
+            await this.setLevel(guildId, userId, level);
+
+            return level;
         }
 
-        return 0;
+        return result.level;
     }
 
     /**
@@ -44,11 +53,8 @@ export default class UserGuildLevelRepository {
      * Checks if user has level.
      */
     public async hasLevel(guildId: string, userId: string): Promise<boolean> {
-        return (
-            (await UserGuildLevel.query().findById([
-                guildId,
-                userId,
-            ])) instanceof UserGuildLevel
+        return Boolean(
+            await UserGuildLevel.query().findById([guildId, userId]),
         );
     }
 }

@@ -12,7 +12,7 @@ import {
 import {injectable} from 'tsyringe';
 
 @injectable()
-export default class ExperienceAddCommand extends BaseInternalCommand {
+export default class ExperienceResetommand extends BaseInternalCommand {
     constructor(private logger: Logger) {
         super();
     }

@@ -215,6 +215,9 @@
                     "title": "%s's experience",
                     "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard. They need %s XP to reach the next level."
                 }
+            },
+            "set_announcement_channel": {
+                "success": "Done! Set <#%s> as the level up announcement channel."
             }
         }
     },
@@ -227,6 +230,9 @@
         },
         "fix_embed": {
             "msg": "Heya! I found an embed that might not work with Discord, so I fixed it for you! %s"
+        },
+        "experience": {
+            "level_up": "Congratulations <@%s>! You have reached level %s!"
         }
     },
     "jobs": {

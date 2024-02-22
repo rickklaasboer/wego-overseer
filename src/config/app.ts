@@ -97,6 +97,6 @@ export default {
      */
     jobs: new Map<string, Jobable>([
         ['birthday', BirthdayJob],
-        ['youtubesqspoll', YouTubeSQSPollJob],
+        // ['youtubesqspoll', YouTubeSQSPollJob],
     ]),
 };

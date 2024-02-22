@@ -4,9 +4,9 @@
     "description": "",
     "main": "dist/app.js",
     "scripts": {
-        "dev": "npx nodemon --watch src --watch 'src/**/*' -e ts,json --exec \"yarn build && yarn start | bunyan\"",
+        "dev": "yarn nodemon --watch src --watch 'src/**/*' -e ts,json --exec \"yarn build && yarn start | bunyan\"",
         "dev:no-watch": "yarn build && yarn start | bunyan",
-        "knex": "npx cross-env TS_NODE_PROJECT=tsconfig.knex.json knex --knexfile ./knexfile.ts",
+        "knex": "yarn cross-env TS_NODE_PROJECT=tsconfig.knex.json knex --knexfile ./knexfile.ts",
         "build": "rollup -c --bundleConfigAsCjs",
         "start": "node dist/app.js"
     },
@@ -32,9 +32,11 @@
         "@typescript-eslint/eslint-plugin": "5.62.0",
         "@typescript-eslint/parser": "5.62.0",
         "commitizen": "4.3.0",
+        "cross-env": "7.0.3",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "8.56.0",
         "lint-staged": "15.2.2",
+        "nodemon": "3.0.3",
         "prettier": "3.2.5",
         "rollup": "4.11.0",
         "rollup-plugin-node-externals": "5.1.3",
