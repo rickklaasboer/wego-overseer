@@ -60,7 +60,7 @@
         "extract-urls": "1.4.1",
         "ffmpeg-static": "5.2.0",
         "i18n": "0.15.1",
-        "jimp": "0.22.10",
+        "jimp": "0.22.12",
         "knex": "3.1.0",
         "mysql2": "3.9.1",
         "node-cron": "3.0.3",
