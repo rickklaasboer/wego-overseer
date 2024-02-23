@@ -1,3 +1,10 @@
+## [3.3.19](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.18...v3.3.19) (2024-02-23)
+
+
+### Bug Fixes
+
+* **deps:** bump jimp from 0.22.10 to 0.22.12 ([e707cca](https://github.com/rickklaasboer/wego-overseer/commit/e707ccaaae8f074f0eae05ef84678ef02ca0c3b9))
+
 ## [3.3.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.17...v3.3.18) (2024-02-21)
 
 
