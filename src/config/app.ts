@@ -39,6 +39,7 @@ import ReceiveExperienceEvent from '@/app/events/experience/ReceiveExperienceEve
 import LevelUpEvent from '@/app/events/experience/LevelUpEvent';
 import ExperienceCommand from '@/app/commands/experience/ExperienceCommand';
 import ConfirmResetExperienceEvent from '@/app/events/experience/ConfirmResetExperienceEvent';
+import PollCommand from '@/app/commands/poll/PollCommand';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -53,8 +54,8 @@ export default {
         ['uwuify', UwuifyCommand],
         ['music', MusicCommand],
         ['birthday', BirthdayCommand],
-        ['kortebroek', KortebroekCommand],
-        ['stufi', StufiCommand],
+        ['kanikeenkortebroekaan', KortebroekCommand],
+        ['wanneerstufi', StufiCommand],
         ['deepfry', DeepFryCommand],
         ['drake', DrakeMemeCommand],
         ['joke', JokeMemeCommand],
@@ -67,6 +68,7 @@ export default {
         ['aoc', AdventOfCodeCommand],
         ['version', VersionCommand],
         ['experience', ExperienceCommand],
+        ['poll', PollCommand],
     ]),
 
     /**
@@ -97,6 +99,6 @@ export default {
      */
     jobs: new Map<string, Jobable>([
         ['birthday', BirthdayJob],
-        // ['youtubesqspoll', YouTubeSQSPollJob],
+        ['youtubesqspoll', YouTubeSQSPollJob],
     ]),
 };

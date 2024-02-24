@@ -1,3 +1,46 @@
+## [3.3.19](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.18...v3.3.19) (2024-02-23)
+
+
+### Bug Fixes
+
+* **deps:** bump jimp from 0.22.10 to 0.22.12 ([e707cca](https://github.com/rickklaasboer/wego-overseer/commit/e707ccaaae8f074f0eae05ef84678ef02ca0c3b9))
+
+## [3.3.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.17...v3.3.18) (2024-02-21)
+
+
+### Bug Fixes
+
+* use correct command name for stufi command ([06fedbe](https://github.com/rickklaasboer/wego-overseer/commit/06fedbe8a784ed316d7fe40867b6d8cfa47ce216))
+
+## [3.3.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.16...v3.3.17) (2024-02-21)
+
+
+### Bug Fixes
+
+* use correct command name for kortebroek command ([85c81b8](https://github.com/rickklaasboer/wego-overseer/commit/85c81b80d0c942898d3c6d3348c4f622b6f5858d))
+
+## [3.3.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.15...v3.3.16) (2024-02-21)
+
+
+### Bug Fixes
+
+* Poll Command registered ([aecd372](https://github.com/rickklaasboer/wego-overseer/commit/aecd37205a842e0aace39ca3adc41fb39d7dc362))
+
+## [3.3.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.14...v3.3.15) (2024-02-20)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.4.4 to 16.4.5 ([9295c6a](https://github.com/rickklaasboer/wego-overseer/commit/9295c6a376fd6d796a0e5818e0c2468d7756fc8f))
+* **deps:** bump extract-urls from 1.4.0 to 1.4.1 ([1dbddd2](https://github.com/rickklaasboer/wego-overseer/commit/1dbddd20667eb845835099b8ea1a37495dcd0338))
+
+## [3.3.14](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.13...v3.3.14) (2024-02-19)
+
+
+### Bug Fixes
+
+* **deps:** bump rollup from 4.11.0 to 4.12.0 ([189c70e](https://github.com/rickklaasboer/wego-overseer/commit/189c70e92eee6de31f4b3b5f414ca51723f56fcf))
+
 ## [3.3.13](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.12...v3.3.13) (2024-02-18)
 
 
