@@ -1,5 +1,6 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
+import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import Logger from '@/telemetry/logger';
 import {
@@ -18,7 +19,7 @@ export default class ExperienceResetommand extends BaseInternalCommand {
     }
 
     public shouldDeferReply = false;
-    public middleware = [UserIsAdmin];
+    public middleware = [UserIsAdmin, EnsureUserIsAvailable];
 
     /**
      * Run the command

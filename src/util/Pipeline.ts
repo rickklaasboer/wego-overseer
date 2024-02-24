@@ -1,6 +1,7 @@
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import {Constructable} from '@/types/util';
-import {container, injectable} from 'tsyringe';
+import {app} from '@/util/misc/misc';
+import {injectable} from 'tsyringe';
 
 @injectable()
 export class Pipeline<T> {
@@ -35,7 +36,7 @@ export class Pipeline<T> {
         const next: NextFn<T> = async (ctx: T): Promise<void> => {
             if (index < this.pipes.length) {
                 const resolvable = this.pipes[index++];
-                const pipe = container.resolve(resolvable);
+                const pipe = app(resolvable);
                 await pipe.handle(ctx, () => next(ctx));
             }
         };

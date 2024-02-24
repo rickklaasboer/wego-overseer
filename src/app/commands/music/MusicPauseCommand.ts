@@ -1,4 +1,4 @@
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import DiscordPlayerService from '@/app/services/music/DiscordPlayerService';

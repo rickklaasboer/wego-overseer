@@ -1,5 +1,5 @@
-import {wrapInCodeblock} from '@/util/discord';
-import {trans} from '@/util/localization';
+import {wrapInCodeblock} from '@/util/misc/discord';
+import {trans} from '@/util/localization/localization';
 import {EmbedBuilder} from 'discord.js';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';

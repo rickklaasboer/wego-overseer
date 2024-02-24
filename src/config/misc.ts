@@ -1,4 +1,4 @@
-import {getEnvBool, getEnvInt, getEnvString} from '@/util/environment';
+import {getEnvBool, getEnvInt, getEnvString} from '@/util/misc/environment';
 
 export default {
     giphy: {

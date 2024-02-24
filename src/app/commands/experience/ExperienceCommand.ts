@@ -45,17 +45,17 @@ export default class ExperienceCommand extends BaseEntrypointCommand {
             description: 'Set experience',
             options: [
                 {
-                    type: APPLICATION_COMMAND_OPTIONS.USER,
-                    name: 'user',
-                    description: 'The user to set experience for',
-                    required: true,
-                },
-                {
                     name: 'amount',
                     type: APPLICATION_COMMAND_OPTIONS.INTEGER,
                     description: 'The amount of experience to set',
                     min_value: 0,
                     required: true,
+                },
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.USER,
+                    name: 'user',
+                    description: 'The user to set experience for',
+                    required: false,
                 },
             ],
         },
@@ -65,17 +65,17 @@ export default class ExperienceCommand extends BaseEntrypointCommand {
             description: 'Add experience',
             options: [
                 {
-                    type: APPLICATION_COMMAND_OPTIONS.USER,
-                    name: 'user',
-                    description: 'The user to add experience for',
-                    required: true,
-                },
-                {
                     name: 'amount',
                     type: APPLICATION_COMMAND_OPTIONS.INTEGER,
                     description: 'The amount of experience to add',
                     min_value: 1,
                     required: true,
+                },
+                {
+                    type: APPLICATION_COMMAND_OPTIONS.USER,
+                    name: 'user',
+                    description: 'The user to add experience for',
+                    required: false,
                 },
             ],
         },

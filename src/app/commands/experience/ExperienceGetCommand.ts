@@ -1,11 +1,12 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
+import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import ExperienceService from '@/app/services/ExperienceService';
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
-import {toHumandReadableNumber} from '@/util/misc';
-import {capitalize} from '@/util/string';
+import {trans} from '@/util/localization/localization';
+import {toHumandReadableNumber} from '@/util/misc/misc';
+import {capitalize} from '@/util/formatting/string';
 import {EmbedBuilder, User} from 'discord.js';
 import {injectable} from 'tsyringe';
 
@@ -18,6 +19,8 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
     ) {
         super();
     }
+
+    public middleware = [EnsureUserIsAvailable];
 
     /**
      * Run the command
@@ -34,18 +37,16 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
             );
             const level = this.experienceService.xpToLevel(total, true);
             const xpUntilNextLevel = this.experienceService.nextLevelXp(total);
-
-            const leaderboardIndex = (
-                await this.experienceRepository.getLeaderboard(guildId)
-            ).findIndex((exp) => {
-                return exp.user.id === user.id;
-            });
+            const leaderboardPosition = await this.getLeaderboardPosition(
+                guildId,
+                user.id,
+            );
 
             const embed = this.createEmbed(
                 user,
                 level,
                 total,
-                leaderboardIndex,
+                leaderboardPosition,
                 xpUntilNextLevel,
             );
 
@@ -53,6 +54,17 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
         } catch (err) {
             this.logger.fatal('Unable to run experience get command', err);
         }
+    }
+
+    /**
+     * Get leaderboard position of user
+     */
+    private async getLeaderboardPosition(guildId: string, userId: string) {
+        return (
+            await this.experienceRepository.getLeaderboard(guildId)
+        ).findIndex((exp) => {
+            return exp.user.id === userId;
+        });
     }
 
     /**

@@ -2,7 +2,7 @@ import BaseEvent from '@/app/events/BaseEvent';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {CacheType, Interaction} from 'discord.js';
 import {injectable} from 'tsyringe';
 

@@ -1,5 +1,5 @@
 import {ActivityType, Routes} from 'discord.js';
-import {container, singleton} from 'tsyringe';
+import {singleton} from 'tsyringe';
 import config from '@/config';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import DiscordRestService from '@/app/services/discord/DiscordRestService';
@@ -10,6 +10,7 @@ import CommandHandler from '@/handlers/CommandHandler';
 import EventHandler from '@/handlers/EventHandler';
 import JobHandler from '@/handlers/JobHandler';
 import BaseJob from '@/app/jobs/BaseJob';
+import {app} from '@/util/misc/misc';
 
 @singleton()
 export default class Bot {
@@ -101,7 +102,7 @@ export default class Bot {
      */
     private async registerEvents(): Promise<void> {
         for (const [, resolvable] of config.app.events.entries()) {
-            const event = container.resolve<BaseEvent<EventKeys>>(resolvable);
+            const event = app<BaseEvent<EventKeys>>(resolvable);
             const client = this.clientService.getClient();
 
             client.on(event.event, async (...args) => {
@@ -121,7 +122,7 @@ export default class Bot {
      */
     private async registerJobs(): Promise<void> {
         for (const [, resolvable] of config.app.jobs.entries()) {
-            const job = container.resolve<BaseJob>(resolvable);
+            const job = app<BaseJob>(resolvable);
             this.jobHandler.handle(job);
         }
 

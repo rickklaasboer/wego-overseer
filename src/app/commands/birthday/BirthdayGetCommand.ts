@@ -1,9 +1,9 @@
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {EmbedBuilder} from 'discord.js';
 import dayjs from 'dayjs';
 import {default as LocalUser} from '@/app/entities/User';
 import {User as DiscordUser} from 'discord.js';
-import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import {createNextOccuranceTimestamp} from '@/util/formatting/timestamp';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';

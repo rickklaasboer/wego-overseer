@@ -1,6 +1,6 @@
 import Experience from '@/app/entities/Experience';
 import ExperienceService from '@/app/services/ExperienceService';
-import {toMysqlDateTime} from '@/util/mysql';
+import {toMysqlDateTime} from '@/util/misc/mysql';
 import dayjs from 'dayjs';
 import {injectable} from 'tsyringe';
 

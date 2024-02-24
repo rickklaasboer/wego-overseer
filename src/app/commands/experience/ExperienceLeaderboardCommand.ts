@@ -4,9 +4,9 @@ import Experience from '@/app/entities/Experience';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import ExperienceService from '@/app/services/ExperienceService';
 import Logger from '@/telemetry/logger';
-import {wrapInCodeblock} from '@/util/discord';
-import {toHumandReadableNumber} from '@/util/misc';
-import {tableWithHead} from '@/util/table';
+import {wrapInCodeblock} from '@/util/misc/discord';
+import {toHumandReadableNumber} from '@/util/misc/misc';
+import {tableWithHead} from '@/util/formatting/table';
 import {EmbedBuilder} from 'discord.js';
 import {injectable} from 'tsyringe';
 

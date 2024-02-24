@@ -4,7 +4,7 @@ import EnsureGuildIsAvailable from '@/app/middleware/commands/EnsureGuildIsAvail
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {injectable} from 'tsyringe';
 
 @injectable()

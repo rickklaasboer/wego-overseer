@@ -37,7 +37,7 @@ export default class ExperienceImportCommand extends BaseInternalCommand {
             const file = interaction.options.getAttachment('file');
 
             if (!file?.contentType?.startsWith('application/json')) {
-                interaction.followUp(
+                await interaction.followUp(
                     'Invalid file type. Please upload a JSON file.',
                 );
                 return;

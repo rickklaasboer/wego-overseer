@@ -1,10 +1,11 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
+import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
-import {toHumandReadableNumber} from '@/util/misc';
+import {trans} from '@/util/localization/localization';
+import {toHumandReadableNumber} from '@/util/misc/misc';
 import {injectable} from 'tsyringe';
 
 @injectable()
@@ -16,7 +17,7 @@ export default class ExperienceRemoveCommand extends BaseInternalCommand {
         super();
     }
 
-    public middleware = [UserIsAdmin];
+    public middleware = [UserIsAdmin, EnsureUserIsAvailable];
 
     /**
      * Run the command

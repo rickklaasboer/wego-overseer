@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {EmbedBuilder, User} from 'discord.js';
 import BaseJob from '@/app/jobs/BaseJob';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';

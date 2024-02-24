@@ -1,6 +1,6 @@
 import Jimp from 'jimp';
 import {JimpImage} from '@/util/JimpImage';
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import BaseCommand, {
     APPLICATION_COMMAND_OPTIONS,
     DefaultInteraction,

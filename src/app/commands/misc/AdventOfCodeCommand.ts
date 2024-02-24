@@ -1,6 +1,6 @@
-import {wrapInCodeblock} from '@/util/discord';
-import {tableWithHead} from '@/util/table';
-import {trans} from '@/util/localization';
+import {wrapInCodeblock} from '@/util/misc/discord';
+import {tableWithHead} from '@/util/formatting/table';
+import {trans} from '@/util/localization/localization';
 import config from '@/config';
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';
