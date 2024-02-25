@@ -1,4 +1,4 @@
-import {randomNumber} from '@/util/karma';
+import {randomNumber} from '@/util/misc/karma';
 import BaseEvent from '@/app/events/BaseEvent';
 import {
     MessageReaction,

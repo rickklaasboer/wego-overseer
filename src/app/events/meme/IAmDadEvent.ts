@@ -1,5 +1,5 @@
-import {randomNumber} from '@/util/karma';
-import {trans} from '@/util/localization';
+import {randomNumber} from '@/util/misc/karma';
+import {trans} from '@/util/localization/localization';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
@@ -57,8 +57,8 @@ export default class IAmDadEvent implements BaseEvent<'messageCreate'> {
         const separator = isDutch
             ? this.possibleParts.nl
             : isEnglish
-            ? this.possibleParts.en
-            : '';
+              ? this.possibleParts.en
+              : '';
 
         return text.split(separator)[1].trim();
     }

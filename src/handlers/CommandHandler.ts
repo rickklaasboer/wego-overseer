@@ -6,8 +6,9 @@ import config from '@/config';
 import Logger from '@/telemetry/logger';
 import {Maybe} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
+import {app} from '@/util/misc/misc';
 import {CacheType, Interaction} from 'discord.js';
-import {container, injectable} from 'tsyringe';
+import {injectable} from 'tsyringe';
 
 @injectable()
 export default class CommandHandler {
@@ -17,16 +18,14 @@ export default class CommandHandler {
      * Handle the command
      */
     public async handle(ctx: Interaction<CacheType>): Promise<void> {
-        if (!ctx.isCommand()) return;
+        if (!ctx.isChatInputCommand()) return;
         if (!config.app.commands.has(ctx.commandName)) return;
 
-        const command = container.resolve(
-            config.app.commands.get(ctx.commandName)!,
-        );
+        const command = app(config.app.commands.get(ctx.commandName)!);
 
         try {
             // prettier-ignore
-            const pipeline = container.resolve<Pipeline<DefaultInteraction>>(
+            const pipeline = app<Pipeline<DefaultInteraction>>(
                 Pipeline
             );
 
@@ -72,7 +71,7 @@ export default class CommandHandler {
         options: Maybe<SlashCommandOption[]>;
     }[] {
         return [...config.app.commands.entries()].map(([, resolvable]) => {
-            const command = container.resolve(resolvable);
+            const command = app(resolvable);
             return {
                 name: command.name,
                 description: command.description,

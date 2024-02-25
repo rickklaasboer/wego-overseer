@@ -10,12 +10,7 @@ export default class GuildRepository implements BaseRepository<Guild> {
      */
     public async getById(id: PrimaryKey): Promise<Maybe<Guild>> {
         const result = await Guild.query().findById(id);
-
-        if (result instanceof Guild) {
-            return result;
-        }
-
-        return null;
+        return result;
     }
 
     /**

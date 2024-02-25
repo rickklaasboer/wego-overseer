@@ -35,6 +35,10 @@ import KarmaMessageCreateEvent from '@/app/events/karma/KarmaMessageCreateEvent'
 import BirthdayJob from '@/app/jobs/birthday/BirthdayJob';
 import YouTubeSQSPollJob from '@/app/jobs/youtube/YouTubeSQSPollJob';
 import VersionCommand from '@/app/commands/misc/VersionCommand';
+import ReceiveExperienceEvent from '@/app/events/experience/ReceiveExperienceEvent';
+import LevelUpEvent from '@/app/events/experience/LevelUpEvent';
+import ExperienceCommand from '@/app/commands/experience/ExperienceCommand';
+import ConfirmResetExperienceEvent from '@/app/events/experience/ConfirmResetExperienceEvent';
 import PollCommand from '@/app/commands/poll/PollCommand';
 
 export default {
@@ -63,6 +67,7 @@ export default {
         ['karma', KarmaCommand],
         ['aoc', AdventOfCodeCommand],
         ['version', VersionCommand],
+        ['experience', ExperienceCommand],
         ['poll', PollCommand],
     ]),
 
@@ -84,6 +89,9 @@ export default {
         ['karmaremoveuvpote', KarmaRemoveUpvoteEvent],
         ['karmaremovedownvote', KarmaRemoveDownvoteEvent],
         ['karmamessagecreate', KarmaMessageCreateEvent],
+        ['receiveexperience', ReceiveExperienceEvent],
+        ['levelup', LevelUpEvent],
+        ['confirmresetexperience', ConfirmResetExperienceEvent],
     ]),
 
     /**

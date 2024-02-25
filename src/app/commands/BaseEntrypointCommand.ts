@@ -6,7 +6,8 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import Logger from '@/telemetry/logger';
 import {Commandable} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
-import {container, injectable} from 'tsyringe';
+import {app} from '@/util/misc/misc';
+import {injectable} from 'tsyringe';
 
 @injectable()
 export default class BaseEntrypointCommand implements BaseCommand {
@@ -29,10 +30,9 @@ export default class BaseEntrypointCommand implements BaseCommand {
             }
 
             const resolvable = this.forwardables.get(subcommand)!;
-            const command = container.resolve(resolvable);
+            const command = app(resolvable);
 
-            const pipeline =
-                container.resolve<Pipeline<DefaultInteraction>>(Pipeline);
+            const pipeline = app<Pipeline<DefaultInteraction>>(Pipeline);
 
             const passed = await pipeline
                 .send(interaction as DefaultInteraction)

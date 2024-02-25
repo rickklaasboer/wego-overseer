@@ -1,5 +1,5 @@
-import {randomNumber} from '@/util/karma';
-import {trans} from '@/util/localization';
+import {randomNumber} from '@/util/misc/karma';
+import {trans} from '@/util/localization/localization';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';

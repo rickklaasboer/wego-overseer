@@ -3,9 +3,9 @@ import config from '@/config';
 import KnexService from '@/app/services/KnexService';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import Logger from '@/telemetry/logger';
-import StringBuilder from '@/util/StringBuilder';
-import {safeFetchUser} from '@/util/discord';
-import {t} from '@/util/localization';
+import StringBuilder from '@/util/formatting/StringBuilder';
+import {safeFetchUser} from '@/util/misc/discord';
+import {t} from '@/util/localization/localization';
 import {EmbedBuilder} from 'discord.js';
 import {injectable} from 'tsyringe';
 

@@ -6,9 +6,9 @@ import {
     ReceiveMessageCommandOutput,
 } from '@aws-sdk/client-sqs';
 import {YoutubeSQSPayload} from '@/types/youtube';
-import {trans} from '@/util/localization';
-import StringBuilder from '@/util/StringBuilder';
-import markdown from '@/util/markdown';
+import {trans} from '@/util/localization/localization';
+import StringBuilder from '@/util/formatting/StringBuilder';
+import markdown from '@/util/formatting/markdown';
 import BaseJob from '@/app/jobs/BaseJob';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import {injectable} from 'tsyringe';

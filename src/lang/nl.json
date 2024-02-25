@@ -68,7 +68,6 @@
                     "not_available": "Het lijkt erop dat %s nog geen berichten karma heeft ontvangen. Probeer het later opnieuw!",
                     "title": "Karma grafiek"
                 }
-                
             }
         },
         "music": {
@@ -193,6 +192,33 @@
         },
         "version": {
             "message": "Deze server draait Wego Overseer versie `v%s` met Node versie `%s`. Wego Overseer loopt %s versie(s) achter, de laatste versie is `%s`."
+        },
+        "experience": {
+            "add": {
+                "success": "Klaar! %s heeft %s XP gekregen! Hij/zij heeft nu %s XP."
+            },
+            "reset": {
+                "success": "Klaar! %s zijn/haar XP is gereset",
+                "username_mismatch": "Oeps! Gebruikersnamen komen niet overeen, probeer het opnieuw."
+            },
+            "set": {
+                "success": "Klaar! %s heeft nu %s XP."
+            },
+            "remove": {
+                "success": "Klaar! %s zijn/haar XP is verwijderd. %s heeft nu %s XP."
+            },
+            "common": {
+                "not_admin": "Je moet een administrator zijn om dit commando uit te voeren."
+            },
+            "get": {
+                "embed": {
+                    "title": "%s zijn/haar XP",
+                    "description": "%s is level %s, heeft %s XP en is positie #%s op het leaderboard. Hij/zij heeft %s XP nodig voor het volgende level."
+                }
+            },
+            "set_announcement_channel": {
+                "success": "Klaar! <#%s> gezet als level up kanaal."
+            }
         }
     },
     "events": {

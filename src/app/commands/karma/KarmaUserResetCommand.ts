@@ -3,7 +3,7 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
 import Logger from '@/telemetry/logger';
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {
     ActionRowBuilder,
     ModalBuilder,

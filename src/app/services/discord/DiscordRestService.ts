@@ -1,5 +1,5 @@
 import config from '@/config';
-import {tap} from '@/util/tap';
+import {tap} from '@/util/misc/tap';
 import {REST} from 'discord.js';
 import {singleton} from 'tsyringe';
 

@@ -1,7 +1,8 @@
 import BaseEvent, {ClientEventsKeys, EventKeys} from '@/app/events/BaseEvent';
 import Logger from '@/telemetry/logger';
 import {Pipeline} from '@/util/Pipeline';
-import {container, injectable} from 'tsyringe';
+import {app} from '@/util/misc/misc';
+import {injectable} from 'tsyringe';
 
 @injectable()
 export default class EventHandler {
@@ -16,7 +17,7 @@ export default class EventHandler {
     ) {
         try {
             // prettier-ignore
-            const pipeline = container.resolve<Pipeline<ClientEventsKeys>>(
+            const pipeline = app<Pipeline<ClientEventsKeys>>(
                 Pipeline
             );
 

@@ -1,0 +1,176 @@
+{
+    "type": "object",
+    "properties": {
+        "page": {"type": "number"},
+        "guild": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string"},
+                "icon": {"type": "string"},
+                "name": {"type": "string"},
+                "premium": {"type": "boolean"},
+                "allow_join": {"type": "boolean"},
+                "leaderboard_url": {"type": "string"},
+                "invite_leaderboard": {"type": "boolean"},
+                "commands_prefix": {},
+                "application_commands_enabled": {"type": "boolean"}
+            },
+            "required": [
+                "id",
+                "icon",
+                "name",
+                "premium",
+                "allow_join",
+                "leaderboard_url",
+                "invite_leaderboard",
+                "application_commands_enabled"
+            ]
+        },
+        "xp_rate": {"type": "number"},
+        "xp_per_message": {
+            "type": "array",
+            "items": {"type": "number"}
+        },
+        "role_rewards": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "rank": {"type": "number"},
+                    "role": {
+                        "type": "object",
+                        "properties": {
+                            "color": {"type": "number"},
+                            "hoist": {"type": "boolean"},
+                            "icon": {"type": "string"},
+                            "id": {"type": "string"},
+                            "managed": {"type": "boolean"},
+                            "mentionable": {"type": "boolean"},
+                            "name": {"type": "string"},
+                            "permissions": {"type": "number"},
+                            "position": {"type": "number"},
+                            "unicode_emoji": {"type": "string"}
+                        },
+                        "required": [
+                            "color",
+                            "hoist",
+                            "icon",
+                            "id",
+                            "managed",
+                            "mentionable",
+                            "name",
+                            "permissions",
+                            "position",
+                            "unicode_emoji"
+                        ]
+                    }
+                },
+                "required": ["rank", "role"]
+            }
+        },
+        "monetize_options": {
+            "type": "object",
+            "properties": {
+                "display_plans": {"type": "boolean"},
+                "showcase_subscribers": {"type": "boolean"}
+            },
+            "required": ["display_plans", "showcase_subscribers"]
+        },
+        "players": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "avatar": {"type": ["string", "null"]},
+                    "discriminator": {"type": "string"},
+                    "guild_id": {"type": "string"},
+                    "id": {"type": "string"},
+                    "message_count": {"type": "number"},
+                    "monetize_xp_boost": {"type": "number"},
+                    "username": {"type": "string"},
+                    "xp": {"type": "number"},
+                    "is_monetize_subscriber": {"type": "boolean"},
+                    "detailed_xp": {
+                        "type": "array",
+                        "items": {"type": "number"}
+                    },
+                    "level": {"type": "number"}
+                },
+                "required": [
+                    "discriminator",
+                    "guild_id",
+                    "id",
+                    "message_count",
+                    "monetize_xp_boost",
+                    "username",
+                    "xp",
+                    "is_monetize_subscriber",
+                    "detailed_xp",
+                    "level"
+                ]
+            }
+        },
+        "player": {
+            "type": "object",
+            "properties": {
+                "avatar": {"type": "string"},
+                "discriminator": {"type": "string"},
+                "guild_id": {"type": "string"},
+                "id": {"type": "string"},
+                "message_count": {"type": "number"},
+                "monetize_xp_boost": {"type": "number"},
+                "username": {"type": "string"},
+                "xp": {"type": "number"},
+                "is_monetize_subscriber": {"type": "boolean"},
+                "detailed_xp": {
+                    "type": "array",
+                    "items": {"type": "number"}
+                },
+                "level": {"type": "number"},
+                "rank": {"type": "number"}
+            },
+            "required": [
+                "avatar",
+                "discriminator",
+                "guild_id",
+                "id",
+                "message_count",
+                "monetize_xp_boost",
+                "username",
+                "xp",
+                "is_monetize_subscriber",
+                "detailed_xp",
+                "level",
+                "rank"
+            ]
+        },
+        "banner_url": {"type": ["string", "null"]},
+        "is_member": {"type": "boolean"},
+        "admin": {"type": "boolean"},
+        "user_guild_settings": {
+            "type": "object",
+            "properties": {
+                "guild_id": {"type": "string"},
+                "use_default_rank_card": {"type": "boolean"},
+                "user_id": {"type": "string"}
+            },
+            "required": ["guild_id", "use_default_rank_card", "user_id"]
+        },
+        "country": {"type": "string"}
+    },
+    "required": [
+        "page",
+        "guild",
+        "xp_rate",
+        "xp_per_message",
+        "role_rewards",
+        "monetize_options",
+        "players",
+        "player",
+        "banner_url",
+        "is_member",
+        "admin",
+        "user_guild_settings",
+        "country"
+    ]
+}
