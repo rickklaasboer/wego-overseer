@@ -1,6 +1,6 @@
 {
     "name": "wego-overseer",
-    "version": "3.3.19",
+    "version": "3.4.0-preview.1",
     "description": "",
     "main": "dist/app.js",
     "scripts": {
