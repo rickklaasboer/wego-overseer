@@ -1,4 +1,4 @@
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import {GuildMember} from 'discord.js';
 import {QueryType} from 'discord-player';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';

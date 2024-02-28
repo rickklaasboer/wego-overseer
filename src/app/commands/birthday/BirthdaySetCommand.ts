@@ -1,10 +1,10 @@
 import Logger from '@/telemetry/logger';
-import {isAdmin} from '@/util/discord';
-import {trans} from '@/util/localization';
-import {pad} from '@/util/misc';
+import {isAdmin} from '@/util/misc/discord';
+import {trans} from '@/util/localization/localization';
+import {pad} from '@/util/misc/misc';
 import dayjs, {Dayjs} from 'dayjs';
 import {EmbedBuilder, User} from 'discord.js';
-import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import {createNextOccuranceTimestamp} from '@/util/formatting/timestamp';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BindUserToGuild from '@/app/middleware/commands/BindUserToGuild';

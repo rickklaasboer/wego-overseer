@@ -1,6 +1,6 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
-import {isAdmin} from '@/util/discord';
+import {isAdmin} from '@/util/misc/discord';
 import {AuthorizationError} from '@/util/errors/AuthorizationError';
 import {injectable} from 'tsyringe';
 

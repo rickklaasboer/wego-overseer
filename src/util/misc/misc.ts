@@ -57,3 +57,10 @@ export function app<T>(resolvable: Constructable<T>): T {
 export function noop() {
     return null;
 }
+
+/**
+ * Transform number to human readable number
+ */
+export function toHumandReadableNumber(num: number): string {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}

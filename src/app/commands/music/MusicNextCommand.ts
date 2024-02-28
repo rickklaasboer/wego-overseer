@@ -1,4 +1,4 @@
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';

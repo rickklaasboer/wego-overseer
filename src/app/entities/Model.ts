@@ -1,4 +1,4 @@
-import {toMysqlDateTime} from '@/util/mysql';
+import {toMysqlDateTime} from '@/util/misc/mysql';
 import {Model as ObjectionModel} from 'objection';
 
 export default class Model extends ObjectionModel {

@@ -3,6 +3,8 @@ import {I18n, TranslateOptions} from 'i18n';
 
 let instance: Maybe<I18n> = null;
 
+type Replaceable = string | number | boolean | null | undefined;
+
 /**
  * Set localization instance
  */
@@ -12,22 +14,22 @@ export function setLocalizationInstance(obj: I18n): void {
 
 export function t(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: Replaceable[]
 ): string {
     if (!instance) return phrase.toString();
-    return instance.__(phrase, ...replace);
+    return instance.__(phrase, ...replace.map(String));
 }
 
 export function trans(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: Replaceable[]
 ): string {
     return t(phrase, ...replace);
 }
 
 export function translate(
     phrase: string | TranslateOptions,
-    ...replace: string[]
+    ...replace: Replaceable[]
 ): string {
     return t(phrase, ...replace);
 }

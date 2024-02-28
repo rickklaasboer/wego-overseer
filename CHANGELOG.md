@@ -1,3 +1,25 @@
+# [3.4.0-preview.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.19...v3.4.0-preview.1) (2024-02-25)
+
+
+### Bug Fixes
+
+* **experience:** add pagination to experience leaderboard command ([1d05c6d](https://github.com/rickklaasboer/wego-overseer/commit/1d05c6d9a8ec2c4d2f9dbb953e830dce76e5005b))
+* **experience:** display xp amounts in human readable format ([a91b69f](https://github.com/rickklaasboer/wego-overseer/commit/a91b69f42ebd2488852d7020ca4a7e2e513aa728))
+
+
+### Features
+
+* create skeleton for experience system ([c1471f0](https://github.com/rickklaasboer/wego-overseer/commit/c1471f0d1e61b9e0a002929530e452d38f57dff1))
+* **experience:** actually implement reset confirmation modal ([969205f](https://github.com/rickklaasboer/wego-overseer/commit/969205f029a4117d8e79434c7d346fb84c711dab))
+* **experience:** create experience add command ([ff4e7ed](https://github.com/rickklaasboer/wego-overseer/commit/ff4e7ed535020e335ab00c05f18ce4881c538a10))
+* **experience:** create experience get command ([9e0e613](https://github.com/rickklaasboer/wego-overseer/commit/9e0e613d5fd9814ba20adbca554ea7cf791becd8))
+* **experience:** create experience import command ([85ce9b2](https://github.com/rickklaasboer/wego-overseer/commit/85ce9b2f8eb7a59248710d75f5f3c06d23117fa7))
+* **experience:** create experience leaderboard command ([9e37661](https://github.com/rickklaasboer/wego-overseer/commit/9e37661794234b4e002a6b7d5e6e16a466d45dbf))
+* **experience:** create experience level up command & event ([7cc0db5](https://github.com/rickklaasboer/wego-overseer/commit/7cc0db5a7c459182c68242e085f199db54e6984d))
+* **experience:** create experience remove command ([872bbd3](https://github.com/rickklaasboer/wego-overseer/commit/872bbd3ff22880300c3ff821663aa3f4adc72758))
+* **experience:** create experience reset command ([378bd94](https://github.com/rickklaasboer/wego-overseer/commit/378bd94eb354a85f26c726d913e0d5020cff4a32))
+* **experience:** create experience set command ([1c00a06](https://github.com/rickklaasboer/wego-overseer/commit/1c00a06b5992a52f285c05852d0a5add7e82bbac))
+
 ## [3.3.19](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.18...v3.3.19) (2024-02-23)
 
 

@@ -1,6 +1,6 @@
 import Guild from '@/app/entities/Guild';
 import User from '@/app/entities/User';
-import {createNextOccuranceTimestamp} from '@/util/timestamp';
+import {createNextOccuranceTimestamp} from '@/util/formatting/timestamp';
 import dayjs from 'dayjs';
 
 /**

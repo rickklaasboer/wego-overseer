@@ -1,8 +1,8 @@
 import Poll from '@/app/entities/Poll';
-import StringBuilder from '@/util/StringBuilder';
-import {wrapInCodeblock} from '@/util/discord';
-import {trans} from '@/util/localization';
-import {tableWithHead} from '@/util/table';
+import StringBuilder from '@/util/formatting/StringBuilder';
+import {wrapInCodeblock} from '@/util/misc/discord';
+import {trans} from '@/util/localization/localization';
+import {tableWithHead} from '@/util/formatting/table';
 import {EmbedBuilder, EmbedFooterOptions} from 'discord.js';
 import {
     ChatInputCommandInteraction,

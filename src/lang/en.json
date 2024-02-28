@@ -191,7 +191,34 @@
             }
         },
         "version": {
-            "message": "This server is running Wego Overseer version `v%s` using Node version `%s`. Wego Overseer is running %s version(s) behind, latest version is `%s`."
+            "message": "This server is running Wego Overseer version v%s using Node %s. You are %s version(s) behind, latest version is %s."
+        },
+        "experience": {
+            "add": {
+                "success": "Done! %s has been given %s XP! They now have a total of %s XP."
+            },
+            "reset": {
+                "success": "Done! %s's experience has been reset.",
+                "username_mismatch": "Whoops! Usernames do not match, please try again."
+            },
+            "set": {
+                "success": "Done! %s's experience has been set to %s XP."
+            },
+            "remove": {
+                "success": "Done! %s experience has been removed. %s's now has a total of %s XP."
+            },
+            "common": {
+                "not_admin": "You must be an administrator to execute this command."
+            },
+            "get": {
+                "embed": {
+                    "title": "%s's experience",
+                    "description": "%s is level %s, has a total of %s XP and is position #%s on the leaderboard. They need %s XP to reach the next level."
+                }
+            },
+            "set_announcement_channel": {
+                "success": "Done! Set <#%s> as the level up announcement channel."
+            }
         }
     },
     "events": {
@@ -203,6 +230,9 @@
         },
         "fix_embed": {
             "msg": "Heya! I found an embed that might not work with Discord, so I fixed it for you! %s"
+        },
+        "experience": {
+            "level_up": "Congratulations <@%s>! You have reached level %s!"
         }
     },
     "jobs": {

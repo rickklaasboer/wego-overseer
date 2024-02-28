@@ -3,9 +3,9 @@ import 'dotenv/config';
 import {Model} from 'objection';
 import Bot from '@/Bot';
 import KnexService from '@/app/services/KnexService';
-import {setLocalizationInstance} from '@/util/localization';
+import {setLocalizationInstance} from '@/util/localization/localization';
 import LocalizationService from '@/app/services/LocalizationService';
-import {app} from '@/util/misc';
+import {app} from '@/util/misc/misc';
 
 const bot = app(Bot);
 

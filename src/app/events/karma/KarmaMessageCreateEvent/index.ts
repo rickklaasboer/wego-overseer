@@ -1,5 +1,5 @@
 import Logger from '@/telemetry/logger';
-import {containsUrl, isEmpty} from '@/util/misc';
+import {containsUrl, isEmpty} from '@/util/misc/misc';
 import {Collection, Message} from 'discord.js';
 import BaseEvent from '@/app/events/BaseEvent';
 

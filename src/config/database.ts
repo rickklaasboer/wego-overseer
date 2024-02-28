@@ -1,4 +1,4 @@
-import {getEnvString} from '@/util/environment';
+import {getEnvString} from '@/util/misc/environment';
 
 export default {
     client: getEnvString('DB_CLIENT', ''),

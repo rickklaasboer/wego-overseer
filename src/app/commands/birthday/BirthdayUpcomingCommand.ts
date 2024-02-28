@@ -1,4 +1,4 @@
-import {trans} from '@/util/localization';
+import {trans} from '@/util/localization/localization';
 import dayjs from 'dayjs';
 import {EmbedBuilder} from 'discord.js';
 import table from 'text-table';
@@ -8,7 +8,7 @@ import EnsureGuildIsAvailable from '@/app/middleware/commands/EnsureGuildIsAvail
 import GuildRepository from '@/app/repositories/GuildRepository';
 import {injectable} from 'tsyringe';
 import Logger from '@/telemetry/logger';
-import {sortUsersByBirthday, createBirthdayRows} from '@/util/birthday';
+import {sortUsersByBirthday, createBirthdayRows} from '@/util/misc/birthday';
 
 @injectable()
 export default class BirthdayUpcomingCommand extends BaseInternalCommand {

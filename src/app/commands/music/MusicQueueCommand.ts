@@ -1,7 +1,7 @@
-import {wrapInCodeblock} from '@/util/discord';
-import {trans} from '@/util/localization';
-import {tableWithHead} from '@/util/table';
-import {tap} from '@/util/tap';
+import {wrapInCodeblock} from '@/util/misc/discord';
+import {trans} from '@/util/localization/localization';
+import {tableWithHead} from '@/util/formatting/table';
+import {tap} from '@/util/misc/tap';
 import {
     ActionRowBuilder,
     ButtonBuilder,
