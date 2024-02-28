@@ -29,7 +29,7 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
 
             // Super 100% random chance if the event should fire or not
             // this is to prevent spam
-            const shouldFire = randomNumber(1, 10) === 7;
+            const shouldFire = randomNumber(1, 20) === 13;
             if (!(shouldFire && word && word.length >= 5)) return;
 
             await message.reply(trans('events.banger.msg', word));
