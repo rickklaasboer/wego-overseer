@@ -1,3 +1,14 @@
+## [3.4.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.0...v3.4.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.515.0 to 3.523.0 ([3849848](https://github.com/rickklaasboer/wego-overseer/commit/3849848030f184bb5db7885447021a5ee555eed0))
+* **deps:** bump discord-api-types from 0.37.70 to 0.37.71 ([e7ffd9d](https://github.com/rickklaasboer/wego-overseer/commit/e7ffd9dbac86128f74b8d68ddb26b60906e7fead))
+* **deps:** bump eslint from 8.56.0 to 8.57.0 ([adf3149](https://github.com/rickklaasboer/wego-overseer/commit/adf31493a61286eff05839ff242af8e09353f0f1))
+* **deps:** bump mysql2 from 3.9.1 to 3.9.2 ([13fe93f](https://github.com/rickklaasboer/wego-overseer/commit/13fe93f84a758eae272ca4d6e755556c7fd8d8c4))
+* **deps:** bump nodemon from 3.0.3 to 3.1.0 ([01ac174](https://github.com/rickklaasboer/wego-overseer/commit/01ac174cd78b4c70f07fa063ff960544f45104eb))
+
 # [3.4.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.3.19...v3.4.0) (2024-02-28)
 
 
