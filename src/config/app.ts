@@ -40,6 +40,7 @@ import LevelUpEvent from '@/app/events/experience/LevelUpEvent';
 import ExperienceCommand from '@/app/commands/experience/ExperienceCommand';
 import ConfirmResetExperienceEvent from '@/app/events/experience/ConfirmResetExperienceEvent';
 import PollCommand from '@/app/commands/poll/PollCommand';
+import ReceiveVoteEvent from '@/app/events/poll/ReceiveVoteEvent';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -92,6 +93,7 @@ export default {
         ['receiveexperience', ReceiveExperienceEvent],
         ['levelup', LevelUpEvent],
         ['confirmresetexperience', ConfirmResetExperienceEvent],
+        ['receivevote', ReceiveVoteEvent],
     ]),
 
     /**
