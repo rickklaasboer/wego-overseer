@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.1...v3.4.2) (2024-03-01)
+
+
+### Bug Fixes
+
+* register receive poll event ([386bca3](https://github.com/rickklaasboer/wego-overseer/commit/386bca362652469a2ea379f85a551cf53451ea01))
+
 ## [3.4.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.0...v3.4.1) (2024-02-29)
 
 
