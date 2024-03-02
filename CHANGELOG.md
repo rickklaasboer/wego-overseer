@@ -1,3 +1,10 @@
+## [3.4.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.2...v3.4.3) (2024-03-02)
+
+
+### Bug Fixes
+
+* make sure users are synchronised by xp events ([d78330b](https://github.com/rickklaasboer/wego-overseer/commit/d78330b1354ca5d1b3aa8727ea4be08adb34a10e))
+
 ## [3.4.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.1...v3.4.2) (2024-03-01)
 
 
