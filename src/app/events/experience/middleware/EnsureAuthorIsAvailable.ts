@@ -18,12 +18,16 @@ export default class EnsureAuthorIsAvailable<
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
         const [message] = ctx;
-        const userId = message.author.id;
-        const user = await this.userRepository.getById(userId);
+        const user = await this.userRepository.getById(message.author.id);
 
         if (!user) {
             await this.userRepository.create({
-                id: userId,
+                id: message.author.id,
+                username: message.author.username,
+                avatar: message.author.avatar ?? '',
+            });
+        } else {
+            await this.userRepository.update(user.id, {
                 username: message.author.username,
                 avatar: message.author.avatar ?? '',
             });

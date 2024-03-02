@@ -69,6 +69,14 @@ export default class ExperienceImportCommand extends BaseInternalCommand {
                     username: player.username,
                     avatar: player.avatar,
                 });
+
+                // Update the user's username and avatar
+                // in case they have changed
+                this.userRepository.update(user.id, {
+                    username: player.username,
+                    avatar: player.avatar,
+                });
+
                 const exists = await this.guildUserRepository.exists(
                     guildId,
                     user.id,
