@@ -25,7 +25,7 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
             // Terminate if user is a bot
             if (message.author.bot) return;
 
-            const word = this.getWord(message.content);
+            const word = this.getLastWordEndingWithEr(message.content);
             if (!word || word.length < 5) return;
 
             const dominance = await this.getEnglishDominance(message.content);
@@ -45,7 +45,7 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
     /**
      * Get the first word that ends with 'er'
      */
-    private getWord(input: string): Maybe<string> {
+    private getLastWordEndingWithEr(input: string): Maybe<string> {
         // Split string into words
         const text = input
             .toLowerCase()
