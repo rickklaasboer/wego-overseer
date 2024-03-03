@@ -12,7 +12,7 @@ export default class RedisService {
     public async getRedis(): Promise<RedisClientType> {
         if (!this.redis) {
             this.redis = Redis.createClient({});
-            this.redis.connect();
+            await this.redis.connect();
         }
 
         return this.redis;
