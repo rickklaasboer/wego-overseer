@@ -14,6 +14,7 @@ import ChannelRepository from '@/app/repositories/ChannelRepository';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
 import Logger from '@/telemetry/logger';
 import {injectable} from 'tsyringe';
+import config from '@/config';
 
 @injectable()
 export default class KarmaRemoveDownvoteEvent
@@ -45,7 +46,7 @@ export default class KarmaRemoveDownvoteEvent
     ): Promise<void> {
         try {
             if (user.bot) return;
-            if (reaction.emoji.name !== 'downvote') return;
+            if (reaction.emoji.name !== config.karma.downvote) return;
 
             const channel = await this.channelRepository.getById(
                 reaction.message.channel.id,

@@ -38,10 +38,14 @@ export default {
     knex: {
         enableLogger: getEnvBool('ENABLE_KNEX_LOGGER', false),
     },
-    karmagraph: {
-        width: getEnvInt('KARMA_GRAPH_WIDTH', 500),
-        height: getEnvInt('KARMA_GRAPH_HEIGHT', 300),
-        url: getEnvString('KARMA_GRAPH_CHART_API_URL', ''),
+    karma: {
+        graph: {
+            width: getEnvInt('KARMA_GRAPH_WIDTH', 500),
+            height: getEnvInt('KARMA_GRAPH_HEIGHT', 300),
+            apiUrl: getEnvString('KARMA_GRAPH_CHART_API_URL', ''),
+        },
+        upvote: getEnvString('KARMA_UPVOTE_EMOJI_NAME', 'upvote'),
+        downvote: getEnvString('KARMA_DOWNVOTE_EMOJI_NAME', 'downvote'),
     },
     github: {
         apiToken: getEnvString('GITHUB_API_TOKEN', ''),

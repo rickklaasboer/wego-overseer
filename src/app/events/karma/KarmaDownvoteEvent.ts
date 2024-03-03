@@ -17,6 +17,7 @@ import ChannelRepository from '@/app/repositories/ChannelRepository';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
 import FetchMessageFromReaction from '@/app/middleware/events/FetchMessageFromReaction';
 import {injectable} from 'tsyringe';
+import config from '@/config';
 
 @injectable()
 export default class KarmaDownvoteEvent
@@ -48,7 +49,7 @@ export default class KarmaDownvoteEvent
     ): Promise<void> {
         try {
             if (user.bot) return;
-            if (reaction.emoji.name !== 'downvote') return;
+            if (reaction.emoji.name !== config.karma.downvote) return;
 
             const channel = await this.channelRepository.getById(
                 reaction.message.channel.id,
@@ -92,7 +93,7 @@ export default class KarmaDownvoteEvent
         user: User | PartialUser,
     ): Promise<void> {
         const upvote = message.guild?.emojis.cache.find((e) => {
-            return e.name === 'upvote';
+            return e.name === config.karma.upvote;
         });
 
         // Remove upvotes from user if any

@@ -8,6 +8,7 @@ import {injectable} from 'tsyringe';
 import EnsureGuildIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureGuildIsAvailable';
 import EnsureChannelIsAvailable from '@/app/events/karma/KarmaMessageCreateEvent/middleware/EnsureChannelIsAvailable';
 import Channel from '@/app/entities/Channel';
+import config from '@/config';
 
 @injectable()
 export default class KarmaMessageCreateEvent
@@ -41,7 +42,11 @@ export default class KarmaMessageCreateEvent
             if (this.shouldCancel(message, channel)) return;
 
             const emojis = message.guild?.emojis.cache
-                .filter((e) => e.name === 'upvote' || e.name === 'downvote')
+                .filter(
+                    (e) =>
+                        e.name === config.karma.upvote ||
+                        e.name === config.karma.downvote,
+                )
                 .sort((a, b) => b.name?.localeCompare(a.name ?? '') ?? 0);
 
             if ((emojis?.size ?? 0) < 2) {
