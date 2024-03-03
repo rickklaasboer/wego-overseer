@@ -6,6 +6,12 @@ import KnexService from '@/app/services/KnexService';
 import {setLocalizationInstance} from '@/util/localization/localization';
 import LocalizationService from '@/app/services/LocalizationService';
 import {app} from '@/util/misc/misc';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 const bot = app(Bot);
 
