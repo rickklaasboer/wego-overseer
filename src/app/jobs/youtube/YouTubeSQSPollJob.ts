@@ -1,6 +1,5 @@
 import Logger from '@/telemetry/logger';
 import {
-    SQSClient,
     ReceiveMessageCommand,
     DeleteMessageCommand,
     ReceiveMessageCommandOutput,
@@ -13,21 +12,16 @@ import BaseJob from '@/app/jobs/BaseJob';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import {injectable} from 'tsyringe';
 import config from '@/config';
+import SQSService from '@/app/services/aws/SQSService';
 
 @injectable()
 export default class YouTubeSQSPollJob implements BaseJob {
     public name = 'YouTubeSQSPollJob';
     public schedule = '* * * * *';
-    private sqs = new SQSClient({
-        region: 'eu-west-1',
-        credentials: {
-            accessKeyId: config.aws.accessKeyId,
-            secretAccessKey: config.aws.secretAccessKey,
-        },
-    });
 
     constructor(
         private clientService: DiscordClientService,
+        private sqsService: SQSService,
         private logger: Logger,
     ) {}
 
@@ -73,12 +67,13 @@ export default class YouTubeSQSPollJob implements BaseJob {
      * Get the messages from the SQS queue
      */
     private async getMessages(): Promise<ReceiveMessageCommandOutput> {
+        const sqs = this.sqsService.getSqsClient();
         const receiveCmd = new ReceiveMessageCommand({
             QueueUrl: config.youtube.sqsQueueUrl,
             MaxNumberOfMessages: 10,
         });
 
-        return await this.sqs.send(receiveCmd);
+        return await sqs.send(receiveCmd);
     }
 
     /**
@@ -87,12 +82,13 @@ export default class YouTubeSQSPollJob implements BaseJob {
     private async deleteMessage(
         receiptHandle: string | undefined,
     ): Promise<void> {
+        const sqs = this.sqsService.getSqsClient();
         const deleteCmd = new DeleteMessageCommand({
             QueueUrl: config.youtube.sqsQueueUrl,
             ReceiptHandle: receiptHandle,
         });
 
-        await this.sqs.send(deleteCmd);
+        await sqs.send(deleteCmd);
     }
 
     /**
