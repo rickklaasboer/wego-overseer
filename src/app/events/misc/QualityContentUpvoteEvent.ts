@@ -12,6 +12,7 @@ import {injectable} from 'tsyringe';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import Logger from '@/telemetry/logger';
 import FetchPartialReaction from '@/app/middleware/events/FetchPartialReaction';
+import dayjs from 'dayjs';
 
 @injectable()
 export default class QualityContentUpvoteEvent
@@ -94,8 +95,8 @@ export default class QualityContentUpvoteEvent
      * Get the upvote emoji
      */
     private getEmoji(reaction: MessageReaction, name: string): GuildEmoji {
-        const result = reaction.client.emojis.cache.find(
-            (emoji) => emoji.name?.toLowerCase().includes(name),
+        const result = reaction.client.emojis.cache.find((emoji) =>
+            emoji.name?.toLowerCase().includes(name),
         );
 
         if (!result) {
@@ -128,6 +129,10 @@ export default class QualityContentUpvoteEvent
      * Create the embed for the message
      */
     private createEmbed(msg: Message<boolean> | PartialMessage): EmbedBuilder {
+        const elapsed = dayjs
+            .duration(dayjs().diff(dayjs(msg.createdAt)))
+            .humanize();
+
         return new EmbedBuilder()
             .setColor(0x202225)
             .setAuthor({
@@ -143,6 +148,8 @@ export default class QualityContentUpvoteEvent
             ])
             .setImage(msg.attachments.first()?.url ?? null)
             .setTimestamp(msg.createdAt)
-            .setFooter({text: `Message ID: ${msg.id}`});
+            .setFooter({
+                text: `Message ID: ${msg.id} — Time elapsed since posting: ${elapsed}`,
+            });
     }
 }
