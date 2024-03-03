@@ -30,6 +30,9 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
 
             const dominance = await this.getEnglishDominance(message.content);
             if (dominance < 0.75) {
+                this.logger.debug(
+                    `Ignored non-English message: ${message.content}, because dominance is ${dominance} which is below the threshold of 0.75`,
+                );
                 return;
             }
 
