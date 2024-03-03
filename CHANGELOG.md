@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.1...v3.6.2) (2024-03-03)
+
+
+### Bug Fixes
+
+* make redis connection details configurable ([f9e2dee](https://github.com/rickklaasboer/wego-overseer/commit/f9e2deedf73b4a7daa4984b2b779ec3003f72a7c))
+
 ## [3.6.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.0...v3.6.1) (2024-03-03)
 
 
