@@ -1,3 +1,10 @@
+## [3.5.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.1...v3.5.2) (2024-03-03)
+
+
+### Bug Fixes
+
+* use comprehend to detect dominant language before firing bang event ([d0d409f](https://github.com/rickklaasboer/wego-overseer/commit/d0d409f67c3d0a4d099a81f1b5166d559355ffee))
+
 ## [3.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.0...v3.5.1) (2024-03-03)
 
 
