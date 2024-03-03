@@ -18,11 +18,12 @@ export default {
         cookie: getEnvString('AOC_SESSION_COOKIE', ''),
         leaderboardUrl: getEnvString('AOC_LEADERBOARD_URL', ''),
     },
-    kanIkEenKorteBroekAanApiUrl: getEnvString(
-        'KANIKEENKORTEBROEKAAN_API_URL',
-        '',
-    ),
-    duoStufiApiUrl: getEnvString('DUO_STUFI_API_URL', ''),
+    kanIkEenKorteBroekAan: {
+        apiUrl: getEnvString('KANIKEENKORTEBROEKAAN_API_URL', ''),
+    },
+    duo: {
+        apiUrl: getEnvString('DUO_STUFI_API_URL', ''),
+    },
     aws: {
         accessKeyId: getEnvString('AWS_ACCESS_KEY_ID', ''),
         secretAccessKey: getEnvString('AWS_SECRET_ACCESS_KEY', ''),
