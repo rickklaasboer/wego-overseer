@@ -1,3 +1,15 @@
+# [3.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.3...v3.5.0) (2024-03-03)
+
+
+### Bug Fixes
+
+* await redis connect call ([c0623d7](https://github.com/rickklaasboer/wego-overseer/commit/c0623d7f88ed872e20b37448ce72e103c13096d6))
+
+
+### Features
+
+* introduce caching layer making use of redis ([bd0e6cb](https://github.com/rickklaasboer/wego-overseer/commit/bd0e6cb762cbfc44f1c9016d77fc14966b14fe1c))
+
 ## [3.4.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.2...v3.4.3) (2024-03-02)
 
 
