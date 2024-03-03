@@ -1,16 +1,21 @@
-import {randomNumber} from '@/util/misc/karma';
 import {trans} from '@/util/localization/localization';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
 import Logger from '@/telemetry/logger';
+import ComprehendService from '@/app/services/aws/ComprehendService';
+import {DetectDominantLanguageCommand} from '@aws-sdk/client-comprehend';
+import {Maybe} from '@/types/util';
 
 @injectable()
 export default class BangerEvent implements BaseEvent<'messageCreate'> {
     public name = 'BangerEvent';
     public event = 'messageCreate' as const;
 
-    constructor(private logger: Logger) {}
+    constructor(
+        private comprehendService: ComprehendService,
+        private logger: Logger,
+    ) {}
 
     /**
      * Run the event
@@ -20,21 +25,47 @@ export default class BangerEvent implements BaseEvent<'messageCreate'> {
             // Terminate if user is a bot
             if (message.author.bot) return;
 
-            // Split string into words
-            const text = message.content
-                .toLowerCase()
-                .replace(/\b(\w)/g, (s) => s.toUpperCase());
-            const words = text.split(' ');
-            const word = words.find((word) => word.endsWith('er'));
+            const word = this.getLastWordEndingWithEr(message.content);
+            if (!word || word.length < 5) return;
 
-            // Super 100% random chance if the event should fire or not
-            // this is to prevent spam
-            const shouldFire = randomNumber(1, 20) === 13;
-            if (!(shouldFire && word && word.length >= 5)) return;
+            const dominance = await this.getEnglishDominance(message.content);
+            if (dominance < 0.75) {
+                this.logger.debug(
+                    `Ignored non-English message: ${message.content}, because dominance is ${dominance} which is below the threshold of 0.75`,
+                );
+                return;
+            }
 
             await message.reply(trans('events.banger.msg', word));
         } catch (err) {
             this.logger.fatal('Failed to run BangerEvent', err);
         }
+    }
+
+    /**
+     * Get the first word that ends with 'er'
+     */
+    private getLastWordEndingWithEr(input: string): Maybe<string> {
+        // Split string into words
+        const text = input
+            .toLowerCase()
+            .replace(/\b(\w)/g, (s) => s.toUpperCase());
+        const words = text.split(' ');
+        return words.find((word) => word.endsWith('er'));
+    }
+
+    /**
+     * Get the dominance of English in input
+     */
+    private async getEnglishDominance(input: string): Promise<number> {
+        const client = this.comprehendService.getComprehendClient();
+        const {Languages} = await client.send(
+            new DetectDominantLanguageCommand({Text: input}),
+        );
+
+        return (
+            Languages?.find(({LanguageCode}) => LanguageCode === 'en')?.Score ??
+            0
+        );
     }
 }
