@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.0...v3.6.1) (2024-03-03)
+
+
+### Bug Fixes
+
+* version command translation was reverted by merge whoopsies ([a3d6d58](https://github.com/rickklaasboer/wego-overseer/commit/a3d6d580c52c159791494411c4ae6c039a09ed04))
+
 # [3.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.2...v3.6.0) (2024-03-03)
 
 
