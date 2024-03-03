@@ -1,3 +1,11 @@
+# [3.6.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.2...v3.6.0) (2024-03-03)
+
+
+### Features
+
+* add elapsed time for quality content ([8ed6b77](https://github.com/rickklaasboer/wego-overseer/commit/8ed6b7728b8c01b0b07d463028214cc4047e1c5a))
+* add elapsed time for trash content ([37cb3e6](https://github.com/rickklaasboer/wego-overseer/commit/37cb3e6ef18c205fd6b6571284b39cafdadbab16))
+
 ## [3.5.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.1...v3.5.2) (2024-03-03)
 
 
