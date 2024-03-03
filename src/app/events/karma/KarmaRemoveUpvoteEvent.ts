@@ -14,6 +14,7 @@ import {
     User,
     PartialUser,
 } from 'discord.js';
+import config from '@/config';
 
 @injectable()
 export default class KarmaRemoveUpvoteEvent
@@ -45,7 +46,7 @@ export default class KarmaRemoveUpvoteEvent
     ): Promise<void> {
         try {
             if (user.bot) return;
-            if (reaction.emoji.name !== 'upvote') return;
+            if (reaction.emoji.name !== config.karma.upvote) return;
 
             const channel = await this.channelRepository.getById(
                 reaction.message.channel.id,
