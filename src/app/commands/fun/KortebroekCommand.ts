@@ -36,7 +36,7 @@ export default class KortebroekCommand implements BaseCommand {
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
             const request = await fetch(
-                `${config.kanIkEenKorteBroekAanApiUrl}/cani`,
+                `${config.kanIkEenKorteBroekAan.apiUrl}/cani`,
             );
 
             const {data} =

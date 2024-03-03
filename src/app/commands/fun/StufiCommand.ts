@@ -30,7 +30,7 @@ export default class StufiCommand implements BaseCommand {
      */
     public async execute(interaction: DefaultInteraction): Promise<void> {
         try {
-            const request = await fetch(`${config.duoStufiApiUrl}/stufi`);
+            const request = await fetch(`${config.duo.apiUrl}/stufi`);
             const {data} = (await request.json()) as DuoApiResponse;
 
             await interaction.reply(
