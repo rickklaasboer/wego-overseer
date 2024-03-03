@@ -1,3 +1,4 @@
+import Cache from '@/app/cache/Cache';
 import Karma from '@/app/entities/Karma';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import KnexService from '@/app/services/KnexService';
@@ -11,30 +12,47 @@ type LeaderboardRow = {
 
 @injectable()
 export default class KarmaRepository implements BaseRepository<Karma> {
-    constructor(private knexService: KnexService) {}
+    constructor(
+        private knexService: KnexService,
+        private cache: Cache,
+    ) {}
 
     /**
      * Get karma by ID
      */
     public async getById(id: PrimaryKey): Promise<Maybe<Karma>> {
-        const result = await Karma.query().findById(id);
-        return result;
+        return this.cache.remember(['karma', id], 600, async () => {
+            return await Karma.query().findById(id);
+        });
     }
 
     /**
-     * Check if karma exists
+     * Get karma by where condition
      */
-    public async exists(data: Partial<Karma>): Promise<[boolean, string]> {
-        const result = await Karma.query().where(data).first();
-        return [!!result, result?.id ?? ''];
+    public async getByWhere(condition: Partial<Karma>): Promise<Maybe<Karma>> {
+        return this.cache.remember(
+            ['karma', 'condition', JSON.stringify(condition)],
+            600,
+            async () => {
+                return await Karma.query().where(condition).first();
+            },
+        );
+    }
+
+    /**
+     * Check if a karma entry exists
+     */
+    public async exists(id: PrimaryKey): Promise<boolean> {
+        return (await this.getById(id)) != null;
     }
 
     /**
      * Get all karma
      */
     public async getAll(): Promise<Karma[]> {
-        const results = await Karma.query();
-        return results;
+        return this.cache.remember(['karma'], 600, async () => {
+            return await Karma.query();
+        });
     }
 
     /**
@@ -42,6 +60,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
      */
     public async create(data: Partial<Karma>): Promise<Karma> {
         const result = await Karma.query().insert(data);
+        await this.cache.forget(['karma']);
         return result;
     }
 
@@ -50,6 +69,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
      */
     public async update(id: PrimaryKey, data: Partial<Karma>): Promise<Karma> {
         const result = await Karma.query().updateAndFetchById(id, data);
+        await this.cache.forget(['karma', id]);
         return result;
     }
 
@@ -57,6 +77,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
      * Delete karma
      */
     public async delete(id: PrimaryKey): Promise<void> {
+        await this.cache.forget(['karma', id]);
         await Karma.query().deleteById(id);
     }
 
@@ -66,31 +87,39 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     public async getLeaderboard(
         guildId: PrimaryKey,
     ): Promise<LeaderboardRow[]> {
-        const results = (await this.knexService
-            .getKnex()
-            .table('karma')
-            .select('userId')
-            .sum('amount as totalReceivedKarma')
-            .where('guildId', '=', guildId)
-            .orderBy('totalReceivedKarma', 'desc')
-            .groupBy('userId')) as LeaderboardRow[];
-
-        return results;
+        return this.cache.remember(
+            ['karma', 'leaderboard', guildId],
+            600,
+            async () => {
+                return (await this.knexService
+                    .getKnex()
+                    .table('karma')
+                    .select('userId')
+                    .sum('amount as totalReceivedKarma')
+                    .where('guildId', '=', guildId)
+                    .orderBy('totalReceivedKarma', 'desc')
+                    .groupBy('userId')) as LeaderboardRow[];
+            },
+        );
     }
 
     /**
      * Get sum karma of user
      */
-    public async getKarmaSum(
+    public async getTotalKarma(
         guildId: PrimaryKey,
         userId: PrimaryKey,
     ): Promise<Karma & {totalKarma: number}> {
-        const result = (await Karma.query()
-            .where({guildId, userId})
-            .sum('amount as totalKarma')
-            .first()) as Karma & {totalKarma: number};
-
-        return result;
+        return this.cache.remember(
+            ['karma', 'totalKarma', guildId, userId],
+            600,
+            async () => {
+                return (await Karma.query()
+                    .where({guildId, userId})
+                    .sum('amount as totalKarma')
+                    .first()) as Karma & {totalKarma: number};
+            },
+        );
     }
 
     /**
@@ -104,6 +133,10 @@ export default class KarmaRepository implements BaseRepository<Karma> {
             .where('guildId', '=', guildId)
             .andWhere('userId', '=', userId)
             .delete();
+
+        await this.cache.forget(['karma', 'totalKarma', guildId, userId]);
+        await this.cache.forget(['karma', 'leaderboard', guildId]);
+        await this.cache.forget(['karma']);
 
         return rowsAffected;
     }

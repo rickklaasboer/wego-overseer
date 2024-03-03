@@ -109,12 +109,13 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
                 .limit(293)) as Row[];
 
             if (!clusters.length) {
-                await interaction.reply(
+                await interaction.followUp(
                     trans(
                         'commands.karma.graph.get.not_available',
                         user.username,
                     ),
                 );
+                return;
             }
 
             const response = await this.graphService.getGraph(

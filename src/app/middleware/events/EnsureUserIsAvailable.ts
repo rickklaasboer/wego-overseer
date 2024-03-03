@@ -19,9 +19,9 @@ export default class EnsureUserIsAvailable<
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
         const [, discordUser] = ctx;
-        const user = await this.userRepository.getById(discordUser.id);
+        const exists = await this.userRepository.exists(discordUser.id);
 
-        if (!(user instanceof User)) {
+        if (!exists) {
             await this.userRepository.create({
                 id: discordUser.id,
                 username: discordUser.username,

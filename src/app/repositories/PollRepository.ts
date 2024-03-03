@@ -20,6 +20,13 @@ export default class PollRepository implements BaseRepository<Poll> {
     }
 
     /**
+     * Check if a poll exists
+     */
+    public async exists(id: PrimaryKey): Promise<boolean> {
+        return (await this.getById(id)) != null;
+    }
+
+    /**
      * Create a new poll
      */
     public async create(data: Partial<Poll>): Promise<Poll> {

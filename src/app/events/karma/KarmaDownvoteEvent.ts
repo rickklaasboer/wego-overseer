@@ -68,11 +68,14 @@ export default class KarmaDownvoteEvent
                 userId: reaction.message.author?.id,
             };
 
-            const [exists, karmaId] = await this.karmaRepository.exists(values);
+            const karma = await this.karmaRepository.getByWhere(values);
             const amount = -randomNumber(1, 5);
 
-            if (exists) {
-                await this.karmaRepository.update(karmaId, {...values, amount});
+            if (karma) {
+                await this.karmaRepository.update(karma.id, {
+                    ...values,
+                    amount,
+                });
             } else {
                 await this.karmaRepository.create({...values, amount});
             }

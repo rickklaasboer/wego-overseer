@@ -1,3 +1,4 @@
+import Cache from '@/app/cache/Cache';
 import User from '@/app/entities/User';
 import BaseRepository, {PrimaryKey} from '@/app/repositories/BaseRepository';
 import {Maybe} from '@/types/util';
@@ -6,12 +7,15 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class UserRepository implements BaseRepository<User> {
+    constructor(private cache: Cache) {}
+
     /**
      * Get a user by its ID
      */
     public async getById(id: PrimaryKey): Promise<Maybe<User>> {
-        const result = await User.query().findById(id);
-        return result;
+        return this.cache.remember(['user', id], 600, async () => {
+            return await User.query().findById(id);
+        });
     }
 
     /**
@@ -21,43 +25,51 @@ export default class UserRepository implements BaseRepository<User> {
         id: PrimaryKey,
         guildId: PrimaryKey,
     ): Promise<Maybe<User>> {
-        const result = await User.query()
-            .joinRelated('guilds')
-            .where('guilds.id', guildId)
-            .findById(id);
+        return this.cache.remember(['user', id, guildId], 600, async () => {
+            return await User.query()
+                .joinRelated('guilds')
+                .where('guilds.id', guildId)
+                .findById(id);
+        });
+    }
 
-        return result;
+    /**
+     * Check if a user exists
+     */
+    public async exists(id: PrimaryKey): Promise<boolean> {
+        return (await this.getById(id)) != null;
     }
 
     /**
      * Get all users
      */
     public async getAll(): Promise<User[]> {
-        const results = await User.query();
-        return results;
+        return this.cache.remember(['users'], 600, async () => {
+            return await User.query();
+        });
     }
 
     /**
      * Get all users with guilds
      */
     public async getAllWithGuilds(): Promise<User[]> {
-        const results = await User.query()
-            .withGraphFetched({guilds: true})
-            .whereNotNull('dateOfBirth');
-
-        return results;
+        return this.cache.remember(['usersWithGuilds'], 600, async () => {
+            return await User.query()
+                .withGraphFetched({guilds: true})
+                .whereNotNull('dateOfBirth');
+        });
     }
 
     /**
      * Get all users with guilds
      */
     public async getTodaysBirthdays(): Promise<User[]> {
-        const results = await User.query()
-            .whereNotNull('dateOfBirth')
-            .where('dateOfBirth', 'LIKE', dayjs().format('____-MM-DD'))
-            .withGraphFetched({guilds: true});
-
-        return results;
+        return this.cache.remember(['todaysBirthdays'], 600, async () => {
+            return await User.query()
+                .whereNotNull('dateOfBirth')
+                .where('dateOfBirth', 'LIKE', dayjs().format('____-MM-DD'))
+                .withGraphFetched({guilds: true});
+        });
     }
 
     /**
@@ -65,6 +77,9 @@ export default class UserRepository implements BaseRepository<User> {
      */
     public async create(data: Partial<User>): Promise<User> {
         const result = await User.query().insert(data);
+        await this.cache.forget(['users']);
+        await this.cache.forget(['usersWithGuilds']);
+        await this.cache.forget(['todaysBirthdays']);
         return result;
     }
 
@@ -89,6 +104,10 @@ export default class UserRepository implements BaseRepository<User> {
         data: Partial<User>,
     ): Promise<User> {
         const result = await User.query().updateAndFetchById(userId, data);
+        await this.cache.forget(['user', userId]);
+        await this.cache.forget(['users']);
+        await this.cache.forget(['usersWithGuilds']);
+        await this.cache.forget(['todaysBirthdays']);
         return result;
     }
 
@@ -96,6 +115,10 @@ export default class UserRepository implements BaseRepository<User> {
      * Delete a user
      */
     public async delete(id: PrimaryKey): Promise<void> {
+        await this.cache.forget(['user', id]);
+        await this.cache.forget(['users']);
+        await this.cache.forget(['usersWithGuilds']);
+        await this.cache.forget(['todaysBirthdays']);
         await User.query().deleteById(id);
     }
 }

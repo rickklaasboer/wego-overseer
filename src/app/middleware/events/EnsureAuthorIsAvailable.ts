@@ -27,9 +27,9 @@ export default class EnsureAuthorIsAvailable<
         }
         const userId = reaction.message.author.id;
 
-        const user = await this.userRepository.getById(userId);
+        const exists = await this.userRepository.exists(userId);
 
-        if (!(user instanceof User)) {
+        if (!exists) {
             await this.userRepository.create({
                 id: userId,
                 username: reaction.message.author.username,
