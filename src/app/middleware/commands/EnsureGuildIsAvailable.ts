@@ -17,9 +17,9 @@ export default class EnsureGuildIsAvailable<
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
         const guildId = ctx.guildId ?? '';
-        const guild = await this.guildRepository.getById(guildId);
+        const exists = await this.guildRepository.exists(guildId);
 
-        if (!(guild instanceof Guild)) {
+        if (!exists) {
             await this.guildRepository.create({id: guildId});
         }
 

@@ -10,6 +10,11 @@ export default interface BaseRepository<T extends Model> {
     getById(id: PrimaryKey): Promise<Maybe<T>>;
 
     /**
+     * Check if a model exists
+     */
+    exists(id: PrimaryKey): Promise<boolean>;
+
+    /**
      * Get all models
      */
     getAll(): Promise<T[]>;

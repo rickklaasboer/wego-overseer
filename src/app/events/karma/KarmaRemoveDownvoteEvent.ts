@@ -63,9 +63,9 @@ export default class KarmaRemoveDownvoteEvent
                 userId: reaction.message.author?.id,
             };
 
-            const [exists, karmaId] = await this.karmaRepository.exists(values);
-            if (exists) {
-                await this.karmaRepository.delete(karmaId);
+            const karma = await this.karmaRepository.getByWhere(values);
+            if (karma) {
+                await this.karmaRepository.delete(karma.id);
             }
         } catch (err) {
             this.logger.fatal('Failed to run KarmaRemoveDownvoteEvent', err);

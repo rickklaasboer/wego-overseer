@@ -17,9 +17,9 @@ export default class EnsureChannelIsAvailable<
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
         const channelId = ctx.options.getChannel('channel')?.id ?? '';
-        const channel = await this.channelRepository.getById(channelId);
+        const exists = await this.channelRepository.exists(channelId);
 
-        if (!(channel instanceof Channel)) {
+        if (!exists) {
             await this.channelRepository.create({id: channelId});
         }
 

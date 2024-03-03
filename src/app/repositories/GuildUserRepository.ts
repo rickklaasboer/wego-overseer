@@ -1,3 +1,4 @@
+import Cache from '@/app/cache/Cache';
 import GuildUser from '@/app/entities/GuildUser';
 import {PrimaryKey} from '@/app/repositories/BaseRepository';
 import {Maybe} from '@/types/util';
@@ -5,6 +6,8 @@ import {injectable} from 'tsyringe';
 
 @injectable()
 export default class GuildUserRepository {
+    constructor(private cache: Cache) {}
+
     /**
      * Get a guild user by its ID
      */
@@ -12,8 +15,13 @@ export default class GuildUserRepository {
         guildId: PrimaryKey,
         userId: PrimaryKey,
     ): Promise<Maybe<GuildUser>> {
-        const result = await GuildUser.query().findById([guildId, userId]);
-        return result;
+        return this.cache.remember(
+            ['guildUser', guildId, userId],
+            600,
+            async () => {
+                return await GuildUser.query().findById([guildId, userId]);
+            },
+        );
     }
 
     /**
@@ -23,16 +31,16 @@ export default class GuildUserRepository {
         guildId: PrimaryKey,
         userId: PrimaryKey,
     ): Promise<boolean> {
-        const result = await GuildUser.query().findById([guildId, userId]);
-        return !!result;
+        return (await this.getById(guildId, userId)) != null;
     }
 
     /**
      * Get all guild users
      */
     public async getAll(): Promise<GuildUser[]> {
-        const result = await GuildUser.query();
-        return result;
+        return this.cache.remember(['guildUsers'], 600, async () => {
+            return await GuildUser.query();
+        });
     }
 
     /**
@@ -40,6 +48,7 @@ export default class GuildUserRepository {
      */
     public async create(data: Partial<GuildUser>): Promise<GuildUser> {
         const result = await GuildUser.query().insert(data);
+        await this.cache.forget(['guildUsers']);
         return result;
     }
 
@@ -55,6 +64,7 @@ export default class GuildUserRepository {
             [guildId, userId],
             data,
         );
+        await this.cache.forget(['guildUser', guildId, userId]);
         return result;
     }
 
@@ -65,6 +75,7 @@ export default class GuildUserRepository {
         userId: PrimaryKey,
         guildId: PrimaryKey,
     ): Promise<void> {
+        await this.cache.forget(['guildUser', guildId, userId]);
         await GuildUser.query().deleteById([userId, guildId]);
     }
 }

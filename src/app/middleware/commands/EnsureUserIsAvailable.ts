@@ -17,9 +17,9 @@ export default class EnsureUserIsAvailable<
      */
     public async handle(ctx: T, next: NextFn<T>): Promise<void> {
         const userId = (ctx.options.getUser('user') ?? ctx.user).id;
-        const user = await this.userRepository.getById(userId);
+        const exists = await this.userRepository.exists(userId);
 
-        if (!(user instanceof User)) {
+        if (!exists) {
             await this.userRepository.create({
                 id: userId,
                 username: ctx.user.username,

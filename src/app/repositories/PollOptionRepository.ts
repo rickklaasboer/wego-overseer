@@ -14,6 +14,13 @@ export default class PollOptionRepository
     }
 
     /**
+     * Check if a poll option exists
+     */
+    public async exists(id: PrimaryKey): Promise<boolean> {
+        return (await this.getById(id)) != null;
+    }
+
+    /**
      * Get all poll options
      */
     public async getAll(): Promise<PollOption[]> {

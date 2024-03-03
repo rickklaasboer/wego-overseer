@@ -68,6 +68,7 @@
         "mysql2": "3.9.2",
         "node-cron": "3.0.3",
         "objection": "3.1.4",
+        "redis": "4.6.13",
         "reflect-metadata": "0.2.1",
         "soundcloud-scraper": "5.0.3",
         "spotify-url-info": "3.2.13",

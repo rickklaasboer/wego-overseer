@@ -45,8 +45,8 @@ export default class ReceiveVoteEvent
 
             const option = await PollOption.query().findById(pollOptionId);
 
-            if (!(poll instanceof Poll)) return;
-            if (!(option instanceof PollOption)) return;
+            if (!poll) return;
+            if (!option) return;
 
             const pollOptionIds = poll.options.map(({id}) => id);
             const prevVotes = await PollVote.query()

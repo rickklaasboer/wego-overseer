@@ -1,4 +1,3 @@
-import Channel from '@/app/entities/Channel';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import ChannelRepository from '@/app/repositories/ChannelRepository';
 import {ClientEvents} from 'discord.js';
@@ -26,9 +25,9 @@ export default class EnsureChannelIsAvailable<
             throw new Error('Guild or channel is not available');
         }
 
-        const channel = await this.channelRepository.getById(channelId);
+        const exists = await this.channelRepository.exists(channelId);
 
-        if (!(channel instanceof Channel)) {
+        if (!exists) {
             await this.channelRepository.create({id: channelId, guildId});
         }
 
