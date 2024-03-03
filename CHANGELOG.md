@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.5.0...v3.5.1) (2024-03-03)
+
+
+### Bug Fixes
+
+* make sure authorization errors are handled accordingly ([fbd00a5](https://github.com/rickklaasboer/wego-overseer/commit/fbd00a5febbd06c7a5b0e90b2c80c8c7caeab69a))
+
 # [3.5.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.4.3...v3.5.0) (2024-03-03)
 
 
