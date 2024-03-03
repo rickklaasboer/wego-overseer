@@ -1,4 +1,4 @@
-import BaseCommand, {
+import {
     DefaultInteraction,
     SlashCommandOption,
 } from '@/app/commands/BaseCommand';
@@ -6,6 +6,9 @@ import config from '@/config';
 import Logger from '@/telemetry/logger';
 import {Maybe} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
+import {AuthorizationError} from '@/util/errors/AuthorizationError';
+import {trans} from '@/util/localization/localization';
+import {wrapReply} from '@/util/misc/discord';
 import {app} from '@/util/misc/misc';
 import {CacheType, Interaction} from 'discord.js';
 import {injectable} from 'tsyringe';
@@ -24,10 +27,7 @@ export default class CommandHandler {
         const command = app(config.app.commands.get(ctx.commandName)!);
 
         try {
-            // prettier-ignore
-            const pipeline = app<Pipeline<DefaultInteraction>>(
-                Pipeline
-            );
+            const pipeline = app<Pipeline<DefaultInteraction>>(Pipeline);
 
             const passed = await pipeline
                 .send(ctx as DefaultInteraction)
@@ -36,29 +36,21 @@ export default class CommandHandler {
 
             await command.execute(passed);
         } catch (err) {
+            if (err instanceof AuthorizationError) {
+                await wrapReply(ctx, {
+                    content: trans(err.message),
+                });
+                return;
+            }
+
             this.logger.error(
                 `Failed to execute command /${command.name} (${err})`,
             );
 
-            // We can safely assume that the command is a slash command
-            this.followUpOrReply(ctx as DefaultInteraction, command);
-        }
-    }
-
-    /**
-     * Follow up or reply to a command
-     */
-    public async followUpOrReply(
-        ctx: DefaultInteraction,
-        command: BaseCommand,
-    ) {
-        if (!ctx.replied) {
-            const payload = {
+            await wrapReply(ctx, {
                 content: `Something went wrong while trying to execute /${command.name}`,
                 ephemeral: true,
-            };
-
-            ctx.deferred ? ctx.followUp(payload) : ctx.reply(payload);
+            });
         }
     }
 

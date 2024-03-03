@@ -16,10 +16,7 @@ export default class EventHandler {
         ...args: ClientEventsKeys
     ) {
         try {
-            // prettier-ignore
-            const pipeline = app<Pipeline<ClientEventsKeys>>(
-                Pipeline
-            );
+            const pipeline = app<Pipeline<ClientEventsKeys>>(Pipeline);
 
             const passed = await pipeline
                 .send(args)
