@@ -1,7 +1,13 @@
+import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import {
     BaseInteraction,
     CacheType,
     Client,
+    InteractionEditReplyOptions,
+    InteractionReplyOptions,
+    InteractionResponse,
+    Message,
+    MessagePayload,
     PermissionsBitField,
 } from 'discord.js';
 
@@ -21,6 +27,20 @@ export function isAdmin(interaction: BaseInteraction<CacheType>): boolean {
             PermissionsBitField.Flags.Administrator,
         ) ?? false
     );
+}
+
+/**
+ * Wrap reply in a function
+ */
+export async function wrapReply(
+    ctx: DefaultInteraction,
+    content: string | MessagePayload | InteractionReplyOptions,
+): Promise<Message<boolean> | InteractionResponse> {
+    return ctx.replied
+        ? await ctx.editReply(content)
+        : ctx.deferred
+          ? await ctx.followUp(content)
+          : await ctx.reply(content);
 }
 
 /**

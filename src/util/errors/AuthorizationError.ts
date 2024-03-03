@@ -1,6 +1,6 @@
 export class AuthorizationError extends Error {
     constructor() {
-        super('You do not have permission to use this command!');
+        super('errors.common.command.no_permission');
 
         this.name = 'AuthorizationError';
     }

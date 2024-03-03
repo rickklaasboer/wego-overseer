@@ -6,6 +6,9 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import Logger from '@/telemetry/logger';
 import {Commandable} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
+import {AuthorizationError} from '@/util/errors/AuthorizationError';
+import {trans} from '@/util/localization/localization';
+import {wrapReply} from '@/util/misc/discord';
 import {app} from '@/util/misc/misc';
 import {injectable} from 'tsyringe';
 
@@ -46,6 +49,13 @@ export default class BaseEntrypointCommand implements BaseCommand {
 
             await command.execute(passed);
         } catch (err) {
+            if (err instanceof AuthorizationError) {
+                await wrapReply(interaction, {
+                    content: trans(err.message),
+                });
+                return;
+            }
+
             this.logger.fatal(
                 'BaseEntrypointCommand',
                 'Failed to execute command',

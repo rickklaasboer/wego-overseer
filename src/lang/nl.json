@@ -250,7 +250,7 @@
         "common": {
             "failed": "Er is een onverwachte fout opgetreden tijdens het genereren van uw %s, probeer het later opnieuw!",
             "command": {
-                "no_permission": "Het spijt me <@%s>, je hebt geen toestemming om deze opdracht uit te voeren.",
+                "no_permission": "Je hebt geen toestemming om deze opdracht uit te voeren.",
                 "unknown_error": "Er is een onverwachte fout opgetreden tijdens het uitvoeren van dit commando."
             }
         }
