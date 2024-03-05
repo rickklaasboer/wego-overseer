@@ -1,5 +1,6 @@
 import Model from '@/app/entities/Model';
 import User from '@/app/entities/User';
+import {randomUUID} from 'crypto';
 import {RelationMappings} from 'objection';
 
 export default class Swear extends Model {
@@ -23,5 +24,11 @@ export default class Swear extends Model {
 
     static get tableName() {
         return 'swears';
+    }
+
+    $beforeInsert(): void {
+        super.$beforeInsert();
+
+        this.id = randomUUID();
     }
 }
