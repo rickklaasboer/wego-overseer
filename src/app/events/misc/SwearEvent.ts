@@ -62,8 +62,6 @@ export default class SwearEvent implements BaseEvent<'messageCreate'> {
                     });
                 }
             }
-
-            // await message.reply('Please do not swear!');
         } catch (err) {
             this.logger.fatal('Failed to run SwearEvent', err);
         }
