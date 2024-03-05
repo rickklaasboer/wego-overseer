@@ -1,3 +1,19 @@
+# [3.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.2...v3.7.0) (2024-03-05)
+
+
+### Bug Fixes
+
+* remove comma's from `.env.example` ([46d3c2b](https://github.com/rickklaasboer/wego-overseer/commit/46d3c2bef6d899a8bbbffec47607dbe860d2f06a))
+
+
+### Features
+
+* add model and migration ([cb4cdce](https://github.com/rickklaasboer/wego-overseer/commit/cb4cdce908876d85148f6389a7f8e2a8a8c0756d))
+* add swear entity and repository classes ([cdc8108](https://github.com/rickklaasboer/wego-overseer/commit/cdc810848ae5a52c97efc88b1c7ac78d1b3b7b1d))
+* add swear event to the registry ([7d4c39c](https://github.com/rickklaasboer/wego-overseer/commit/7d4c39c8319bea9e89821c2636bddaef56006021))
+* init swear event ([a28dfce](https://github.com/rickklaasboer/wego-overseer/commit/a28dfce62b70b7769276fb27226be115c26988ce))
+* **wip:** add comprehend service ([fe1bb5e](https://github.com/rickklaasboer/wego-overseer/commit/fe1bb5ebd6d23d430e87d73250b57b4069919cfe))
+
 ## [3.6.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.1...v3.6.2) (2024-03-03)
 
 
