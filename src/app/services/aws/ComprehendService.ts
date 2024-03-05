@@ -1,5 +1,9 @@
 import config from '@/config';
-import {ComprehendClient} from '@aws-sdk/client-comprehend';
+import {
+    ComprehendClient,
+    DetectDominantLanguageCommand,
+    LanguageCode,
+} from '@aws-sdk/client-comprehend';
 import {singleton} from 'tsyringe';
 
 @singleton()
@@ -21,5 +25,32 @@ export default class ComprehendService {
      */
     public getComprehendClient(): ComprehendClient {
         return this.comprehend;
+    }
+
+    /**
+     * Get the dominance of a language in an input string
+     */
+    public async getLanguageDominance(
+        input: string,
+        languageCode: LanguageCode,
+    ): Promise<number> {
+        const {Languages} = await this.comprehend.send(
+            new DetectDominantLanguageCommand({Text: input}),
+        );
+
+        return (
+            Languages?.find(({LanguageCode}) => LanguageCode === languageCode)
+                ?.Score ?? 0
+        );
+    }
+
+    public async getDominantLanguage(input: string): Promise<LanguageCode> {
+        const {Languages} = await this.comprehend.send(
+            new DetectDominantLanguageCommand({Text: input}),
+        );
+
+        return (
+            (Languages?.at(0)?.LanguageCode as LanguageCode) || LanguageCode.EN
+        );
     }
 }
