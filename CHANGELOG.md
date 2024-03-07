@@ -1,3 +1,11 @@
+## [3.7.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.0...v3.7.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* **deps:** bump rollup from 4.12.0 to 4.12.1 ([65f5406](https://github.com/rickklaasboer/wego-overseer/commit/65f54068b342d4585bdc9387f7cadbedb30d5bba))
+* **deps:** bump typescript from 5.3.3 to 5.4.2 ([11fbaed](https://github.com/rickklaasboer/wego-overseer/commit/11fbaed0ff614c0ddcc307636c2280bd97f6994b))
+
 # [3.7.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.6.2...v3.7.0) (2024-03-05)
 
 
