@@ -66,6 +66,13 @@ export default class BirthdayGetCommand extends BaseInternalCommand {
 
         if (user?.dateOfBirth) {
             embed.setDescription(
+                dayjs(user.dateOfBirth) == dayjs() ? 
+                trans(
+                    'commands.birthday.get.embed.description.birthday_today',
+                    discordUser.username,
+                    discordUser.username,
+                    Number(dayjs.format('YYYY')) - Number(dayjs(user.dateOfBirth).format('YYYY'))
+                ) : 
                 trans(
                     'commands.birthday.get.embed.description.birthday_known',
                     discordUser.username,
