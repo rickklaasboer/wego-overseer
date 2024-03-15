@@ -71,7 +71,7 @@ export default class BirthdayGetCommand extends BaseInternalCommand {
                     'commands.birthday.get.embed.description.birthday_today',
                     discordUser.username,
                     discordUser.username,
-                    Number(dayjs.format('YYYY')) - Number(dayjs(user.dateOfBirth).format('YYYY'))
+                    Number(dayjs().format('YYYY')) - Number(dayjs(user.dateOfBirth).format('YYYY'))
                 ) : 
                 trans(
                     'commands.birthday.get.embed.description.birthday_known',
