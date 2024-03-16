@@ -59,25 +59,27 @@ export default class BirthdayGetCommand extends BaseInternalCommand {
         discordUser: DiscordUser,
     ): EmbedBuilder {
         const embed = new EmbedBuilder();
+        const birthday = user?.dateOfBirth ? dayjs(user.dateOfBirth) : null;
 
         embed.setTitle(
             trans('commands.birthday.get.embed.title', discordUser.username),
         );
 
-        if (user?.dateOfBirth) {
+        if (birthday) {
+            const isToday =
+                birthday.format('DD/MM') === dayjs().format('DD/MM');
+            const age = dayjs().diff(birthday, 'year');
+
+            const message = isToday
+                ? 'commands.birthday.get.embed.description.birthday_today'
+                : 'commands.birthday.get.embed.description.birthday_known';
+
             embed.setDescription(
-                dayjs(user.dateOfBirth).format('DD/MM') == dayjs().format('DD/MM') ? 
                 trans(
-                    'commands.birthday.get.embed.description.birthday_today',
+                    message,
                     discordUser.username,
-                    discordUser.username,
-                    Number(dayjs().format('YYYY')) - Number(dayjs(user.dateOfBirth).format('YYYY'))
-                ) : 
-                trans(
-                    'commands.birthday.get.embed.description.birthday_known',
-                    discordUser.username,
-                    dayjs(user.dateOfBirth).format('DD/MM/YYYY'),
-                    createNextOccuranceTimestamp(dayjs(user.dateOfBirth)),
+                    isToday ? age : birthday.format('DD/MM/YYYY'),
+                    isToday ? null : createNextOccuranceTimestamp(birthday),
                 ),
             );
         } else {
