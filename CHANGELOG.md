@@ -1,3 +1,11 @@
+## [3.7.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.3...v3.7.4) (2024-03-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.529.1 to 3.533.0 ([11e23b2](https://github.com/rickklaasboer/wego-overseer/commit/11e23b29c3d4ccae63a594c16a70fcd1f6593dc2))
+* **deps:** bump rollup from 4.12.1 to 4.13.0 ([f05de32](https://github.com/rickklaasboer/wego-overseer/commit/f05de321252b9964e8ea54787a8dbace20c34cdf))
+
 ## [3.7.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.2...v3.7.3) (2024-03-08)
 
 
