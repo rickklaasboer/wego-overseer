@@ -1,3 +1,16 @@
+# [3.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.5...v3.8.0) (2024-03-16)
+
+
+### Bug Fixes
+
+* not comparing right values ([296820c](https://github.com/rickklaasboer/wego-overseer/commit/296820c669e89790b595737469e825cbedce01ff))
+* Property 'format' does not exist on type dayjs ([9af51ba](https://github.com/rickklaasboer/wego-overseer/commit/9af51ba95d65b1c2808dd28943aaefc1ece93139))
+
+
+### Features
+
+* added message for today's birthday on birthday get ([d270a6f](https://github.com/rickklaasboer/wego-overseer/commit/d270a6f82b14c3359fe7cd3ddbacb8f75e1a8f45))
+
 ## [3.7.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.4...v3.7.5) (2024-03-16)
 
 
