@@ -1,3 +1,10 @@
+## [3.8.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.4...v3.8.5) (2024-03-23)
+
+
+### Bug Fixes
+
+* make log level configurable ([ba7cde8](https://github.com/rickklaasboer/wego-overseer/commit/ba7cde853cf012c9ecaf796807913b6cc6618099))
+
 ## [3.8.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.3...v3.8.4) (2024-03-23)
 
 
