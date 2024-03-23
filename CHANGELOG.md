@@ -1,3 +1,10 @@
+## [3.8.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.3...v3.8.4) (2024-03-23)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-api-types from 0.37.75 to 0.37.76 ([962a122](https://github.com/rickklaasboer/wego-overseer/commit/962a12233a0d04903a90128467f8b225510c25d1))
+
 ## [3.8.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.2...v3.8.3) (2024-03-21)
 
 
