@@ -1,6 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import config from '@/config';
 import Bunyan from 'bunyan';
 import {injectable} from 'tsyringe';
+
+export const LOG_LEVELS = {
+    fatal: 60,
+    error: 50,
+    warn: 40,
+    info: 30,
+    debug: 20,
+    trace: 10,
+};
 
 @injectable()
 export default class Logger {
@@ -9,7 +19,7 @@ export default class Logger {
     constructor() {
         this.bunyan = Bunyan.createLogger({
             name: 'wego-overseer',
-            level: 0,
+            level: config.app.logLevel,
         });
     }
 
