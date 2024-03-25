@@ -1,3 +1,10 @@
+# [3.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.5...v3.9.0) (2024-03-25)
+
+
+### Features
+
+* add heartbeat job ([d0709ce](https://github.com/rickklaasboer/wego-overseer/commit/d0709ceba3a618bec9a2a18bc3d24e56459b0980))
+
 ## [3.8.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.4...v3.8.5) (2024-03-23)
 
 
