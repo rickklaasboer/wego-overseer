@@ -90,7 +90,7 @@ importers:
         specifier: 5.4.2
         version: 5.4.2
 
-  apps/bot:
+  apps/wego-bot:
     dependencies:
       '@aws-sdk/client-comprehend':
         specifier: 3.525.0
@@ -1009,11 +1009,11 @@ packages:
       '@discordjs/rest': 2.2.0
       '@discordjs/util': 1.0.2
       '@sapphire/async-queue': 1.5.2
-      '@types/ws': 8.5.9
+      '@types/ws': 8.5.10
       '@vladfrangu/async_event_emitter': 2.2.4
       discord-api-types: 0.37.61
       tslib: 2.6.2
-      ws: 8.14.2
+      ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
