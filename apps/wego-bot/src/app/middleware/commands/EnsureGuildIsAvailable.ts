@@ -1,5 +1,4 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
-import Guild from '@/app/entities/Guild';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import {injectable} from 'tsyringe';

@@ -3,7 +3,6 @@ import {
     BaseInteraction,
     CacheType,
     Client,
-    InteractionEditReplyOptions,
     InteractionReplyOptions,
     InteractionResponse,
     Message,

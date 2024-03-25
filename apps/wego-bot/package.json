@@ -8,10 +8,10 @@
         "dev:no-watch": "pnpm build && pnpm start | bunyan",
         "knex": "pnpm cross-env TS_NODE_PROJECT=tsconfig.knex.json knex --knexfile ./knexfile.ts",
         "build": "rollup -c --bundleConfigAsCjs",
-        "start": "node dist/app.js"
+        "start": "node dist/app.js",
+        "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "lint:typescript": "pnpm tsc --noEmit --skipLibCheck"
     },
-    "keywords": [],
-    "author": "",
     "license": "MIT",
     "devDependencies": {
         "@types/bad-words": "3.0.3",

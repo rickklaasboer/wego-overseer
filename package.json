@@ -3,6 +3,8 @@
     "description": "Monorepo for Wego",
     "scripts": {
         "dev:bot": "pnpm --filter bot dev",
+        "lint:typescript": "pnpm --stream --parallel lint:typescript",
+        "lint:eslint": "pnpm --stream --parallel lint:eslint",
         "ci:release": "pnpm -r --workspace-concurrency=1 exec -- semantic-release -e semantic-release-monorepo",
         "ci:dry-release": "pnpm -r --workspace-concurrency=1 exec -- semantic-release -e semantic-release-monorepo --dry-run"
     },
