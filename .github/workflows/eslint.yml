@@ -8,8 +8,11 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: 18
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
             - name: Install dependencies
-              run: yarn --frozen-lockfile
+              run: pnpm install --frozen-lockfile
             - name: Run eslint
               run: npx eslint -f compact ./ --quiet
               env:
