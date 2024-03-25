@@ -44,6 +44,7 @@ import ReceiveVoteEvent from '@/app/events/poll/ReceiveVoteEvent';
 import SwearEvent from '@/app/events/misc/SwearEvent';
 import {getEnvString} from '@/util/misc/environment';
 import {LOG_LEVELS} from '@/telemetry/logger';
+import HeartbeatJob from '@/app/jobs/HeartbeatJob';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -108,5 +109,6 @@ export default {
     jobs: new Map<string, Jobable>([
         ['birthday', BirthdayJob],
         ['youtubesqspoll', YouTubeSQSPollJob],
+        ['heartbeat', HeartbeatJob],
     ]),
 };
