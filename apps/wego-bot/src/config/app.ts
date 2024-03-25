@@ -42,9 +42,14 @@ import ConfirmResetExperienceEvent from '@/app/events/experience/ConfirmResetExp
 import PollCommand from '@/app/commands/poll/PollCommand';
 import ReceiveVoteEvent from '@/app/events/poll/ReceiveVoteEvent';
 import SwearEvent from '@/app/events/misc/SwearEvent';
+import {getEnvString} from '@/util/misc/environment';
+import {LOG_LEVELS} from '@/telemetry/logger';
+import HeartbeatJob from '@/app/jobs/HeartbeatJob';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
+    logLevel: getEnvString('LOG_LEVEL', 'info') as keyof typeof LOG_LEVELS,
+
     /**
      * All commands that will be handled by the bot
      */
@@ -104,5 +109,6 @@ export default {
     jobs: new Map<string, Jobable>([
         ['birthday', BirthdayJob],
         ['youtubesqspoll', YouTubeSQSPollJob],
+        ['heartbeat', HeartbeatJob],
     ]),
 };

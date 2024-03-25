@@ -52,4 +52,7 @@ export default {
         apiToken: getEnvString('GITHUB_API_TOKEN', ''),
         apiUrl: getEnvString('GITHUB_API_URL', ''),
     },
+    heartbeat: {
+        url: getEnvString('HEARTBEAT_URL', ''),
+    },
 };

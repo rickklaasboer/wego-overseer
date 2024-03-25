@@ -146,7 +146,8 @@
                     "title": "%s's birthday",
                     "description": {
                         "birthday_known": "%s's birthday is on %s. That is %s!",
-                        "birthday_unknown": "We don't know %s's birthday yet, try and ask them!"
+                        "birthday_unknown": "We don't know %s's birthday yet, try and ask them!",
+                        "birthday_today": "Today is %s's birthday! %s turned %s years old! Congratulations!"
                     },
                     "footer": "Requested by %s"
                 }

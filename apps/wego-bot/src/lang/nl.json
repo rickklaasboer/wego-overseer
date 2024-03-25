@@ -146,7 +146,8 @@
                     "title": "%s's verjaardag",
                     "description": {
                         "birthday_known": "%s's verjaardag is op %s. Dat is %s!",
-                        "birthday_unknown": "We weten %s's verjaardag nog niet, je zou het hem/haar kunnen vragen!"
+                        "birthday_unknown": "We weten %s's verjaardag nog niet, je zou het hem/haar kunnen vragen!",
+                        "birthday_today": "% is vandaag jarig! %s is %s jaar geworden! Gefeliciteerd!"
                     },
                     "footer": "Aangevraagd door %s"
                 }

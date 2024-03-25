@@ -1,3 +1,104 @@
+## [3.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.1...v3.9.2) (2024-03-25)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.536.0 to 3.540.0 ([259c12f](https://github.com/rickklaasboer/wego-overseer/commit/259c12fd7fa2b2a684caa64ed67be71171b37090))
+
+## [3.9.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.0...v3.9.1) (2024-03-25)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.535.0 to 3.540.0 ([c136189](https://github.com/rickklaasboer/wego-overseer/commit/c136189733dda902e9bc40c1f380a598d922eb1f))
+
+# [3.9.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.5...v3.9.0) (2024-03-25)
+
+
+### Features
+
+* add heartbeat job ([d0709ce](https://github.com/rickklaasboer/wego-overseer/commit/d0709ceba3a618bec9a2a18bc3d24e56459b0980))
+
+## [3.8.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.4...v3.8.5) (2024-03-23)
+
+
+### Bug Fixes
+
+* make log level configurable ([ba7cde8](https://github.com/rickklaasboer/wego-overseer/commit/ba7cde853cf012c9ecaf796807913b6cc6618099))
+
+## [3.8.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.3...v3.8.4) (2024-03-23)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-api-types from 0.37.75 to 0.37.76 ([962a122](https://github.com/rickklaasboer/wego-overseer/commit/962a12233a0d04903a90128467f8b225510c25d1))
+
+## [3.8.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.2...v3.8.3) (2024-03-21)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.4.2 to 5.4.3 ([46e6dc0](https://github.com/rickklaasboer/wego-overseer/commit/46e6dc0dd9b01d73fae0d882df64013c473ad686))
+
+## [3.8.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.1...v3.8.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.533.0 to 3.535.0 ([16aa9c0](https://github.com/rickklaasboer/wego-overseer/commit/16aa9c066d9ada417457b75495af7ca990652589))
+
+## [3.8.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.8.0...v3.8.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.535.0 to 3.536.0 ([b4422e2](https://github.com/rickklaasboer/wego-overseer/commit/b4422e27841d620a3c0ecf3ff5f08f658da1fcee))
+* **deps:** bump discord-api-types from 0.37.74 to 0.37.75 ([7ffc208](https://github.com/rickklaasboer/wego-overseer/commit/7ffc208e79e52a97131a845b9ef3f2f8d9c558a2))
+
+# [3.8.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.5...v3.8.0) (2024-03-16)
+
+
+### Bug Fixes
+
+* not comparing right values ([296820c](https://github.com/rickklaasboer/wego-overseer/commit/296820c669e89790b595737469e825cbedce01ff))
+* Property 'format' does not exist on type dayjs ([9af51ba](https://github.com/rickklaasboer/wego-overseer/commit/9af51ba95d65b1c2808dd28943aaefc1ece93139))
+
+
+### Features
+
+* added message for today's birthday on birthday get ([d270a6f](https://github.com/rickklaasboer/wego-overseer/commit/d270a6f82b14c3359fe7cd3ddbacb8f75e1a8f45))
+
+## [3.7.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.4...v3.7.5) (2024-03-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.529.1 to 3.535.0 ([9fd8574](https://github.com/rickklaasboer/wego-overseer/commit/9fd85741a815408dd1f44b41dd061cfd6450c226))
+* **deps:** bump discord-api-types from 0.37.73 to 0.37.74 ([82500da](https://github.com/rickklaasboer/wego-overseer/commit/82500dacf65c49ba95f08f727fc7b173cea6beaf))
+
+## [3.7.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.3...v3.7.4) (2024-03-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.529.1 to 3.533.0 ([11e23b2](https://github.com/rickklaasboer/wego-overseer/commit/11e23b29c3d4ccae63a594c16a70fcd1f6593dc2))
+* **deps:** bump rollup from 4.12.1 to 4.13.0 ([f05de32](https://github.com/rickklaasboer/wego-overseer/commit/f05de321252b9964e8ea54787a8dbace20c34cdf))
+
+## [3.7.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.2...v3.7.3) (2024-03-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.525.0 to 3.529.1 ([7b556b0](https://github.com/rickklaasboer/wego-overseer/commit/7b556b0ee77f393695ac80256c58b151427893b9))
+
+## [3.7.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.1...v3.7.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.525.0 to 3.529.1 ([5da91e8](https://github.com/rickklaasboer/wego-overseer/commit/5da91e878b97f37b7b167868004a5cecba57255d))
+* **deps:** bump discord-api-types from 0.37.71 to 0.37.73 ([6b74187](https://github.com/rickklaasboer/wego-overseer/commit/6b74187f0c9eacc25d44a6194382d32812cd8dad))
+
 ## [3.7.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.7.0...v3.7.1) (2024-03-07)
 
 
