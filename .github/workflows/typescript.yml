@@ -13,7 +13,5 @@ jobs:
                   version: 8
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Build packages
-              run: pnpm build:packages
             - name: TypeScript
               run: pnpm run lint:typescript
