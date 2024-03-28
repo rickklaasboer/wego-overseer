@@ -1,3 +1,11 @@
+## [3.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.2...v3.9.3) (2024-03-28)
+
+
+### Bug Fixes
+
+* **deps:** bump mysql2 from 3.9.2 to 3.9.3 ([cc84621](https://github.com/rickklaasboer/wego-overseer/commit/cc846219033956995f18438f4bc949d3822ac740))
+* **deps:** bump rollup from 4.13.0 to 4.13.1 ([dbd64cd](https://github.com/rickklaasboer/wego-overseer/commit/dbd64cd2700d503b6e738deaa8d346a4a02ffc7e))
+
 ## [3.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.1...v3.9.2) (2024-03-25)
 
 
