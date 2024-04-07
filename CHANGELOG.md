@@ -1,3 +1,13 @@
+## [3.9.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.3...v3.9.4) (2024-04-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @discord-player/extractor from 4.4.6 to 4.4.7 ([4acee2c](https://github.com/rickklaasboer/wego-overseer/commit/4acee2c242d5b7d0d19afcfe08423f0d73ea02d1))
+* **deps:** bump discord-api-types from 0.37.76 to 0.37.79 ([b47b20f](https://github.com/rickklaasboer/wego-overseer/commit/b47b20f4339f48210955e663313506f2d4bbde5b))
+* **deps:** bump reflect-metadata from 0.2.1 to 0.2.2 ([641f38b](https://github.com/rickklaasboer/wego-overseer/commit/641f38bda6a99feeba7f9ab8e803ceed02c28839))
+* **deps:** bump rollup from 4.13.1 to 4.14.0 ([c5f6b93](https://github.com/rickklaasboer/wego-overseer/commit/c5f6b93eb465c1d24cdf683fd49c7b2ced405609))
+
 ## [3.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.2...v3.9.3) (2024-03-28)
 
 
