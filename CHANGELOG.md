@@ -1,3 +1,12 @@
+## [3.9.6](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.5...v3.9.6) (2024-04-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.540.0 to 3.549.0 ([8f08712](https://github.com/rickklaasboer/wego-overseer/commit/8f087125977a4d9dfb252b739e622a3543db1a02))
+* **deps:** bump discord-player from 6.6.7 to 6.6.8 ([d38a4b0](https://github.com/rickklaasboer/wego-overseer/commit/d38a4b00263577608519ca3d0d1374d327450d59))
+* **deps:** bump rollup from 4.14.0 to 4.14.1 ([2ed78b0](https://github.com/rickklaasboer/wego-overseer/commit/2ed78b05a8ec1d15ab1cd92e50c83db483464ee2))
+
 ## [3.9.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.4...v3.9.5) (2024-04-07)
 
 
