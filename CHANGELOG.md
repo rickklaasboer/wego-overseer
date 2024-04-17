@@ -1,3 +1,12 @@
+## [3.9.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.7...v3.9.8) (2024-04-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.549.0 to 3.556.0 ([64724a1](https://github.com/rickklaasboer/wego-overseer/commit/64724a17e4862409f6b9f3f39d86d643ebfaab46))
+* **deps:** bump mysql2 from 3.9.3 to 3.9.4 ([f478b7e](https://github.com/rickklaasboer/wego-overseer/commit/f478b7eea667186c370f0d5e82ad4608f6b44d72))
+* **deps:** bump typescript from 5.4.4 to 5.4.5 ([8b1d6dc](https://github.com/rickklaasboer/wego-overseer/commit/8b1d6dc65dc4583b3eefb02db4c5cd5d48904658))
+
 ## [3.9.7](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.6...v3.9.7) (2024-04-09)
 
 
