@@ -1,3 +1,10 @@
+## [3.9.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.8...v3.9.9) (2024-04-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.549.0 to 3.556.0 ([d963a4e](https://github.com/rickklaasboer/wego-overseer/commit/d963a4e0d0591fa5f1d7062ec6eace364dadc481))
+
 ## [3.9.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.7...v3.9.8) (2024-04-17)
 
 
