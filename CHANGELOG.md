@@ -1,3 +1,10 @@
+## [3.9.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.9...v3.9.10) (2024-04-25)
+
+
+### Bug Fixes
+
+* **deps:** bump youtube-sr from 4.3.10 to 4.3.11 ([b6f3f39](https://github.com/rickklaasboer/wego-overseer/commit/b6f3f3909c70b46d668bdfd2b76f43e68375efe9))
+
 ## [3.9.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.8...v3.9.9) (2024-04-17)
 
 
