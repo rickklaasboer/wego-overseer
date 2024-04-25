@@ -77,7 +77,7 @@
         "spotify-url-info": "3.2.13",
         "text-table": "0.2.0",
         "tsyringe": "4.8.0",
-        "youtube-sr": "4.3.10",
+        "youtube-sr": "4.3.11",
         "ytdl-core": "4.11.5"
     },
     "lint-staged": {
