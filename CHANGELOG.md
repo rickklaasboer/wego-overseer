@@ -1,3 +1,10 @@
+## [3.9.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.10...v3.9.11) (2024-04-25)
+
+
+### Bug Fixes
+
+* **deps:** bump mysql2 from 3.9.4 to 3.9.7 ([d317e05](https://github.com/rickklaasboer/wego-overseer/commit/d317e05c3fde9a7bf9919a2e8ffdd656d40550f2))
+
 ## [3.9.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.9...v3.9.10) (2024-04-25)
 
 
