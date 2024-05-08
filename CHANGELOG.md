@@ -1,3 +1,10 @@
+## [3.9.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.11...v3.9.12) (2024-05-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.556.0 to 3.569.0 ([d660204](https://github.com/rickklaasboer/wego-overseer/commit/d660204ba07737ebb5a6f3606fd2b4073f899cc1))
+
 ## [3.9.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.10...v3.9.11) (2024-04-25)
 
 
