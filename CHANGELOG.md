@@ -1,3 +1,81 @@
+## [3.9.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.11...v3.9.12) (2024-05-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.556.0 to 3.569.0 ([d660204](https://github.com/rickklaasboer/wego-overseer/commit/d660204ba07737ebb5a6f3606fd2b4073f899cc1))
+
+## [3.9.11](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.10...v3.9.11) (2024-04-25)
+
+
+### Bug Fixes
+
+* **deps:** bump mysql2 from 3.9.4 to 3.9.7 ([d317e05](https://github.com/rickklaasboer/wego-overseer/commit/d317e05c3fde9a7bf9919a2e8ffdd656d40550f2))
+
+## [3.9.10](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.9...v3.9.10) (2024-04-25)
+
+
+### Bug Fixes
+
+* **deps:** bump youtube-sr from 4.3.10 to 4.3.11 ([b6f3f39](https://github.com/rickklaasboer/wego-overseer/commit/b6f3f3909c70b46d668bdfd2b76f43e68375efe9))
+
+## [3.9.9](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.8...v3.9.9) (2024-04-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.549.0 to 3.556.0 ([d963a4e](https://github.com/rickklaasboer/wego-overseer/commit/d963a4e0d0591fa5f1d7062ec6eace364dadc481))
+
+## [3.9.8](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.7...v3.9.8) (2024-04-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.549.0 to 3.556.0 ([64724a1](https://github.com/rickklaasboer/wego-overseer/commit/64724a17e4862409f6b9f3f39d86d643ebfaab46))
+* **deps:** bump mysql2 from 3.9.3 to 3.9.4 ([f478b7e](https://github.com/rickklaasboer/wego-overseer/commit/f478b7eea667186c370f0d5e82ad4608f6b44d72))
+* **deps:** bump typescript from 5.4.4 to 5.4.5 ([8b1d6dc](https://github.com/rickklaasboer/wego-overseer/commit/8b1d6dc65dc4583b3eefb02db4c5cd5d48904658))
+
+## [3.9.7](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.6...v3.9.7) (2024-04-09)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.4.3 to 5.4.4 ([487f61d](https://github.com/rickklaasboer/wego-overseer/commit/487f61d130413cbfee875a0703c117e4245fdd63))
+
+## [3.9.6](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.5...v3.9.6) (2024-04-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.540.0 to 3.549.0 ([8f08712](https://github.com/rickklaasboer/wego-overseer/commit/8f087125977a4d9dfb252b739e622a3543db1a02))
+* **deps:** bump discord-player from 6.6.7 to 6.6.8 ([d38a4b0](https://github.com/rickklaasboer/wego-overseer/commit/d38a4b00263577608519ca3d0d1374d327450d59))
+* **deps:** bump rollup from 4.14.0 to 4.14.1 ([2ed78b0](https://github.com/rickklaasboer/wego-overseer/commit/2ed78b05a8ec1d15ab1cd92e50c83db483464ee2))
+
+## [3.9.5](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.4...v3.9.5) (2024-04-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-sqs from 3.540.0 to 3.549.0 ([3df38bd](https://github.com/rickklaasboer/wego-overseer/commit/3df38bdba1b9c62f7cf1e38739cf4eabee2c4140))
+
+## [3.9.4](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.3...v3.9.4) (2024-04-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @discord-player/extractor from 4.4.6 to 4.4.7 ([4acee2c](https://github.com/rickklaasboer/wego-overseer/commit/4acee2c242d5b7d0d19afcfe08423f0d73ea02d1))
+* **deps:** bump discord-api-types from 0.37.76 to 0.37.79 ([b47b20f](https://github.com/rickklaasboer/wego-overseer/commit/b47b20f4339f48210955e663313506f2d4bbde5b))
+* **deps:** bump reflect-metadata from 0.2.1 to 0.2.2 ([641f38b](https://github.com/rickklaasboer/wego-overseer/commit/641f38bda6a99feeba7f9ab8e803ceed02c28839))
+* **deps:** bump rollup from 4.13.1 to 4.14.0 ([c5f6b93](https://github.com/rickklaasboer/wego-overseer/commit/c5f6b93eb465c1d24cdf683fd49c7b2ced405609))
+
+## [3.9.3](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.2...v3.9.3) (2024-03-28)
+
+
+### Bug Fixes
+
+* **deps:** bump mysql2 from 3.9.2 to 3.9.3 ([cc84621](https://github.com/rickklaasboer/wego-overseer/commit/cc846219033956995f18438f4bc949d3822ac740))
+* **deps:** bump rollup from 4.13.0 to 4.13.1 ([dbd64cd](https://github.com/rickklaasboer/wego-overseer/commit/dbd64cd2700d503b6e738deaa8d346a4a02ffc7e))
+
 ## [3.9.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.1...v3.9.2) (2024-03-25)
 
 
