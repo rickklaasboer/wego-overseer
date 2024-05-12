@@ -3,7 +3,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/app/commands/BaseCommand';
 import EmojifyService from '@/app/services/text/EmojifyService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {injectable} from 'tsyringe';
 
 @injectable()

@@ -12,7 +12,7 @@ import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import DiscordPlayerService from '@/app/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class MusicQueueCommand extends BaseInternalCommand {

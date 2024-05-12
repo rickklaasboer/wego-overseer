@@ -4,7 +4,7 @@ import PollVote from '@/app/entities/PollVote';
 import PollBuilder, {VoteActionButtonPayload} from '@/util/PollBuilder';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Interaction, CacheType} from 'discord.js';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {injectable} from 'tsyringe';
 import EnsureUserIsAvailable from '@/app/events/poll/ReceiveVoteEvent/middleware/EnsureUserIsAvailable';
 

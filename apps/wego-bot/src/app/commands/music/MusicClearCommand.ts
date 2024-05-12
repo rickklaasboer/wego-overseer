@@ -3,7 +3,7 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import DiscordPlayerService from '@/app/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class MusicClearCommand extends BaseInternalCommand {

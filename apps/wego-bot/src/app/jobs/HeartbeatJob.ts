@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import BaseJob from '@/app/jobs/BaseJob';
 import {injectable} from 'tsyringe';
 import config from '@/config';

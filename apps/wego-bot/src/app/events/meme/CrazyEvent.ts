@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';

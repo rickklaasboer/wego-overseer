@@ -3,7 +3,7 @@ import {
     SlashCommandOption,
 } from '@/app/commands/BaseCommand';
 import config from '@/config';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {Maybe} from '@/types/util';
 import {Pipeline} from '@/util/Pipeline';
 import {AuthorizationError} from '@/util/errors/AuthorizationError';

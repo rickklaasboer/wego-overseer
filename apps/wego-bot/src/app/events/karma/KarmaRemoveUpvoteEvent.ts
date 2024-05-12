@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import BaseEvent from '@/app/events/BaseEvent';
 import FetchMessageFromReaction from '@/app/middleware/events/FetchMessageFromReaction';
 import EnsureGuildIsAvailable from '@/app/middleware/events/EnsureGuildIsAvailable';

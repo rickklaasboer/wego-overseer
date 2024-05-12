@@ -1,5 +1,5 @@
 import BaseJob from '@/app/jobs/BaseJob';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {injectable} from 'tsyringe';
 import cron from 'node-cron';
 

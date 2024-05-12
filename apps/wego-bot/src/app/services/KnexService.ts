@@ -1,5 +1,5 @@
 import config from '@/config';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import knex, {Knex} from 'knex';
 import {singleton} from 'tsyringe';
 

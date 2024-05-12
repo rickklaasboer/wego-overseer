@@ -12,7 +12,7 @@ import EnsureAuthorIsAvailable from '@/app/middleware/events/EnsureAuthorIsAvail
 import EnsureChannelIsAvailable from '@/app/middleware/events/EnsureChannelIsAvailable';
 import ChannelRepository from '@/app/repositories/ChannelRepository';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {injectable} from 'tsyringe';
 import config from '@/config';
 

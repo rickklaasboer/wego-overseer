@@ -1,6 +1,6 @@
 import BaseEvent from '@/app/events/BaseEvent';
 import ComprehendService from '@/app/services/aws/ComprehendService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {Maybe} from '@/types/util';
 import {trans} from '@/util/localization/localization';
 import {LanguageCode} from '@aws-sdk/client-comprehend';

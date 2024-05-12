@@ -2,7 +2,7 @@ import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import config from '@/config';
 import KnexService from '@/app/services/KnexService';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import StringBuilder from '@/util/formatting/StringBuilder';
 import {safeFetchUser} from '@/util/misc/discord';
 import {t} from '@/util/localization/localization';

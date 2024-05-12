@@ -3,7 +3,7 @@ import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import EnsureUserIsAvailable from '@/app/middleware/commands/EnsureUserIsAvailable';
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {trans} from '@/util/localization/localization';
 import {toHumandReadableNumber} from '@/util/misc/misc';
 import {injectable} from 'tsyringe';

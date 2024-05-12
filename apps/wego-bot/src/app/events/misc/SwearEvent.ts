@@ -1,7 +1,7 @@
 import BaseEvent from '@/app/events/BaseEvent';
 import SwearRepository from '@/app/repositories/SwearRepository';
 import BadWordsService from '@/app/services/text/BadWordsService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
 
@@ -67,3 +67,4 @@ export default class SwearEvent implements BaseEvent<'messageCreate'> {
         }
     }
 }
+

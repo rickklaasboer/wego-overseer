@@ -2,7 +2,7 @@ import BaseEvent from '@/app/events/BaseEvent';
 import {Interaction, CacheType} from 'discord.js';
 import DiscordPlayerService from '@/app/services/music/DiscordPlayerService';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class MusicQueueButtonEvent

@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {isAdmin} from '@/util/misc/discord';
 import {trans} from '@/util/localization/localization';
 import {pad} from '@/util/misc/misc';

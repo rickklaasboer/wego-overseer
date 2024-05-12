@@ -2,7 +2,7 @@ import BaseEvent from '@/app/events/BaseEvent';
 import EnsureAuthorIsAvailable from '@/app/events/experience/middleware/EnsureAuthorIsAvailable';
 import EnsureGuildIsAvailable from '@/app/events/experience/middleware/EnsureGuildIsAvailable';
 import ExperienceRepository from '@/app/repositories/ExperienceRepository';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {randomInt} from 'crypto';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';

@@ -2,7 +2,7 @@ import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {safeFetchUser, wrapInCodeblock} from '@/util/misc/discord';
 import {trans} from '@/util/localization/localization';
 import {tableWithHead} from '@/util/formatting/table';

@@ -2,7 +2,7 @@ import BaseCommand, {
     APPLICATION_COMMAND_OPTIONS,
     DefaultInteraction,
 } from '@/app/commands/BaseCommand';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import crypto from 'crypto';
 import {injectable} from 'tsyringe';
 

@@ -3,7 +3,6 @@ import {singleton} from 'tsyringe';
 import config from '@/config';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import DiscordRestService from '@/app/services/discord/DiscordRestService';
-import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
 import BaseEvent, {EventKeys} from '@/app/events/BaseEvent';
 import CommandHandler from '@/handlers/CommandHandler';
@@ -11,6 +10,7 @@ import EventHandler from '@/handlers/EventHandler';
 import JobHandler from '@/handlers/JobHandler';
 import BaseJob from '@/app/jobs/BaseJob';
 import {app} from '@/util/misc/misc';
+import Logger from '@wego/logger';
 
 @singleton()
 export default class Bot {

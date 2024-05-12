@@ -5,7 +5,7 @@ import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import EnsureGuildIsAvailable from '@/app/middleware/commands/EnsureGuildIsAvailable';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class BirthdaySetChannelCommand extends BaseInternalCommand {

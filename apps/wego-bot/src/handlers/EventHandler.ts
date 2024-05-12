@@ -1,5 +1,5 @@
 import BaseEvent, {ClientEventsKeys, EventKeys} from '@/app/events/BaseEvent';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {Pipeline} from '@/util/Pipeline';
 import {app} from '@/util/misc/misc';
 import {injectable} from 'tsyringe';

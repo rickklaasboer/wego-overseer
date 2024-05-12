@@ -1,6 +1,6 @@
 import Serializer from '@/app/cache/Serializer';
 import RedisService from '@/app/services/RedisService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {singleton} from 'tsyringe';
 
 type Keyable = string | number | (string | number)[];

@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {containsUrl, isEmpty} from '@/util/misc/misc';
 import {Collection, Message} from 'discord.js';
 import BaseEvent from '@/app/events/BaseEvent';
