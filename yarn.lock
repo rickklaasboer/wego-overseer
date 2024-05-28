@@ -3916,10 +3916,10 @@ discord-api-types@0.37.61:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.61.tgz#9dd8e58c624237e6f1b23be2d29579af268b8c5b"
   integrity sha512-o/dXNFfhBpYHpQFdT6FWzeO7pKc838QeeZ9d91CfVAtpr5XLK4B/zYxQbYgPdoMiTDvJfzcsLW5naXgmHGDNXw==
 
-discord-api-types@0.37.79, discord-api-types@^0.37.50:
-  version "0.37.79"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.79.tgz#476b34fe7ac91a56972c6dd455c297d8b61489d6"
-  integrity sha512-jblKMZL5f9t/pfUyhHNey8Lb9yVCcBVIPxz/JTY0raAmfj7CuFXdl9m5o/+iiB7E0vv1Kz9V7Ao5HtLRc2gH1Q==
+discord-api-types@0.37.86, discord-api-types@^0.37.50:
+  version "0.37.86"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.86.tgz#fdf36781db44b8fd8d524027fa63be48edffe0cc"
+  integrity sha512-ofpVLHshKdKl+XuZBbwOBSlgQFPJPzMuUiBpala3+ImPHBVo7ojZpzJUu2NJV/f0t1kqncechDugQpO5AjZnxg==
 
 discord-player@6.6.8:
   version "6.6.8"
