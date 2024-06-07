@@ -1,6 +1,6 @@
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import config from '@/config';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import dayjs from 'dayjs';
 import {injectable} from 'tsyringe';
 

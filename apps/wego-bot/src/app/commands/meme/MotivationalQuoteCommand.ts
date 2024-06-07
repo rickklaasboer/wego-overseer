@@ -6,7 +6,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 // https://picsum.photos/width/height
 // https://picsum.photos/

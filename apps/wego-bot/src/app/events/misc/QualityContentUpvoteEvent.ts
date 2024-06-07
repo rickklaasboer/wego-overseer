@@ -10,7 +10,7 @@ import config from '@/config';
 import BaseEvent from '@/app/events/BaseEvent';
 import {injectable} from 'tsyringe';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import FetchPartialReaction from '@/app/middleware/events/FetchPartialReaction';
 import dayjs from 'dayjs';
 

@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';
 import config from '@/config';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 type KanIkEenKorteBroekAanApiResponse = {
     data: {

@@ -12,7 +12,7 @@ import UserRepository from '@/app/repositories/UserRepository';
 import {Maybe} from '@/types/util';
 import BindUserToGuild from '@/app/middleware/commands/BindUserToGuild';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class BirthdayGetCommand extends BaseInternalCommand {

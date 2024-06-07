@@ -4,7 +4,7 @@ import BaseCommand, {
 } from '@/app/commands/BaseCommand';
 import PollOptionRepository from '@/app/repositories/PollOptionRepository';
 import PollRepository from '@/app/repositories/PollRepository';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import PollBuilder from '@/util/PollBuilder';
 import {injectable} from 'tsyringe';
 

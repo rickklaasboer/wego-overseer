@@ -5,7 +5,7 @@ import ExperienceRepository from '@/app/repositories/ExperienceRepository';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import UserGuildLevelRepository from '@/app/repositories/UserGuildLevelRepository';
 import ExperienceService from '@/app/services/ExperienceService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {trans} from '@/util/localization/localization';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';

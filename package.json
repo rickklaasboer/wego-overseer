@@ -2,7 +2,9 @@
     "name": "wego-monorepo",
     "description": "Monorepo for Wego",
     "scripts": {
-        "dev:bot": "pnpm --filter bot dev",
+        "dev:bot": "pnpm --filter wego-bot dev",
+        "build:bot": "pnpm --filter wego-bot dev",
+        "build:logger": "pnpm --filter @wego/logger build",
         "lint:typescript": "pnpm --stream --parallel lint:typescript",
         "lint:eslint": "pnpm --stream --parallel lint:eslint",
         "ci:release": "pnpm -r --workspace-concurrency=1 exec -- semantic-release -e semantic-release-monorepo",

@@ -1,6 +1,6 @@
 import config from '@/config';
 import BaseEvent from '@/app/events/BaseEvent';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {GuildEmoji, Message} from 'discord.js';
 import {injectable} from 'tsyringe';
 

@@ -210,7 +210,7 @@ First, create a new event in `src/events`. Please refer to the [DiscordJS docs](
 Now, this should look something like this
 
 ```ts
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import Event from '../Event';
 
 const logger = new Logger('wego-overseer:BotReadyEvent');

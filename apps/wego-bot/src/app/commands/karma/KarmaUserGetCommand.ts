@@ -1,7 +1,7 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import BaseInternalCommand from '@/app/commands/BaseInternalCommand';
 import KarmaRepository from '@/app/repositories/KarmaRepository';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {trans} from '@/util/localization/localization';
 import {injectable} from 'tsyringe';
 

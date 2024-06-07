@@ -5,7 +5,7 @@ import EnsureChannelIsAvailable from '@/app/middleware/commands/EnsureChannelIsA
 import UserIsAdmin from '@/app/middleware/commands/UserIsAdmin';
 import ChannelRepository from '@/app/repositories/ChannelRepository';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class KarmaChannelDisableCommand extends BaseInternalCommand {

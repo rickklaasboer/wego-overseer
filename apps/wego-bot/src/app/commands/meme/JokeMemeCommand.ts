@@ -1,7 +1,7 @@
 import Jimp from 'jimp';
 import {JimpImage} from '@/util/JimpImage';
 import {trans} from '@/util/localization/localization';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import BaseCommand, {
     APPLICATION_COMMAND_OPTIONS,
     DefaultInteraction,

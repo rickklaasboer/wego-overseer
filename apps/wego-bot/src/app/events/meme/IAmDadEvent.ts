@@ -3,7 +3,7 @@ import {trans} from '@/util/localization/localization';
 import BaseEvent from '@/app/events/BaseEvent';
 import {Message} from 'discord.js';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 @injectable()
 export default class IAmDadEvent implements BaseEvent<'messageCreate'> {

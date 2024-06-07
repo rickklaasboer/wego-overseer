@@ -7,7 +7,7 @@ import {DefaultInteraction} from '@/app/commands/BaseCommand';
 import EnsureGuildIsAvailable from '@/app/middleware/commands/EnsureGuildIsAvailable';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {sortUsersByBirthday, createBirthdayRows} from '@/util/misc/birthday';
 
 @injectable()

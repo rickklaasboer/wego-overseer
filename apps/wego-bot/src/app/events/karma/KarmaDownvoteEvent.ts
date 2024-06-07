@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {randomNumber} from '@/util/misc/karma';
 import BaseEvent from '@/app/events/BaseEvent';
 import {

@@ -1,4 +1,4 @@
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {
     ReceiveMessageCommand,
     DeleteMessageCommand,

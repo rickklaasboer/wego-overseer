@@ -14,7 +14,7 @@ import BaseCommand, {
     DefaultInteraction,
 } from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 /**
  * Create follow up reply from interaction and image

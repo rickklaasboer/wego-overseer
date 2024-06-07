@@ -9,9 +9,18 @@ import {app} from '@/util/misc/misc';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import {container} from 'tsyringe';
+import Logger from '@wego/logger';
+import config from '@/config';
 
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
+
+// We need to register the logger ourselves because it's coming from a different package
+// Also, make sure to register it before the bot so that the logger is available to the bot
+container.register(Logger, {
+    useValue: new Logger('wego-overseer', config.app.logLevel),
+});
 
 const bot = app(Bot);
 

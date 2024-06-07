@@ -1,7 +1,7 @@
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import GitubService from '@/app/services/GithubService';
 import config from '@/config';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {trans} from '@/util/localization/localization';
 import {injectable} from 'tsyringe';
 

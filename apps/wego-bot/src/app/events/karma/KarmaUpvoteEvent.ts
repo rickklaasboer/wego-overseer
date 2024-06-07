@@ -8,7 +8,7 @@ import {
     Message,
     PartialMessage,
 } from 'discord.js';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import EnsureGuildIsAvailable from '@/app/middleware/events/EnsureGuildIsAvailable';
 import EnsureUserIsAvailable from '@/app/middleware/events/EnsureUserIsAvailable';
 import EnsureAuthorIsAvailable from '@/app/middleware/events/EnsureAuthorIsAvailable';

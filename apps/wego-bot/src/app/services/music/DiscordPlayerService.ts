@@ -1,5 +1,5 @@
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 import {Player} from 'discord-player';
 import {singleton} from 'tsyringe';
 

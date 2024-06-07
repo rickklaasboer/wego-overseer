@@ -4,7 +4,7 @@ import {trans} from '@/util/localization/localization';
 import config from '@/config';
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
 import {injectable} from 'tsyringe';
-import Logger from '@/telemetry/logger';
+import Logger from '@wego/logger';
 
 type AOCLeaderboardResponse = {
     owner_id: string;
