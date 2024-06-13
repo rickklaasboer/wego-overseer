@@ -60,7 +60,7 @@
         "dayjs": "1.11.10",
         "discord-api-types": "0.37.79",
         "discord-player": "6.6.8",
-        "discord.js": "14.14.1",
+        "discord.js": "14.15.3",
         "dotenv": "16.4.5",
         "extract-domain": "2.4.8",
         "extract-urls": "1.4.1",
