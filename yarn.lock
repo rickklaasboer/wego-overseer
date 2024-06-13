@@ -2650,10 +2650,10 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"
   integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
 
-"@types/i18n@0.13.10":
-  version "0.13.10"
-  resolved "https://registry.yarnpkg.com/@types/i18n/-/i18n-0.13.10.tgz#3637272fb8a3a6b9013c1cfcd86df0be36dcd198"
-  integrity sha512-V5uwFXEzC1BRvDSQkd5zWB7ktZa1yfLKFimlluTFrgBGeFJQNNaLk3J67Sje+c0+m2C7r1BU47cItOk/WRfJcQ==
+"@types/i18n@0.13.12":
+  version "0.13.12"
+  resolved "https://registry.yarnpkg.com/@types/i18n/-/i18n-0.13.12.tgz#b457715766c63d8ffdfc51dd4fc1f72728e9d38f"
+  integrity sha512-iAd2QjKh+0ToBXocmCS3m38GskiaGzmSV1MTQz2GaOraqSqBiLf46J7u3EGINl+st+Uk4lO3OL7QyIjTJlrWIg==
 
 "@types/json-schema@^7.0.9":
   version "7.0.11"
