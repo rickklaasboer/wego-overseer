@@ -74,7 +74,7 @@
         "redis": "4.6.13",
         "reflect-metadata": "0.2.2",
         "soundcloud-scraper": "5.0.3",
-        "spotify-url-info": "3.2.13",
+        "spotify-url-info": "3.2.16",
         "text-table": "0.2.0",
         "tsyringe": "4.8.0",
         "youtube-sr": "4.3.11",
