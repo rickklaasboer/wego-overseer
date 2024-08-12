@@ -1,3 +1,13 @@
+## [3.9.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.14...v3.9.15) (2024-08-12)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv from 8.12.0 to 8.17.1 ([02720fc](https://github.com/rickklaasboer/wego-overseer/commit/02720fc0f78705199ad4911a333f85a7e5499c24))
+* **deps:** bump discord-api-types from 0.37.88 to 0.37.93 ([1daf6f2](https://github.com/rickklaasboer/wego-overseer/commit/1daf6f28edd6db738fce919bcb896653a4e7ff22))
+* **deps:** bump prettier from 3.2.5 to 3.3.3 ([b48acd6](https://github.com/rickklaasboer/wego-overseer/commit/b48acd614092be2e0738ade7ea375575da1630f7))
+* **deps:** bump spotify-url-info from 3.2.13 to 3.2.16 ([a3e3a00](https://github.com/rickklaasboer/wego-overseer/commit/a3e3a00ab9ba06576f03911c6afd416dca28f0b6))
+
 ## [3.9.14](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.13...v3.9.14) (2024-06-13)
 
 
