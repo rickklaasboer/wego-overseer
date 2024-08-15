@@ -1,3 +1,12 @@
+## [3.9.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.15...v3.9.16) (2024-08-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @rollup/plugin-commonjs from 25.0.7 to 26.0.1 ([eb9d748](https://github.com/rickklaasboer/wego-overseer/commit/eb9d7487e20800a709b4af7a05cf9403be7902f1))
+* **deps:** bump dayjs from 1.11.10 to 1.11.12 ([ca6c962](https://github.com/rickklaasboer/wego-overseer/commit/ca6c962fa3e96a6994cadb4fc8f22b9651d6993d))
+* **deps:** bump lint-staged from 15.2.2 to 15.2.9 ([eec062d](https://github.com/rickklaasboer/wego-overseer/commit/eec062d2ddd744a09821a31a4328ca42733959f2))
+
 ## [3.9.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.14...v3.9.15) (2024-08-12)
 
 
