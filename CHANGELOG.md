@@ -1,3 +1,10 @@
+## [3.9.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.16...v3.9.17) (2024-08-20)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-player from 6.6.8 to 6.6.10 ([98cbcfc](https://github.com/rickklaasboer/wego-overseer/commit/98cbcfce2174b56a4a5d584a957da34ed83e7823))
+
 ## [3.9.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.15...v3.9.16) (2024-08-15)
 
 
