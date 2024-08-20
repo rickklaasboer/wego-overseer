@@ -1,3 +1,11 @@
+## [3.9.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.17...v3.9.18) (2024-08-20)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.4.5 to 5.5.4 ([e9a4628](https://github.com/rickklaasboer/wego-overseer/commit/e9a4628c385dd039053a249e02d07196e07e504c))
+* use knex config to bind logger ([a7d7aa9](https://github.com/rickklaasboer/wego-overseer/commit/a7d7aa998ccbb48e69c87d57cd952f4802c8b6a5))
+
 ## [3.9.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.16...v3.9.17) (2024-08-20)
 
 
