@@ -1,3 +1,12 @@
+## [3.9.19](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.18...v3.9.19) (2024-08-21)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.12 to 1.11.13 ([92291e1](https://github.com/rickklaasboer/wego-overseer/commit/92291e194cb70e460f2ac09f3d5dcd6519ea622e))
+* **deps:** bump nodemon from 3.1.0 to 3.1.4 ([2a63e32](https://github.com/rickklaasboer/wego-overseer/commit/2a63e32cc2909d87e455a1352bc8376126cd9ba1))
+* **deps:** bump redis from 4.6.13 to 4.7.0 ([a2b1b75](https://github.com/rickklaasboer/wego-overseer/commit/a2b1b757d1d37f8ec263df2cb85bb1b4064f118c))
+
 ## [3.9.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.17...v3.9.18) (2024-08-20)
 
 
