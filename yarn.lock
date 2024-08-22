@@ -968,10 +968,10 @@
   resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.3.tgz#a5a00150479db71d28d85ed162cf4954341e325a"
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
-"@discord-player/extractor@4.4.7":
-  version "4.4.7"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.7.tgz#dde75ce69e07f30b33958ba5e491da4a82d02bb4"
-  integrity sha512-XHG9Y45rQVWk3quf0IJqAj1ybTqiRgAy6vr5hnlaDZeaxXlsHRlDSzmSYl+teFVw2G9bjzR0jIvm8a4BW9hCBw==
+"@discord-player/extractor@4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.5.1.tgz#fc2132dc1d1931107baae860cce1d140d20abd86"
+  integrity sha512-krsgdHD7sx4SWHKkIFDPcgYXR21EfleW0bjI6WvnJQbvTg9TZ4aYw77G6UVw/HaF7i3u3WuyGPZp1UqG0FRHaw==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.6"
