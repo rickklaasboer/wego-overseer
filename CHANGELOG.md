@@ -1,3 +1,69 @@
+## [3.9.20](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.19...v3.9.20) (2024-08-21)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-api-types from 0.37.93 to 0.37.96 ([08df255](https://github.com/rickklaasboer/wego-overseer/commit/08df25529d260aefff53e4d018c6f43b99e61bfd))
+
+## [3.9.19](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.18...v3.9.19) (2024-08-21)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.12 to 1.11.13 ([92291e1](https://github.com/rickklaasboer/wego-overseer/commit/92291e194cb70e460f2ac09f3d5dcd6519ea622e))
+* **deps:** bump nodemon from 3.1.0 to 3.1.4 ([2a63e32](https://github.com/rickklaasboer/wego-overseer/commit/2a63e32cc2909d87e455a1352bc8376126cd9ba1))
+* **deps:** bump redis from 4.6.13 to 4.7.0 ([a2b1b75](https://github.com/rickklaasboer/wego-overseer/commit/a2b1b757d1d37f8ec263df2cb85bb1b4064f118c))
+
+## [3.9.18](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.17...v3.9.18) (2024-08-20)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 5.4.5 to 5.5.4 ([e9a4628](https://github.com/rickklaasboer/wego-overseer/commit/e9a4628c385dd039053a249e02d07196e07e504c))
+* use knex config to bind logger ([a7d7aa9](https://github.com/rickklaasboer/wego-overseer/commit/a7d7aa998ccbb48e69c87d57cd952f4802c8b6a5))
+
+## [3.9.17](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.16...v3.9.17) (2024-08-20)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-player from 6.6.8 to 6.6.10 ([98cbcfc](https://github.com/rickklaasboer/wego-overseer/commit/98cbcfce2174b56a4a5d584a957da34ed83e7823))
+
+## [3.9.16](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.15...v3.9.16) (2024-08-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @rollup/plugin-commonjs from 25.0.7 to 26.0.1 ([eb9d748](https://github.com/rickklaasboer/wego-overseer/commit/eb9d7487e20800a709b4af7a05cf9403be7902f1))
+* **deps:** bump dayjs from 1.11.10 to 1.11.12 ([ca6c962](https://github.com/rickklaasboer/wego-overseer/commit/ca6c962fa3e96a6994cadb4fc8f22b9651d6993d))
+* **deps:** bump lint-staged from 15.2.2 to 15.2.9 ([eec062d](https://github.com/rickklaasboer/wego-overseer/commit/eec062d2ddd744a09821a31a4328ca42733959f2))
+
+## [3.9.15](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.14...v3.9.15) (2024-08-12)
+
+
+### Bug Fixes
+
+* **deps:** bump ajv from 8.12.0 to 8.17.1 ([02720fc](https://github.com/rickklaasboer/wego-overseer/commit/02720fc0f78705199ad4911a333f85a7e5499c24))
+* **deps:** bump discord-api-types from 0.37.88 to 0.37.93 ([1daf6f2](https://github.com/rickklaasboer/wego-overseer/commit/1daf6f28edd6db738fce919bcb896653a4e7ff22))
+* **deps:** bump prettier from 3.2.5 to 3.3.3 ([b48acd6](https://github.com/rickklaasboer/wego-overseer/commit/b48acd614092be2e0738ade7ea375575da1630f7))
+* **deps:** bump spotify-url-info from 3.2.13 to 3.2.16 ([a3e3a00](https://github.com/rickklaasboer/wego-overseer/commit/a3e3a00ab9ba06576f03911c6afd416dca28f0b6))
+
+## [3.9.14](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.13...v3.9.14) (2024-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump discord-api-types from 0.37.79 to 0.37.88 ([a3135c6](https://github.com/rickklaasboer/wego-overseer/commit/a3135c6cb11cee97019c25c458fcc84eb4f84c70))
+
+## [3.9.13](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.12...v3.9.13) (2024-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @aws-sdk/client-comprehend from 3.556.0 to 3.596.0 ([fd81836](https://github.com/rickklaasboer/wego-overseer/commit/fd81836178a6122cc4aab45d2f48282f28b9396a))
+* **deps:** bump @types/i18n from 0.13.10 to 0.13.12 ([c181c04](https://github.com/rickklaasboer/wego-overseer/commit/c181c046de1b74cff3a22b9518695c8302e3a72b))
+* **deps:** bump discord.js from 14.14.1 to 14.15.3 ([ff70c2d](https://github.com/rickklaasboer/wego-overseer/commit/ff70c2d7b5a3bcbdee1343696b945f5a6e48faaa))
+
 ## [3.9.12](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.11...v3.9.12) (2024-05-08)
 
 

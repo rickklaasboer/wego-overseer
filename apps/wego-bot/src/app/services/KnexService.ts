@@ -9,6 +9,7 @@ export default class KnexService {
 
     constructor(private logger: Logger) {
         this.knex = knex({
+            debug: config.knex.enableLogger,
             client: config.database.client,
             connection: {
                 host: config.database.host,
@@ -16,11 +17,13 @@ export default class KnexService {
                 password: config.database.password,
                 database: config.database.database,
             },
+            log: {
+                debug: (...args) => this.logger.debug(...args),
+                error: (...args) => this.logger.error(...args),
+                warn: (...args) => this.logger.warn(...args),
+                deprecate: (...args) => this.logger.warn(...args),
+            },
         });
-
-        if (config.knex.enableLogger) {
-            this.knex.on('query', this.logger.debug);
-        }
     }
 
     /**
