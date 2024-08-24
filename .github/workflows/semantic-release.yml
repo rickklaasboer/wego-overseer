@@ -14,17 +14,20 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
               with:
-                persist-credentials: false
+                  persist-credentials: false
             - uses: webfactory/ssh-agent@v0.7.0
               with:
-                ssh-private-key: ${{ secrets.GH_SSH_KEY }}
+                  ssh-private-key: ${{ secrets.GH_SSH_KEY }}
             - uses: actions/setup-node@v2
               with:
                   node-version: 18
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
             - name: Install dependencies
-              run: yarn
+              run: pnpm install --frozen-lockfile
             - name: Release
-              run: npx semantic-release
+              run: pnpm run ci:release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN  }}
                   NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}

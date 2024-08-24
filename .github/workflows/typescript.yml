@@ -8,7 +8,10 @@ jobs:
             - uses: actions/setup-node@v2
               with:
                   node-version: 18
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
             - name: Install dependencies
-              run: yarn --frozen-lockfile
+              run: pnpm install --frozen-lockfile
             - name: TypeScript
-              run: yarn tsc --noEmit --skipLibCheck
+              run: pnpm run lint:typescript

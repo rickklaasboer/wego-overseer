@@ -1,0 +1,26 @@
+{
+    "name": "@wego/logger",
+    "version": "1.0.0",
+    "description": "Logger for Wego",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "lint:typescript": "pnpm tsc --noEmit --skipLibCheck"
+    },
+    "license": "UNLICENSED",
+    "dependencies": {
+        "bunyan": "1.8.15"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "25.0.7",
+        "@rollup/plugin-typescript": "11.1.6",
+        "@types/bunyan": "1.8.11",
+        "rollup": "4.14.1",
+        "rollup-plugin-dts": "^6.1.0",
+        "rollup-plugin-node-externals": "5.1.3"
+    }
+}
+
