@@ -17,7 +17,7 @@ export default class KabelbaanNoobEvent implements BaseEvent<'messageCreate'> {
     public async execute(message: Message<boolean>): Promise<void> {
         try {
             // Terminate if user is not kabelbaan
-            if (message.author.id != config.noob.kabelkaanDiscordId) return;
+            if (message.author.id != config.noob.kabelbaanDiscordId) return;
 
             const emoji = this.getEmoji(message, config.noob.noobEmojiId);
 

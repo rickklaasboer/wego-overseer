@@ -1,5 +1,5 @@
 import BaseCommand, {DefaultInteraction} from '@/app/commands/BaseCommand';
-import GitubService from '@/app/services/GithubService';
+import GithubService from '@/app/services/GithubService';
 import config from '@/config';
 import Logger from '@/telemetry/logger';
 import {trans} from '@/util/localization/localization';
@@ -11,7 +11,7 @@ export default class VersionCommand implements BaseCommand {
     public description = 'Get the current version of the bot';
 
     constructor(
-        private githubService: GitubService,
+        private githubService: GithubService,
         private logger: Logger,
     ) {}
 

@@ -124,7 +124,7 @@ yarn dev
 yarn dev:no-watch
 ```
 
-Ooptionally, you can pipe log output to bunyan for fancy log formatting.
+Optionally, you can pipe log output to bunyan for fancy log formatting.
 
 ```sh
 yarn dev:no-watch | yarn bunyan
