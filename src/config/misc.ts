@@ -33,7 +33,7 @@ export default {
         announceChannelId: getEnvString('YOUTUBE_ANNOUNCE_CHANNEL_ID', ''),
     },
     noob: {
-        kabelkaanDiscordId: getEnvString('KABELBAAN_DISCORD_ID', ''),
+        kabelbaanDiscordId: getEnvString('KABELBAAN_DISCORD_ID', ''),
         noobEmojiId: getEnvString('NOOB_EMOJI_ID', ''),
     },
     knex: {

@@ -3,7 +3,7 @@ import {GithubRelease} from '@/types/github';
 import {injectable} from 'tsyringe';
 
 @injectable()
-export default class GitubService {
+export default class GithubService {
     private defaultHeaders = {
         Accept: 'application/vnd.github+json',
         Authorization: `Bearer ${config.github.apiToken}`,
