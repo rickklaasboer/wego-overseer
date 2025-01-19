@@ -33,10 +33,8 @@ export default class Bot {
         await this.boot();
 
         this.logger.info(`Successfully started in ${dayjs().diff(now)}ms`);
-
-        const tag = this.clientService.getClient().user?.tag;
         this.logger.info(
-            `Discord client ready and listening as ${tag} in ${dayjs().diff(
+            `Discord client ready and listening as ${this.clientService.getTag()} in ${dayjs().diff(
                 now,
             )}ms`,
         );
@@ -50,7 +48,7 @@ export default class Bot {
         const now = dayjs();
         await this.register();
 
-        await this.clientService.getClient().login(config.discord.token);
+        await this.clientService.login(config.discord.token);
 
         this.setBotActivity();
 

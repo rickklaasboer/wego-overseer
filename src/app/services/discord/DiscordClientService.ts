@@ -1,3 +1,4 @@
+import {Maybe} from '@/types/util';
 import {Client, IntentsBitField, Partials} from 'discord.js';
 import {singleton} from 'tsyringe';
 
@@ -22,6 +23,20 @@ export default class DiscordClientService {
                 Partials.GuildMember,
             ],
         });
+    }
+
+    /**
+     * Login using token
+     */
+    public async login(token: string): Promise<string> {
+        return this.client.login(token);
+    }
+
+    /**
+     * Get the bot's tag
+     */
+    public getTag(): Maybe<string> {
+        return this.client.user?.tag;
     }
 
     /**

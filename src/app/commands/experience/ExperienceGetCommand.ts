@@ -59,7 +59,10 @@ export default class ExperienceGetCommand extends BaseInternalCommand {
     /**
      * Get leaderboard position of user
      */
-    private async getLeaderboardPosition(guildId: string, userId: string) {
+    private async getLeaderboardPosition(
+        guildId: string,
+        userId: string,
+    ): Promise<number> {
         return (
             await this.experienceRepository.getLeaderboard(guildId)
         ).findIndex((exp) => {
