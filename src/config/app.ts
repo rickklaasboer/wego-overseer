@@ -45,6 +45,7 @@ import SwearEvent from '@/app/events/misc/SwearEvent';
 import {getEnvString} from '@/util/misc/environment';
 import {LOG_LEVELS} from '@/telemetry/logger';
 import HeartbeatJob from '@/app/jobs/HeartbeatJob';
+import BrailleCommand from '@/app/commands/misc/BrailleCommand';
 
 export default {
     version: process.env.APP_VERSION ?? 'Unknown',
@@ -76,6 +77,7 @@ export default {
         ['version', VersionCommand],
         ['experience', ExperienceCommand],
         ['poll', PollCommand],
+        ['braille', BrailleCommand],
     ]),
 
     /**
