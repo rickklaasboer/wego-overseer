@@ -1,3 +1,10 @@
+# [3.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.20...v3.10.0) (2025-03-06)
+
+
+### Features
+
+* add braille command ([c6097cb](https://github.com/rickklaasboer/wego-overseer/commit/c6097cb136824d30d91855b9baab89c932bb918f))
+
 ## [3.9.20](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.19...v3.9.20) (2024-08-21)
 
 
