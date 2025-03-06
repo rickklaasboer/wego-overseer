@@ -67,7 +67,7 @@
         "i18n": "0.15.1",
         "jimp": "0.22.12",
         "knex": "3.1.0",
-        "mediaplex": "^1.0.0",
+        "mediaplex": "1.0.0",
         "mysql2": "3.9.7",
         "node-cron": "3.0.3",
         "objection": "3.1.4",

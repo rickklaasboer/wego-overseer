@@ -6460,7 +6460,7 @@ mediaplex-win32-x64-msvc@1.0.0:
   resolved "https://registry.yarnpkg.com/mediaplex-win32-x64-msvc/-/mediaplex-win32-x64-msvc-1.0.0.tgz#692a31cbd310a5b9549aeecfad18a8bdd04a016d"
   integrity sha512-yocvA647y6kAgBLpjllVjmp6ayvaBuqwrF+KhQnUnXbGH8celV0clJw9y7Ca8e38v89Yj4C73KpHxwGBk0sGqQ==
 
-mediaplex@^1.0.0:
+mediaplex@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/mediaplex/-/mediaplex-1.0.0.tgz#e277ae324900e0ec29cff2977873ec0eaaa514ca"
   integrity sha512-2vj7Px34rNUmHKilpAagU7jNhKIyoG8/wZ/cvJQzUdhvul8ef03NOK3No3LWVZEF1Pi27VSFOwBvawli/B86hA==
