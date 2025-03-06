@@ -35,7 +35,7 @@ export default class BrailleCommand implements BaseCommand {
             );
         } catch (err) {
             this.logger.fatal(
-                'Failed to ping, I have no idea how this will ever happen but here we are',
+                'Failed to translate to braille, should technically never happen but here we are',
                 err,
             );
         }
