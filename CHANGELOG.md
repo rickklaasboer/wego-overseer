@@ -1,3 +1,10 @@
+# [3.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.10.0...v3.11.0) (2025-10-06)
+
+
+### Features
+
+* karma personality ([74246aa](https://github.com/rickklaasboer/wego-overseer/commit/74246aa8838a96990895ffdc67049ee125682feb))
+
 # [3.10.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.9.20...v3.10.0) (2025-03-06)
 
 
