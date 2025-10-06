@@ -1,5 +1,6 @@
-import {Client, IntentsBitField, Partials} from 'discord.js';
-import {singleton} from 'tsyringe';
+import config from '@/config';
+import { ActivityType, Client, IntentsBitField, Partials } from 'discord.js';
+import { singleton } from 'tsyringe';
 
 @singleton()
 export default class DiscordClientService {
@@ -21,6 +22,32 @@ export default class DiscordClientService {
                 Partials.User,
                 Partials.GuildMember,
             ],
+        });
+    }
+
+    /**
+     * Login bot to the Discord API
+     * @param token 
+     */
+    public async login(token: string): Promise<void> {
+        await this.client.login(token)
+    }
+
+    /**
+     * Get the bot's tag
+     */
+    public tag(): string {
+        return this.client.user?.tag ?? 'Unknown';
+    }
+
+    /**
+     * Set the bot's activity
+     * @param version 
+     */
+    public setActivity(version: string) {
+        this.client.user?.setActivity({
+            name: `version ${version}`,
+            type: ActivityType.Playing,
         });
     }
 
