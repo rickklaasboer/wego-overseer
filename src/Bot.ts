@@ -1,16 +1,16 @@
-import {ActivityType, Routes} from 'discord.js';
-import {singleton} from 'tsyringe';
+import { ActivityType, Routes } from 'discord.js';
+import { singleton } from 'tsyringe';
 import config from '@/config';
 import DiscordClientService from '@/app/services/discord/DiscordClientService';
 import DiscordRestService from '@/app/services/discord/DiscordRestService';
 import Logger from '@/telemetry/logger';
 import dayjs from 'dayjs';
-import BaseEvent, {EventKeys} from '@/app/events/BaseEvent';
+import BaseEvent, { EventKeys } from '@/app/events/BaseEvent';
 import CommandHandler from '@/handlers/CommandHandler';
 import EventHandler from '@/handlers/EventHandler';
 import JobHandler from '@/handlers/JobHandler';
 import BaseJob from '@/app/jobs/BaseJob';
-import {app} from '@/util/misc/misc';
+import { app } from '@/util/misc/misc';
 
 @singleton()
 export default class Bot {
@@ -21,7 +21,7 @@ export default class Bot {
         private eventHandler: EventHandler,
         private jobHandler: JobHandler,
         private logger: Logger,
-    ) {}
+    ) { }
 
     /**
      * Start the bot
@@ -34,7 +34,7 @@ export default class Bot {
 
         this.logger.info(`Successfully started in ${dayjs().diff(now)}ms`);
 
-        const tag = this.clientService.getClient().user?.tag;
+        const tag = this.clientService.tag();
         this.logger.info(
             `Discord client ready and listening as ${tag} in ${dayjs().diff(
                 now,
@@ -50,9 +50,8 @@ export default class Bot {
         const now = dayjs();
         await this.register();
 
-        await this.clientService.getClient().login(config.discord.token);
-
-        this.setBotActivity();
+        await this.clientService.login(config.discord.token);
+        this.clientService.setActivity(process.env.APP_VERSION ?? 'N/A')
 
         this.logger.info(`Successfully booted in ${dayjs().diff(now)}ms`);
     }
@@ -63,11 +62,9 @@ export default class Bot {
     private async register(): Promise<void> {
         const now = dayjs();
 
-        await this.restService
-            .getRest()
-            .put(Routes.applicationCommands(config.discord.applicationId), {
-                body: this.commandHandler.getRestable(),
-            });
+        await this.restService.putApplicationCommands(
+            this.commandHandler.getRestable()
+        );
 
         this.logger.info(
             `Rest client sent commands to discord in ${dayjs().diff(now)}ms`,
@@ -89,8 +86,7 @@ export default class Bot {
         });
 
         this.logger.info(
-            `Successfully registered ${
-                config.app.commands.size
+            `Successfully registered ${config.app.commands.size
             } commands(s) ([${Array.from(config.app.commands.keys()).join(
                 ', ',
             )}])`,
@@ -111,8 +107,7 @@ export default class Bot {
         }
 
         this.logger.info(
-            `Successfully registered ${
-                config.app.events.size
+            `Successfully registered ${config.app.events.size
             } event(s) ([${Array.from(config.app.events.keys()).join(', ')}])`,
         );
     }
@@ -127,22 +122,8 @@ export default class Bot {
         }
 
         this.logger.info(
-            `Successfully registered ${
-                config.app.jobs.size
+            `Successfully registered ${config.app.jobs.size
             } job(s) ([${Array.from(config.app.jobs.keys()).join(', ')}])`,
         );
-    }
-
-    /**
-     * Set bot activity
-     */
-    private setBotActivity(): void {
-        const client = this.clientService.getClient();
-        const version = process.env.APP_VERSION;
-
-        client.user?.setActivity({
-            name: `version ${version}`,
-            type: ActivityType.Playing,
-        });
     }
 }
