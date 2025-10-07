@@ -68,6 +68,105 @@
                     "not_available": "Het lijkt erop dat %s nog geen berichten karma heeft ontvangen. Probeer het later opnieuw!",
                     "title": "Karma grafiek"
                 }
+            },
+            "personality": {
+                "error": "Kan karma persoonlijkheidsprofiel niet genereren",
+                "embed": {
+                    "title": "%s's Karma Persoonlijkheid",
+                    "footer": "Karma Persoonlijkheidstype: %s"
+                },
+                "fields": {
+                    "stats": "📊 Karma Statistieken",
+                    "traits": "🎯 Persoonlijkheidskenmerken",
+                    "facts": "🏆 Leuke Weetjes"
+                },
+                "stats": {
+                    "given": "**Gegeven:** %s",
+                    "received": "**Ontvangen:** %s",
+                    "ratio": "**Ratio:** %s",
+                    "network": "**Netwerk:** %s mensen"
+                },
+                "types": {
+                    "philanthropist": {
+                        "title": "De Karma Filantroop",
+                        "description": "Je bent de vrijgevige ziel van de server! Je geeft veel meer karma dan je ontvangt en verspreidt positiviteit waar je ook gaat.",
+                        "traits": {
+                            "1": "Extreem vrijgevig",
+                            "2": "Gemeenschapsgericht",
+                            "3": "Natuurlijke aanmoediger",
+                            "4": "Zelfloze helper"
+                        }
+                    },
+                    "magnet": {
+                        "title": "De Karma Magneet",
+                        "description": "Je bent een karma magneet! Mensen geven je graag karma - je doet duidelijk iets heel goed!",
+                        "traits": {
+                            "1": "Zeer gewaardeerd",
+                            "2": "Content creator",
+                            "3": "Gemeenschapsfavoriet",
+                            "4": "Natuurlijke entertainer"
+                        }
+                    },
+                    "balanced": {
+                        "title": "De Karma Balanceerder",
+                        "description": "Perfecte harmonie! Je geeft en ontvangt karma in prachtig evenwicht. Je begrijpt de ware geest van karma.",
+                        "traits": {
+                            "1": "Goed gebalanceerd",
+                            "2": "Eerlijk en rechtvaardig",
+                            "3": "Wederkerige natuur",
+                            "4": "Karma filosoof"
+                        }
+                    },
+                    "networker": {
+                        "title": "De Karma Netwerker",
+                        "description": "Je bent verbonden! Je wisselt karma uit met veel verschillende mensen - een echte sociale vlinder van de server.",
+                        "traits": {
+                            "1": "Zeer sociaal",
+                            "2": "Geweldige netwerker",
+                            "3": "Gemeenschapsverbinder",
+                            "4": "Relatiebuilder"
+                        }
+                    },
+                    "mystery": {
+                        "title": "Het Karma Mysterie",
+                        "description": "Je bent een raadsel! Je bouwt nog aan je karma verhaal. Elke reis begint met een enkele stap.",
+                        "traits": {
+                            "1": "Mysterieuze aanwezigheid",
+                            "2": "Onbenut potentieel",
+                            "3": "Frisse start",
+                            "4": "Toekomstige legende"
+                        }
+                    },
+                    "giver": {
+                        "title": "De Karma Gever",
+                        "description": "Je hebt een gevend hart! Je vindt het heerlijk om karma te verspreiden en anderen te laten voelen dat ze gewaardeerd worden.",
+                        "traits": {
+                            "1": "Vrijgevige geest",
+                            "2": "Waarderingsverspreider",
+                            "3": "Positieve invloed",
+                            "4": "Hart van goud"
+                        }
+                    },
+                    "appreciated": {
+                        "title": "De Gewaardeerde Karma",
+                        "description": "Je wordt geliefd door de gemeenschap! Mensen erkennen je bijdragen en tonen hun waardering.",
+                        "traits": {
+                            "1": "Zeer gerespecteerd",
+                            "2": "Gewaardeerd lid",
+                            "3": "Positieve bijdrager",
+                            "4": "Gemeenschapsschat"
+                        }
+                    }
+                },
+                "facts": {
+                    "favorite_channel": "🏠 Meest actief in <#%s>",
+                    "top_giver": "🎯 Grootste karma fan: %s",
+                    "top_receiver": "💖 Favoriete karma doelwit: %s",
+                    "high_ratio": "🎁 Geeft %sx meer dan ontvangt!",
+                    "many_admirers": "🌍 Heeft %s verschillende karma bewonderaars!",
+                    "high_activity": "🚀 Totale karma activiteit: %s!",
+                    "building_history": "Bouwt karma geschiedenis op..."
+                }
             }
         },
         "music": {
