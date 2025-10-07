@@ -1,3 +1,10 @@
+## [3.11.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.11.0...v3.11.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* channel name not a defined column ([ce8412f](https://github.com/rickklaasboer/wego-overseer/commit/ce8412f9a556bf9c92bfb5361e633e73f96918ca))
+
 # [3.11.0](https://github.com/rickklaasboer/wego-overseer/compare/v3.10.0...v3.11.0) (2025-10-06)
 
 
