@@ -68,6 +68,105 @@
                     "not_available": "It doesn't look like %s has received karma yet. Try again later!",
                     "title": "Karma graph"
                 }
+            },
+            "personality": {
+                "error": "Failed to generate personality profile",
+                "embed": {
+                    "title": "%s's Karma Personality",
+                    "footer": "Karma Personality Type: %s"
+                },
+                "fields": {
+                    "stats": "📊 Karma Stats",
+                    "traits": "🎯 Personality Traits",
+                    "facts": "🏆 Fun Facts"
+                },
+                "stats": {
+                    "given": "**Given:** %s",
+                    "received": "**Received:** %s",
+                    "ratio": "**Ratio:** %s",
+                    "network": "**Network:** %s people"
+                },
+                "types": {
+                    "philanthropist": {
+                        "title": "The Karma Philanthropist",
+                        "description": "You're the generous soul of the server! You give way more karma than you receive, spreading positivity wherever you go.",
+                        "traits": {
+                            "1": "Extremely generous",
+                            "2": "Community focused",
+                            "3": "Natural encourager",
+                            "4": "Selfless helper"
+                        }
+                    },
+                    "magnet": {
+                        "title": "The Karma Magnet",
+                        "description": "You're a karma magnet! People love giving you karma - you must be doing something really right!",
+                        "traits": {
+                            "1": "Highly appreciated",
+                            "2": "Content creator",
+                            "3": "Community favorite",
+                            "4": "Natural entertainer"
+                        }
+                    },
+                    "balanced": {
+                        "title": "The Karma Balancer",
+                        "description": "Perfect harmony! You give and receive karma in beautiful balance. You understand the true spirit of karma.",
+                        "traits": {
+                            "1": "Well-balanced",
+                            "2": "Fair and just",
+                            "3": "Reciprocal nature",
+                            "4": "Karma philosopher"
+                        }
+                    },
+                    "networker": {
+                        "title": "The Karma Networker",
+                        "description": "You're connected! You exchange karma with lots of different people - a true social butterfly of the server.",
+                        "traits": {
+                            "1": "Highly social",
+                            "2": "Great networker",
+                            "3": "Community connector",
+                            "4": "Relationship builder"
+                        }
+                    },
+                    "mystery": {
+                        "title": "The Karma Mystery",
+                        "description": "You're an enigma! Still building your karma story. Every journey starts with a single step.",
+                        "traits": {
+                            "1": "Mysterious presence",
+                            "2": "Untapped potential",
+                            "3": "Fresh start",
+                            "4": "Future legend"
+                        }
+                    },
+                    "giver": {
+                        "title": "The Karma Giver",
+                        "description": "You have a giving heart! You love to spread karma and make others feel appreciated.",
+                        "traits": {
+                            "1": "Generous spirit",
+                            "2": "Appreciation spreader",
+                            "3": "Positive influence",
+                            "4": "Heart of gold"
+                        }
+                    },
+                    "appreciated": {
+                        "title": "The Karma Appreciated",
+                        "description": "You're well-loved by the community! People recognize your contributions and show their appreciation.",
+                        "traits": {
+                            "1": "Well-respected",
+                            "2": "Valued member",
+                            "3": "Positive contributor",
+                            "4": "Community treasure"
+                        }
+                    }
+                },
+                "facts": {
+                    "favorite_channel": "🏠 Most active in <#%s>",
+                    "top_giver": "🎯 Biggest karma fan: %s",
+                    "top_receiver": "💖 Favorite karma target: %s",
+                    "high_ratio": "🎁 Gives %sx more than receives!",
+                    "many_admirers": "🌍 Has %s different karma admirers!",
+                    "high_activity": "🚀 Total karma activity: %s!",
+                    "building_history": "Building karma history..."
+                }
             }
         },
         "music": {

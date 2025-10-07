@@ -55,7 +55,7 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
             // Create embed
             const embed = new EmbedBuilder()
                 .setTitle(
-                    `${profile.emoji} ${user.username}'s Karma Personality`,
+                    `${profile.emoji} ${trans('commands.karma.personality.embed.title', user.username)}`,
                 )
                 .setDescription(
                     `**${profile.title}**\n\n${profile.description}`,
@@ -64,25 +64,28 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
                 .setThumbnail(user.displayAvatarURL())
                 .addFields(
                     {
-                        name: '📊 Karma Stats',
+                        name: trans('commands.karma.personality.fields.stats'),
                         value: this.formatStats(stats),
                         inline: true,
                     },
                     {
-                        name: '🎯 Personality Traits',
+                        name: trans('commands.karma.personality.fields.traits'),
                         value: profile.traits
                             .map((trait) => `• ${trait}`)
                             .join('\n'),
                         inline: true,
                     },
                     {
-                        name: '🏆 Fun Facts',
+                        name: trans('commands.karma.personality.fields.facts'),
                         value: this.generateFunFacts(stats),
                         inline: false,
                     },
                 )
                 .setFooter({
-                    text: `Karma Personality Type: ${profile.type}`,
+                    text: trans(
+                        'commands.karma.personality.embed.footer',
+                        profile.type,
+                    ),
                     iconURL: interaction.client.user?.displayAvatarURL(),
                 });
 
@@ -105,7 +108,6 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
         guildId: string,
         userId: string,
     ): Promise<KarmaStats> {
-        // You'll need to implement these methods in your KarmaRepository
         const received = await this.karmaRepository.getKarmaReceived(
             guildId,
             userId,
@@ -139,7 +141,7 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
             uniqueReceivers: uniqueReceivers.count || 0,
             averageReceived: received.average || 0,
             averageGiven: given.average || 0,
-            favoriteChannel: favoriteChannel?.name || null,
+            favoriteChannel: favoriteChannel?.channelId || null,
             topGiver: topGiver?.username || null,
             topReceiver: topReceiver?.username || null,
             karmaRatio: received.total > 0 ? given.total / received.total : 0,
@@ -155,110 +157,146 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
             uniqueReceivers,
         } = stats;
 
-        // Determine personality type based on karma patterns
         if (karmaRatio > 2 && totalGiven > 50) {
             return {
                 type: 'THE_PHILANTHROPIST',
-                title: 'The Karma Philanthropist',
-                description:
-                    "You're the generous soul of the server! You give way more karma than you receive, spreading positivity wherever you go.",
+                title: trans(
+                    'commands.karma.personality.types.philanthropist.title',
+                ),
+                description: trans(
+                    'commands.karma.personality.types.philanthropist.description',
+                ),
                 emoji: '🎁',
                 color: 0x00ff00,
                 traits: [
-                    'Extremely generous',
-                    'Community focused',
-                    'Natural encourager',
-                    'Selfless helper',
+                    trans(
+                        'commands.karma.personality.types.philanthropist.traits.1',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.philanthropist.traits.2',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.philanthropist.traits.3',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.philanthropist.traits.4',
+                    ),
                 ],
             };
         } else if (karmaRatio < 0.5 && totalReceived > 100) {
             return {
                 type: 'THE_MAGNET',
-                title: 'The Karma Magnet',
-                description:
-                    "You're a karma magnet! People love giving you karma - you must be doing something really right!",
+                title: trans('commands.karma.personality.types.magnet.title'),
+                description: trans(
+                    'commands.karma.personality.types.magnet.description',
+                ),
                 emoji: '🧲',
                 color: 0xff6b6b,
                 traits: [
-                    'Highly appreciated',
-                    'Content creator',
-                    'Community favorite',
-                    'Natural entertainer',
+                    trans('commands.karma.personality.types.magnet.traits.1'),
+                    trans('commands.karma.personality.types.magnet.traits.2'),
+                    trans('commands.karma.personality.types.magnet.traits.3'),
+                    trans('commands.karma.personality.types.magnet.traits.4'),
                 ],
             };
         } else if (Math.abs(karmaRatio - 1) < 0.3 && totalGiven > 20) {
             return {
                 type: 'THE_BALANCED',
-                title: 'The Karma Balancer',
-                description:
-                    'Perfect harmony! You give and receive karma in beautiful balance. You understand the true spirit of karma.',
+                title: trans('commands.karma.personality.types.balanced.title'),
+                description: trans(
+                    'commands.karma.personality.types.balanced.description',
+                ),
                 emoji: '⚖️',
                 color: 0x4ecdc4,
                 traits: [
-                    'Well-balanced',
-                    'Fair and just',
-                    'Reciprocal nature',
-                    'Karma philosopher',
+                    trans('commands.karma.personality.types.balanced.traits.1'),
+                    trans('commands.karma.personality.types.balanced.traits.2'),
+                    trans('commands.karma.personality.types.balanced.traits.3'),
+                    trans('commands.karma.personality.types.balanced.traits.4'),
                 ],
             };
         } else if (uniqueGivers > 10 && uniqueReceivers > 10) {
             return {
                 type: 'THE_NETWORKER',
-                title: 'The Karma Networker',
-                description:
-                    "You're connected! You exchange karma with lots of different people - a true social butterfly of the server.",
+                title: trans(
+                    'commands.karma.personality.types.networker.title',
+                ),
+                description: trans(
+                    'commands.karma.personality.types.networker.description',
+                ),
                 emoji: '🕸️',
                 color: 0x9b59b6,
                 traits: [
-                    'Highly social',
-                    'Great networker',
-                    'Community connector',
-                    'Relationship builder',
+                    trans(
+                        'commands.karma.personality.types.networker.traits.1',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.networker.traits.2',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.networker.traits.3',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.networker.traits.4',
+                    ),
                 ],
             };
         } else if (totalGiven < 5 && totalReceived < 5) {
             return {
                 type: 'THE_MYSTERY',
-                title: 'The Karma Mystery',
-                description:
-                    "You're an enigma! Still building your karma story. Every journey starts with a single step.",
+                title: trans('commands.karma.personality.types.mystery.title'),
+                description: trans(
+                    'commands.karma.personality.types.mystery.description',
+                ),
                 emoji: '🎭',
                 color: 0x95a5a6,
                 traits: [
-                    'Mysterious presence',
-                    'Untapped potential',
-                    'Fresh start',
-                    'Future legend',
+                    trans('commands.karma.personality.types.mystery.traits.1'),
+                    trans('commands.karma.personality.types.mystery.traits.2'),
+                    trans('commands.karma.personality.types.mystery.traits.3'),
+                    trans('commands.karma.personality.types.mystery.traits.4'),
                 ],
             };
         } else if (karmaRatio > 1.5) {
             return {
                 type: 'THE_GIVER',
-                title: 'The Karma Giver',
-                description:
-                    'You have a giving heart! You love to spread karma and make others feel appreciated.',
+                title: trans('commands.karma.personality.types.giver.title'),
+                description: trans(
+                    'commands.karma.personality.types.giver.description',
+                ),
                 emoji: '💝',
                 color: 0xf39c12,
                 traits: [
-                    'Generous spirit',
-                    'Appreciation spreader',
-                    'Positive influence',
-                    'Heart of gold',
+                    trans('commands.karma.personality.types.giver.traits.1'),
+                    trans('commands.karma.personality.types.giver.traits.2'),
+                    trans('commands.karma.personality.types.giver.traits.3'),
+                    trans('commands.karma.personality.types.giver.traits.4'),
                 ],
             };
         } else {
             return {
                 type: 'THE_APPRECIATED',
-                title: 'The Karma Appreciated',
-                description:
-                    "You're well-loved by the community! People recognize your contributions and show their appreciation.",
+                title: trans(
+                    'commands.karma.personality.types.appreciated.title',
+                ),
+                description: trans(
+                    'commands.karma.personality.types.appreciated.description',
+                ),
                 emoji: '🌟',
                 color: 0xe74c3c,
                 traits: [
-                    'Well-respected',
-                    'Valued member',
-                    'Positive contributor',
-                    'Community treasure',
+                    trans(
+                        'commands.karma.personality.types.appreciated.traits.1',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.appreciated.traits.2',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.appreciated.traits.3',
+                    ),
+                    trans(
+                        'commands.karma.personality.types.appreciated.traits.4',
+                    ),
                 ],
             };
         }
@@ -266,10 +304,19 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
 
     private formatStats(stats: KarmaStats): string {
         const lines = [
-            `**Given:** ${stats.totalGiven}`,
-            `**Received:** ${stats.totalReceived}`,
-            `**Ratio:** ${stats.karmaRatio.toFixed(2)}`,
-            `**Network:** ${stats.uniqueGivers + stats.uniqueReceivers} people`,
+            trans('commands.karma.personality.stats.given', stats.totalGiven),
+            trans(
+                'commands.karma.personality.stats.received',
+                stats.totalReceived,
+            ),
+            trans(
+                'commands.karma.personality.stats.ratio',
+                stats.karmaRatio.toFixed(2),
+            ),
+            trans(
+                'commands.karma.personality.stats.network',
+                stats.uniqueGivers + stats.uniqueReceivers,
+            ),
         ];
         return lines.join('\n');
     }
@@ -278,37 +325,61 @@ export default class KarmaPersonalityCommand extends BaseInternalCommand {
         const facts = [];
 
         if (stats.favoriteChannel) {
-            facts.push(`🏠 Most active in #${stats.favoriteChannel}`);
+            facts.push(
+                trans(
+                    'commands.karma.personality.facts.favorite_channel',
+                    stats.favoriteChannel,
+                ),
+            );
         }
 
         if (stats.topGiver) {
-            facts.push(`🎯 Biggest karma fan: ${stats.topGiver}`);
+            facts.push(
+                trans(
+                    'commands.karma.personality.facts.top_giver',
+                    stats.topGiver,
+                ),
+            );
         }
 
         if (stats.topReceiver) {
-            facts.push(`💖 Favorite karma target: ${stats.topReceiver}`);
+            facts.push(
+                trans(
+                    'commands.karma.personality.facts.top_receiver',
+                    stats.topReceiver,
+                ),
+            );
         }
 
         if (stats.karmaRatio > 3) {
             facts.push(
-                `🎁 Gives ${Math.round(stats.karmaRatio)}x more than receives!`,
+                trans(
+                    'commands.karma.personality.facts.high_ratio',
+                    Math.round(stats.karmaRatio),
+                ),
             );
         }
 
         if (stats.uniqueGivers > 15) {
             facts.push(
-                `🌍 Has ${stats.uniqueGivers} different karma admirers!`,
+                trans(
+                    'commands.karma.personality.facts.many_admirers',
+                    stats.uniqueGivers,
+                ),
             );
         }
 
         if (stats.totalGiven + stats.totalReceived > 500) {
             facts.push(
-                `🚀 Total karma activity: ${stats.totalGiven + stats.totalReceived}!`,
+                trans(
+                    'commands.karma.personality.facts.high_activity',
+                    stats.totalGiven + stats.totalReceived,
+                ),
             );
         }
 
         return facts.length > 0
             ? facts.join('\n')
-            : 'Building karma history...';
+            : trans('commands.karma.personality.facts.building_history');
     }
 }

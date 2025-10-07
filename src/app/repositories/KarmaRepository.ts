@@ -259,7 +259,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     public async getFavoriteChannel(
         guildId: PrimaryKey,
         userId: PrimaryKey,
-    ): Promise<{channelId: string; name: string; count: number} | null> {
+    ): Promise<{channelId: string; count: number} | null> {
         return this.cache.remember(
             ['karma', 'favoriteChannel', guildId, userId],
             600,
@@ -267,19 +267,17 @@ export default class KarmaRepository implements BaseRepository<Karma> {
                 const result = await this.knexService
                     .getKnex()
                     .table('karma')
-                    .join('channels', 'karma.channelId', '=', 'channels.id')
                     .where('karma.guildId', '=', guildId)
                     .andWhere('karma.userId', '=', userId)
-                    .select('karma.channelId', 'channels.name')
+                    .select('karma.channelId')
                     .count('* as count')
-                    .groupBy('karma.channelId', 'channels.name')
+                    .groupBy('karma.channelId')
                     .orderBy('count', 'desc')
                     .first();
 
                 return result
                     ? {
                           channelId: result.channelId,
-                          name: result.name,
                           count: parseInt(result.count || '0'),
                       }
                     : null;
@@ -359,7 +357,7 @@ export default class KarmaRepository implements BaseRepository<Karma> {
     }
 
     /**
-     * Get karma activity timeline (optional - for more advanced stats)
+     * Get karma activity timeline
      */
     public async getKarmaTimeline(
         guildId: PrimaryKey,
