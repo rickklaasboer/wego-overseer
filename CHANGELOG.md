@@ -1,3 +1,10 @@
+## [3.11.2](https://github.com/rickklaasboer/wego-overseer/compare/v3.11.1...v3.11.2) (2025-10-13)
+
+
+### Bug Fixes
+
+* add user argument to karma personality command ([95489d9](https://github.com/rickklaasboer/wego-overseer/commit/95489d92d4394a17bd91f44875f938fd7ce28707))
+
 ## [3.11.1](https://github.com/rickklaasboer/wego-overseer/compare/v3.11.0...v3.11.1) (2025-10-07)
 
 
