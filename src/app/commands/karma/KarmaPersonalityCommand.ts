@@ -6,7 +6,7 @@ import {trans} from '@/util/localization/localization';
 import {injectable} from 'tsyringe';
 import {EmbedBuilder} from 'discord.js';
 
-interface KarmaStats {
+type KarmaStats = {
     totalReceived: number;
     totalGiven: number;
     uniqueGivers: number;
@@ -17,16 +17,16 @@ interface KarmaStats {
     topGiver: string | null;
     topReceiver: string | null;
     karmaRatio: number;
-}
+};
 
-interface PersonalityProfile {
+type PersonalityProfile = {
     type: string;
     title: string;
     description: string;
     emoji: string;
     color: number;
     traits: string[];
-}
+};
 
 @injectable()
 export default class KarmaPersonalityCommand extends BaseInternalCommand {
