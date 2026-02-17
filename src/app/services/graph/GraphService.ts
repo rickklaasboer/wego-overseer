@@ -21,4 +21,3 @@ export default class DiscordRestService {
         return response as Graph;
     }
 }
-

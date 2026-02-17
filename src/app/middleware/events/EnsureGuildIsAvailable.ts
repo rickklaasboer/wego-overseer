@@ -1,4 +1,3 @@
-import Guild from '@/app/entities/Guild';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import GuildRepository from '@/app/repositories/GuildRepository';
 import {ClientEvents} from 'discord.js';

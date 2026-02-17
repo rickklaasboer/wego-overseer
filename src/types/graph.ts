@@ -1,4 +1,4 @@
 export type Graph = {
-    success: boolean,
-    url: string
-}
+    success: boolean;
+    url: string;
+};

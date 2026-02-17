@@ -1,6 +1,5 @@
-import config from '@/config';
-import { ActivityType, Client, IntentsBitField, Partials } from 'discord.js';
-import { singleton } from 'tsyringe';
+import {ActivityType, Client, IntentsBitField, Partials} from 'discord.js';
+import {singleton} from 'tsyringe';
 
 @singleton()
 export default class DiscordClientService {
@@ -27,10 +26,10 @@ export default class DiscordClientService {
 
     /**
      * Login bot to the Discord API
-     * @param token 
+     * @param token
      */
     public async login(token: string): Promise<void> {
-        await this.client.login(token)
+        await this.client.login(token);
     }
 
     /**
@@ -42,7 +41,7 @@ export default class DiscordClientService {
 
     /**
      * Set the bot's activity
-     * @param version 
+     * @param version
      */
     public setActivity(version: string) {
         this.client.user?.setActivity({

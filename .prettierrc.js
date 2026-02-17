@@ -6,5 +6,5 @@ module.exports = {
     semi: true,
     singleQuote: true,
     arrowParens: 'always',
-    endOfLine: 'crlf',
+    endOfLine: 'lf',
 };

@@ -1,142 +1,34 @@
-type FixedWidthStill = {
+// Base types for common image format patterns
+type BaseImageFormat = {
     height: string;
+    width: string;
     size: string;
     url: string;
-    width: string;
 };
 
-type PreviewGif = {
+type MinimalImageFormat = {
     height: string;
-    size: string;
+    width: string;
     url: string;
-    width: string;
 };
 
-type FixedHeightDownsampled = {
+type Mp4Format = {
     height: string;
-    size: string;
-    url: string;
-    webp: string;
-    webp_size: string;
     width: string;
-};
-
-type Preview = {
-    height: string;
     mp4: string;
     mp4_size: string;
-    width: string;
 };
 
-type FixedHeightSmall = {
-    height: string;
-    mp4: string;
-    mp4_size: string;
-    size: string;
-    url: string;
+type WebpImageFormat = BaseImageFormat & {
     webp: string;
     webp_size: string;
-    width: string;
 };
 
-type Downsized = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type FixedWidthDownsampled = {
-    height: string;
-    size: string;
-    url: string;
-    webp: string;
-    webp_size: string;
-    width: string;
-};
-
-type FixedWidth = {
-    height: string;
+type AnimatedImageFormat = BaseImageFormat & {
     mp4: string;
     mp4_size: string;
-    size: string;
-    url: string;
     webp: string;
     webp_size: string;
-    width: string;
-};
-
-type DownsizedStill = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type DownsizedMedium = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type OriginalMp4 = {
-    height: string;
-    mp4: string;
-    mp4_size: string;
-    width: string;
-};
-
-type DownsizedLarge = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type PreviewWebp = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type Original = {
-    frames: string;
-    hash: string;
-    height: string;
-    mp4: string;
-    mp4_size: string;
-    size: string;
-    url: string;
-    webp: string;
-    webp_size: string;
-    width: string;
-};
-
-type OriginalStill = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type FixedHeightSmallStill = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type FixedWidthSmall = {
-    height: string;
-    mp4: string;
-    mp4_size: string;
-    size: string;
-    url: string;
-    webp: string;
-    webp_size: string;
-    width: string;
 };
 
 type Looping = {
@@ -144,68 +36,39 @@ type Looping = {
     mp4_size: string;
 };
 
-type DownsizedSmall = {
-    height: string;
+type Original = BaseImageFormat & {
+    frames: string;
+    hash: string;
     mp4: string;
     mp4_size: string;
-    width: string;
-};
-
-type FixedWidthSmallStill = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type FixedHeightStill = {
-    height: string;
-    size: string;
-    url: string;
-    width: string;
-};
-
-type FixedHeight = {
-    height: string;
-    mp4: string;
-    mp4_size: string;
-    size: string;
-    url: string;
     webp: string;
     webp_size: string;
-    width: string;
-};
-
-type _480wStill = {
-    url: string;
-    width: string;
-    height: string;
 };
 
 type Images = {
-    fixed_width_still: FixedWidthStill;
-    preview_gif: PreviewGif;
-    fixed_height_downsampled: FixedHeightDownsampled;
-    preview: Preview;
-    fixed_height_small: FixedHeightSmall;
-    downsized: Downsized;
-    fixed_width_downsampled: FixedWidthDownsampled;
-    fixed_width: FixedWidth;
-    downsized_still: DownsizedStill;
-    downsized_medium: DownsizedMedium;
-    original_mp4: OriginalMp4;
-    downsized_large: DownsizedLarge;
-    preview_webp: PreviewWebp;
+    fixed_width_still: BaseImageFormat;
+    preview_gif: BaseImageFormat;
+    fixed_height_downsampled: WebpImageFormat;
+    preview: Mp4Format;
+    fixed_height_small: AnimatedImageFormat;
+    downsized: BaseImageFormat;
+    fixed_width_downsampled: WebpImageFormat;
+    fixed_width: AnimatedImageFormat;
+    downsized_still: BaseImageFormat;
+    downsized_medium: BaseImageFormat;
+    original_mp4: Mp4Format;
+    downsized_large: BaseImageFormat;
+    preview_webp: BaseImageFormat;
     original: Original;
-    original_still: OriginalStill;
-    fixed_height_small_still: FixedHeightSmallStill;
-    fixed_width_small: FixedWidthSmall;
+    original_still: BaseImageFormat;
+    fixed_height_small_still: BaseImageFormat;
+    fixed_width_small: AnimatedImageFormat;
     looping: Looping;
-    downsized_small: DownsizedSmall;
-    fixed_width_small_still: FixedWidthSmallStill;
-    fixed_height_still: FixedHeightStill;
-    fixed_height: FixedHeight;
-    '480w_still': _480wStill;
+    downsized_small: Mp4Format;
+    fixed_width_small_still: BaseImageFormat;
+    fixed_height_still: BaseImageFormat;
+    fixed_height: AnimatedImageFormat;
+    '480w_still': MinimalImageFormat;
 };
 
 type User = {

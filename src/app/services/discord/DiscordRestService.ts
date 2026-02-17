@@ -13,10 +13,15 @@ export default class DiscordRestService {
         });
     }
 
-    public async putApplicationCommands(body: RequestData['body']): Promise<void> {
-        await this.rest.put(Routes.applicationCommands(config.discord.applicationId), {
-                body
-            });
+    public async putApplicationCommands(
+        body: RequestData['body'],
+    ): Promise<void> {
+        await this.rest.put(
+            Routes.applicationCommands(config.discord.applicationId),
+            {
+                body,
+            },
+        );
     }
 
     /**

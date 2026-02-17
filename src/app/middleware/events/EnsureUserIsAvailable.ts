@@ -1,4 +1,3 @@
-import User from '@/app/entities/User';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import UserRepository from '@/app/repositories/UserRepository';
 import {ClientEvents} from 'discord.js';

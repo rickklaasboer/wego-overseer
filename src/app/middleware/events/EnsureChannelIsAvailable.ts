@@ -1,4 +1,3 @@
-import Channel from '@/app/entities/Channel';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import ChannelRepository from '@/app/repositories/ChannelRepository';
 import {ClientEvents} from 'discord.js';

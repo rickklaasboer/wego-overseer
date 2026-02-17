@@ -36,7 +36,7 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
                     datasets: [
                         {
                             label: 'Total Karma',
-                            data: clusters.map((k, i) => {
+                            data: clusters.map((_k, i) => {
                                 return clusters
                                     .slice(0, i + 1)
                                     .reduce(
@@ -144,4 +144,3 @@ export default class KarmaUserGraphCommand extends BaseInternalCommand {
         }
     }
 }
-

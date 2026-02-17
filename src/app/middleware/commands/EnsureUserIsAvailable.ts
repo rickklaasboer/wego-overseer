@@ -1,5 +1,4 @@
 import {DefaultInteraction} from '@/app/commands/BaseCommand';
-import User from '@/app/entities/User';
 import BaseMiddleware, {NextFn} from '@/app/middleware/BaseMiddleware';
 import UserRepository from '@/app/repositories/UserRepository';
 import {injectable} from 'tsyringe';
